@@ -90,7 +90,7 @@ func (c *Client) FetchRelevantTableIDs(pairs [][2]string) ([]uint64, error) {
 	return tableIDs, nil
 }
 
-func (c *Client) LoadTableRows(tableIDs []uint64, values []string) ([]model.TableRow, error) {
+func (c *Client) LoadTableRows(tableIDs []uint64, values []string, limit int) ([]model.TableRow, error) {
 	inClause := buildInClause(values)
 
 	query := fmt.Sprintf(

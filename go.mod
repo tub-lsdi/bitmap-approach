@@ -8,6 +8,7 @@ require (
 	github.com/RoaringBitmap/roaring/v2 v2.14.4
 	github.com/duckdb/duckdb-go/v2 v2.5.2
 	github.com/joho/godotenv v1.5.1
+	github.com/vertica/vertica-sql-go v1.3.4
 )
 
 require (
@@ -21,14 +22,19 @@ require (
 	github.com/duckdb/duckdb-go-bindings/windows-amd64 v0.1.23 // indirect
 	github.com/duckdb/duckdb-go/arrowmapping v0.0.25 // indirect
 	github.com/duckdb/duckdb-go/mapping v0.0.25 // indirect
+	github.com/elastic/go-sysinfo v1.8.1 // indirect
+	github.com/elastic/go-windows v1.0.0 // indirect
 	github.com/go-viper/mapstructure/v2 v2.4.0 // indirect
 	github.com/goccy/go-json v0.10.5 // indirect
 	github.com/google/flatbuffers v25.2.10+incompatible // indirect
 	github.com/google/uuid v1.6.0 // indirect
+	github.com/joeshaw/multierror v0.0.0-20140124173710-69b34d4ec901 // indirect
 	github.com/klauspost/compress v1.18.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
 	github.com/mschoch/smat v0.2.0 // indirect
 	github.com/pierrec/lz4/v4 v4.1.22 // indirect
+	github.com/pkg/errors v0.8.1 // indirect
+	github.com/prometheus/procfs v0.0.0-20190425082905-87a4384529e0 // indirect
 	github.com/zeebo/xxh3 v1.0.2 // indirect
 	golang.org/x/exp v0.0.0-20250408133849-7e4ce0ab07d0 // indirect
 	golang.org/x/mod v0.27.0 // indirect
@@ -36,4 +42,5 @@ require (
 	golang.org/x/sys v0.35.0 // indirect
 	golang.org/x/tools v0.36.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
+	howett.net/plist v0.0.0-20181124034731-591f970eefbb // indirect
 )

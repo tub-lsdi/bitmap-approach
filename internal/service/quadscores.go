@@ -178,6 +178,8 @@ func buildPairWhitelist(pairs [][2]string, rowBitmaps map[string]*roaring64.Bitm
 		}
 	}
 
+	log.Printf("Whitelisted %d pairs\n", len(whitelist))
+
 	return whitelist
 }
 
