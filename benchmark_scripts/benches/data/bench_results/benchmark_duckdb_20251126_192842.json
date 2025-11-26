@@ -1,0 +1,25 @@
+{
+  "start_time": "2025-11-26T19:28:42.583357",
+  "end_time": "2025-11-26T19:29:42.849785",
+  "total_duration_seconds": 60.266428,
+  "max_timeout_seconds": 60,
+  "database": "duckdb",
+  "total_cases": 1,
+  "successful_cases": 0,
+  "timeout_cases": 1,
+  "failed_cases": 0,
+  "average_duration_seconds": 0.0,
+  "median_duration_seconds": 0.0,
+  "results": [
+    {
+      "case_number": 3,
+      "success": false,
+      "duration_seconds": 60.026742,
+      "timeout": true,
+      "error": "Timeout after 60 seconds",
+      "start_time": "2025-11-26T19:28:42.583549",
+      "end_time": "2025-11-26T19:29:42.610291",
+      "output": null
+    }
+  ]
+}

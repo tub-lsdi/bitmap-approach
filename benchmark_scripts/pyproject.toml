@@ -1,0 +1,13 @@
+[project]
+name = "cs-jp-lp-benchmark"
+version = "0.1.0"
+description = "Benchmark CS-JP-LP"
+requires-python = ">=3.10"
+dependencies = ["pulp>=2.7.0", "loguru>=0.7.0", "requests>=2.31.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["benchmark_cs_jp_lp.py", "cs_jp_lp.py"]

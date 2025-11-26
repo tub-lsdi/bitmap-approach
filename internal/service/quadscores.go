@@ -264,7 +264,18 @@ func CalculatePMIForQuadScores(quadCounts []QuadCount, pairTableCounts map[[2]st
 			continue
 		}
 
-		pmi := math.Log(jointProb / (marginalProb1 * marginalProb2))
+		denominator := marginalProb1 * marginalProb2
+		if denominator == 0 {
+			log.Printf("Warning: zero denominator for quad %s (pair1 count=%d, pair2 count=%d)", quadCount.Quad.String(), countPair1, countPair2)
+			continue
+		}
+
+		pmi := math.Log(jointProb / denominator)
+
+		if math.IsNaN(pmi) || math.IsInf(pmi, 0) {
+			log.Printf("Warning: invalid PMI value for quad %s (jointProb=%f, marginalProb1=%f, marginalProb2=%f)", quadCount.Quad.String(), jointProb, marginalProb1, marginalProb2)
+			continue
+		}
 
 		results = append(results, QuadPMI{
 			Quad: quadCount.Quad,

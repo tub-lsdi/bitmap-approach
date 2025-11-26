@@ -1,0 +1,25 @@
+{
+  "start_time": "2025-11-26T19:13:55.575684",
+  "end_time": "2025-11-26T19:13:56.576099",
+  "total_duration_seconds": 1.000415,
+  "max_timeout_seconds": 60,
+  "database": "duckdb",
+  "total_cases": 1,
+  "successful_cases": 0,
+  "timeout_cases": 0,
+  "failed_cases": 1,
+  "average_duration_seconds": 0.0,
+  "median_duration_seconds": 0.0,
+  "results": [
+    {
+      "case_number": 2,
+      "success": false,
+      "duration_seconds": 0.998371,
+      "timeout": false,
+      "error": "('anafranil', 'clomipramine')",
+      "start_time": "2025-11-26T19:13:55.575861",
+      "end_time": "2025-11-26T19:13:56.574232",
+      "output": null
+    }
+  ]
+}
