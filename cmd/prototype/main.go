@@ -154,6 +154,6 @@ func main() {
 
 	log.Println("Top quadruples:")
 	for i := 0; i < top; i++ {
-		log.Printf("%d. %s => %d\n", i+1, results[i].Quad, results[i].Count)
+		log.Printf("%d. %s => %d\n", i+1, results[i].Quad.String(), results[i].Count)
 	}
 }

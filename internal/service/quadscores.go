@@ -2,19 +2,36 @@ package service
 
 import (
 	"bitmap-approach/internal/model"
+	"encoding/json"
 	"fmt"
 	"log"
+	"math"
 	"sort"
 
 	"github.com/RoaringBitmap/roaring/v2/roaring64"
 )
 
-type QuadScore struct {
-	Quad  string
+type Quad [4]string
+
+func (q Quad) String() string {
+	return fmt.Sprintf("%s,%s,%s,%s", q[0], q[1], q[2], q[3])
+}
+
+func (q Quad) MarshalJSON() ([]byte, error) {
+	return json.Marshal(q.String())
+}
+
+type QuadCount struct {
+	Quad  Quad
 	Count int
 }
 
-func CalculateQuadScores(listR, listS []string, tableRows []model.TableRow) ([]QuadScore, error) {
+type QuadPMI struct {
+	Quad Quad
+	PMI  float64
+}
+
+func CalculateQuadScores(listR, listS []string, tableRows []model.TableRow) ([]QuadCount, error) {
 	pairs := generateAllPairs(listR, listS)
 	pairsR := generateAllPairs(listR, listR)
 	pairsS := generateAllPairs(listS, listS)
@@ -25,7 +42,7 @@ func CalculateQuadScores(listR, listS []string, tableRows []model.TableRow) ([]Q
 	blacklistR := buildPairBlacklistColumn(pairsR, colBitmaps)
 	blacklistS := buildPairBlacklistColumn(pairsS, colBitmaps)
 
-	all_counts := make(map[string]int)
+	all_counts := make(map[Quad]int)
 
 	for i, pair1 := range whitelist {
 		r_i, s_j := pair1[0], pair1[1]
@@ -40,9 +57,9 @@ func CalculateQuadScores(listR, listS []string, tableRows []model.TableRow) ([]Q
 				if blacklistR[pairR1] || blacklistR[pairR2] || blacklistS[pairS1] || blacklistS[pairS2] {
 					continue
 				}
-				quad := [4]string{r_i, s_j, r_k, s_l}
-				count := countTablesForQuadruple(quad, rowBitmaps, colBitmaps)
-				all_counts[fmt.Sprintf("%s,%s,%s,%s", r_i, s_j, r_k, s_l)] = count
+				quad := Quad{r_i, s_j, r_k, s_l}
+				count := countTablesForQuadruple([4]string(quad), rowBitmaps, colBitmaps)
+				all_counts[quad] = count
 			}
 		}
 		if i%100 == 0 {
@@ -51,7 +68,7 @@ func CalculateQuadScores(listR, listS []string, tableRows []model.TableRow) ([]Q
 	}
 
 	type kv struct {
-		Key string
+		Key Quad
 		Val int
 	}
 
@@ -64,9 +81,9 @@ func CalculateQuadScores(listR, listS []string, tableRows []model.TableRow) ([]Q
 
 	sort.Slice(filtered, func(i, j int) bool { return filtered[i].Val > filtered[j].Val })
 
-	results := make([]QuadScore, len(filtered))
+	results := make([]QuadCount, len(filtered))
 	for i, kv := range filtered {
-		results[i] = QuadScore{
+		results[i] = QuadCount{
 			Quad:  kv.Key,
 			Count: kv.Val,
 		}
@@ -209,4 +226,51 @@ func positionsToTableBitmap(bm *roaring64.Bitmap) *roaring64.Bitmap {
 		result.Add(tableID)
 	}
 	return result
+}
+
+func CalculatePMIForQuadScores(quadCounts []QuadCount, pairTableCounts map[[2]string]int, totalTables int) ([]QuadPMI, error) {
+	if totalTables <= 0 {
+		return nil, fmt.Errorf("totalTables must be greater than 0")
+	}
+
+	results := make([]QuadPMI, 0, len(quadCounts))
+
+	for _, quadCount := range quadCounts {
+		quad := quadCount.Quad
+		r_i := quad[0]
+		s_j := quad[1]
+		r_k := quad[2]
+		s_l := quad[3]
+
+		pair1 := [2]string{r_i, s_j}
+		pair2 := [2]string{r_k, s_l}
+
+		countPair1, ok1 := pairTableCounts[pair1]
+		countPair2, ok2 := pairTableCounts[pair2]
+
+		if !ok1 || !ok2 {
+			continue
+		}
+
+		if countPair1 == 0 || countPair2 == 0 {
+			continue
+		}
+
+		jointProb := float64(quadCount.Count) / float64(totalTables)
+		marginalProb1 := float64(countPair1) / float64(totalTables)
+		marginalProb2 := float64(countPair2) / float64(totalTables)
+
+		if jointProb == 0 {
+			continue
+		}
+
+		pmi := math.Log(jointProb / (marginalProb1 * marginalProb2))
+
+		results = append(results, QuadPMI{
+			Quad: quadCount.Quad,
+			PMI:  pmi,
+		})
+	}
+
+	return results, nil
 }

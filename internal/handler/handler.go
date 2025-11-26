@@ -3,9 +3,7 @@ package handler
 import (
 	"bitmap-approach/internal/config"
 	"bitmap-approach/internal/duckdb"
-	"bitmap-approach/internal/model"
 	"bitmap-approach/internal/service"
-	"bitmap-approach/internal/vertica"
 	"net/http"
 	"strings"
 
@@ -15,18 +13,17 @@ import (
 type CalculateRequest struct {
 	ListR []string `json:"listR" binding:"required"`
 	ListS []string `json:"listS" binding:"required"`
-	DB    string   `json:"db"`
 }
 
-type QuadScoreResponse struct {
-	Quad  string `json:"quad"`
-	Count int    `json:"count"`
+type QuadPMIResponse struct {
+	Quad string  `json:"quad"`
+	PMI  float64 `json:"pmi"`
 }
 
 type CalculateResponse struct {
-	Results    []QuadScoreResponse `json:"results"`
-	TotalFound int                 `json:"total_found"`
-	Metadata   MetadataResponse    `json:"metadata"`
+	Results    []QuadPMIResponse `json:"results"`
+	TotalFound int               `json:"total_found"`
+	Metadata   MetadataResponse  `json:"metadata"`
 }
 
 type MetadataResponse struct {
@@ -56,46 +53,21 @@ func CalculateQuadScores(c *gin.Context) {
 		return
 	}
 
-	dbName := strings.ToLower(req.DB)
-	if dbName == "" {
-		dbName = "duckdb"
-	}
-	if dbName != "duckdb" && dbName != "vertica" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "db must be either 'duckdb' or 'vertica'"})
-		return
-	}
-
 	listR := normalizeStrings(req.ListR)
 	listS := normalizeStrings(req.ListS)
 
-	var client model.DBClient
-	var err error
-
-	if dbName == "duckdb" {
-		duckDBPath := config.DuckDBPath()
-		if duckDBPath == "" {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "DUCKDB_PATH environment variable is not set"})
-			return
-		}
-		client, err = duckdb.NewClient(duckDBPath)
-		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create DuckDB client: " + err.Error()})
-			return
-		}
-		defer client.Close()
-	} else {
-		host, port, database, username, password := config.VerticaConfig()
-		if host == "" || port == "" || database == "" || username == "" || password == "" {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Vertica environment variables are not set. Required: VERTICA_HOST, VERTICA_PORT, VERTICA_DATABASE, VERTICA_USERNAME, VERTICA_PASSWORD"})
-			return
-		}
-		client, err = vertica.NewClient(host, port, database, username, password)
-		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create Vertica client: " + err.Error()})
-			return
-		}
-		defer client.Close()
+	duckDBPath := config.DuckDBPath()
+	if duckDBPath == "" {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "DUCKDB_PATH environment variable is not set"})
+		return
 	}
+
+	duckClient, err := duckdb.NewClient(duckDBPath)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create DuckDB client: " + err.Error()})
+		return
+	}
+	defer duckClient.Close()
 
 	pairs := make([][2]string, 0, len(listR)*len(listS))
 	for _, val1 := range listR {
@@ -104,40 +76,48 @@ func CalculateQuadScores(c *gin.Context) {
 		}
 	}
 
-	var tableIDs []uint64
-	if dbName == "duckdb" {
-		tableIDs, err = client.FetchRelevantTableIDs(pairs)
-		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch table IDs: " + err.Error()})
-			return
-		}
+	tableIDs, err := duckClient.FetchRelevantTableIDs(pairs)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch table IDs: " + err.Error()})
+		return
 	}
 
 	allValues := append(listR, listS...)
-	var limit int
-	if dbName == "vertica" {
-		limit = config.VerticaRowLimit()
-	} else {
-		limit = 0
-	}
-
-	tableRows, err := client.LoadTableRows(tableIDs, allValues, limit)
+	tableRows, err := duckClient.LoadTableRows(tableIDs, allValues, 0)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to load table rows: " + err.Error()})
 		return
 	}
 
-	results, err := service.CalculateQuadScores(listR, listS, tableRows)
+	quadCounts, err := service.CalculateQuadScores(listR, listS, tableRows)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to calculate quad scores: " + err.Error()})
 		return
 	}
 
-	responseResults := make([]QuadScoreResponse, len(results))
+	pairTableCounts, err := duckClient.FetchPairTableCounts(pairs)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch pair table counts: " + err.Error()})
+		return
+	}
+
+	totalTables, err := duckClient.GetTotalTableCount()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get total table count: " + err.Error()})
+		return
+	}
+
+	results, err := service.CalculatePMIForQuadScores(quadCounts, pairTableCounts, totalTables)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to calculate PMI: " + err.Error()})
+		return
+	}
+
+	responseResults := make([]QuadPMIResponse, len(results))
 	for i, r := range results {
-		responseResults[i] = QuadScoreResponse{
-			Quad:  r.Quad,
-			Count: r.Count,
+		responseResults[i] = QuadPMIResponse{
+			Quad: r.Quad.String(),
+			PMI:  r.PMI,
 		}
 	}
 

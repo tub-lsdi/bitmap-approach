@@ -90,6 +90,92 @@ func (c *Client) FetchRelevantTableIDs(pairs [][2]string) ([]uint64, error) {
 	return tableIDs, nil
 }
 
+func (c *Client) FetchPairTableCounts(pairs [][2]string) (map[[2]string]int, error) {
+	valuesParts := make([]string, len(pairs))
+	for i, pair := range pairs {
+		r_i := strings.ReplaceAll(pair[0], "'", "''")
+		s_j := strings.ReplaceAll(pair[1], "'", "''")
+		valuesParts[i] = fmt.Sprintf("('%s', '%s')", r_i, s_j)
+	}
+	valuesClause := strings.Join(valuesParts, ",\n        ")
+
+	query := fmt.Sprintf(`
+		WITH pairs AS (
+			SELECT * FROM (VALUES
+				%s
+			) AS t(r_i, s_j)
+		),
+		-- 1. Collect all unique values
+		all_values AS (
+			SELECT r_i AS val FROM pairs
+			UNION
+			SELECT s_j FROM pairs
+		),
+		-- 2. Filter cells once
+		filtered_cells AS (
+			SELECT *
+			FROM cells
+			WHERE value IN (SELECT val FROM all_values)
+		),
+		-- 3. Find all table_ids where EACH pair co-occurs in the same row
+		pair_matches AS (
+			SELECT DISTINCT
+				p.r_i,
+				p.s_j,
+				f1.table_id
+			FROM pairs p
+			JOIN filtered_cells f1
+				ON f1.value = p.r_i
+			JOIN filtered_cells f2
+				ON f2.value = p.s_j
+			   AND f2.table_id = f1.table_id
+			   AND f2.row_id  = f1.row_id
+		)
+		-- 4. Output: for each pair, how many DISTINCT tables it appeared in
+		SELECT
+			r_i,
+			s_j,
+			COUNT(DISTINCT table_id) AS table_count
+		FROM pair_matches
+		GROUP BY r_i, s_j
+		ORDER BY r_i, s_j`, valuesClause)
+
+	rows, err := c.db.Query(query)
+	if err != nil {
+		return nil, fmt.Errorf("failed to execute pair table counts query: %w", err)
+	}
+	defer rows.Close()
+
+	result := make(map[[2]string]int)
+	for rows.Next() {
+		var r_i, s_j string
+		var tableCount int
+		if err := rows.Scan(&r_i, &s_j, &tableCount); err != nil {
+			return nil, fmt.Errorf("failed to scan row: %w", err)
+		}
+		pair := [2]string{r_i, s_j}
+		result[pair] = tableCount
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("error iterating rows: %w", err)
+	}
+
+	return result, nil
+}
+
+func (c *Client) GetTotalTableCount() (int, error) {
+	query := `SELECT COUNT(DISTINCT table_id) FROM cells`
+
+	var count int
+	err := c.db.QueryRow(query).Scan(&count)
+	if err != nil {
+		return 0, fmt.Errorf("failed to get total table count: %w", err)
+	}
+
+	return count, nil
+}
+
 func (c *Client) LoadTableRows(tableIDs []uint64, values []string, limit int) ([]model.TableRow, error) {
 	inClause := buildInClause(values)
 
