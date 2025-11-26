@@ -1,5 +1,3 @@
-
-
 services:
   benchmark:
     build:
@@ -10,4 +8,3 @@ services:
       # Mount results directory to persist data
       - ./data/bench_results:/app/data/bench_results
     command: python3 benchmark_cs_jp_lp.py --start 1 --end 50 --database duckdb
-    environment:

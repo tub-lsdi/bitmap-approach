@@ -35,3 +35,11 @@ func VerticaRowLimit() int {
 	}
 	return limit
 }
+
+func ServerPort() string {
+	port := os.Getenv("SERVER_PORT")
+	if port == "" {
+		return "8080"
+	}
+	return port
+}
