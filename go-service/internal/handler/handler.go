@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -21,17 +22,25 @@ type QuadPMIResponse struct {
 	PMI  float64 `json:"pmi"`
 }
 
-type CalculateResponse struct {
-	Results    []QuadPMIResponse `json:"results"`
-	TotalFound int               `json:"total_found"`
-	Metadata   MetadataResponse  `json:"metadata"`
-}
-
 type MetadataResponse struct {
 	ListRCardinality int `json:"listR_cardinality"`
 	ListSCardinality int `json:"listS_cardinality"`
 	PairsGenerated   int `json:"pairs_generated"`
 	TableRowsLoaded  int `json:"table_rows_loaded"`
+}
+
+type TimingInfo struct {
+	Step            string  `json:"step"`
+	StartTime       string  `json:"start_time"`
+	EndTime         string  `json:"end_time"`
+	DurationSeconds float64 `json:"duration_seconds"`
+}
+
+type CalculateResponse struct {
+	Results    []QuadPMIResponse `json:"results"`
+	TotalFound int               `json:"total_found"`
+	Metadata   MetadataResponse  `json:"metadata"`
+	Timings    []TimingInfo      `json:"timings"`
 }
 
 func normalizeStrings(strs []string) []string {
@@ -71,6 +80,9 @@ func CalculateQuadScores(c *gin.Context) {
 		return
 	}
 
+	timings := make([]TimingInfo, 0)
+
+	verticaConnectStart := time.Now()
 	log.Printf("Connecting to Vertica: %s@%s:%s/%s", username, host, port, database)
 	verticaClient, err := vertica.NewClient(host, port, database, username, password)
 	if err != nil {
@@ -79,7 +91,14 @@ func CalculateQuadScores(c *gin.Context) {
 		return
 	}
 	defer verticaClient.Close()
+	verticaConnectEnd := time.Now()
 	log.Printf("Successfully connected to Vertica")
+	timings = append(timings, TimingInfo{
+		Step:            "vertica_connection",
+		StartTime:       verticaConnectStart.Format(time.RFC3339Nano),
+		EndTime:         verticaConnectEnd.Format(time.RFC3339Nano),
+		DurationSeconds: verticaConnectEnd.Sub(verticaConnectStart).Seconds(),
+	})
 
 	pairs := make([][2]string, 0, len(listR)*len(listS))
 	for _, val1 := range listR {
@@ -93,6 +112,7 @@ func CalculateQuadScores(c *gin.Context) {
 	var tableIDs []uint64
 
 	allValues := append(listR, listS...)
+	loadRowsStart := time.Now()
 	log.Printf("Loading table rows for %d values...", len(allValues))
 	tableRows, err := verticaClient.LoadTableRows(tableIDs, allValues, 0)
 	if err != nil {
@@ -100,16 +120,40 @@ func CalculateQuadScores(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to load table rows: " + err.Error()})
 		return
 	}
+	loadRowsEnd := time.Now()
 	log.Printf("Loaded %d table rows", len(tableRows))
+	timings = append(timings, TimingInfo{
+		Step:            "load_table_rows",
+		StartTime:       loadRowsStart.Format(time.RFC3339Nano),
+		EndTime:         loadRowsEnd.Format(time.RFC3339Nano),
+		DurationSeconds: loadRowsEnd.Sub(loadRowsStart).Seconds(),
+	})
 
+	createBitmapStart := time.Now()
 	log.Printf("Creating bitmaps for all values...")
 	bitmapStore := service.NewBitmapStore(tableRows)
+	createBitmapEnd := time.Now()
 	log.Printf("Created bitmap store")
+	timings = append(timings, TimingInfo{
+		Step:            "create_bitmap_store",
+		StartTime:       createBitmapStart.Format(time.RFC3339Nano),
+		EndTime:         createBitmapEnd.Format(time.RFC3339Nano),
+		DurationSeconds: createBitmapEnd.Sub(createBitmapStart).Seconds(),
+	})
 
+	calculatePairCountsStart := time.Now()
 	log.Printf("Calculating pair table counts from bitmaps...")
 	pairTableCounts := bitmapStore.CalculatePairTableCounts(pairs)
+	calculatePairCountsEnd := time.Now()
 	log.Printf("Calculated pair table counts for %d pairs", len(pairTableCounts))
+	timings = append(timings, TimingInfo{
+		Step:            "calculate_pair_table_counts",
+		StartTime:       calculatePairCountsStart.Format(time.RFC3339Nano),
+		EndTime:         calculatePairCountsEnd.Format(time.RFC3339Nano),
+		DurationSeconds: calculatePairCountsEnd.Sub(calculatePairCountsStart).Seconds(),
+	})
 
+	calculateQuadScoresStart := time.Now()
 	log.Printf("Calculating quad scores...")
 	quadCounts, err := service.CalculateQuadScores(listR, listS, bitmapStore)
 	if err != nil {
@@ -117,8 +161,16 @@ func CalculateQuadScores(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to calculate quad scores: " + err.Error()})
 		return
 	}
+	calculateQuadScoresEnd := time.Now()
 	log.Printf("Calculated %d quad counts", len(quadCounts))
+	timings = append(timings, TimingInfo{
+		Step:            "calculate_quad_scores",
+		StartTime:       calculateQuadScoresStart.Format(time.RFC3339Nano),
+		EndTime:         calculateQuadScoresEnd.Format(time.RFC3339Nano),
+		DurationSeconds: calculateQuadScoresEnd.Sub(calculateQuadScoresStart).Seconds(),
+	})
 
+	getTotalTablesStart := time.Now()
 	log.Printf("Getting total table count...")
 	totalTables, err := verticaClient.GetTotalTableCount()
 	if err != nil {
@@ -126,8 +178,16 @@ func CalculateQuadScores(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get total table count: " + err.Error()})
 		return
 	}
+	getTotalTablesEnd := time.Now()
 	log.Printf("Total tables: %d", totalTables)
+	timings = append(timings, TimingInfo{
+		Step:            "get_total_table_count",
+		StartTime:       getTotalTablesStart.Format(time.RFC3339Nano),
+		EndTime:         getTotalTablesEnd.Format(time.RFC3339Nano),
+		DurationSeconds: getTotalTablesEnd.Sub(getTotalTablesStart).Seconds(),
+	})
 
+	calculatePMIStart := time.Now()
 	log.Printf("Calculating PMI for %d quad counts...", len(quadCounts))
 	results, err := service.CalculatePMIForQuadScores(quadCounts, pairTableCounts, totalTables)
 	if err != nil {
@@ -135,7 +195,14 @@ func CalculateQuadScores(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to calculate PMI: " + err.Error()})
 		return
 	}
+	calculatePMIEnd := time.Now()
 	log.Printf("Calculated PMI for %d quads", len(results))
+	timings = append(timings, TimingInfo{
+		Step:            "calculate_pmi_scores",
+		StartTime:       calculatePMIStart.Format(time.RFC3339Nano),
+		EndTime:         calculatePMIEnd.Format(time.RFC3339Nano),
+		DurationSeconds: calculatePMIEnd.Sub(calculatePMIStart).Seconds(),
+	})
 
 	responseResults := make([]QuadPMIResponse, len(results))
 	for i, r := range results {
@@ -154,6 +221,7 @@ func CalculateQuadScores(c *gin.Context) {
 			PairsGenerated:   len(pairs),
 			TableRowsLoaded:  len(tableRows),
 		},
+		Timings: timings,
 	}
 
 	log.Printf("Returning response with %d results", len(results))

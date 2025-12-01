@@ -3,14 +3,13 @@
 
 import argparse
 import json
-import csv
 import os
-import time
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 from statistics import median
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -43,11 +42,11 @@ def call_go_service_placeholder(
     list_r: List[str],
     list_s: List[str],
     service_url: Optional[str] = None,
-) -> Dict[Tuple[str, str, str, str], float]:
+) -> Tuple[Dict[Tuple[str, str, str, str], float], List[Dict]]:
     """Call Go service to get PMI scores for quads"""
     if service_url is None:
         logger.error("Service URL is required but not provided")
-        return {}
+        return {}, []
 
     endpoint = f"{service_url}/calculate-quad-scores"
     payload = {"listR": list_r, "listS": list_s}
@@ -61,6 +60,7 @@ def call_go_service_placeholder(
 
         data = response.json()
         results = data.get("results", [])
+        timings = data.get("timings", [])
 
         # Convert response format to expected return type
         # Response: [{"quad": "r_i,s_j,r_k,s_l", "pmi": 2.5}, ...]
@@ -79,14 +79,14 @@ def call_go_service_placeholder(
                 logger.warning(f"Invalid quad format: {quad_str}")
 
         logger.info(f"Received {len(pmi_scores)} PMI scores from Go service")
-        return pmi_scores
+        return pmi_scores, timings
 
     except requests.exceptions.RequestException as e:
         logger.error(f"Error calling Go service: {e}")
-        return {}
+        return {}, []
     except (KeyError, ValueError, json.JSONDecodeError) as e:
         logger.error(f"Error parsing Go service response: {e}")
-        return {}
+        return {}, []
 
 
 def run_single_case(
@@ -131,29 +131,40 @@ def run_single_case(
         list_s_normalized = [s.lower().strip() for s in list_s]
 
         # Call Go service to get PMI scores (with normalized lists)
-        w_ijkl_scores = call_go_service_placeholder(
+        w_ijkl_scores, go_service_timings = call_go_service_placeholder(
             list_r_normalized, list_s_normalized, service_url
         )
 
         # Run CS-JP-LP algorithm (with normalized lists to match PMI scores)
         algorithm = CSJPLPAlgorithm()
-        mappings = algorithm.create_bridge(
+        bridge_table = algorithm.create_bridge(
             list_r_normalized, list_s_normalized, w_ijkl_scores
         )
 
         end_time = datetime.now()
         duration = (end_time - start_time).total_seconds()
 
+        go_service_timings_dict = {}
+        for timing in go_service_timings:
+            step_name = timing.get("step", "unknown")
+            go_service_timings_dict[step_name] = {
+                "start_time": timing.get("start_time"),
+                "end_time": timing.get("end_time"),
+                "duration_seconds": timing.get("duration_seconds", 0.0),
+            }
+
         result.update(
             {
                 "success": True,
                 "duration_seconds": duration,
                 "end_time": end_time.isoformat(),
+                "bridge_table": bridge_table,
+                "go_service_timings": go_service_timings_dict,
                 "output": {
-                    "mappings": mappings,
+                    "mappings": bridge_table,
                     "num_r": len(list_r),
                     "num_s": len(list_s),
-                    "num_mappings": len(mappings),
+                    "num_mappings": len(bridge_table),
                 },
             }
         )
@@ -191,65 +202,6 @@ def save_results_json(benchmark_run: Dict, output_file: Path):
         json.dump(benchmark_run, f, indent=2)
 
 
-def save_results_csv(benchmark_run: Dict, output_file: Path):
-    with open(output_file, "w", newline="") as f:
-        writer = csv.writer(f)
-
-        # Write header
-        writer.writerow(
-            [
-                "case_number",
-                "success",
-                "duration_seconds",
-                "error",
-                "start_time",
-                "end_time",
-            ]
-        )
-
-        # Write results
-        for result in benchmark_run["results"]:
-            writer.writerow(
-                [
-                    result["case_number"],
-                    result["success"],
-                    f"{result['duration_seconds']:.6f}",
-                    result.get("error", ""),
-                    result.get("start_time", ""),
-                    result.get("end_time", ""),
-                ]
-            )
-
-        # Write summary
-        writer.writerow([])
-        writer.writerow(["SUMMARY"])
-        writer.writerow(["start_time", benchmark_run["start_time"]])
-        writer.writerow(["end_time", benchmark_run["end_time"]])
-        writer.writerow(
-            ["total_duration_seconds", f"{benchmark_run['total_duration_seconds']:.6f}"]
-        )
-        writer.writerow(["database", benchmark_run["database"]])
-        writer.writerow(["total_cases", benchmark_run["total_cases"]])
-        writer.writerow(["successful_cases", benchmark_run["successful_cases"]])
-        writer.writerow(["failed_cases", benchmark_run["failed_cases"]])
-
-        if benchmark_run["successful_cases"] > 0:
-            writer.writerow([])
-            writer.writerow(["STATISTICS"])
-            writer.writerow(
-                [
-                    "average_duration_seconds",
-                    f"{benchmark_run['average_duration_seconds']:.6f}",
-                ]
-            )
-            writer.writerow(
-                [
-                    "median_duration_seconds",
-                    f"{benchmark_run['median_duration_seconds']:.6f}",
-                ]
-            )
-
-
 def main():
     parser = argparse.ArgumentParser(
         description="Benchmark CS-JP-LP algorithm with semantic join test cases"
@@ -262,12 +214,6 @@ def main():
     )
     parser.add_argument(
         "--end", type=int, default=50, help="Ending case number (default: 50)"
-    )
-    parser.add_argument(
-        "--format",
-        choices=["json", "csv"],
-        default="json",
-        help="Output format (default: json)",
     )
     parser.add_argument(
         "--benchmark-dir",
@@ -290,9 +236,14 @@ def main():
         case_numbers = list(range(args.start, args.end + 1))
 
     # Start benchmark
+    berlin_tz = ZoneInfo("Europe/Berlin")
+    start_time_utc = datetime.now(timezone.utc)
+    start_time_berlin = start_time_utc.astimezone(berlin_tz)
     start_time = datetime.now()
+
     benchmark_run = {
         "start_time": start_time.isoformat(),
+        "start_time_berlin": start_time_berlin.isoformat(),
         "end_time": None,
         "total_duration_seconds": 0.0,
         "database": "vertica",
@@ -348,16 +299,12 @@ def main():
         logger.info(f"  Median duration (successful): {med_duration:.2f} seconds")
 
     # Save results
-    timestamp = start_time.strftime("%Y%m%d_%H%M%S")
+    timestamp_berlin = start_time_berlin.strftime("%Y%m%d_%H%M%S")
     output_dir = Path("/app/results")
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    if args.format == "csv":
-        output_file = output_dir / f"benchmark_vertica_{timestamp}.csv"
-        save_results_csv(benchmark_run, output_file)
-    else:
-        output_file = output_dir / f"benchmark_vertica_{timestamp}.json"
-        save_results_json(benchmark_run, output_file)
+    output_file = output_dir / f"benchmark_vertica_{timestamp_berlin}.json"
+    save_results_json(benchmark_run, output_file)
 
     logger.info(f"\nResults saved to: {output_file}")
 
