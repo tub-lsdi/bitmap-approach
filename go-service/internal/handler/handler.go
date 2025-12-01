@@ -102,23 +102,22 @@ func CalculateQuadScores(c *gin.Context) {
 	}
 	log.Printf("Loaded %d table rows", len(tableRows))
 
+	log.Printf("Creating bitmaps for all values...")
+	bitmapStore := service.NewBitmapStore(tableRows)
+	log.Printf("Created bitmap store")
+
+	log.Printf("Calculating pair table counts from bitmaps...")
+	pairTableCounts := bitmapStore.CalculatePairTableCounts(pairs)
+	log.Printf("Calculated pair table counts for %d pairs", len(pairTableCounts))
+
 	log.Printf("Calculating quad scores...")
-	quadCounts, err := service.CalculateQuadScores(listR, listS, tableRows)
+	quadCounts, err := service.CalculateQuadScores(listR, listS, bitmapStore)
 	if err != nil {
 		log.Printf("Error calculating quad scores: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to calculate quad scores: " + err.Error()})
 		return
 	}
 	log.Printf("Calculated %d quad counts", len(quadCounts))
-
-	log.Printf("Fetching pair table counts...")
-	pairTableCounts, err := verticaClient.FetchPairTableCounts(pairs)
-	if err != nil {
-		log.Printf("Error fetching pair table counts: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch pair table counts: " + err.Error()})
-		return
-	}
-	log.Printf("Found pair table counts for %d pairs", len(pairTableCounts))
 
 	log.Printf("Getting total table count...")
 	totalTables, err := verticaClient.GetTotalTableCount()
