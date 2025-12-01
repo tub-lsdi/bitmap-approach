@@ -2,8 +2,6 @@ package main
 
 import (
 	"bitmap-approach/internal/config"
-	"bitmap-approach/internal/duckdb"
-	"bitmap-approach/internal/model"
 	"bitmap-approach/internal/service"
 	"bitmap-approach/internal/vertica"
 	"bufio"
@@ -50,15 +48,10 @@ func loadListsFromCase(caseNum string) ([]string, []string, error) {
 
 func main() {
 	caseFlag := flag.String("case", "", "Case number to load lists from (e.g., '1' for Case1_input.txt)")
-	dbFlag := flag.String("db", "duckdb", "Database to use: 'duckdb' or 'vertica'")
 	flag.Parse()
 
 	if *caseFlag == "" {
 		log.Fatal("Error: -case flag is required")
-	}
-
-	if *dbFlag != "duckdb" && *dbFlag != "vertica" {
-		log.Fatalf("Error: -db must be either 'duckdb' or 'vertica', got '%s'", *dbFlag)
 	}
 
 	listR, listS, err := loadListsFromCase(*caseFlag)
@@ -71,33 +64,16 @@ func main() {
 		log.Printf("Warning: failed to load .env file: %v", err)
 	}
 
-	var client model.DBClient
-	dbName := strings.ToLower(*dbFlag)
-
-	if dbName == "duckdb" {
-		duckDBPath := config.DuckDBPath()
-		if duckDBPath == "" {
-			log.Fatalf("DUCKDB_PATH environment variable is not set")
-		}
-		var err error
-		client, err = duckdb.NewClient(duckDBPath)
-		if err != nil {
-			log.Fatalf("Failed to create DuckDB client: %v", err)
-		}
-		log.Printf("Connected to DuckDB: %s\n", duckDBPath)
-	} else {
-		host, port, database, username, password := config.VerticaConfig()
-		if host == "" || port == "" || database == "" || username == "" || password == "" {
-			log.Fatalf("Vertica environment variables are not set. Required: VERTICA_HOST, VERTICA_PORT, VERTICA_DATABASE, VERTICA_USERNAME, VERTICA_PASSWORD")
-		}
-		var err error
-		client, err = vertica.NewClient(host, port, database, username, password)
-		if err != nil {
-			log.Fatalf("Failed to create Vertica client: %v", err)
-		}
-		log.Printf("Connected to Vertica: %s@%s:%s/%s\n", username, host, port, database)
+	host, port, database, username, password := config.VerticaConfig()
+	if host == "" || port == "" || database == "" || username == "" || password == "" {
+		log.Fatalf("Vertica environment variables are not set. Required: VERTICA_HOST, VERTICA_PORT, VERTICA_DATABASE, VERTICA_USERNAME, VERTICA_PASSWORD")
+	}
+	client, err := vertica.NewClient(host, port, database, username, password)
+	if err != nil {
+		log.Fatalf("Failed to create Vertica client: %v", err)
 	}
 	defer client.Close()
+	log.Printf("Connected to Vertica: %s@%s:%s/%s\n", username, host, port, database)
 
 	log.Println("Generating all pairs...")
 	pairs := make([][2]string, 0, len(listR)*len(listS))
@@ -108,36 +84,16 @@ func main() {
 	}
 	log.Printf("Generated %d pairs between ListR and ListS\n", len(pairs))
 
+	log.Println("Skipping table_id prefiltering for Vertica")
 	var tableIDs []uint64
-	if dbName == "duckdb" {
-		log.Println("Fetching relevant table_ids...")
-		var err error
-		tableIDs, err = client.FetchRelevantTableIDs(pairs)
-		if err != nil {
-			log.Fatalf("Failed to fetch table IDs: %v", err)
-		}
-		log.Printf("Found %d relevant table_ids\n", len(tableIDs))
-	} else {
-		log.Println("Skipping table_id prefiltering for Vertica")
-	}
 
 	log.Printf("Loading data from DB")
 	allValues := append(listR, listS...)
-	var limit int
-	if dbName == "vertica" {
-		limit = config.VerticaRowLimit()
-		log.Printf("Using Vertica row limit: %d\n", limit)
-	} else {
-		limit = 0
-	}
-	tableRows, err := client.LoadTableRows(tableIDs, allValues, limit)
+	tableRows, err := client.LoadTableRows(tableIDs, allValues, 0)
 	if err != nil {
 		log.Fatalf("Failed to load table rows: %v", err)
 	}
 	log.Printf("Loaded %d table rows\n", len(tableRows))
-	if dbName == "vertica" && len(tableRows) >= limit {
-		log.Printf("Warning: Reached row limit (%d) for Vertica", limit)
-	}
 
 	log.Println("Calculating quad scores...")
 	results, err := service.CalculateQuadScores(listR, listS, tableRows)

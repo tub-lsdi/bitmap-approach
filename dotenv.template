@@ -1,10 +1,6 @@
-# DuckDB Configuration (for embedded database)
-DUCKDB_PATH=path/to/your/duckdb/file.db
-
 # Vertica Configuration (for client-server database)
 VERTICA_HOST=localhost
 VERTICA_PORT=5433
 VERTICA_DATABASE=your_database
 VERTICA_USERNAME=your_username
 VERTICA_PASSWORD=your_password
-VERTICA_ROW_LIMIT=10000000

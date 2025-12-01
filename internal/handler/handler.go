@@ -2,8 +2,8 @@ package handler
 
 import (
 	"bitmap-approach/internal/config"
-	"bitmap-approach/internal/duckdb"
 	"bitmap-approach/internal/service"
+	"bitmap-approach/internal/vertica"
 	"log"
 	"net/http"
 	"strings"
@@ -64,22 +64,22 @@ func CalculateQuadScores(c *gin.Context) {
 	listS := normalizeStrings(req.ListS)
 	log.Printf("Normalized lists: listR=%d items, listS=%d items", len(listR), len(listS))
 
-	duckDBPath := config.DuckDBPath()
-	if duckDBPath == "" {
-		log.Printf("Error: DUCKDB_PATH environment variable is not set")
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "DUCKDB_PATH environment variable is not set"})
+	host, port, database, username, password := config.VerticaConfig()
+	if host == "" || port == "" || database == "" || username == "" || password == "" {
+		log.Printf("Error: Vertica environment variables are not set")
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Vertica environment variables are not set. Required: VERTICA_HOST, VERTICA_PORT, VERTICA_DATABASE, VERTICA_USERNAME, VERTICA_PASSWORD"})
 		return
 	}
 
-	log.Printf("Connecting to DuckDB at: %s", duckDBPath)
-	duckClient, err := duckdb.NewClient(duckDBPath)
+	log.Printf("Connecting to Vertica: %s@%s:%s/%s", username, host, port, database)
+	verticaClient, err := vertica.NewClient(host, port, database, username, password)
 	if err != nil {
-		log.Printf("Error creating DuckDB client: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create DuckDB client: " + err.Error()})
+		log.Printf("Error creating Vertica client: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create Vertica client: " + err.Error()})
 		return
 	}
-	defer duckClient.Close()
-	log.Printf("Successfully connected to DuckDB")
+	defer verticaClient.Close()
+	log.Printf("Successfully connected to Vertica")
 
 	pairs := make([][2]string, 0, len(listR)*len(listS))
 	for _, val1 := range listR {
@@ -89,18 +89,12 @@ func CalculateQuadScores(c *gin.Context) {
 	}
 	log.Printf("Generated %d pairs", len(pairs))
 
-	log.Printf("Fetching relevant table IDs...")
-	tableIDs, err := duckClient.FetchRelevantTableIDs(pairs)
-	if err != nil {
-		log.Printf("Error fetching table IDs: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch table IDs: " + err.Error()})
-		return
-	}
-	log.Printf("Found %d relevant table IDs", len(tableIDs))
+	log.Printf("Skipping table_id prefiltering for Vertica")
+	var tableIDs []uint64
 
 	allValues := append(listR, listS...)
 	log.Printf("Loading table rows for %d values...", len(allValues))
-	tableRows, err := duckClient.LoadTableRows(tableIDs, allValues, 0)
+	tableRows, err := verticaClient.LoadTableRows(tableIDs, allValues, 0)
 	if err != nil {
 		log.Printf("Error loading table rows: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to load table rows: " + err.Error()})
@@ -118,7 +112,7 @@ func CalculateQuadScores(c *gin.Context) {
 	log.Printf("Calculated %d quad counts", len(quadCounts))
 
 	log.Printf("Fetching pair table counts...")
-	pairTableCounts, err := duckClient.FetchPairTableCounts(pairs)
+	pairTableCounts, err := verticaClient.FetchPairTableCounts(pairs)
 	if err != nil {
 		log.Printf("Error fetching pair table counts: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch pair table counts: " + err.Error()})
@@ -127,7 +121,7 @@ func CalculateQuadScores(c *gin.Context) {
 	log.Printf("Found pair table counts for %d pairs", len(pairTableCounts))
 
 	log.Printf("Getting total table count...")
-	totalTables, err := duckClient.GetTotalTableCount()
+	totalTables, err := verticaClient.GetTotalTableCount()
 	if err != nil {
 		log.Printf("Error getting total table count: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get total table count: " + err.Error()})

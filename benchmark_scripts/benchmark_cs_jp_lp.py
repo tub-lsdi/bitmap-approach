@@ -50,7 +50,6 @@ def parse_case_input(case_file: Path) -> Tuple[List[str], List[str]]:
 def call_go_service_placeholder(
     list_r: List[str],
     list_s: List[str],
-    database: str,
     service_url: Optional[str] = None,
 ) -> Dict[Tuple[str, str, str, str], float]:
     """Call Go service to get PMI scores for quads"""
@@ -101,7 +100,6 @@ def call_go_service_placeholder(
 def run_single_case(
     case_num: int,
     benchmark_dir: Path,
-    database: str,
     timeout_seconds: int,
     service_url: Optional[str] = None,
 ) -> Dict:
@@ -149,7 +147,7 @@ def run_single_case(
 
         # Call Go service to get PMI scores (with normalized lists)
         w_ijkl_scores = call_go_service_placeholder(
-            list_r_normalized, list_s_normalized, database, service_url
+            list_r_normalized, list_s_normalized, service_url
         )
 
         # Run CS-JP-LP algorithm (with normalized lists to match PMI scores)
@@ -303,13 +301,6 @@ def main():
         "--end", type=int, default=50, help="Ending case number (default: 50)"
     )
     parser.add_argument(
-        "-d",
-        "--database",
-        choices=["duckdb", "vertica"],
-        default="duckdb",
-        help="Database type (default: duckdb)",
-    )
-    parser.add_argument(
         "--timeout",
         type=int,
         default=60,
@@ -346,7 +337,7 @@ def main():
         "end_time": None,
         "total_duration_seconds": 0.0,
         "max_timeout_seconds": args.timeout,
-        "database": args.database,
+        "database": "vertica",
         "total_cases": len(case_numbers),
         "successful_cases": 0,
         "timeout_cases": 0,
@@ -357,7 +348,7 @@ def main():
     }
 
     logger.info(f"Starting benchmark run at {benchmark_run['start_time']}")
-    logger.info(f"Database: {args.database}")
+    logger.info(f"Database: vertica")
     logger.info(
         f"Cases: {case_numbers[0]}-{case_numbers[-1] if len(case_numbers) > 1 else case_numbers[0]}"
     )
@@ -368,7 +359,7 @@ def main():
     for case_num in case_numbers:
         logger.info(f"\nRunning Case {case_num}...")
         result = run_single_case(
-            case_num, args.benchmark_dir, args.database, args.timeout, args.service_url
+            case_num, args.benchmark_dir, args.timeout, args.service_url
         )
         benchmark_run["results"].append(result)
 
@@ -414,10 +405,10 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     if args.format == "csv":
-        output_file = output_dir / f"benchmark_{args.database}_{timestamp}.csv"
+        output_file = output_dir / f"benchmark_vertica_{timestamp}.csv"
         save_results_csv(benchmark_run, output_file)
     else:
-        output_file = output_dir / f"benchmark_{args.database}_{timestamp}.json"
+        output_file = output_dir / f"benchmark_vertica_{timestamp}.json"
         save_results_json(benchmark_run, output_file)
 
     logger.info(f"\nResults saved to: {output_file}")

@@ -33,6 +33,7 @@ type BenchmarkRun struct {
 	TotalDuration   float64           `json:"total_duration_seconds"`
 	MaxTimeout      int               `json:"max_timeout_seconds"`
 	Program         string            `json:"program"`
+	Database        string            `json:"database"`
 	TotalCases      int               `json:"total_cases"`
 	SuccessfulCases int               `json:"successful_cases"`
 	TimeoutCases    int               `json:"timeout_cases"`
@@ -70,12 +71,14 @@ func main() {
 		StartTime:  startTime.Format(time.RFC3339),
 		MaxTimeout: *maxTimeout,
 		Program:    *program,
+		Database:   "vertica",
 		TotalCases: *endCase - *startCase + 1,
 		Results:    make([]BenchmarkResult, 0),
 	}
 
 	fmt.Printf("Starting benchmark run at %s\n", run.StartTime)
 	fmt.Printf("Program: %s\n", *program)
+	fmt.Printf("Database: vertica\n")
 	fmt.Printf("Cases: %d-%d\n", *startCase, *endCase)
 	fmt.Printf("Max timeout per case: %d seconds\n", *maxTimeout)
 	fmt.Println(strings.Repeat("=", 80))
@@ -243,6 +246,7 @@ func saveResultsCSV(run BenchmarkRun, filename string) error {
 	writer.Write([]string{"total_duration_seconds", fmt.Sprintf("%.6f", run.TotalDuration)})
 	writer.Write([]string{"max_timeout_seconds", strconv.Itoa(run.MaxTimeout)})
 	writer.Write([]string{"program", run.Program})
+	writer.Write([]string{"database", run.Database})
 	writer.Write([]string{"total_cases", strconv.Itoa(run.TotalCases)})
 	writer.Write([]string{"successful_cases", strconv.Itoa(run.SuccessfulCases)})
 	writer.Write([]string{"timeout_cases", strconv.Itoa(run.TimeoutCases)})
