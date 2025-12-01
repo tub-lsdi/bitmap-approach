@@ -1,0 +1,28 @@
+services:
+  go-service:
+    build:
+      context: ./go-service
+      dockerfile: Dockerfile
+    container_name: bitmap-go-service
+    ports:
+      - "8080:8080"
+    environment:
+      - VERTICA_HOST=${VERTICA_HOST:-localhost}
+      - VERTICA_PORT=${VERTICA_PORT:-5433}
+      - VERTICA_DATABASE=${VERTICA_DATABASE:-your_database}
+      - VERTICA_USERNAME=${VERTICA_USERNAME:-your_username}
+      - VERTICA_PASSWORD=${VERTICA_PASSWORD:-your_password}
+      - SERVER_PORT=${SERVER_PORT:-8080}
+    restart: unless-stopped
+
+  python-service:
+    build:
+      context: ./python-service
+      dockerfile: Dockerfile
+    container_name: cs-jp-lp-benchmark
+    volumes:
+      - ./benchmark-data:/app/data/bench_data
+      - ${RESULTS_DIR:-./results}:/app/results
+    environment:
+      - PYTHONUNBUFFERED=1
+      - SERVICE_URL=http://go-service:8080

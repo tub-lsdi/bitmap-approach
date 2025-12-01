@@ -4,3 +4,9 @@ VERTICA_PORT=5433
 VERTICA_DATABASE=your_database
 VERTICA_USERNAME=your_username
 VERTICA_PASSWORD=your_password
+
+# Server Configuration
+SERVER_PORT=8080
+
+# Benchmark Configuration
+RESULTS_DIR=./results
