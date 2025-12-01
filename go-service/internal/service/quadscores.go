@@ -83,6 +83,34 @@ func (bs *BitmapStore) GetColBitmap(value string) *roaring64.Bitmap {
 	return roaring64.NewBitmap()
 }
 
+func (bs *BitmapStore) FilterToRelevantTables(relevantTableIDs *roaring64.Bitmap) {
+	for value, rowBitmap := range bs.rowBitmaps {
+		filtered := roaring64.NewBitmap()
+		it := rowBitmap.Iterator()
+		for it.HasNext() {
+			pos := it.Next()
+			tableID := pos >> 32
+			if relevantTableIDs.Contains(tableID) {
+				filtered.Add(pos)
+			}
+		}
+		bs.rowBitmaps[value] = filtered
+	}
+
+	for value, colBitmap := range bs.colBitmaps {
+		filtered := roaring64.NewBitmap()
+		it := colBitmap.Iterator()
+		for it.HasNext() {
+			pos := it.Next()
+			tableID := pos >> 32
+			if relevantTableIDs.Contains(tableID) {
+				filtered.Add(pos)
+			}
+		}
+		bs.colBitmaps[value] = filtered
+	}
+}
+
 func (bs *BitmapStore) CalculatePairTableCount(pair [2]string) int {
 	val1, val2 := pair[0], pair[1]
 	row1 := bs.GetRowBitmap(val1)
@@ -110,7 +138,7 @@ func CalculateQuadScores(listR, listS []string, bitmapStore *BitmapStore) ([]Qua
 	pairsR := generateAllPairs(listR, listR)
 	pairsS := generateAllPairs(listS, listS)
 
-	whitelist := buildPairWhitelist(pairs, bitmapStore)
+	whitelist, pairTableIDBitmaps := buildPairWhitelist(pairs, bitmapStore)
 	blacklistR := buildPairBlacklistColumn(pairsR, bitmapStore)
 	blacklistS := buildPairBlacklistColumn(pairsS, bitmapStore)
 
@@ -130,7 +158,7 @@ func CalculateQuadScores(listR, listS []string, bitmapStore *BitmapStore) ([]Qua
 					continue
 				}
 				quad := Quad{r_i, s_j, r_k, s_l}
-				count := countTablesForQuadruple([4]string(quad), bitmapStore)
+				count := countTablesForQuadruple([4]string(quad), bitmapStore, pairTableIDBitmaps)
 				all_counts[quad] = count
 			}
 		}
@@ -164,27 +192,27 @@ func CalculateQuadScores(listR, listS []string, bitmapStore *BitmapStore) ([]Qua
 	return results, nil
 }
 
-func countTablesForQuadruple(quad [4]string, bitmapStore *BitmapStore) int {
+func countTablesForQuadruple(quad [4]string, bitmapStore *BitmapStore, pairTableIDBitmaps map[[2]string]*roaring64.Bitmap) int {
 	a, b, c, d := quad[0], quad[1], quad[2], quad[3]
 
-	rowA := bitmapStore.GetRowBitmap(a)
-	rowB := bitmapStore.GetRowBitmap(b)
-	rowC := bitmapStore.GetRowBitmap(c)
-	rowD := bitmapStore.GetRowBitmap(d)
+	pairAB := [2]string{a, b}
+	pairCD := [2]string{c, d}
+
+	tablesRowAB, okAB := pairTableIDBitmaps[pairAB]
+	if !okAB || tablesRowAB.GetCardinality() == 0 {
+		return 0
+	}
+
+	tablesRowCD, okCD := pairTableIDBitmaps[pairCD]
+	if !okCD || tablesRowCD.GetCardinality() == 0 {
+		return 0
+	}
 
 	colA := bitmapStore.GetColBitmap(a)
 	colB := bitmapStore.GetColBitmap(b)
 	colC := bitmapStore.GetColBitmap(c)
 	colD := bitmapStore.GetColBitmap(d)
 
-	rowAB := roaring64.And(rowA, rowB)
-	if rowAB.GetCardinality() == 0 {
-		return 0
-	}
-	rowCD := roaring64.And(rowC, rowD)
-	if rowCD.GetCardinality() == 0 {
-		return 0
-	}
 	colAC := roaring64.And(colA, colC)
 	if colAC.GetCardinality() == 0 {
 		return 0
@@ -194,8 +222,6 @@ func countTablesForQuadruple(quad [4]string, bitmapStore *BitmapStore) int {
 		return 0
 	}
 
-	tablesRowAB := positionsToTableBitmap(rowAB)
-	tablesRowCD := positionsToTableBitmap(rowCD)
 	tablesColAC := positionsToTableBitmap(colAC)
 	tablesColBD := positionsToTableBitmap(colBD)
 
@@ -217,8 +243,9 @@ func generateAllPairs(list1, list2 []string) [][2]string {
 	return pairs
 }
 
-func buildPairWhitelist(pairs [][2]string, bitmapStore *BitmapStore) [][2]string {
+func buildPairWhitelist(pairs [][2]string, bitmapStore *BitmapStore) ([][2]string, map[[2]string]*roaring64.Bitmap) {
 	whitelist := make([][2]string, 0)
+	pairTableIDBitmaps := make(map[[2]string]*roaring64.Bitmap)
 
 	for _, pair := range pairs {
 		val1, val2 := pair[0], pair[1]
@@ -228,12 +255,14 @@ func buildPairWhitelist(pairs [][2]string, bitmapStore *BitmapStore) [][2]string
 		overlap := roaring64.And(row1, row2)
 		if overlap.GetCardinality() > 0 {
 			whitelist = append(whitelist, pair)
+			tableIDBitmap := positionsToTableBitmap(overlap)
+			pairTableIDBitmaps[pair] = tableIDBitmap
 		}
 	}
 
 	log.Printf("Whitelisted %d pairs\n", len(whitelist))
 
-	return whitelist
+	return whitelist, pairTableIDBitmaps
 }
 
 func buildPairBlacklistColumn(pairs [][2]string, bitmapStore *BitmapStore) map[[2]string]bool {
@@ -262,6 +291,26 @@ func positionsToTableBitmap(bm *roaring64.Bitmap) *roaring64.Bitmap {
 		result.Add(tableID)
 	}
 	return result
+}
+
+func ComputeRelevantTableIDs(listR, listS []string, bitmapStore *BitmapStore) *roaring64.Bitmap {
+	pairs := generateAllPairs(listR, listS)
+	relevantTableIDs := roaring64.NewBitmap()
+
+	for _, pair := range pairs {
+		val1, val2 := pair[0], pair[1]
+		row1 := bitmapStore.GetRowBitmap(val1)
+		row2 := bitmapStore.GetRowBitmap(val2)
+
+		overlap := roaring64.And(row1, row2)
+		if overlap.GetCardinality() > 0 {
+			tableIDs := positionsToTableBitmap(overlap)
+			relevantTableIDs.Or(tableIDs)
+		}
+	}
+
+	log.Printf("Computed %d relevant table IDs\n", relevantTableIDs.GetCardinality())
+	return relevantTableIDs
 }
 
 func CalculatePMIForQuadScores(quadCounts []QuadCount, pairTableCounts map[[2]string]int, totalTables int) ([]QuadPMI, error) {
