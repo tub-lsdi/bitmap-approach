@@ -108,7 +108,6 @@ func CalculateQuadScores(c *gin.Context) {
 	}
 	log.Printf("Generated %d pairs", len(pairs))
 
-	log.Printf("Skipping table_id prefiltering for Vertica")
 	var tableIDs []uint64
 
 	allValues := append(listR, listS...)

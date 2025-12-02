@@ -7,6 +7,6 @@ down:
 build-python:
 	docker compose build python-service
 
-benchmark:
-	docker compose run --rm python-service uv run benchmark_cs_jp_lp.py --start $(START) --end $(END)
+build-go:
+	docker compose build go-service
 
