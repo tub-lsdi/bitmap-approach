@@ -207,16 +207,24 @@ class CSJPLPAlgorithm:
 
         # Step 3: Calculate z̃*ᵢⱼₖₗ from x̃*ᵢⱼ
         # z̃*ᵢⱼₖₗ = (1/2) × (x̃*ᵢⱼ + x̃*ₖₗ) for all i, k ∈ [|R|], j, l ∈ [|S|], k ≠ i
-        z_tilde = {}
-        for ri in list_r:
-            for sj in list_s:
-                for rk in list_r:
-                    if rk != ri:  # k ≠ i
-                        for sl in list_s:
-                            z_tilde[(ri, sj, rk, sl)] = 0.5 * (
-                                x_tilde.get((ri, sj), 0) +
-                                x_tilde.get((rk, sl), 0)
-                            )
+
+        # COMMENTED OUT FOR MEMORY OPTIMIZATION:
+        # Since z_tilde is never read or used in any subsequent computation (algorithm correctness depends only on
+        # x_tilde), we skip creating it to avoid the memory issue.
+        #
+        # Original code:
+        # z_tilde = {}
+        # for ri in list_r:
+        #     for sj in list_s:
+        #         for rk in list_r:
+        #             if rk != ri:  # k ≠ i
+        #                 for sl in list_s:
+        #                     z_tilde[(ri, sj, rk, sl)] = 0.5 * (
+        #                         x_tilde.get((ri, sj), 0) +
+        #                         x_tilde.get((rk, sl), 0)
+        #                     )
+
+        z_tilde = {}  # Empty dict - satisfies return signature
 
         # Step 4: Return half-integral solution
         return x_tilde, z_tilde
@@ -247,20 +255,29 @@ class CSJPLPAlgorithm:
         x_star = x_tilde.copy()
 
         # Step 4: Calculate z*ᵢⱼₖₗ from x*ᵢⱼ
-        z_star = {}
-        for ri in list_r:
-            for sj in list_s:
-                for rk in list_r:
-                    if rk != ri:  # k ≠ i
-                        for sl in list_s:
-                            # If x*ᵢⱼ = 1 AND x*ₖₗ = 1: z*ᵢⱼₖₗ ← 1, else 0
-                            if (
-                                x_star.get((ri, sj), 0) == 1
-                                and x_star.get((rk, sl), 0) == 1
-                            ):
-                                z_star[(ri, sj, rk, sl)] = 1
-                            else:
-                                z_star[(ri, sj, rk, sl)] = 0
+
+        # COMMENTED OUT FOR MEMORY OPTIMIZATION:
+        # This calculation creates O(|R|² × |S|²) dictionary entries. As noted in create_bridge(),
+        # z_star is never used in subsequent steps - the algorithm's correctness
+        # depends only on x_star.
+        #
+        # Original code:
+        # z_star = {}
+        # for ri in list_r:
+        #     for sj in list_s:
+        #         for rk in list_r:
+        #             if rk != ri:  # k ≠ i
+        #                 for sl in list_s:
+        #                     # If x*ᵢⱼ = 1 AND x*ₖₗ = 1: z*ᵢⱼₖₗ ← 1, else 0
+        #                     if (
+        #                         x_star.get((ri, sj), 0) == 1
+        #                         and x_star.get((rk, sl), 0) == 1
+        #                     ):
+        #                         z_star[(ri, sj, rk, sl)] = 1
+        #                     else:
+        #                         z_star[(ri, sj, rk, sl)] = 0
+
+        z_star = {}  # Empty dict - satisfies return signature
 
         # Step 5: Return integral solution
         return x_star, z_star
