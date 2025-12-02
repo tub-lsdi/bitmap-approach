@@ -1,4 +1,5 @@
 import pulp
+import time
 from loguru import logger
 
 
@@ -13,7 +14,7 @@ class CSJPLPAlgorithm:
         list_s: list[str],
         w_ijkl_scores: dict,
         top_k: int = 1,
-    ) -> list[dict]:
+    ) -> tuple[list[dict], dict]:
         """
         Create a bridge table using CS-JP-LP algorithm.
 
@@ -36,10 +37,18 @@ class CSJPLPAlgorithm:
                    is only one globally optimal solution.
 
         Returns:
-            List of dictionaries with r_val, s_val, and npmi fields.
-            Each result represents one row in the optimal global mapping.
-            Note: 'npmi' field contains aggregate PMI score (sum), not a single PMI value.
+            Tuple of (results, timings):
+            - results: List of dictionaries with r_val, s_val, and npmi fields.
+              Each result represents one row in the optimal global mapping.
+              Note: 'npmi' field contains aggregate PMI score (sum), not a single PMI value.
+            - timings: Dictionary with timing information for each step
         """
+        start_time = time.time()
+        timings = {}
+
+        logger.info(
+            f"CS-JP-LP: Starting with |R|={len(list_r)}, |S|={len(list_s)}, {len(w_ijkl_scores)} PMI scores")
+
         # Warn if top_k > 1 (parameter is ignored)
         if top_k > 1:
             logger.warning(
@@ -49,8 +58,14 @@ class CSJPLPAlgorithm:
             )
 
         # Step 1: Solve CILP using Algorithm 2 (which constructs CLP, calls Algorithm 1, and converts to integral)
+        step1_start = time.time()
+        logger.info("CS-JP-LP: Step 1 - Solving CILP (calling Algorithm 2)...")
         x_star, z_star = self._algorithm_2_solve_cilp(
             list_r, list_s, w_ijkl_scores)
+        step1_duration = time.time() - step1_start
+        timings['step1_solve_cilp'] = step1_duration
+        logger.info(
+            f"CS-JP-LP: Step 1 - CILP solved, obtained integral solution ({step1_duration:.2f}s)")
 
         # Note: z_star is returned by Algorithm 2 per the paper's formal specification (which states
         # Algorithm 2 returns both x* and z*), but is not used in subsequent steps. The z* variables
@@ -60,14 +75,29 @@ class CSJPLPAlgorithm:
         # objective function value, but are not required for the actual join mapping.
 
         # Step 3: Extract join function
+        step2_start = time.time()
+        logger.info(
+            "CS-JP-LP: Step 2 - Extracting join function from solution...")
         join_mapping = self._extract_join_function(list_r, list_s, x_star)
+        step2_duration = time.time() - step2_start
+        timings['step2_extract_join'] = step2_duration
+        logger.info(
+            f"CS-JP-LP: Step 2 - Extracted {len([v for v in join_mapping.values() if v is not None])} mappings ({step2_duration:.2f}s)")
 
         # Step 4: Optional greedy refinement
+        step3_start = time.time()
+        logger.info("CS-JP-LP: Step 3 - Running greedy refinement...")
         join_mapping = self._greedy_refinement(
             list_r, list_s, join_mapping, w_ijkl_scores
         )
+        step3_duration = time.time() - step3_start
+        timings['step3_greedy_refinement'] = step3_duration
+        logger.info(
+            f"CS-JP-LP: Step 3 - Greedy refinement complete ({step3_duration:.2f}s)")
 
         # Convert to output format
+        step4_start = time.time()
+        logger.info("CS-JP-LP: Step 4 - Converting to output format...")
         result = []
         for r_val, s_val in join_mapping.items():
             if s_val is not None:  # Not ⊥
@@ -83,7 +113,18 @@ class CSJPLPAlgorithm:
                     }
                 )
 
-        return result
+        step4_duration = time.time() - step4_start
+        timings['step4_convert_output'] = step4_duration
+
+        total_duration = time.time() - start_time
+        timings['total_duration'] = total_duration
+
+        logger.info(
+            f"CS-JP-LP: Complete! Generated {len(result)} final mappings ({step4_duration:.2f}s)")
+        logger.info(f"CS-JP-LP: Total duration: {total_duration:.2f}s")
+        logger.info(f"CS-JP-LP: Timings breakdown: {timings}")
+
+        return result, timings
 
     def _solve_clp(self, list_r: list[str], list_s: list[str], w_ijkl_scores: dict):
         """
@@ -93,6 +134,9 @@ class CSJPLPAlgorithm:
             x_bar: dict[(ri, sj)] -> fractional value in [0, 1]
             z_bar: dict[(ri, sj, rk, sl)] -> fractional value in [0, 1]
         """
+        logger.info(
+            f"  Formulating LP with {len(list_r)} x {len(list_s)} = {len(list_r) * len(list_s)} x variables...")
+
         # Create LP problem (minimization)
         prob = pulp.LpProblem("CLP", pulp.LpMinimize)
 
@@ -105,6 +149,8 @@ class CSJPLPAlgorithm:
                 )
 
         # Create decision variables z̄ᵢⱼₖₗ ∈ [0, 1]
+        logger.info(
+            f"  Creating {len(w_ijkl_scores)} z variables from PMI scores...")
         z_vars = {}
         for (ri, sj, rk, sl), w_ijkl in w_ijkl_scores.items():
             if ri != rk:  # Only for i ≠ k as per guide
@@ -128,13 +174,17 @@ class CSJPLPAlgorithm:
             prob += pulp.lpSum([x_vars[(ri, sj)] for sj in list_s]) <= 1
 
         # Constraint 2: z̄ᵢⱼₖₗ ≤ (1/2) × (x̄ᵢⱼ + x̄ₖₗ) for all i≠k
+        logger.info(f"  Adding {len(z_vars)} constraints...")
         for ri, sj, rk, sl in z_vars.keys():
             prob += z_vars[(ri, sj, rk, sl)] <= 0.5 * (
                 x_vars[(ri, sj)] + x_vars[(rk, sl)]
             )
 
         # Solve the LP
+        logger.info(
+            "  Solving LP problem (this may take a while for large inputs)...")
         prob.solve(pulp.PULP_CBC_CMD(msg=0))
+        logger.info(f"  LP solved with status: {pulp.LpStatus[prob.status]}")
 
         if prob.status != pulp.LpStatusOptimal:
             logger.warning(f"LP solver status: {pulp.LpStatus[prob.status]}")
@@ -165,9 +215,12 @@ class CSJPLPAlgorithm:
             z_tilde: dict[(ri, sj, rk, sl)] -> value in {0, 1/2, 1}
         """
         # Step 1: Solve CLP to obtain optimal solution
+        logger.info("  Algorithm 1: Solving CLP...")
         x_bar, z_bar = self._solve_clp(list_r, list_s, w_ijkl_scores)
 
         # Step 2: Round x variables to integral values
+        logger.info(
+            f"  Algorithm 1: Rounding {len(list_r)} x variables to integral values...")
         x_tilde = {}
         for ri in list_r:
             # Check if x̄*ᵢⱼ is already integral for all j

@@ -33,12 +33,12 @@ def parse_case_input(case_file: Path) -> Tuple[List[str], List[str]]:
         raise ValueError(f"No separator found in {case_file}")
 
     list_r = [line for line in lines[:separator_idx] if line]
-    list_s = [line for line in lines[separator_idx + 1 :] if line]
+    list_s = [line for line in lines[separator_idx + 1:] if line]
 
     return list_r, list_s
 
 
-def call_go_service_placeholder(
+def call_go_service(
     list_r: List[str],
     list_s: List[str],
     service_url: Optional[str] = None,
@@ -131,13 +131,13 @@ def run_single_case(
         list_s_normalized = [s.lower().strip() for s in list_s]
 
         # Call Go service to get PMI scores (with normalized lists)
-        w_ijkl_scores, go_service_timings = call_go_service_placeholder(
+        w_ijkl_scores, go_service_timings = call_go_service(
             list_r_normalized, list_s_normalized, service_url
         )
 
         # Run CS-JP-LP algorithm (with normalized lists to match PMI scores)
         algorithm = CSJPLPAlgorithm()
-        bridge_table = algorithm.create_bridge(
+        bridge_table, python_timings = algorithm.create_bridge(
             list_r_normalized, list_s_normalized, w_ijkl_scores
         )
 
@@ -159,6 +159,7 @@ def run_single_case(
                 "duration_seconds": duration,
                 "end_time": end_time.isoformat(),
                 "go_service_timings": go_service_timings_dict,
+                "python_service_timings": python_timings,
                 "output": {
                     "mappings": bridge_table,
                     "num_r": len(list_r),
@@ -185,7 +186,8 @@ def run_single_case(
 
 def calculate_statistics(results: List[Dict]) -> Tuple[float, float]:
     """Calculate avg/median duration for successful cases"""
-    successful_durations = [r["duration_seconds"] for r in results if r["success"]]
+    successful_durations = [r["duration_seconds"]
+                            for r in results if r["success"]]
 
     if not successful_durations:
         return 0.0, 0.0
@@ -274,7 +276,8 @@ def main():
 
         if result["success"]:
             benchmark_run["successful_cases"] += 1
-            logger.info(f"  ✓ Completed in {result['duration_seconds']:.2f} seconds")
+            logger.info(
+                f"  ✓ Completed in {result['duration_seconds']:.2f} seconds")
         else:
             benchmark_run["failed_cases"] += 1
             logger.error(f"  ✗ Failed: {result['error']}")
@@ -287,7 +290,8 @@ def main():
         ).total_seconds()
 
         # Recalculate statistics after each case
-        avg_duration, med_duration = calculate_statistics(benchmark_run["results"])
+        avg_duration, med_duration = calculate_statistics(
+            benchmark_run["results"])
         benchmark_run["average_duration_seconds"] = avg_duration
         benchmark_run["median_duration_seconds"] = med_duration
 
@@ -298,7 +302,8 @@ def main():
     # End benchmark
     end_time = datetime.now()
     benchmark_run["end_time"] = end_time.isoformat()
-    benchmark_run["total_duration_seconds"] = (end_time - start_time).total_seconds()
+    benchmark_run["total_duration_seconds"] = (
+        end_time - start_time).total_seconds()
 
     # Calculate final statistics
     avg_duration, med_duration = calculate_statistics(benchmark_run["results"])
@@ -318,8 +323,10 @@ def main():
         f"  Total duration: {benchmark_run['total_duration_seconds']:.2f} seconds"
     )
     if benchmark_run["successful_cases"] > 0:
-        logger.info(f"  Average duration (successful): {avg_duration:.2f} seconds")
-        logger.info(f"  Median duration (successful): {med_duration:.2f} seconds")
+        logger.info(
+            f"  Average duration (successful): {avg_duration:.2f} seconds")
+        logger.info(
+            f"  Median duration (successful): {med_duration:.2f} seconds")
 
     logger.info(f"\nFinal results saved to: {output_file}")
 
