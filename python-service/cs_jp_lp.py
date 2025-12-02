@@ -85,15 +85,16 @@ class CSJPLPAlgorithm:
             f"CS-JP-LP: Step 2 - Extracted {len([v for v in join_mapping.values() if v is not None])} mappings ({step2_duration:.2f}s)")
 
         # Step 4: Optional greedy refinement
+        # DISABLED: Greedy refinement disabled for performance testing
         step3_start = time.time()
-        logger.info("CS-JP-LP: Step 3 - Running greedy refinement...")
-        join_mapping = self._greedy_refinement(
-            list_r, list_s, join_mapping, w_ijkl_scores
-        )
+        logger.info("CS-JP-LP: Step 3 - Greedy refinement DISABLED")
+        # join_mapping = self._greedy_refinement(
+        #     list_r, list_s, join_mapping, w_ijkl_scores
+        # )
         step3_duration = time.time() - step3_start
         timings['step3_greedy_refinement'] = step3_duration
         logger.info(
-            f"CS-JP-LP: Step 3 - Greedy refinement complete ({step3_duration:.2f}s)")
+            f"CS-JP-LP: Step 3 - Greedy refinement skipped ({step3_duration:.2f}s)")
 
         # Convert to output format
         step4_start = time.time()
