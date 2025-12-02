@@ -84,21 +84,14 @@ class CSJPLPAlgorithm:
         logger.info(
             f"CS-JP-LP: Step 2 - Extracted {len([v for v in join_mapping.values() if v is not None])} mappings ({step2_duration:.2f}s)")
 
-        # Step 4: Optional greedy refinement
         # DISABLED: Greedy refinement disabled for performance testing
-        step3_start = time.time()
-        logger.info("CS-JP-LP: Step 3 - Greedy refinement DISABLED")
         # join_mapping = self._greedy_refinement(
         #     list_r, list_s, join_mapping, w_ijkl_scores
         # )
-        step3_duration = time.time() - step3_start
-        timings['step3_greedy_refinement'] = step3_duration
-        logger.info(
-            f"CS-JP-LP: Step 3 - Greedy refinement skipped ({step3_duration:.2f}s)")
 
         # Convert to output format
-        step4_start = time.time()
-        logger.info("CS-JP-LP: Step 4 - Converting to output format...")
+        step3_start = time.time()
+        logger.info("CS-JP-LP: Step 3 - Converting to output format...")
         result = []
         for r_val, s_val in join_mapping.items():
             if s_val is not None:  # Not ⊥
@@ -114,14 +107,14 @@ class CSJPLPAlgorithm:
                     }
                 )
 
-        step4_duration = time.time() - step4_start
-        timings['step4_convert_output'] = step4_duration
+        step3_duration = time.time() - step3_start
+        timings['step3_convert_output'] = step3_duration
 
         total_duration = time.time() - start_time
         timings['total_duration'] = total_duration
 
         logger.info(
-            f"CS-JP-LP: Complete! Generated {len(result)} final mappings ({step4_duration:.2f}s)")
+            f"CS-JP-LP: Complete! Generated {len(result)} final mappings ({step3_duration:.2f}s)")
         logger.info(f"CS-JP-LP: Total duration: {total_duration:.2f}s")
         logger.info(f"CS-JP-LP: Timings breakdown: {timings}")
 
@@ -183,8 +176,8 @@ class CSJPLPAlgorithm:
 
         # Solve the LP
         logger.info(
-            "  Solving LP problem (this may take a while for large inputs)...")
-        prob.solve(pulp.PULP_CBC_CMD(msg=0))
+            "  Solving LP problem")
+        prob.solve(pulp.HiGHS_CMD(msg=0))
         logger.info(f"  LP solved with status: {pulp.LpStatus[prob.status]}")
 
         if prob.status != pulp.LpStatusOptimal:
