@@ -135,21 +135,30 @@ class CSJPLPAlgorithm:
         prob = pulp.LpProblem("CLP", pulp.LpMinimize)
 
         # Create decision variables x̄ᵢⱼ ∈ [0, 1]
+        # Use indices to ensure unique variable names (required by HiGHS solver)
         x_vars = {}
-        for ri in list_r:
-            for sj in list_s:
+        for i, ri in enumerate(list_r):
+            for j, sj in enumerate(list_s):
                 x_vars[(ri, sj)] = pulp.LpVariable(
-                    f"x_{ri}_{sj}", lowBound=0, upBound=1, cat="Continuous"
+                    f"x_{i}_{j}", lowBound=0, upBound=1, cat="Continuous"
                 )
 
         # Create decision variables z̄ᵢⱼₖₗ ∈ [0, 1]
         logger.info(
             f"  Creating {len(w_ijkl_scores)} z variables from PMI scores...")
         z_vars = {}
+        # Pre-build index lookup for performance
+        r_index = {r: i for i, r in enumerate(list_r)}
+        s_index = {s: j for j, s in enumerate(list_s)}
+
         for (ri, sj, rk, sl), w_ijkl in w_ijkl_scores.items():
             if ri != rk:  # Only for i ≠ k as per guide
+                i = r_index[ri]
+                j = s_index[sj]
+                k = r_index[rk]
+                l = s_index[sl]
                 z_vars[(ri, sj, rk, sl)] = pulp.LpVariable(
-                    f"z_{ri}_{sj}_{rk}_{sl}", lowBound=0, upBound=1, cat="Continuous"
+                    f"z_{i}_{j}_{k}_{l}", lowBound=0, upBound=1, cat="Continuous"
                 )
 
         # Objective function: minimize Σ wᵢⱼₖₗ × (1 - z̄ᵢⱼₖₗ)
