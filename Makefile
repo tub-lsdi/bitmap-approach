@@ -4,6 +4,9 @@ up:
 down:
 	docker compose down
 
+build:
+	docker compose build	
+
 build-python:
 	docker compose build python-service
 

@@ -142,8 +142,10 @@ func CalculateQuadScores(c *gin.Context) {
 
 	filterBitmapsStart := time.Now()
 	log.Printf("Computing relevant table IDs and filtering bitmaps...")
-	relevantTableIDs := service.ComputeRelevantTableIDs(listR, listS, bitmapStore)
-	bitmapStore.FilterToRelevantTables(relevantTableIDs)
+	relevantTableIDsRS := service.ComputeRelevantTableIDsCrossPairs(listR, listS, bitmapStore)
+	bitmapStore.FilterToRelevantTables(relevantTableIDsRS)
+	relevantTableIDsInterColumn := service.ComputeRelevantTableIDsInterColumnPairs(listR, listS, bitmapStore)
+	bitmapStore.FilterToRelevantTables(relevantTableIDsInterColumn)
 	filterBitmapsEnd := time.Now()
 	log.Printf("Filtered bitmaps to relevant table IDs")
 	timings = append(timings, TimingInfo{

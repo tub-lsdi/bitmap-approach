@@ -305,11 +305,11 @@ func positionsToTableBitmap(bm *roaring64.Bitmap) *roaring64.Bitmap {
 	return result
 }
 
-func ComputeRelevantTableIDs(listR, listS []string, bitmapStore *BitmapStore) *roaring64.Bitmap {
-	pairs := generateAllPairs(listR, listS)
-	relevantTableIDs := roaring64.NewBitmap()
+func ComputeRelevantTableIDsCrossPairs(listR, listS []string, bitmapStore *BitmapStore) *roaring64.Bitmap {
+	pairsRS := generateAllPairs(listR, listS)
+	relevantTableIDsRS := roaring64.NewBitmap()
 
-	for _, pair := range pairs {
+	for _, pair := range pairsRS {
 		val1, val2 := pair[0], pair[1]
 		row1 := bitmapStore.GetRowBitmap(val1)
 		row2 := bitmapStore.GetRowBitmap(val2)
@@ -317,12 +317,52 @@ func ComputeRelevantTableIDs(listR, listS []string, bitmapStore *BitmapStore) *r
 		overlap := roaring64.And(row1, row2)
 		if overlap.GetCardinality() > 0 {
 			tableIDs := positionsToTableBitmap(overlap)
-			relevantTableIDs.Or(tableIDs)
+			relevantTableIDsRS.Or(tableIDs)
 		}
 	}
 
-	log.Printf("Computed %d relevant table IDs\n", relevantTableIDs.GetCardinality())
-	return relevantTableIDs
+	log.Printf("Computed %d relevant table IDs from R-S pairs\n", relevantTableIDsRS.GetCardinality())
+	return relevantTableIDsRS
+}
+
+func ComputeRelevantTableIDsInterColumnPairs(listR, listS []string, bitmapStore *BitmapStore) *roaring64.Bitmap {
+	pairsRR := generateAllPairs(listR, listR)
+	relevantTableIDsRR := roaring64.NewBitmap()
+
+	for _, pair := range pairsRR {
+		val1, val2 := pair[0], pair[1]
+		col1 := bitmapStore.GetColBitmap(val1)
+		col2 := bitmapStore.GetColBitmap(val2)
+
+		overlap := roaring64.And(col1, col2)
+		if overlap.GetCardinality() > 0 {
+			tableIDs := positionsToTableBitmap(overlap)
+			relevantTableIDsRR.Or(tableIDs)
+		}
+	}
+
+	log.Printf("Computed %d relevant table IDs from R-R pairs\n", relevantTableIDsRR.GetCardinality())
+
+	pairsSS := generateAllPairs(listS, listS)
+	relevantTableIDsSS := roaring64.NewBitmap()
+
+	for _, pair := range pairsSS {
+		val1, val2 := pair[0], pair[1]
+		col1 := bitmapStore.GetColBitmap(val1)
+		col2 := bitmapStore.GetColBitmap(val2)
+
+		overlap := roaring64.And(col1, col2)
+		if overlap.GetCardinality() > 0 {
+			tableIDs := positionsToTableBitmap(overlap)
+			relevantTableIDsSS.Or(tableIDs)
+		}
+	}
+
+	log.Printf("Computed %d relevant table IDs from S-S pairs\n", relevantTableIDsSS.GetCardinality())
+
+	final := roaring64.And(relevantTableIDsRR, relevantTableIDsSS)
+	log.Printf("Computed %d relevant table IDs (intersection of R-R and S-S)\n", final.GetCardinality())
+	return final
 }
 
 func CalculatePMIForQuadScores(quadCounts []QuadCount, pairTableCounts map[[2]string]int, totalTables int) ([]QuadPMI, error) {

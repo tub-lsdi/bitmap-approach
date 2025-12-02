@@ -158,7 +158,6 @@ def run_single_case(
                 "success": True,
                 "duration_seconds": duration,
                 "end_time": end_time.isoformat(),
-                "bridge_table": bridge_table,
                 "go_service_timings": go_service_timings_dict,
                 "output": {
                     "mappings": bridge_table,
