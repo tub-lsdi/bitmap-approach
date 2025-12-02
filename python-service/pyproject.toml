@@ -3,7 +3,7 @@ name = "cs-jp-lp-benchmark"
 version = "0.1.0"
 description = "Benchmark CS-JP-LP"
 requires-python = ">=3.10"
-dependencies = ["pulp>=2.7.0", "loguru>=0.7.0", "requests>=2.31.0", "highspy>=1.5.0"]
+dependencies = ["pulp>=2.7.0", "loguru>=0.7.0", "requests>=2.31.0", "highspy>=1.12.0"]
 
 [build-system]
 requires = ["hatchling"]
