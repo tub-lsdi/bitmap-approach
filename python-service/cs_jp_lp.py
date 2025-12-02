@@ -183,16 +183,32 @@ class CSJPLPAlgorithm:
             else:
                 # Contains fractional values, need to round
                 # Calculate contribution scores: cᵢⱼ = Σ(rₖ∈R, k≠i) Σ(sₗ∈S) (1/2) × wᵢⱼₖₗ
-                contribution_scores = {}
-                for sj in list_s:
-                    c_ij = 0.0
-                    for rk in list_r:
-                        if rk != ri:  # k ≠ i
-                            for sl in list_s:
-                                w_ijkl = w_ijkl_scores.get(
-                                    (ri, sj, rk, sl), 0.0)
-                                c_ij += 0.5 * w_ijkl
-                    contribution_scores[sj] = c_ij
+
+                # OPTIMIZATION:
+                # The sum Σ(rₖ∈R, k≠i) Σ(sₗ∈S) wᵢⱼₖₗ includes terms where wᵢⱼₖₗ may be zero
+                # (quadruples that never co-occur in the data). Since adding zero does not
+                # affect the sum, we can equivalently iterate only over the quadruples
+                # present in w_ijkl_scores rather than all O(|R|²|S|²) possible combinations.
+                # This optimization is particularly effective when the PMI score dictionary
+                # is sparse, which is typical in real-world data where most value pairs do
+                # not co-occur across tables.
+                #
+                # Original formulation (explicit nested loops over all combinations):
+                # contribution_scores = {}
+                # for sj in list_s:
+                #     c_ij = 0.0
+                #     for rk in list_r:
+                #         if rk != ri:  # k ≠ i
+                #             for sl in list_s:
+                #                 w_ijkl = w_ijkl_scores.get((ri, sj, rk, sl), 0.0)
+                #                 c_ij += 0.5 * w_ijkl
+                #     contribution_scores[sj] = c_ij
+
+                # Optimized implementation (iterate only over non-zero terms):
+                contribution_scores = {sj: 0.0 for sj in list_s}
+                for (r_i_key, s_j_key, r_k_key, s_l_key), w_ijkl in w_ijkl_scores.items():
+                    if r_i_key == ri and r_k_key != ri:
+                        contribution_scores[s_j_key] += 0.5 * w_ijkl
 
                 # Pick the best candidate: p = argmaxⱼ cᵢⱼ
                 if contribution_scores:
