@@ -262,6 +262,11 @@ def main():
     )
     logger.info("=" * 80)
 
+    timestamp_berlin = start_time_berlin.strftime("%Y%m%d_%H%M%S")
+    output_dir = Path("/app/results")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_file = output_dir / f"benchmark_vertica_{timestamp_berlin}.json"
+
     # Run each case
     for case_num in case_numbers:
         logger.info(f"\nRunning Case {case_num}...")
@@ -275,15 +280,34 @@ def main():
             benchmark_run["failed_cases"] += 1
             logger.error(f"  ✗ Failed: {result['error']}")
 
+        # Update end time and duration
+        current_time = datetime.now()
+        benchmark_run["end_time"] = current_time.isoformat()
+        benchmark_run["total_duration_seconds"] = (
+            current_time - start_time
+        ).total_seconds()
+
+        # Recalculate statistics after each case
+        avg_duration, med_duration = calculate_statistics(benchmark_run["results"])
+        benchmark_run["average_duration_seconds"] = avg_duration
+        benchmark_run["median_duration_seconds"] = med_duration
+
+        # Save results after each case
+        save_results_json(benchmark_run, output_file)
+        logger.info(f"  Results saved to: {output_file}")
+
     # End benchmark
     end_time = datetime.now()
     benchmark_run["end_time"] = end_time.isoformat()
     benchmark_run["total_duration_seconds"] = (end_time - start_time).total_seconds()
 
-    # Calculate statistics
+    # Calculate final statistics
     avg_duration, med_duration = calculate_statistics(benchmark_run["results"])
     benchmark_run["average_duration_seconds"] = avg_duration
     benchmark_run["median_duration_seconds"] = med_duration
+
+    # Save final results
+    save_results_json(benchmark_run, output_file)
 
     # Print summary
     logger.info("=" * 80)
@@ -298,15 +322,7 @@ def main():
         logger.info(f"  Average duration (successful): {avg_duration:.2f} seconds")
         logger.info(f"  Median duration (successful): {med_duration:.2f} seconds")
 
-    # Save results
-    timestamp_berlin = start_time_berlin.strftime("%Y%m%d_%H%M%S")
-    output_dir = Path("/app/results")
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    output_file = output_dir / f"benchmark_vertica_{timestamp_berlin}.json"
-    save_results_json(benchmark_run, output_file)
-
-    logger.info(f"\nResults saved to: {output_file}")
+    logger.info(f"\nFinal results saved to: {output_file}")
 
 
 if __name__ == "__main__":
