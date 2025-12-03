@@ -248,11 +248,76 @@ func buildBitmapsFromPositions(
 		go func(val string) {
 			defer wg.Done()
 
-			rowBitmap := roaring64.NewBitmap()
-			colBitmap := roaring64.NewBitmap()
+			// For position slices, chunk and build in parallel
+			chunkSize := 5000000 // 5M positions per chunk
+			rowPos := rowPositions[val]
+			colPos := colPositions[val]
 
-			rowBitmap.AddMany(rowPositions[val])
-			colBitmap.AddMany(colPositions[val])
+			// Build row and col bitmaps in parallel
+			var wg2 sync.WaitGroup
+			var rowBitmap, colBitmap *roaring64.Bitmap
+
+			wg2.Add(2)
+			go func() {
+				defer wg2.Done()
+				if len(rowPos) <= chunkSize {
+					rowBitmap = roaring64.NewBitmap()
+					rowBitmap.AddMany(rowPos)
+				} else {
+					// Split into chunks for values
+					chunks := (len(rowPos) + chunkSize - 1) / chunkSize
+					chunkBitmaps := make([]*roaring64.Bitmap, chunks)
+					var wg3 sync.WaitGroup
+					for i := 0; i < chunks; i++ {
+						wg3.Add(1)
+						start := i * chunkSize
+						end := min((i+1)*chunkSize, len(rowPos))
+						go func(idx int, chunk []uint64) {
+							defer wg3.Done()
+							bm := roaring64.NewBitmap()
+							bm.AddMany(chunk)
+							chunkBitmaps[idx] = bm
+						}(i, rowPos[start:end])
+					}
+					wg3.Wait()
+					// Merge chunks
+					rowBitmap = chunkBitmaps[0]
+					for i := 1; i < len(chunkBitmaps); i++ {
+						rowBitmap.Or(chunkBitmaps[i])
+					}
+				}
+			}()
+
+			go func() {
+				defer wg2.Done()
+				if len(colPos) <= chunkSize {
+					colBitmap = roaring64.NewBitmap()
+					colBitmap.AddMany(colPos)
+				} else {
+					// Split into chunks for values
+					chunks := (len(colPos) + chunkSize - 1) / chunkSize
+					chunkBitmaps := make([]*roaring64.Bitmap, chunks)
+					var wg3 sync.WaitGroup
+					for i := 0; i < chunks; i++ {
+						wg3.Add(1)
+						start := i * chunkSize
+						end := min((i+1)*chunkSize, len(colPos))
+						go func(idx int, chunk []uint64) {
+							defer wg3.Done()
+							bm := roaring64.NewBitmap()
+							bm.AddMany(chunk)
+							chunkBitmaps[idx] = bm
+						}(i, colPos[start:end])
+					}
+					wg3.Wait()
+					// Merge chunks
+					colBitmap = chunkBitmaps[0]
+					for i := 1; i < len(chunkBitmaps); i++ {
+						colBitmap.Or(chunkBitmaps[i])
+					}
+				}
+			}()
+			wg2.Wait()
 
 			mu.Lock()
 			rowBitmaps[val] = rowBitmap
