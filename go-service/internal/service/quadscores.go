@@ -6,7 +6,11 @@ import (
 	"fmt"
 	"log"
 	"math"
+	"runtime"
 	"sort"
+	"sync"
+	"sync/atomic"
+	"time"
 
 	"github.com/RoaringBitmap/roaring/v2/roaring64"
 )
@@ -32,13 +36,15 @@ type QuadPMI struct {
 }
 
 type BitmapStore struct {
-	rowBitmaps map[string]*roaring64.Bitmap
-	colBitmaps map[string]*roaring64.Bitmap
+	rowBitmaps       map[string]*roaring64.Bitmap
+	colBitmaps       map[string]*roaring64.Bitmap
+	tableBitmapCache sync.Map // thread-safe cache for positionsToTableBitmap results
 }
 
 func NewBitmapStore(tableRows []model.TableRow) *BitmapStore {
-	rowBitmaps := make(map[string]*roaring64.Bitmap)
-	colBitmaps := make(map[string]*roaring64.Bitmap)
+	// Pre-allocate maps with expected capacity to reduce allocations
+	rowBitmaps := make(map[string]*roaring64.Bitmap, 500)
+	colBitmaps := make(map[string]*roaring64.Bitmap, 500)
 
 	rowsProcessed := 0
 	for _, tableRow := range tableRows {
@@ -69,6 +75,117 @@ func NewBitmapStore(tableRows []model.TableRow) *BitmapStore {
 	}
 }
 
+// NewBitmapStoreStreaming creates a BitmapStore by streaming rows from a data source
+// This avoids loading all rows into memory at once, significantly reducing memory usage
+// Returns the BitmapStore and the number of rows processed
+func NewBitmapStoreStreaming(streamFunc func(func(model.TableRow) error) error) (*BitmapStore, int, error) {
+	// Use parallel sharding for faster bitmap population
+	numShards := runtime.NumCPU()
+	shards := make([]*bitmapShard, numShards)
+	for i := 0; i < numShards; i++ {
+		shards[i] = &bitmapShard{
+			rowBitmaps: make(map[string]*roaring64.Bitmap, 500/numShards),
+			colBitmaps: make(map[string]*roaring64.Bitmap, 500/numShards),
+		}
+	}
+
+	var rowsProcessed atomic.Int64
+
+	err := streamFunc(func(tableRow model.TableRow) error {
+		value := tableRow.Value()
+		tableID := tableRow.TableID()
+		rowID := tableRow.RowID()
+		colID := tableRow.ColID()
+
+		// Hash value to determine shard (consistent assignment)
+		shardIdx := hashString(value) % uint64(numShards)
+		shard := shards[shardIdx]
+
+		shard.mu.Lock()
+		if _, ok := shard.rowBitmaps[value]; !ok {
+			shard.rowBitmaps[value] = roaring64.NewBitmap()
+			shard.colBitmaps[value] = roaring64.NewBitmap()
+		}
+
+		posRow := (tableID << 32) | rowID
+		posCol := (tableID << 32) | colID
+
+		shard.rowBitmaps[value].Add(posRow)
+		shard.colBitmaps[value].Add(posCol)
+		shard.mu.Unlock()
+
+		if current := rowsProcessed.Add(1); current%10000000 == 0 {
+			log.Printf("Processed %d rows...", current)
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return nil, 0, fmt.Errorf("error streaming rows: %w", err)
+	}
+
+	// Merge shards in parallel
+	finalRowBitmaps := make(map[string]*roaring64.Bitmap, 500)
+	finalColBitmaps := make(map[string]*roaring64.Bitmap, 500)
+	var mergeMu sync.Mutex
+
+	var wg sync.WaitGroup
+	for _, shard := range shards {
+		wg.Add(1)
+		go func(s *bitmapShard) {
+			defer wg.Done()
+			s.mu.Lock()
+			defer s.mu.Unlock()
+
+			for value, rowBitmap := range s.rowBitmaps {
+				mergeMu.Lock()
+				if existing, ok := finalRowBitmaps[value]; ok {
+					existing.Or(rowBitmap)
+				} else {
+					finalRowBitmaps[value] = rowBitmap
+				}
+				mergeMu.Unlock()
+			}
+
+			for value, colBitmap := range s.colBitmaps {
+				mergeMu.Lock()
+				if existing, ok := finalColBitmaps[value]; ok {
+					existing.Or(colBitmap)
+				} else {
+					finalColBitmaps[value] = colBitmap
+				}
+				mergeMu.Unlock()
+			}
+		}(shard)
+	}
+	wg.Wait()
+
+	totalRows := int(rowsProcessed.Load())
+	log.Printf("Created bitmaps for %d values from %d rows", len(finalRowBitmaps), totalRows)
+
+	return &BitmapStore{
+		rowBitmaps: finalRowBitmaps,
+		colBitmaps: finalColBitmaps,
+	}, totalRows, nil
+}
+
+// bitmapShard holds bitmaps for a subset of values
+type bitmapShard struct {
+	rowBitmaps map[string]*roaring64.Bitmap
+	colBitmaps map[string]*roaring64.Bitmap
+	mu         sync.Mutex
+}
+
+// hashString computes a simple hash for consistent value-to-shard assignment
+func hashString(s string) uint64 {
+	var hash uint64 = 5381
+	for i := 0; i < len(s); i++ {
+		hash = ((hash << 5) + hash) + uint64(s[i])
+	}
+	return hash
+}
+
 func (bs *BitmapStore) GetRowBitmap(value string) *roaring64.Bitmap {
 	if bm, ok := bs.rowBitmaps[value]; ok {
 		return bm
@@ -84,31 +201,103 @@ func (bs *BitmapStore) GetColBitmap(value string) *roaring64.Bitmap {
 }
 
 func (bs *BitmapStore) FilterToRelevantTables(relevantTableIDs *roaring64.Bitmap) {
-	for value, rowBitmap := range bs.rowBitmaps {
-		filtered := roaring64.NewBitmap()
-		it := rowBitmap.Iterator()
-		for it.HasNext() {
-			pos := it.Next()
-			tableID := pos >> 32
-			if relevantTableIDs.Contains(tableID) {
-				filtered.Add(pos)
-			}
-		}
-		bs.rowBitmaps[value] = filtered
+	// Parallelize filtering across values for significant speedup
+	var wg sync.WaitGroup
+
+	// Filter row bitmaps in parallel
+	rowValues := make([]string, 0, len(bs.rowBitmaps))
+	for value := range bs.rowBitmaps {
+		rowValues = append(rowValues, value)
 	}
 
-	for value, colBitmap := range bs.colBitmaps {
-		filtered := roaring64.NewBitmap()
-		it := colBitmap.Iterator()
-		for it.HasNext() {
-			pos := it.Next()
-			tableID := pos >> 32
-			if relevantTableIDs.Contains(tableID) {
-				filtered.Add(pos)
-			}
+	numWorkers := runtime.NumCPU()
+	chunkSize := (len(rowValues) + numWorkers - 1) / numWorkers
+
+	for w := 0; w < numWorkers; w++ {
+		start := w * chunkSize
+		end := (w + 1) * chunkSize
+		if end > len(rowValues) {
+			end = len(rowValues)
 		}
-		bs.colBitmaps[value] = filtered
+		if start >= len(rowValues) {
+			break
+		}
+
+		wg.Add(1)
+		go func(values []string) {
+			defer wg.Done()
+			for _, value := range values {
+				if rowBitmap, ok := bs.rowBitmaps[value]; ok {
+					bs.rowBitmaps[value] = filterBitmapByTableIDsOptimized(rowBitmap, relevantTableIDs)
+				}
+			}
+		}(rowValues[start:end])
 	}
+
+	wg.Wait()
+
+	// Filter column bitmaps in parallel
+	colValues := make([]string, 0, len(bs.colBitmaps))
+	for value := range bs.colBitmaps {
+		colValues = append(colValues, value)
+	}
+
+	chunkSize = (len(colValues) + numWorkers - 1) / numWorkers
+
+	for w := 0; w < numWorkers; w++ {
+		start := w * chunkSize
+		end := (w + 1) * chunkSize
+		if end > len(colValues) {
+			end = len(colValues)
+		}
+		if start >= len(colValues) {
+			break
+		}
+
+		wg.Add(1)
+		go func(values []string) {
+			defer wg.Done()
+			for _, value := range values {
+				if colBitmap, ok := bs.colBitmaps[value]; ok {
+					bs.colBitmaps[value] = filterBitmapByTableIDsOptimized(colBitmap, relevantTableIDs)
+				}
+			}
+		}(colValues[start:end])
+	}
+
+	wg.Wait()
+}
+
+// filterBitmapByTableIDsOptimized filters positions to only those with relevant tableIDs
+// Uses batched checking to reduce the number of Contains() calls
+func filterBitmapByTableIDsOptimized(bitmap *roaring64.Bitmap, relevantTableIDs *roaring64.Bitmap) *roaring64.Bitmap {
+	// Extract unique tableIDs from positions
+	tableIDSet := make(map[uint64]bool)
+	it := bitmap.Iterator()
+	for it.HasNext() {
+		tableID := it.Next() >> 32
+		tableIDSet[tableID] = true
+	}
+
+	// Batch check which tableIDs are relevant
+	validTableIDs := make(map[uint64]bool, len(tableIDSet))
+	for tableID := range tableIDSet {
+		if relevantTableIDs.Contains(tableID) {
+			validTableIDs[tableID] = true
+		}
+	}
+
+	// Second pass: add positions with valid tableIDs
+	filtered := roaring64.NewBitmap()
+	it2 := bitmap.Iterator()
+	for it2.HasNext() {
+		pos := it2.Next()
+		if validTableIDs[pos>>32] {
+			filtered.Add(pos)
+		}
+	}
+
+	return filtered
 }
 
 func (bs *BitmapStore) CalculatePairTableCount(pair [2]string) int {
@@ -121,7 +310,7 @@ func (bs *BitmapStore) CalculatePairTableCount(pair [2]string) int {
 		return 0
 	}
 
-	tableBitmap := positionsToTableBitmap(rowIntersection)
+	tableBitmap := bs.positionsToTableBitmapCached(rowIntersection)
 	return int(tableBitmap.GetCardinality())
 }
 
@@ -142,30 +331,91 @@ func CalculateQuadScores(listR, listS []string, bitmapStore *BitmapStore) ([]Qua
 	_, pairTableIDBitmapsR := buildPairWhitelistColumn(pairsR, bitmapStore)
 	_, pairTableIDBitmapsS := buildPairWhitelistColumn(pairsS, bitmapStore)
 
+	// Use parallel processing with worker pool for significant speedup
+	var mu sync.Mutex
 	all_counts := make(map[Quad]int)
+	var operationsCompleted atomic.Int64
+	startTime := time.Now()
 
-	for i, pair1 := range whitelist {
-		r_i, s_j := pair1[0], pair1[1]
-		for j := i + 1; j < len(whitelist); j++ {
-			pair2 := whitelist[j]
-			r_k, s_l := pair2[0], pair2[1]
-			if r_i != r_k {
-				pairR := [2]string{r_i, r_k}
-				pairS := [2]string{s_j, s_l}
-				_, okR := getPairTableBitmap(pairR, pairTableIDBitmapsR)
-				_, okS := getPairTableBitmap(pairS, pairTableIDBitmapsS)
-				if !okR || !okS {
-					continue
+	// Calculate total operations: sum of (n-i-1) for i from 0 to n-1 = n*(n-1)/2
+	totalOperations := int64(len(whitelist)) * int64(len(whitelist)-1) / 2
+	log.Printf("Total operations to process: %d (from %d whitelist pairs)", totalOperations, len(whitelist))
+
+	// Create worker pool
+	numWorkers := runtime.NumCPU()
+	chunkSize := (len(whitelist) + numWorkers - 1) / numWorkers
+	var wg sync.WaitGroup
+
+	for w := 0; w < numWorkers; w++ {
+		start := w * chunkSize
+		end := (w + 1) * chunkSize
+		if end > len(whitelist) {
+			end = len(whitelist)
+		}
+		if start >= len(whitelist) {
+			break
+		}
+
+		wg.Add(1)
+		go func(startIdx, endIdx int) {
+			defer wg.Done()
+			localCounts := make(map[Quad]int)
+			lastReportedPercent := int64(-1)
+
+			for i := startIdx; i < endIdx; i++ {
+				pair1 := whitelist[i]
+				r_i, s_j := pair1[0], pair1[1]
+
+				for j := i + 1; j < len(whitelist); j++ {
+					pair2 := whitelist[j]
+					r_k, s_l := pair2[0], pair2[1]
+
+					if r_i != r_k {
+						pairR := [2]string{r_i, r_k}
+						pairS := [2]string{s_j, s_l}
+
+						_, okR := getPairTableBitmap(pairR, pairTableIDBitmapsR)
+						_, okS := getPairTableBitmap(pairS, pairTableIDBitmapsS)
+						if !okR || !okS {
+							continue
+						}
+
+						quad := Quad{r_i, s_j, r_k, s_l}
+						count := countTablesForQuadruple([4]string(quad),
+							pairTableIDBitmaps, pairTableIDBitmapsR, pairTableIDBitmapsS)
+
+						if count > 0 {
+							localCounts[quad] = count
+						}
+					}
+
+					// Track each operation (inner loop iteration)
+					current := operationsCompleted.Add(1)
+
+					// Report progress every 1% (to avoid excessive logging)
+					currentPercent := (current * 100) / totalOperations
+					if currentPercent > lastReportedPercent && currentPercent%1 == 0 {
+						lastReportedPercent = currentPercent
+						elapsed := time.Since(startTime)
+						rate := float64(current) / elapsed.Seconds()
+						remaining := time.Duration(float64(totalOperations-current)/rate) * time.Second
+						log.Printf("Progress: %d%% (%d/%d operations, %.0f ops/sec, ETA: %v)",
+							currentPercent, current, totalOperations, rate, remaining)
+					}
 				}
-				quad := Quad{r_i, s_j, r_k, s_l}
-				count := countTablesForQuadruple([4]string(quad), pairTableIDBitmaps, pairTableIDBitmapsR, pairTableIDBitmapsS)
+			}
+
+			// Merge local results
+			mu.Lock()
+			for quad, count := range localCounts {
 				all_counts[quad] = count
 			}
-		}
-		if i%100 == 0 {
-			log.Printf("Processed %d outer pairs\n", i)
-		}
+			mu.Unlock()
+		}(start, end)
 	}
+
+	wg.Wait()
+	log.Printf("Completed 100%% - processed %d operations in %v", totalOperations, time.Since(startTime))
 
 	type kv struct {
 		Key Quad
@@ -208,6 +458,12 @@ func countTablesForQuadruple(quad [4]string, pairTableIDBitmaps map[[2]string]*r
 		return 0
 	}
 
+	// Early exit: check row intersection before looking up column bitmaps
+	rowIntersection := roaring64.And(tablesRowAB, tablesRowCD)
+	if rowIntersection.GetCardinality() == 0 {
+		return 0 // Saves 2 more bitmap lookups + 2 ANDs
+	}
+
 	pairAC := [2]string{a, c}
 	pairBD := [2]string{b, d}
 
@@ -221,11 +477,14 @@ func countTablesForQuadruple(quad [4]string, pairTableIDBitmaps map[[2]string]*r
 		return 0
 	}
 
-	final := roaring64.And(
-		roaring64.And(tablesRowAB, tablesRowCD),
-		roaring64.And(tablesColAC, tablesColBD),
-	)
+	// Early exit: check column intersection before final AND
+	colIntersection := roaring64.And(tablesColAC, tablesColBD)
+	if colIntersection.GetCardinality() == 0 {
+		return 0
+	}
 
+	// Final intersection
+	final := roaring64.And(rowIntersection, colIntersection)
 	return int(final.GetCardinality())
 }
 
@@ -240,20 +499,58 @@ func generateAllPairs(list1, list2 []string) [][2]string {
 }
 
 func buildPairWhitelist(pairs [][2]string, bitmapStore *BitmapStore) ([][2]string, map[[2]string]*roaring64.Bitmap) {
-	whitelist := make([][2]string, 0)
+	type result struct {
+		pair        [2]string
+		tableBitmap *roaring64.Bitmap
+	}
+
+	resultChan := make(chan result, len(pairs))
+
+	// Process in parallel
+	numWorkers := runtime.NumCPU()
+	chunkSize := (len(pairs) + numWorkers - 1) / numWorkers
+	var wg sync.WaitGroup
+
+	for w := 0; w < numWorkers; w++ {
+		start := w * chunkSize
+		end := (w + 1) * chunkSize
+		if end > len(pairs) {
+			end = len(pairs)
+		}
+		if start >= len(pairs) {
+			break
+		}
+
+		wg.Add(1)
+		go func(pairSlice [][2]string) {
+			defer wg.Done()
+
+			for _, pair := range pairSlice {
+				val1, val2 := pair[0], pair[1]
+				row1 := bitmapStore.GetRowBitmap(val1)
+				row2 := bitmapStore.GetRowBitmap(val2)
+
+				overlap := roaring64.And(row1, row2)
+				if overlap.GetCardinality() > 0 {
+					tableIDBitmap := bitmapStore.positionsToTableBitmapCached(overlap)
+					resultChan <- result{pair: pair, tableBitmap: tableIDBitmap}
+				}
+			}
+		}(pairs[start:end])
+	}
+
+	go func() {
+		wg.Wait()
+		close(resultChan)
+	}()
+
+	// Collect results
+	whitelist := make([][2]string, 0, len(pairs)/10)
 	pairTableIDBitmaps := make(map[[2]string]*roaring64.Bitmap)
 
-	for _, pair := range pairs {
-		val1, val2 := pair[0], pair[1]
-		row1 := bitmapStore.GetRowBitmap(val1)
-		row2 := bitmapStore.GetRowBitmap(val2)
-
-		overlap := roaring64.And(row1, row2)
-		if overlap.GetCardinality() > 0 {
-			whitelist = append(whitelist, pair)
-			tableIDBitmap := positionsToTableBitmap(overlap)
-			pairTableIDBitmaps[pair] = tableIDBitmap
-		}
+	for res := range resultChan {
+		whitelist = append(whitelist, res.pair)
+		pairTableIDBitmaps[res.pair] = res.tableBitmap
 	}
 
 	log.Printf("Whitelisted %d pairs\n", len(whitelist))
@@ -262,20 +559,58 @@ func buildPairWhitelist(pairs [][2]string, bitmapStore *BitmapStore) ([][2]strin
 }
 
 func buildPairWhitelistColumn(pairs [][2]string, bitmapStore *BitmapStore) ([][2]string, map[[2]string]*roaring64.Bitmap) {
-	whitelist := make([][2]string, 0)
+	type result struct {
+		pair        [2]string
+		tableBitmap *roaring64.Bitmap
+	}
+
+	resultChan := make(chan result, len(pairs))
+
+	// Process in parallel
+	numWorkers := runtime.NumCPU()
+	chunkSize := (len(pairs) + numWorkers - 1) / numWorkers
+	var wg sync.WaitGroup
+
+	for w := 0; w < numWorkers; w++ {
+		start := w * chunkSize
+		end := (w + 1) * chunkSize
+		if end > len(pairs) {
+			end = len(pairs)
+		}
+		if start >= len(pairs) {
+			break
+		}
+
+		wg.Add(1)
+		go func(pairSlice [][2]string) {
+			defer wg.Done()
+
+			for _, pair := range pairSlice {
+				val1, val2 := pair[0], pair[1]
+				col1 := bitmapStore.GetColBitmap(val1)
+				col2 := bitmapStore.GetColBitmap(val2)
+
+				overlap := roaring64.And(col1, col2)
+				if overlap.GetCardinality() > 0 {
+					tableIDBitmap := bitmapStore.positionsToTableBitmapCached(overlap)
+					resultChan <- result{pair: pair, tableBitmap: tableIDBitmap}
+				}
+			}
+		}(pairs[start:end])
+	}
+
+	go func() {
+		wg.Wait()
+		close(resultChan)
+	}()
+
+	// Collect results
+	whitelist := make([][2]string, 0, len(pairs)/10)
 	pairTableIDBitmaps := make(map[[2]string]*roaring64.Bitmap)
 
-	for _, pair := range pairs {
-		val1, val2 := pair[0], pair[1]
-		col1 := bitmapStore.GetColBitmap(val1)
-		col2 := bitmapStore.GetColBitmap(val2)
-
-		overlap := roaring64.And(col1, col2)
-		if overlap.GetCardinality() > 0 {
-			whitelist = append(whitelist, pair)
-			tableIDBitmap := positionsToTableBitmap(overlap)
-			pairTableIDBitmaps[pair] = tableIDBitmap
-		}
+	for res := range resultChan {
+		whitelist = append(whitelist, res.pair)
+		pairTableIDBitmaps[res.pair] = res.tableBitmap
 	}
 
 	log.Printf("Whitelisted %d column pairs\n", len(whitelist))
@@ -305,6 +640,20 @@ func positionsToTableBitmap(bm *roaring64.Bitmap) *roaring64.Bitmap {
 	return result
 }
 
+// positionsToTableBitmapCached is a cached version of positionsToTableBitmap
+// to avoid redundant conversions when the same bitmap is converted multiple times
+func (bs *BitmapStore) positionsToTableBitmapCached(bm *roaring64.Bitmap) *roaring64.Bitmap {
+	// Check cache first
+	if cached, ok := bs.tableBitmapCache.Load(bm); ok {
+		return cached.(*roaring64.Bitmap)
+	}
+
+	// Compute and cache
+	result := positionsToTableBitmap(bm)
+	bs.tableBitmapCache.Store(bm, result)
+	return result
+}
+
 func ComputeRelevantTableIDsCrossPairs(listR, listS []string, bitmapStore *BitmapStore) *roaring64.Bitmap {
 	pairsRS := generateAllPairs(listR, listS)
 	relevantTableIDsRS := roaring64.NewBitmap()
@@ -316,7 +665,7 @@ func ComputeRelevantTableIDsCrossPairs(listR, listS []string, bitmapStore *Bitma
 
 		overlap := roaring64.And(row1, row2)
 		if overlap.GetCardinality() > 0 {
-			tableIDs := positionsToTableBitmap(overlap)
+			tableIDs := bitmapStore.positionsToTableBitmapCached(overlap)
 			relevantTableIDsRS.Or(tableIDs)
 		}
 	}
@@ -336,7 +685,7 @@ func ComputeRelevantTableIDsInterColumnPairs(listR, listS []string, bitmapStore 
 
 		overlap := roaring64.And(col1, col2)
 		if overlap.GetCardinality() > 0 {
-			tableIDs := positionsToTableBitmap(overlap)
+			tableIDs := bitmapStore.positionsToTableBitmapCached(overlap)
 			relevantTableIDsRR.Or(tableIDs)
 		}
 	}
@@ -353,7 +702,7 @@ func ComputeRelevantTableIDsInterColumnPairs(listR, listS []string, bitmapStore 
 
 		overlap := roaring64.And(col1, col2)
 		if overlap.GetCardinality() > 0 {
-			tableIDs := positionsToTableBitmap(overlap)
+			tableIDs := bitmapStore.positionsToTableBitmapCached(overlap)
 			relevantTableIDsSS.Or(tableIDs)
 		}
 	}

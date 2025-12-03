@@ -2,6 +2,7 @@ package handler
 
 import (
 	"bitmap-approach/internal/config"
+	"bitmap-approach/internal/model"
 	"bitmap-approach/internal/service"
 	"bitmap-approach/internal/vertica"
 	"log"
@@ -108,33 +109,23 @@ func CalculateQuadScores(c *gin.Context) {
 	}
 	log.Printf("Generated %d pairs", len(pairs))
 
-	var tableIDs []uint64
-
 	allValues := append(listR, listS...)
-	loadRowsStart := time.Now()
-	log.Printf("Loading table rows for %d values...", len(allValues))
-	tableRows, err := verticaClient.LoadTableRows(tableIDs, allValues, 0)
+
+	// Use streaming approach to load and process data without storing all rows in memory
+	createBitmapStart := time.Now()
+	log.Printf("Loading and processing table rows for %d values...", len(allValues))
+	bitmapStore, tableRowsLoaded, err := service.NewBitmapStoreStreaming(func(processor func(model.TableRow) error) error {
+		return verticaClient.LoadTableRowsStreaming(allValues, processor)
+	})
 	if err != nil {
-		log.Printf("Error loading table rows: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to load table rows: " + err.Error()})
+		log.Printf("Error creating bitmap store: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create bitmap store: " + err.Error()})
 		return
 	}
-	loadRowsEnd := time.Now()
-	log.Printf("Loaded %d table rows", len(tableRows))
-	timings = append(timings, TimingInfo{
-		Step:            "load_table_rows",
-		StartTime:       loadRowsStart.Format(time.RFC3339Nano),
-		EndTime:         loadRowsEnd.Format(time.RFC3339Nano),
-		DurationSeconds: loadRowsEnd.Sub(loadRowsStart).Seconds(),
-	})
-
-	createBitmapStart := time.Now()
-	log.Printf("Creating bitmaps for all values...")
-	bitmapStore := service.NewBitmapStore(tableRows)
 	createBitmapEnd := time.Now()
 	log.Printf("Created bitmap store")
 	timings = append(timings, TimingInfo{
-		Step:            "create_bitmap_store",
+		Step:            "load_and_create_bitmaps",
 		StartTime:       createBitmapStart.Format(time.RFC3339Nano),
 		EndTime:         createBitmapEnd.Format(time.RFC3339Nano),
 		DurationSeconds: createBitmapEnd.Sub(createBitmapStart).Seconds(),
@@ -233,7 +224,7 @@ func CalculateQuadScores(c *gin.Context) {
 			ListRCardinality: len(listR),
 			ListSCardinality: len(listS),
 			PairsGenerated:   len(pairs),
-			TableRowsLoaded:  len(tableRows),
+			TableRowsLoaded:  tableRowsLoaded,
 		},
 		Timings: timings,
 	}
