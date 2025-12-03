@@ -131,11 +131,8 @@ class CSJPLPAlgorithm:
         logger.info(
             f"  Formulating LP with {len(list_r)} x {len(list_s)} = {len(list_r) * len(list_s)} x variables...")
 
-        # Create LP problem (minimization)
         prob = pulp.LpProblem("CLP", pulp.LpMinimize)
 
-        # Create decision variables x̄ᵢⱼ ∈ [0, 1]
-        # Use indices to ensure unique variable names (required by HiGHS solver)
         x_vars = {}
         for i, ri in enumerate(list_r):
             for j, sj in enumerate(list_s):
@@ -143,16 +140,14 @@ class CSJPLPAlgorithm:
                     f"x_{i}_{j}", lowBound=0, upBound=1, cat="Continuous"
                 )
 
-        # Create decision variables z̄ᵢⱼₖₗ ∈ [0, 1]
         logger.info(
             f"  Creating {len(w_ijkl_scores)} z variables from PMI scores...")
         z_vars = {}
-        # Pre-build index lookup for performance
         r_index = {r: i for i, r in enumerate(list_r)}
         s_index = {s: j for j, s in enumerate(list_s)}
 
         for (ri, sj, rk, sl), w_ijkl in w_ijkl_scores.items():
-            if ri != rk:  # Only for i ≠ k as per guide
+            if ri != rk:
                 i = r_index[ri]
                 j = s_index[sj]
                 k = r_index[rk]
@@ -161,7 +156,6 @@ class CSJPLPAlgorithm:
                     f"z_{i}_{j}_{k}_{l}", lowBound=0, upBound=1, cat="Continuous"
                 )
 
-        # Objective function: minimize Σ wᵢⱼₖₗ × (1 - z̄ᵢⱼₖₗ)
         objective = pulp.lpSum(
             [
                 w_ijkl * (1 - z_vars[(ri, sj, rk, sl)])
@@ -171,19 +165,16 @@ class CSJPLPAlgorithm:
         )
         prob += objective
 
-        # Constraint 1: Σ(sj∈S) x̄ᵢⱼ ≤ 1 for all i ∈ [|R|]
         # Each ri maps to at most one sj
         for ri in list_r:
             prob += pulp.lpSum([x_vars[(ri, sj)] for sj in list_s]) <= 1
 
-        # Constraint 2: z̄ᵢⱼₖₗ ≤ (1/2) × (x̄ᵢⱼ + x̄ₖₗ) for all i≠k
         logger.info(f"  Adding {len(z_vars)} constraints...")
         for ri, sj, rk, sl in z_vars.keys():
             prob += z_vars[(ri, sj, rk, sl)] <= 0.5 * (
                 x_vars[(ri, sj)] + x_vars[(rk, sl)]
             )
 
-        # Solve the LP
         logger.info(
             "  Solving LP problem")
         prob.solve(pulp.HiGHS_CMD(msg=0))
@@ -192,7 +183,6 @@ class CSJPLPAlgorithm:
         if prob.status != pulp.LpStatusOptimal:
             logger.warning(f"LP solver status: {pulp.LpStatus[prob.status]}")
 
-        # Extract solution (x̄*ᵢⱼ, z̄*ᵢⱼₖₗ)
         x_bar = {}
         for (ri, sj), var in x_vars.items():
             x_bar[(ri, sj)] = var.varValue if var.varValue is not None else 0.0
@@ -217,29 +207,24 @@ class CSJPLPAlgorithm:
             x_tilde: dict[(ri, sj)] -> value in {0, 1}
             z_tilde: dict[(ri, sj, rk, sl)] -> value in {0, 1/2, 1}
         """
-        # Step 1: Solve CLP to obtain optimal solution
         logger.info("  Algorithm 1: Solving CLP...")
         x_bar, z_bar = self._solve_clp(list_r, list_s, w_ijkl_scores)
 
-        # Step 2: Round x variables to integral values
         logger.info(
             f"  Algorithm 1: Rounding {len(list_r)} x variables to integral values...")
         x_tilde = {}
         for ri in list_r:
-            # Check if x̄*ᵢⱼ is already integral for all j
             x_values_for_ri = {sj: x_bar.get((ri, sj), 0.0) for sj in list_s}
             all_integral = all(
                 abs(val - round(val)) < 1e-9 for val in x_values_for_ri.values()
             )
 
             if all_integral:
-                # Already integral, keep as is
                 for sj in list_s:
                     x_tilde[(ri, sj)] = round(x_bar.get((ri, sj), 0.0))
             else:
-                # Contains fractional values, need to round
                 # Calculate contribution scores: cᵢⱼ = Σ(rₖ∈R, k≠i) Σ(sₗ∈S) (1/2) × wᵢⱼₖₗ
-
+                #
                 # OPTIMIZATION:
                 # The sum Σ(rₖ∈R, k≠i) Σ(sₗ∈S) wᵢⱼₖₗ includes terms where wᵢⱼₖₗ may be zero
                 # (quadruples that never co-occur in the data). Since adding zero does not
@@ -260,25 +245,18 @@ class CSJPLPAlgorithm:
                 #                 c_ij += 0.5 * w_ijkl
                 #     contribution_scores[sj] = c_ij
 
-                # Optimized implementation (iterate only over non-zero terms):
                 contribution_scores = {sj: 0.0 for sj in list_s}
                 for (r_i_key, s_j_key, r_k_key, s_l_key), w_ijkl in w_ijkl_scores.items():
                     if r_i_key == ri and r_k_key != ri:
                         contribution_scores[s_j_key] += 0.5 * w_ijkl
 
-                # Pick the best candidate: p = argmaxⱼ cᵢⱼ
                 if contribution_scores:
                     p = max(contribution_scores.items(), key=lambda x: x[1])[0]
-                    # Round: x̃*ᵢₚ ← 1, x̃*ᵢⱼ ← 0 for all j ≠ p
                     for sj in list_s:
                         x_tilde[(ri, sj)] = 1 if sj == p else 0
                 else:
-                    # No contribution scores, set all to 0
                     for sj in list_s:
                         x_tilde[(ri, sj)] = 0
-
-        # Step 3: Calculate z̃*ᵢⱼₖₗ from x̃*ᵢⱼ
-        # z̃*ᵢⱼₖₗ = (1/2) × (x̃*ᵢⱼ + x̃*ₖₗ) for all i, k ∈ [|R|], j, l ∈ [|S|], k ≠ i
 
         # COMMENTED OUT FOR MEMORY OPTIMIZATION:
         # Since z_tilde is never read or used in any subsequent computation (algorithm correctness depends only on
@@ -296,9 +274,7 @@ class CSJPLPAlgorithm:
         #                         x_tilde.get((rk, sl), 0)
         #                     )
 
-        z_tilde = {}  # Empty dict - satisfies return signature
-
-        # Step 4: Return half-integral solution
+        z_tilde = {}
         return x_tilde, z_tilde
 
     def _algorithm_2_solve_cilp(
@@ -314,19 +290,12 @@ class CSJPLPAlgorithm:
             x_star: dict[(ri, sj)] -> value in {0, 1}
             z_star: dict[(ri, sj, rk, sl)] -> value in {0, 1}
         """
-        # Step 1: Construct CLP from CILP (relaxation - same formulation, just [0,1] instead of {0,1})
-        # (This is implicit - the CLP is defined by list_r, list_s, w_ijkl_scores)
-
-        # Step 2: Obtain half-integral solution using Algorithm 1
-        # Algorithm 1 will solve the CLP and round to half-integral
+        # The CLP is defined implicitly by list_r, list_s, w_ijkl_scores
         x_tilde, z_tilde = self._algorithm_1_round_to_half_integral(
             list_r, list_s, w_ijkl_scores
         )
 
-        # Step 3: Set x*ᵢⱼ ← x̃*ᵢⱼ (already integral from Algorithm 1)
         x_star = x_tilde.copy()
-
-        # Step 4: Calculate z*ᵢⱼₖₗ from x*ᵢⱼ
 
         # COMMENTED OUT FOR MEMORY OPTIMIZATION:
         # This calculation creates O(|R|² × |S|²) dictionary entries. As noted in create_bridge(),
@@ -349,9 +318,7 @@ class CSJPLPAlgorithm:
         #                     else:
         #                         z_star[(ri, sj, rk, sl)] = 0
 
-        z_star = {}  # Empty dict - satisfies return signature
-
-        # Step 5: Return integral solution
+        z_star = {}
         return x_star, z_star
 
     def _extract_join_function(
@@ -371,7 +338,7 @@ class CSJPLPAlgorithm:
                 if x_star.get((ri, sj), 0) == 1:
                     mapped_sj = sj
                     break
-            join_mapping[ri] = mapped_sj  # None represents ⊥
+            join_mapping[ri] = mapped_sj
 
         return join_mapping
 
@@ -401,13 +368,11 @@ class CSJPLPAlgorithm:
                 best_sj = current_mapping[ri]
                 best_score = current_score
 
-                # Try each possible sj (including None for ⊥)
                 candidates = list_s + [None]
                 for sj in candidates:
                     if sj == current_mapping[ri]:
-                        continue  # Skip current assignment
+                        continue
 
-                    # Try this assignment
                     test_mapping = current_mapping.copy()
                     test_mapping[ri] = sj
                     test_score = self._calculate_total_objective(
@@ -418,7 +383,6 @@ class CSJPLPAlgorithm:
                         best_score = test_score
                         best_sj = sj
 
-                # If we found a better assignment, update it
                 if best_sj != current_mapping[ri]:
                     current_mapping[ri] = best_sj
                     current_score = best_score
@@ -433,7 +397,6 @@ class CSJPLPAlgorithm:
         total_score = 0.0
 
         for (ri, sj, rk, sl), w_ijkl in w_ijkl_scores.items():
-            # Check if both mappings exist
             if join_mapping.get(ri) == sj and join_mapping.get(rk) == sl:
                 total_score += w_ijkl
 
@@ -454,7 +417,6 @@ class CSJPLPAlgorithm:
         score = 0.0
 
         for (ri, sj, rk, sl), w_ijkl in w_ijkl_scores.items():
-            # Count if this mapping is part of a matched pair
             if ri == r_val and sj == s_val and join_mapping.get(rk) == sl:
                 score += w_ijkl
             elif rk == r_val and sl == s_val and join_mapping.get(ri) == sj:

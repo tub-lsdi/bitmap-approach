@@ -22,7 +22,6 @@ def parse_case_input(case_file: Path) -> Tuple[List[str], List[str]]:
     with open(case_file, "r") as f:
         lines = [line.strip() for line in f.readlines()]
 
-    # Find the empty line that separates list_r and list_s
     separator_idx = None
     for i, line in enumerate(lines):
         if line == "":
@@ -62,15 +61,13 @@ def call_go_service(
         results = data.get("results", [])
         timings = data.get("timings", [])
 
-        # Convert response format to expected return type
-        # Response: [{"quad": "r_i,s_j,r_k,s_l", "pmi": 2.5}, ...]
-        # Expected: {(r_i, s_j, r_k, s_l): 2.5, ...}
+        # Response format: [{"quad": "r_i,s_j,r_k,s_l", "pmi": 2.5}, ...]
+        # Convert to: {(r_i, s_j, r_k, s_l): 2.5, ...}
         pmi_scores = {}
         for item in results:
             quad_str = item.get("quad", "")
             pmi = item.get("pmi", 0.0)
 
-            # Parse quad string "r_i,s_j,r_k,s_l" into tuple
             parts = quad_str.split(",")
             if len(parts) == 4:
                 quad_tuple = (parts[0], parts[1], parts[2], parts[3])
@@ -120,22 +117,19 @@ def run_single_case(
     }
 
     try:
-        # Parse input
         list_r, list_s = parse_case_input(case_file)
         logger.info(
             f"Case {case_num}: list_r={len(list_r)} items, list_s={len(list_s)} items"
         )
 
-        # Normalize lists to lowercase (to match Go service normalization)
+        # Normalize to match Go service normalization
         list_r_normalized = [s.lower().strip() for s in list_r]
         list_s_normalized = [s.lower().strip() for s in list_s]
 
-        # Call Go service to get PMI scores (with normalized lists)
         w_ijkl_scores, go_service_timings = call_go_service(
             list_r_normalized, list_s_normalized, service_url
         )
 
-        # Run CS-JP-LP algorithm (with normalized lists to match PMI scores)
         algorithm = CSJPLPAlgorithm()
         bridge_table, python_timings = algorithm.create_bridge(
             list_r_normalized, list_s_normalized, w_ijkl_scores
@@ -230,13 +224,11 @@ def main():
         logger.error("SERVICE_URL environment variable is required")
         sys.exit(1)
 
-    # Determine which cases to run
     if args.case:
         case_numbers = [args.case]
     else:
         case_numbers = list(range(args.start, args.end + 1))
 
-    # Start benchmark
     berlin_tz = ZoneInfo("Europe/Berlin")
     start_time_utc = datetime.now(timezone.utc)
     start_time_berlin = start_time_utc.astimezone(berlin_tz)
@@ -268,7 +260,6 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / f"benchmark_vertica_{timestamp_berlin}.json"
 
-    # Run each case
     for case_num in case_numbers:
         logger.info(f"\nRunning Case {case_num}...")
         result = run_single_case(case_num, args.benchmark_dir, service_url)
@@ -282,38 +273,31 @@ def main():
             benchmark_run["failed_cases"] += 1
             logger.error(f"  ✗ Failed: {result['error']}")
 
-        # Update end time and duration
         current_time = datetime.now()
         benchmark_run["end_time"] = current_time.isoformat()
         benchmark_run["total_duration_seconds"] = (
             current_time - start_time
         ).total_seconds()
 
-        # Recalculate statistics after each case
         avg_duration, med_duration = calculate_statistics(
             benchmark_run["results"])
         benchmark_run["average_duration_seconds"] = avg_duration
         benchmark_run["median_duration_seconds"] = med_duration
 
-        # Save results after each case
         save_results_json(benchmark_run, output_file)
         logger.info(f"  Results saved to: {output_file}")
 
-    # End benchmark
     end_time = datetime.now()
     benchmark_run["end_time"] = end_time.isoformat()
     benchmark_run["total_duration_seconds"] = (
         end_time - start_time).total_seconds()
 
-    # Calculate final statistics
     avg_duration, med_duration = calculate_statistics(benchmark_run["results"])
     benchmark_run["average_duration_seconds"] = avg_duration
     benchmark_run["median_duration_seconds"] = med_duration
 
-    # Save final results
     save_results_json(benchmark_run, output_file)
 
-    # Print summary
     logger.info("=" * 80)
     logger.info("\nBenchmark Summary:")
     logger.info(f"  Total cases: {benchmark_run['total_cases']}")
