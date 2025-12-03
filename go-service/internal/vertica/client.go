@@ -92,10 +92,7 @@ func (c *Client) GetTotalTableCount() (int, error) {
 // LoadTableRowsStreaming streams table rows directly to a processor function
 // This avoids loading all rows into memory at once
 func (c *Client) LoadTableRowsStreaming(values []string, processor func(model.TableRow) error) error {
-	// Use batched queries for better performance when dealing with many values
-	if len(values) > 100 {
-		return c.LoadTableRowsStreamingBatched(values, processor, 50)
-	}
+
 
 	inClause := buildInClause(values)
 

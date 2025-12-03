@@ -75,8 +75,41 @@ func NewBitmapStore(tableRows []model.TableRow) *BitmapStore {
 	}
 }
 
+// processBatch processes a batch of rows for a single shard
+func processBatch(shard *bitmapShard, batch []rowBatch) {
+	valueGroups := make(map[string][][2]uint64, 50) // value -> list of (rowPos, colPos)
+
+	for _, row := range batch {
+		posRow := (row.tableID << 32) | row.rowID
+		posCol := (row.tableID << 32) | row.colID
+
+		valueGroups[row.value] = append(valueGroups[row.value], [2]uint64{posRow, posCol})
+	}
+
+	shard.mu.Lock()
+	defer shard.mu.Unlock()
+
+	// Process each unique value with all its positions at once
+	for value, positions := range valueGroups {
+		// Create bitmaps if they don't exist
+		if _, ok := shard.rowBitmaps[value]; !ok {
+			shard.rowBitmaps[value] = roaring64.NewBitmap()
+			shard.colBitmaps[value] = roaring64.NewBitmap()
+		}
+
+		rowBitmap := shard.rowBitmaps[value]
+		colBitmap := shard.colBitmaps[value]
+
+		// Add all positions for this value at once (bulk insert)
+		// This is much more cache-friendly than alternating between values
+		for _, pos := range positions {
+			rowBitmap.Add(pos[0])
+			colBitmap.Add(pos[1])
+		}
+	}
+}
+
 // NewBitmapStoreStreaming creates a BitmapStore by streaming rows from a data source
-// This avoids loading all rows into memory at once, significantly reducing memory usage
 // Returns the BitmapStore and the number of rows processed
 func NewBitmapStoreStreaming(streamFunc func(func(model.TableRow) error) error) (*BitmapStore, int, error) {
 	// Use parallel sharding for faster bitmap population
@@ -89,8 +122,43 @@ func NewBitmapStoreStreaming(streamFunc func(func(model.TableRow) error) error) 
 		}
 	}
 
-	var rowsProcessed atomic.Int64
+	const batchSize = 1000
+	shardChannels := make([]chan rowBatch, numShards)
+	for i := 0; i < numShards; i++ {
+		shardChannels[i] = make(chan rowBatch, batchSize*2)
+	}
 
+	var rowsProcessed atomic.Int64
+	var workerWg sync.WaitGroup
+
+	// Start worker goroutines for each shard
+	for i := 0; i < numShards; i++ {
+		workerWg.Add(1)
+		go func(shardIdx int) {
+			defer workerWg.Done()
+			shard := shards[shardIdx]
+			ch := shardChannels[shardIdx]
+
+			batch := make([]rowBatch, 0, batchSize)
+
+			for row := range ch {
+				batch = append(batch, row)
+
+				// Process batch when full
+				if len(batch) >= batchSize {
+					processBatch(shard, batch)
+					batch = batch[:0] // Reset batch
+				}
+			}
+
+			// Process remaining rows
+			if len(batch) > 0 {
+				processBatch(shard, batch)
+			}
+		}(i)
+	}
+
+	// Stream rows and distribute to shard channels
 	err := streamFunc(func(tableRow model.TableRow) error {
 		value := tableRow.Value()
 		tableID := tableRow.TableID()
@@ -99,20 +167,14 @@ func NewBitmapStoreStreaming(streamFunc func(func(model.TableRow) error) error) 
 
 		// Hash value to determine shard (consistent assignment)
 		shardIdx := hashString(value) % uint64(numShards)
-		shard := shards[shardIdx]
 
-		shard.mu.Lock()
-		if _, ok := shard.rowBitmaps[value]; !ok {
-			shard.rowBitmaps[value] = roaring64.NewBitmap()
-			shard.colBitmaps[value] = roaring64.NewBitmap()
+		// Send to shard channel (non-blocking with buffer)
+		shardChannels[shardIdx] <- rowBatch{
+			value:   value,
+			tableID: tableID,
+			rowID:   rowID,
+			colID:   colID,
 		}
-
-		posRow := (tableID << 32) | rowID
-		posCol := (tableID << 32) | colID
-
-		shard.rowBitmaps[value].Add(posRow)
-		shard.colBitmaps[value].Add(posCol)
-		shard.mu.Unlock()
 
 		if current := rowsProcessed.Add(1); current%10000000 == 0 {
 			log.Printf("Processed %d rows...", current)
@@ -120,6 +182,14 @@ func NewBitmapStoreStreaming(streamFunc func(func(model.TableRow) error) error) 
 
 		return nil
 	})
+
+	// Close all channels to signal workers to finish
+	for i := 0; i < numShards; i++ {
+		close(shardChannels[i])
+	}
+
+	// Wait for all workers to finish
+	workerWg.Wait()
 
 	if err != nil {
 		return nil, 0, fmt.Errorf("error streaming rows: %w", err)
@@ -177,6 +247,14 @@ type bitmapShard struct {
 	mu         sync.Mutex
 }
 
+// rowBatch holds a batch of rows to be processed together
+type rowBatch struct {
+	value   string
+	tableID uint64
+	rowID   uint64
+	colID   uint64
+}
+
 // hashString computes a simple hash for consistent value-to-shard assignment
 func hashString(s string) uint64 {
 	var hash uint64 = 5381
@@ -228,8 +306,13 @@ func (bs *BitmapStore) FilterToRelevantTables(relevantTableIDs *roaring64.Bitmap
 		go func(values []string) {
 			defer wg.Done()
 			for _, value := range values {
-				if rowBitmap, ok := bs.rowBitmaps[value]; ok {
+				rowMu.Lock()
+				rowBitmap, ok := bs.rowBitmaps[value]
+				rowMu.Unlock()
+
+				if ok {
 					filtered := filterBitmapByTableIDsOptimized(rowBitmap, relevantTableIDs)
+
 					rowMu.Lock()
 					bs.rowBitmaps[value] = filtered
 					rowMu.Unlock()
@@ -262,8 +345,13 @@ func (bs *BitmapStore) FilterToRelevantTables(relevantTableIDs *roaring64.Bitmap
 		go func(values []string) {
 			defer wg.Done()
 			for _, value := range values {
-				if colBitmap, ok := bs.colBitmaps[value]; ok {
+				colMu.Lock()
+				colBitmap, ok := bs.colBitmaps[value]
+				colMu.Unlock()
+
+				if ok {
 					filtered := filterBitmapByTableIDsOptimized(colBitmap, relevantTableIDs)
+
 					colMu.Lock()
 					bs.colBitmaps[value] = filtered
 					colMu.Unlock()
