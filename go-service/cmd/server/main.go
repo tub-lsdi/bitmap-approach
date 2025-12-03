@@ -3,9 +3,7 @@ package main
 import (
 	"bitmap-approach/internal/config"
 	"bitmap-approach/internal/handler"
-	"bitmap-approach/internal/utils"
 	"log"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,8 +11,7 @@ import (
 func main() {
 	r := gin.Default()
 
-	// Wrap the handler with a 1-hour timeout
-	r.POST("/calculate-quad-scores", utils.WithTimeout(1*time.Hour, handler.CalculateQuadScores))
+	r.POST("/calculate-quad-scores", handler.CalculateQuadScores)
 
 	port := config.ServerPort()
 	log.Printf("Starting server on port %s", port)
