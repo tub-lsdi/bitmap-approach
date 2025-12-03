@@ -203,6 +203,7 @@ func (bs *BitmapStore) GetColBitmap(value string) *roaring64.Bitmap {
 func (bs *BitmapStore) FilterToRelevantTables(relevantTableIDs *roaring64.Bitmap) {
 	// Parallelize filtering across values for significant speedup
 	var wg sync.WaitGroup
+	var rowMu, colMu sync.Mutex
 
 	// Filter row bitmaps in parallel
 	rowValues := make([]string, 0, len(bs.rowBitmaps))
@@ -228,7 +229,10 @@ func (bs *BitmapStore) FilterToRelevantTables(relevantTableIDs *roaring64.Bitmap
 			defer wg.Done()
 			for _, value := range values {
 				if rowBitmap, ok := bs.rowBitmaps[value]; ok {
-					bs.rowBitmaps[value] = filterBitmapByTableIDsOptimized(rowBitmap, relevantTableIDs)
+					filtered := filterBitmapByTableIDsOptimized(rowBitmap, relevantTableIDs)
+					rowMu.Lock()
+					bs.rowBitmaps[value] = filtered
+					rowMu.Unlock()
 				}
 			}
 		}(rowValues[start:end])
@@ -259,7 +263,10 @@ func (bs *BitmapStore) FilterToRelevantTables(relevantTableIDs *roaring64.Bitmap
 			defer wg.Done()
 			for _, value := range values {
 				if colBitmap, ok := bs.colBitmaps[value]; ok {
-					bs.colBitmaps[value] = filterBitmapByTableIDsOptimized(colBitmap, relevantTableIDs)
+					filtered := filterBitmapByTableIDsOptimized(colBitmap, relevantTableIDs)
+					colMu.Lock()
+					bs.colBitmaps[value] = filtered
+					colMu.Unlock()
 				}
 			}
 		}(colValues[start:end])
