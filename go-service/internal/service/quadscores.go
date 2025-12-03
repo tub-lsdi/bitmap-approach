@@ -82,21 +82,16 @@ func NewBitmapStoreStreaming(streamFunc func(func(model.TableRow) error) error) 
 	shards := make([]*bitmapShard, numShards)
 	for i := range shards {
 		shards[i] = &bitmapShard{
-			// Pre-allocate generously - we have 200GB RAM
-			// For 500 values distributed across 28 shards = ~18 per shard
-			// Allocate extra to avoid map growth overhead
-			rowBitmaps: make(map[string]*roaring64.Bitmap, 100),
-			colBitmaps: make(map[string]*roaring64.Bitmap, 100),
+			rowPositions: make(map[string][]uint64, 100),
+			colPositions: make(map[string][]uint64, 100),
 		}
 	}
 
-	// OPTIMIZATION: Tuned for high-memory server (200GB RAM, 28 cores)
-	// Larger batches = fewer lock acquisitions, better memory locality
-	// Larger buffers = no backpressure on database, full streaming performance
-	const batchSize = 100000  // Process 100k rows per batch
+
+	const batchSize = 2000000  // Process 2M rows per batch 
 	shardChannels := make([]chan rowBatch, numShards)
 	for i := range shardChannels {
-		shardChannels[i] = make(chan rowBatch, 200000)  // 200k buffer per shard
+		shardChannels[i] = make(chan rowBatch, 2000000)  // 2M buffer per shard 
 	}
 
 	var rowsProcessed atomic.Int64
@@ -167,11 +162,10 @@ func processShardWorker(shard *bitmapShard, ch chan rowBatch, wg *sync.WaitGroup
 
 func processBatch(shard *bitmapShard, batch []rowBatch) {
 	// Group by value first (outside lock for better CPU utilization)
-	// Pre-allocate generously to avoid map growth during hot loop
 	valueGroups := make(map[string]struct {
 		rowPositions []uint64
 		colPositions []uint64
-	}, 256)
+	}, 1024)
 
 	for _, row := range batch {
 		posRow := (row.tableID << 32) | row.rowID
@@ -183,29 +177,21 @@ func processBatch(shard *bitmapShard, batch []rowBatch) {
 		valueGroups[row.value] = group
 	}
 
-	// Now acquire lock and do bulk inserts
 	shard.mu.Lock()
 	defer shard.mu.Unlock()
 
 	for value, group := range valueGroups {
-		if _, ok := shard.rowBitmaps[value]; !ok {
-			shard.rowBitmaps[value] = roaring64.NewBitmap()
-			shard.colBitmaps[value] = roaring64.NewBitmap()
-		}
-
-		rowBitmap := shard.rowBitmaps[value]
-		colBitmap := shard.colBitmaps[value]
-
-		// OPTIMIZATION: Use AddMany for bulk insertion - much faster than individual Add() calls
-		rowBitmap.AddMany(group.rowPositions)
-		colBitmap.AddMany(group.colPositions)
+		// Append all positions for this value
+		shard.rowPositions[value] = append(shard.rowPositions[value], group.rowPositions...)
+		shard.colPositions[value] = append(shard.colPositions[value], group.colPositions...)
 	}
 }
 
 func mergeShards(shards []*bitmapShard) (map[string]*roaring64.Bitmap, map[string]*roaring64.Bitmap) {
-	// Pre-allocate for typical max case (~500-1000 unique values)
-	finalRowBitmaps := make(map[string]*roaring64.Bitmap, 1000)
-	finalColBitmaps := make(map[string]*roaring64.Bitmap, 1000)
+	// Merge position slices from all shards
+	log.Printf("Merging position slices from %d shards...", len(shards))
+	finalRowPositions := make(map[string][]uint64, 1000)
+	finalColPositions := make(map[string][]uint64, 1000)
 	var mergeMu sync.Mutex
 	var wg sync.WaitGroup
 
@@ -216,36 +202,79 @@ func mergeShards(shards []*bitmapShard) (map[string]*roaring64.Bitmap, map[strin
 			s.mu.Lock()
 			defer s.mu.Unlock()
 
-			for value, rowBitmap := range s.rowBitmaps {
+			for value, positions := range s.rowPositions {
 				mergeMu.Lock()
-				if existing, ok := finalRowBitmaps[value]; ok {
-					existing.Or(rowBitmap)
-				} else {
-					finalRowBitmaps[value] = rowBitmap
-				}
+				finalRowPositions[value] = append(finalRowPositions[value], positions...)
 				mergeMu.Unlock()
 			}
 
-			for value, colBitmap := range s.colBitmaps {
+			for value, positions := range s.colPositions {
 				mergeMu.Lock()
-				if existing, ok := finalColBitmaps[value]; ok {
-					existing.Or(colBitmap)
-				} else {
-					finalColBitmaps[value] = colBitmap
-				}
+				finalColPositions[value] = append(finalColPositions[value], positions...)
 				mergeMu.Unlock()
 			}
 		}(shard)
 	}
 
 	wg.Wait()
-	return finalRowBitmaps, finalColBitmaps
+	log.Printf("Merged positions for %d values", len(finalRowPositions))
+
+	// Build bitmaps in parallel
+	log.Printf("Building bitmaps in parallel using all CPU cores...")
+	return buildBitmapsFromPositions(finalRowPositions, finalColPositions)
+}
+
+// buildBitmapsFromPositions converts position slices to bitmaps in parallel
+func buildBitmapsFromPositions(
+	rowPositions map[string][]uint64,
+	colPositions map[string][]uint64,
+) (map[string]*roaring64.Bitmap, map[string]*roaring64.Bitmap) {
+
+	rowBitmaps := make(map[string]*roaring64.Bitmap, len(rowPositions))
+	colBitmaps := make(map[string]*roaring64.Bitmap, len(colPositions))
+
+	var mu sync.Mutex
+	var wg sync.WaitGroup
+
+	// Get all unique values
+	values := make([]string, 0, len(rowPositions))
+	for value := range rowPositions {
+		values = append(values, value)
+	}
+
+	// Build bitmaps in parallel - one goroutine per value
+	for _, value := range values {
+		wg.Add(1)
+		go func(val string) {
+			defer wg.Done()
+
+			rowBitmap := roaring64.NewBitmap()
+			colBitmap := roaring64.NewBitmap()
+
+			rowBitmap.AddMany(rowPositions[val])
+			colBitmap.AddMany(colPositions[val])
+
+			mu.Lock()
+			rowBitmaps[val] = rowBitmap
+			colBitmaps[val] = colBitmap
+			mu.Unlock()
+		}(value)
+	}
+
+	wg.Wait()
+	log.Printf("Built bitmaps for %d values in parallel", len(values))
+
+	return rowBitmaps, colBitmaps
 }
 
 type bitmapShard struct {
-	rowBitmaps map[string]*roaring64.Bitmap
-	colBitmaps map[string]*roaring64.Bitmap
-	mu         sync.Mutex
+	// Store raw positions instead of bitmaps during streaming
+	// Building bitmaps incrementally on huge datasets (100M+ positions) becomes slow
+	// due to internal bitmap maintenance. Accumulate positions in slices (O(1)),
+	// then build bitmaps at end in parallel
+	rowPositions map[string][]uint64
+	colPositions map[string][]uint64
+	mu           sync.Mutex
 }
 
 type rowBatch struct {
