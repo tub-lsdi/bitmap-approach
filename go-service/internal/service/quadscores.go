@@ -335,6 +335,8 @@ func CalculateQuadScores(listR, listS []string, bitmapStore *BitmapStore) ([]Qua
 	var mu sync.Mutex
 	all_counts := make(map[Quad]int)
 	var operationsCompleted atomic.Int64
+	var lastReportedPercent atomic.Int64
+	lastReportedPercent.Store(-1)
 	startTime := time.Now()
 
 	// Calculate total operations: sum of (n-i-1) for i from 0 to n-1 = n*(n-1)/2
@@ -360,7 +362,6 @@ func CalculateQuadScores(listR, listS []string, bitmapStore *BitmapStore) ([]Qua
 		go func(startIdx, endIdx int) {
 			defer wg.Done()
 			localCounts := make(map[Quad]int)
-			lastReportedPercent := int64(-1)
 
 			for i := startIdx; i < endIdx; i++ {
 				pair1 := whitelist[i]
@@ -393,9 +394,10 @@ func CalculateQuadScores(listR, listS []string, bitmapStore *BitmapStore) ([]Qua
 					current := operationsCompleted.Add(1)
 
 					// Report progress every 1% (to avoid excessive logging)
+					// Use atomic CAS to ensure only one worker reports each percentage
 					currentPercent := (current * 100) / totalOperations
-					if currentPercent > lastReportedPercent && currentPercent%1 == 0 {
-						lastReportedPercent = currentPercent
+					lastPercent := lastReportedPercent.Load()
+					if currentPercent > lastPercent && lastReportedPercent.CompareAndSwap(lastPercent, currentPercent) {
 						elapsed := time.Since(startTime)
 						rate := float64(current) / elapsed.Seconds()
 						remaining := time.Duration(float64(totalOperations-current)/rate) * time.Second
