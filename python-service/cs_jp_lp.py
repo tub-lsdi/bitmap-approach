@@ -175,9 +175,18 @@ class CSJPLPAlgorithm:
                 x_vars[(ri, sj)] + x_vars[(rk, sl)]
             )
 
-        logger.info(
-            "  Solving LP problem")
-        prob.solve(pulp.HiGHS_CMD(msg=0))
+        logger.info("  Solving LP problem with optimized HiGHS settings...")
+        solver = pulp.HiGHS_CMD(
+            msg=1,
+            options=[
+                "--parallel on",
+                "--threads 0",
+                "--presolve on",
+                "--solver ipm",
+                "--time_limit inf",
+            ]
+        )
+        prob.solve(solver)
         logger.info(f"  LP solved with status: {pulp.LpStatus[prob.status]}")
 
         if prob.status != pulp.LpStatusOptimal:
