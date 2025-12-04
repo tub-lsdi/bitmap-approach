@@ -247,8 +247,12 @@ class CSJPLPAlgorithm:
 
                 contribution_scores = {sj: 0.0 for sj in list_s}
                 for (r_i_key, s_j_key, r_k_key, s_l_key), w_ijkl in w_ijkl_scores.items():
+                    # Check if ri appears in FIRST position of quadruple
                     if r_i_key == ri and r_k_key != ri:
                         contribution_scores[s_j_key] += 0.5 * w_ijkl
+                    # Check if ri appears in THIRD position of quadruple
+                    elif r_k_key == ri and r_i_key != ri:
+                        contribution_scores[s_l_key] += 0.5 * w_ijkl
 
                 if contribution_scores:
                     p = max(contribution_scores.items(), key=lambda x: x[1])[0]
