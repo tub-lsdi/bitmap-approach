@@ -179,11 +179,11 @@ class CSJPLPAlgorithm:
         solver = pulp.HiGHS_CMD(
             msg=1,
             options=[
-                "--parallel on",
-                "--threads 0",
-                "--presolve on",
-                "--solver ipm",
-                "--time_limit inf",
+                "parallel=on",
+                "threads=0",
+                "presolve=on",
+                "solver=ipm",
+                "time_limit=inf",
             ]
         )
         prob.solve(solver)
