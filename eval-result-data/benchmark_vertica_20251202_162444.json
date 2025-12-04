@@ -1,0 +1,536 @@
+{
+  "start_time": "2025-12-02T15:24:44.138914",
+  "start_time_berlin": "2025-12-02T16:24:44.138905+01:00",
+  "end_time": "2025-12-02T15:26:37.610993",
+  "total_duration_seconds": 113.472079,
+  "database": "vertica",
+  "total_cases": 1,
+  "successful_cases": 1,
+  "failed_cases": 0,
+  "average_duration_seconds": 113.46972,
+  "median_duration_seconds": 113.46972,
+  "results": [
+    {
+      "case_number": 8,
+      "success": true,
+      "duration_seconds": 113.46972,
+      "error": null,
+      "start_time": "2025-12-02T15:24:44.139541",
+      "end_time": "2025-12-02T15:26:37.609261",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "methane",
+            "s_val": "ch4",
+            "npmi": 945.6290019385582
+          },
+          {
+            "r_val": "water",
+            "s_val": "h2o",
+            "npmi": 1010.9393250551631
+          },
+          {
+            "r_val": "zince sulfide",
+            "s_val": "zns",
+            "npmi": 1390.2838946107283
+          },
+          {
+            "r_val": "silver chromate",
+            "s_val": "ag2cro4",
+            "npmi": 1235.90107850607
+          },
+          {
+            "r_val": "magnesium chromate",
+            "s_val": "mgcro4",
+            "npmi": 1363.25115456889
+          },
+          {
+            "r_val": "carbon monoxide",
+            "s_val": "co",
+            "npmi": 987.52273053832
+          },
+          {
+            "r_val": "silver hydroxide",
+            "s_val": "agoh",
+            "npmi": 1285.7083916960817
+          },
+          {
+            "r_val": "ammonium bromide",
+            "s_val": "nh4br",
+            "npmi": 1281.4598469659861
+          },
+          {
+            "r_val": "potassium carbonate",
+            "s_val": "k2co3",
+            "npmi": 1180.600852314873
+          },
+          {
+            "r_val": "calcium sulfate",
+            "s_val": "caso4",
+            "npmi": 1231.1951328347345
+          },
+          {
+            "r_val": "potassium iodide",
+            "s_val": "ki",
+            "npmi": 1206.0620082124296
+          },
+          {
+            "r_val": "zinc chloride",
+            "s_val": "zncl2",
+            "npmi": 1234.1015137181282
+          },
+          {
+            "r_val": "calcium carbonate",
+            "s_val": "caco3",
+            "npmi": 1152.7226019639832
+          },
+          {
+            "r_val": "ammonium acetate",
+            "s_val": "nh4c2h3o2",
+            "npmi": 1276.7731470972678
+          },
+          {
+            "r_val": "sodium nitrate",
+            "s_val": "nano3",
+            "npmi": 1202.2415067230152
+          },
+          {
+            "r_val": "calcium sulfide",
+            "s_val": "cas",
+            "npmi": 1276.862780315254
+          },
+          {
+            "r_val": "potassium nitrate",
+            "s_val": "kno3",
+            "npmi": 1171.9139881432113
+          },
+          {
+            "r_val": "hydrogen sulfide",
+            "s_val": "h2s",
+            "npmi": 1051.6131272664747
+          },
+          {
+            "r_val": "zinc bromide",
+            "s_val": "znbr2",
+            "npmi": 1262.1134321558563
+          },
+          {
+            "r_val": "zinc sulfate",
+            "s_val": "znso4",
+            "npmi": 1208.1964047308934
+          },
+          {
+            "r_val": "oxygen",
+            "s_val": "o2",
+            "npmi": 1051.9989308856875
+          },
+          {
+            "r_val": "potassium phosphate",
+            "s_val": "k3po4",
+            "npmi": 1212.8059784368818
+          },
+          {
+            "r_val": "barium sulfate",
+            "s_val": "baso4",
+            "npmi": 1235.8972965214632
+          },
+          {
+            "r_val": "sodium chromate",
+            "s_val": "na2cro4",
+            "npmi": 1251.057137875555
+          },
+          {
+            "r_val": "sodium iodide",
+            "s_val": "nai",
+            "npmi": 1229.4900876671543
+          },
+          {
+            "r_val": "barium sulfide",
+            "s_val": "bas",
+            "npmi": 1298.6346780887982
+          },
+          {
+            "r_val": "aluminum sulfide",
+            "s_val": "al2s3",
+            "npmi": 1282.8743122040723
+          },
+          {
+            "r_val": "silver sulfate",
+            "s_val": "ag2so4",
+            "npmi": 1197.55995250384
+          },
+          {
+            "r_val": "silver sulfide",
+            "s_val": "ag2s",
+            "npmi": 1245.7400855857938
+          },
+          {
+            "r_val": "sodium phosphate",
+            "s_val": "na3po4",
+            "npmi": 1221.609777734935
+          },
+          {
+            "r_val": "sulfur dioxide",
+            "s_val": "so2",
+            "npmi": 1033.542869129
+          },
+          {
+            "r_val": "magnesium hydroxide",
+            "s_val": "koh",
+            "npmi": 0.0
+          },
+          {
+            "r_val": "sodium sulfide",
+            "s_val": "na2s",
+            "npmi": 1274.159949846632
+          },
+          {
+            "r_val": "hydrogen fluoride",
+            "s_val": "hf",
+            "npmi": 1045.7779937309247
+          },
+          {
+            "r_val": "calcium bromide",
+            "s_val": "cabr2",
+            "npmi": 1232.7039120221298
+          },
+          {
+            "r_val": "calcium chloride",
+            "s_val": "cacl2",
+            "npmi": 1180.1383624417235
+          },
+          {
+            "r_val": "silver nitrate",
+            "s_val": "agno3",
+            "npmi": 1197.614135132647
+          },
+          {
+            "r_val": "chlorine",
+            "s_val": "cl2",
+            "npmi": 1134.371153046065
+          },
+          {
+            "r_val": "calcium chromate",
+            "s_val": "cacro4",
+            "npmi": 1272.2751961059337
+          },
+          {
+            "r_val": "nitrogen",
+            "s_val": "n2",
+            "npmi": 1062.9397748540289
+          },
+          {
+            "r_val": "ammonia",
+            "s_val": "nh3",
+            "npmi": 1033.7238484204486
+          },
+          {
+            "r_val": "aluminum nitrate",
+            "s_val": "h2o",
+            "npmi": 18.792293975013113
+          },
+          {
+            "r_val": "sodium sulfate",
+            "s_val": "na2so4",
+            "npmi": 1203.2253651265567
+          },
+          {
+            "r_val": "aluminum iodide",
+            "s_val": "ali3",
+            "npmi": 1288.1762986418225
+          },
+          {
+            "r_val": "potassium sulfate",
+            "s_val": "k2so4",
+            "npmi": 1207.8254629472012
+          },
+          {
+            "r_val": "hydrogen iodide",
+            "s_val": "hi",
+            "npmi": 1184.755144120848
+          },
+          {
+            "r_val": "carbon dioxide",
+            "s_val": "co2",
+            "npmi": 984.0310353972807
+          },
+          {
+            "r_val": "sodium carbonate",
+            "s_val": "na2co3",
+            "npmi": 1171.8631344755427
+          },
+          {
+            "r_val": "aluminum phosphate",
+            "s_val": "alpo4",
+            "npmi": 1250.4848709700657
+          },
+          {
+            "r_val": "barium chromate",
+            "s_val": "bacro4",
+            "npmi": 1227.2039678561932
+          },
+          {
+            "r_val": "silver carbonate",
+            "s_val": "ag2co3",
+            "npmi": 1227.0052219629574
+          },
+          {
+            "r_val": "ammonium chloride",
+            "s_val": "nh4cl",
+            "npmi": 1196.1077311316933
+          },
+          {
+            "r_val": "aluminun oxide",
+            "s_val": "al2o3",
+            "npmi": 1390.2838946107279
+          },
+          {
+            "r_val": "aluminum chloride",
+            "s_val": "alcl3",
+            "npmi": 1253.2664912267026
+          },
+          {
+            "r_val": "ammonium nitrate",
+            "s_val": "nh4no3",
+            "npmi": 1207.8966172988091
+          },
+          {
+            "r_val": "sodium bromide",
+            "s_val": "nabr",
+            "npmi": 1210.7617782210834
+          },
+          {
+            "r_val": "potassium chloride",
+            "s_val": "kcl",
+            "npmi": 1161.9079373118764
+          },
+          {
+            "r_val": "potassium sulfide",
+            "s_val": "k2s",
+            "npmi": 1287.5234360260758
+          },
+          {
+            "r_val": "potassium acetate",
+            "s_val": "kc2h3o2",
+            "npmi": 1279.5854293006478
+          },
+          {
+            "r_val": "potassium chromate",
+            "s_val": "k2cro4",
+            "npmi": 1279.5576750035666
+          },
+          {
+            "r_val": "hydrogen chloride",
+            "s_val": "hcl",
+            "npmi": 1035.2232723658633
+          },
+          {
+            "r_val": "silver acetate",
+            "s_val": "agc2h3o2",
+            "npmi": 1243.6622083507925
+          },
+          {
+            "r_val": "silver phosphate",
+            "s_val": "ag3po4",
+            "npmi": 1241.4367773963597
+          },
+          {
+            "r_val": "potassium hydroxide",
+            "s_val": "koh",
+            "npmi": 1146.1698166990807
+          },
+          {
+            "r_val": "sodium acetate",
+            "s_val": "nac2h3o2",
+            "npmi": 1251.1800649221216
+          },
+          {
+            "r_val": "magnesium bromide",
+            "s_val": "mgbr2",
+            "npmi": 1238.9628488220662
+          },
+          {
+            "r_val": "sodium chloride",
+            "s_val": "nacl",
+            "npmi": 1152.3744848671568
+          },
+          {
+            "r_val": "calcium nitrate",
+            "s_val": "h2o",
+            "npmi": 18.792293975013113
+          },
+          {
+            "r_val": "silver bromide",
+            "s_val": "agbr",
+            "npmi": 1262.052098743835
+          },
+          {
+            "r_val": "iodine chloride",
+            "s_val": "icl",
+            "npmi": 1329.2869427214534
+          },
+          {
+            "r_val": "aluminum bromide",
+            "s_val": "albr3",
+            "npmi": 1267.0555355360511
+          },
+          {
+            "r_val": "barium carbonate",
+            "s_val": "baco3",
+            "npmi": 1230.1111389611392
+          },
+          {
+            "r_val": "calcium iodide",
+            "s_val": "cai2",
+            "npmi": 1221.9064408123215
+          },
+          {
+            "r_val": "silver chloride",
+            "s_val": "agcl",
+            "npmi": 1235.3750146687403
+          },
+          {
+            "r_val": "magnesium sulfate",
+            "s_val": "mgso4",
+            "npmi": 1180.8865588885467
+          },
+          {
+            "r_val": "barium chloride",
+            "s_val": "bacl2",
+            "npmi": 1274.5566290877398
+          },
+          {
+            "r_val": "magnesium chloride",
+            "s_val": "mgcl2",
+            "npmi": 1197.6978415797305
+          },
+          {
+            "r_val": "zinc chromate",
+            "s_val": "zncro4",
+            "npmi": 1270.8499392851124
+          },
+          {
+            "r_val": "barium bromide",
+            "s_val": "babr2",
+            "npmi": 1270.8232503708825
+          },
+          {
+            "r_val": "magnesium sulfide",
+            "s_val": "mgs",
+            "npmi": 1195.9768112192844
+          },
+          {
+            "r_val": "magnesium oxide",
+            "s_val": "mgo",
+            "npmi": 1153.2697662853875
+          },
+          {
+            "r_val": "barium iodide",
+            "s_val": "bai2",
+            "npmi": 1270.0931040111939
+          },
+          {
+            "r_val": "ammonium iodide",
+            "s_val": "nh4i",
+            "npmi": 1310.1800547716043
+          },
+          {
+            "r_val": "hydrogen",
+            "s_val": "h2",
+            "npmi": 1074.2715229128137
+          },
+          {
+            "r_val": "silver iodide",
+            "s_val": "agi",
+            "npmi": 1250.750044791957
+          },
+          {
+            "r_val": "zinc iodide",
+            "s_val": "zni2",
+            "npmi": 1239.3121444979854
+          },
+          {
+            "r_val": "magnesium carbonate",
+            "s_val": "mgco3",
+            "npmi": 1216.2485667382007
+          },
+          {
+            "r_val": "potassium bromide",
+            "s_val": "kbr",
+            "npmi": 1206.374595940023
+          },
+          {
+            "r_val": "magnesium iodide",
+            "s_val": "mgi2",
+            "npmi": 1233.422005523247
+          },
+          {
+            "r_val": "ethane",
+            "s_val": "c2h6",
+            "npmi": 985.3575737267904
+          },
+          {
+            "r_val": "ammonium hydroxide",
+            "s_val": "nh4oh",
+            "npmi": 1215.764274256055
+          },
+          {
+            "r_val": "sodium hydroxide",
+            "s_val": "naoh",
+            "npmi": 1107.597335762638
+          },
+          {
+            "r_val": "zinc carbonate",
+            "s_val": "znco3",
+            "npmi": 1207.3857549326046
+          }
+        ],
+        "num_r": 201,
+        "num_s": 197,
+        "num_mappings": 93
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T15:24:44.145794079Z",
+          "end_time": "2025-12-02T15:24:44.160718996Z",
+          "duration_seconds": 0.014924917
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T15:24:44.16534042Z",
+          "end_time": "2025-12-02T15:25:37.581374605Z",
+          "duration_seconds": 53.41603418
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T15:25:37.581397634Z",
+          "end_time": "2025-12-02T15:25:39.136862844Z",
+          "duration_seconds": 1.555465208
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T15:25:39.136867178Z",
+          "end_time": "2025-12-02T15:25:39.859026529Z",
+          "duration_seconds": 0.722159361
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T15:25:39.859059022Z",
+          "end_time": "2025-12-02T15:25:39.920636188Z",
+          "duration_seconds": 0.061577172
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T15:25:39.920669707Z",
+          "end_time": "2025-12-02T15:25:40.457091569Z",
+          "duration_seconds": 0.536421881
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T15:25:40.457103186Z",
+          "end_time": "2025-12-02T15:26:06.357854917Z",
+          "duration_seconds": 25.900751737
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T15:26:06.357871092Z",
+          "end_time": "2025-12-02T15:26:06.358779786Z",
+          "duration_seconds": 0.000908689
+        }
+      }
+    }
+  ]
+}

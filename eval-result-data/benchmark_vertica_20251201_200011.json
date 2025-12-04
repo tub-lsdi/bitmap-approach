@@ -1,0 +1,268 @@
+{
+  "start_time": "2025-12-01T19:00:11.469928",
+  "start_time_berlin": "2025-12-01T20:00:11.469921+01:00",
+  "end_time": "2025-12-01T19:01:27.456705",
+  "total_duration_seconds": 75.986777,
+  "database": "vertica",
+  "total_cases": 1,
+  "successful_cases": 1,
+  "failed_cases": 0,
+  "average_duration_seconds": 75.986204,
+  "median_duration_seconds": 75.986204,
+  "results": [
+    {
+      "case_number": 2,
+      "success": true,
+      "duration_seconds": 75.986204,
+      "error": null,
+      "start_time": "2025-12-01T19:00:11.470304",
+      "end_time": "2025-12-01T19:01:27.456508",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "parnate",
+            "s_val": "tranylcypromine",
+            "npmi": 259.92871566182674
+          },
+          {
+            "r_val": "nardil",
+            "s_val": "phenelzine",
+            "npmi": 260.87562331046803
+          },
+          {
+            "r_val": "marplan",
+            "s_val": "isocarboxazid",
+            "npmi": 253.7883468343879
+          },
+          {
+            "r_val": "anafranil",
+            "s_val": "clomipramine",
+            "npmi": 260.06855878740436
+          },
+          {
+            "r_val": "elavil",
+            "s_val": "amitriptyline",
+            "npmi": 259.1590705593561
+          },
+          {
+            "r_val": "norpramin",
+            "s_val": "desipramine",
+            "npmi": 259.15897536646776
+          },
+          {
+            "r_val": "pamelor",
+            "s_val": "nortriptyline",
+            "npmi": 263.2147542749037
+          },
+          {
+            "r_val": "sinequan",
+            "s_val": "doxepin",
+            "npmi": 259.7237120341799
+          },
+          {
+            "r_val": "surmontil",
+            "s_val": "trimipramine",
+            "npmi": 260.58816848295095
+          },
+          {
+            "r_val": "celexa",
+            "s_val": "citalopram",
+            "npmi": 255.1944817290629
+          },
+          {
+            "r_val": "lexapro",
+            "s_val": "escitalopram",
+            "npmi": 248.11897791342673
+          },
+          {
+            "r_val": "luvox",
+            "s_val": "fluvoxamine",
+            "npmi": 259.35813696518846
+          },
+          {
+            "r_val": "paxil",
+            "s_val": "paroxetine",
+            "npmi": 256.37529246462975
+          },
+          {
+            "r_val": "prozac",
+            "s_val": "fluoxetine",
+            "npmi": 258.21534481392035
+          },
+          {
+            "r_val": "zoloft",
+            "s_val": "sertraline",
+            "npmi": 256.2098142527556
+          },
+          {
+            "r_val": "cymbalta",
+            "s_val": "duloxetine",
+            "npmi": 249.48169703677812
+          },
+          {
+            "r_val": "effexor",
+            "s_val": "venlafaxine",
+            "npmi": 258.5691285061315
+          },
+          {
+            "r_val": "remeron",
+            "s_val": "mirtazapine",
+            "npmi": 255.01645034642078
+          },
+          {
+            "r_val": "wellbutrin",
+            "s_val": "bupropion",
+            "npmi": 257.4484300360921
+          },
+          {
+            "r_val": "desyrel",
+            "s_val": "trazodone",
+            "npmi": 262.45589837764084
+          }
+        ],
+        "num_r": 20,
+        "num_s": 20,
+        "num_mappings": 20
+      },
+      "bridge_table": [
+        {
+          "r_val": "parnate",
+          "s_val": "tranylcypromine",
+          "npmi": 259.92871566182674
+        },
+        {
+          "r_val": "nardil",
+          "s_val": "phenelzine",
+          "npmi": 260.87562331046803
+        },
+        {
+          "r_val": "marplan",
+          "s_val": "isocarboxazid",
+          "npmi": 253.7883468343879
+        },
+        {
+          "r_val": "anafranil",
+          "s_val": "clomipramine",
+          "npmi": 260.06855878740436
+        },
+        {
+          "r_val": "elavil",
+          "s_val": "amitriptyline",
+          "npmi": 259.1590705593561
+        },
+        {
+          "r_val": "norpramin",
+          "s_val": "desipramine",
+          "npmi": 259.15897536646776
+        },
+        {
+          "r_val": "pamelor",
+          "s_val": "nortriptyline",
+          "npmi": 263.2147542749037
+        },
+        {
+          "r_val": "sinequan",
+          "s_val": "doxepin",
+          "npmi": 259.7237120341799
+        },
+        {
+          "r_val": "surmontil",
+          "s_val": "trimipramine",
+          "npmi": 260.58816848295095
+        },
+        {
+          "r_val": "celexa",
+          "s_val": "citalopram",
+          "npmi": 255.1944817290629
+        },
+        {
+          "r_val": "lexapro",
+          "s_val": "escitalopram",
+          "npmi": 248.11897791342673
+        },
+        {
+          "r_val": "luvox",
+          "s_val": "fluvoxamine",
+          "npmi": 259.35813696518846
+        },
+        {
+          "r_val": "paxil",
+          "s_val": "paroxetine",
+          "npmi": 256.37529246462975
+        },
+        {
+          "r_val": "prozac",
+          "s_val": "fluoxetine",
+          "npmi": 258.21534481392035
+        },
+        {
+          "r_val": "zoloft",
+          "s_val": "sertraline",
+          "npmi": 256.2098142527556
+        },
+        {
+          "r_val": "cymbalta",
+          "s_val": "duloxetine",
+          "npmi": 249.48169703677812
+        },
+        {
+          "r_val": "effexor",
+          "s_val": "venlafaxine",
+          "npmi": 258.5691285061315
+        },
+        {
+          "r_val": "remeron",
+          "s_val": "mirtazapine",
+          "npmi": 255.01645034642078
+        },
+        {
+          "r_val": "wellbutrin",
+          "s_val": "bupropion",
+          "npmi": 257.4484300360921
+        },
+        {
+          "r_val": "desyrel",
+          "s_val": "trazodone",
+          "npmi": 262.45589837764084
+        }
+      ],
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-01T19:00:11.474711255Z",
+          "end_time": "2025-12-01T19:00:11.491986947Z",
+          "duration_seconds": 0.017275692
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-01T19:00:11.492046172Z",
+          "end_time": "2025-12-01T19:00:59.631520693Z",
+          "duration_seconds": 48.139474545
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-01T19:00:59.63157085Z",
+          "end_time": "2025-12-01T19:00:59.651814463Z",
+          "duration_seconds": 0.020243591
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-01T19:00:59.651818872Z",
+          "end_time": "2025-12-01T19:00:59.6598068Z",
+          "duration_seconds": 0.007987965
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-01T19:00:59.659832945Z",
+          "end_time": "2025-12-01T19:01:01.250199312Z",
+          "duration_seconds": 1.590366368
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-01T19:01:01.250211427Z",
+          "end_time": "2025-12-01T19:01:27.223235456Z",
+          "duration_seconds": 25.973024051
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-01T19:01:27.223259168Z",
+          "end_time": "2025-12-01T19:01:27.223344243Z",
+          "duration_seconds": 8.5112e-05
+        }
+      }
+    }
+  ]
+}

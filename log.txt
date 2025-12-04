@@ -1,0 +1,80 @@
+Running Case 13...                                                                                                                                                                                                                            
+2025-12-03 23:22:46.699 | INFO     | __main__:run_single_case:121 - Case 13: list_r=237 items, list_s=224 items                                                                                                                               
+2025-12-03 23:22:46.699 | INFO     | __main__:call_go_service:54 - Calling Go service: list_r=237 items, list_s=224 items                                                                                                                     
+2025-12-04 01:06:05.104 | INFO     | __main__:call_go_service:78 - Received 22330365 PMI scores from Go service                                                                                                                               
+2025-12-04 01:06:06.511 | INFO     | cs_jp_lp:create_bridge:49 - CS-JP-LP: Starting with |R|=237, |S|=224, 22330365 PMI scores                                                                                                                
+2025-12-04 01:06:06.511 | INFO     | cs_jp_lp:create_bridge:62 - CS-JP-LP: Step 1 - Solving CILP (calling Algorithm 2)...                                                                                                                     
+2025-12-04 01:06:06.511 | INFO     | cs_jp_lp:_algorithm_1_round_to_half_integral:210 -   Algorithm 1: Solving CLP...                                                                                                                         
+2025-12-04 01:06:06.511 | INFO     | cs_jp_lp:_solve_clp:131 -   Formulating LP with 237 x 224 = 53088 x variables...                                                                                                                         
+2025-12-04 01:06:06.670 | INFO     | cs_jp_lp:_solve_clp:143 -   Creating 22330365 z variables from PMI scores...                                                                                                                             
+2025-12-04 01:12:06.191 | INFO     | cs_jp_lp:_solve_clp:172 -   Adding 22330365 constraints...                                                                                                                                               
+2025-12-04 01:19:14.565 | INFO     | cs_jp_lp:_solve_clp:178 -   Solving LP problem                                                                                                                                                           
+2025-12-04 01:41:49.337 | ERROR    | __main__:run_single_case:176 - Error in case 13                                                                                                                                                           
+Traceback (most recent call last):                                                                                                                                                                                                   [11/1863]
+                                                                                                                                                                                                                                              
+  File "/app/benchmark_cs_jp_lp.py", line 319, in <module>                                                                                                                                                                                    
+    main()                                                                                                                                                                                                                                    
+    └ <function main at 0x7fa11c782840>                                                                                                                                                                                                       
+                                                                                                                                                                                                                                              
+  File "/app/benchmark_cs_jp_lp.py", line 265, in main                                                                                                                                                                                        
+    result = run_single_case(case_num, args.benchmark_dir, service_url)                                                                                                                                                                       
+             │               │         │    │              └ 'http://go-service:8080'                                                                                                                                                         
+             │               │         │    └ PosixPath('data/bench_data')                                                                                                                                                                    
+             │               │         └ Namespace(case=None, start=1, end=50, benchmark_dir=PosixPath('data/bench_data'))                                                                                                                    
+             │               └ 13                                                                                                                                                                                                             
+             └ <function run_single_case at 0x7fa1678a7a60>                                                            
+
+> File "/app/benchmark_cs_jp_lp.py", line 134, in run_single_case                                                      
+    bridge_table, python_timings = algorithm.create_bridge(                                                            
+                                   │         └ <function CSJPLPAlgorithm.create_bridge at 0x7fa11e8145e0>                                                                                                                                     
+                                   └ <cs_jp_lp.CSJPLPAlgorithm object at 0x7fa11c7c1fd0>                               
+
+  File "/app/cs_jp_lp.py", line 63, in create_bridge                                                                   
+    x_star, z_star = self._algorithm_2_solve_cilp(                                                                     
+                     │    └ <function CSJPLPAlgorithm._algorithm_2_solve_cilp at 0x7fa11c7823e0>                                                                                                                                              
+                     └ <cs_jp_lp.CSJPLPAlgorithm object at 0x7fa11c7c1fd0>                                             
+
+  File "/app/cs_jp_lp.py", line 294, in _algorithm_2_solve_cilp                                                        
+    x_tilde, z_tilde = self._algorithm_1_round_to_half_integral(                                                       
+                       │    └ <function CSJPLPAlgorithm._algorithm_1_round_to_half_integral at 0x7fa11c782340>                                                                                                                                
+                       └ <cs_jp_lp.CSJPLPAlgorithm object at 0x7fa11c7c1fd0>                                           
+
+  File "/app/cs_jp_lp.py", line 211, in _algorithm_1_round_to_half_integral                                            
+    x_bar, z_bar = self._solve_clp(list_r, list_s, w_ijkl_scores)                                                      
+                   │    │          │       │       └ {('canada', '1', 'japan', '1'): 6.849180858555135, ('australia', '1', 'new zealand', '1'): 7.700979740174438, ('pakistan', '1...
+                   │    │          │       └ ['590', '591', '350', '592', '593', '230', '351', '231', '352', '353', '595', '232', '233', '354', '355', '234', '597', '235'...                                                                 
+                   │    │          └ ['papua new guinea', 'cambodia', 'kazakhstan', 'paraguay', 'syria', 'bahamas', 'solomon islands', 'montserrat', 'mali', 'mars...                                                                         
+                   │    └ <function CSJPLPAlgorithm._solve_clp at 0x7fa11c7822a0>                                      
+                   └ <cs_jp_lp.CSJPLPAlgorithm object at 0x7fa11c7c1fd0>                                               
+
+  File "/app/cs_jp_lp.py", line 180, in _solve_clp                                                                     
+    prob.solve(pulp.HiGHS_CMD(msg=0))                      
+    │    │     │    └ <class 'pulp.apis.highs_api.HiGHS_CMD'>                                                          
+    │    │     └ <module 'pulp' from '/app/.venv/lib/python3.13/site-packages/pulp/__init__.py'>                                                                                                                                              
+    │    └ <function LpProblem.solve at 0x7fa11e813600>                                                                
+    └ CLP:                                                 
+      MINIMIZE                                             
+      -12.023800763364484*z_0_100_100_121 + -12.133000055329475*z_0_100_100_151 + -13.178123659046598*z_0_100_100_154...                                                                                                                      
+
+  File "/app/.venv/lib/python3.13/site-packages/pulp/pulp.py", line 2092, in solve                                     
+    status = solver.actualSolve(self, **kwargs)                                                                        
+             │      │           │       └ {}               
+             │      │           └ CLP:                     
+             │      │             MINIMIZE                 
+             │      │             -12.023800763364484*z_0_100_100_121 + -12.133000055329475*z_0_100_100_151 + -13.178123659046598*z_0_100_100_154...                                                                                          
+             │      └ <function HiGHS_CMD.actualSolve at 0x7fa167814e00>                                               
+             └ <pulp.apis.highs_api.HiGHS_CMD object at 0x7fa11c7c3bd0>                                                
+  File "/app/.venv/lib/python3.13/site-packages/pulp/apis/highs_api.py", line 221, in actualSolve                                                                                                                                             
+    values = self.readsol(tmpSol)                          
+             │    │       └ '/tmp/b1dbec127f8e4943a40e4d01648774f2-pulp.sol'                                           
+             │    └ <function HiGHS_CMD.readsol at 0x7fa167814f40>                                                     
+             └ <pulp.apis.highs_api.HiGHS_CMD object at 0x7fa11c7c3bd0>                                                
+  File "/app/.venv/lib/python3.13/site-packages/pulp/apis/highs_api.py", line 265, in readsol     
+    File "/app/.venv/lib/python3.13/site-packages/pulp/apis/highs_api.py", line 265, in readsol                                                                                                                                                 
+    raise PulpSolverError("Cannot read HiGHS solver output")                                                           
+          └ <class 'pulp.apis.core.PulpSolverError'>                                                                   
+
+pulp.apis.core.PulpSolverError: Cannot read HiGHS solver output                                                        
+2025-12-04 02:17:57.327 | ERROR    | __main__:main:274 -   ✗ Failed: Cannot read HiGHS solver output                                                                                                                                          
+2025-12-04 02:17:57.347 | INFO     | __main__:main:288 -   Results saved to: /app/results/benchmark_vertica_20251203_234639.json                                                                                                              
+2025-12-04 02:17:57.347 | INFO     | __main__:main:264 -                           

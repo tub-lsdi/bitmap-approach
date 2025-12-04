@@ -1,0 +1,5207 @@
+{
+  "start_time": "2025-12-02T21:34:47.892647",
+  "start_time_berlin": "2025-12-02T22:34:47.892638+01:00",
+  "end_time": "2025-12-02T21:44:11.829456",
+  "total_duration_seconds": 563.936809,
+  "database": "vertica",
+  "total_cases": 1,
+  "successful_cases": 1,
+  "failed_cases": 0,
+  "average_duration_seconds": 563.854582,
+  "median_duration_seconds": 563.854582,
+  "results": [
+    {
+      "case_number": 12,
+      "success": true,
+      "duration_seconds": 563.854582,
+      "error": null,
+      "start_time": "2025-12-02T21:34:47.893095",
+      "end_time": "2025-12-02T21:44:11.747677",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "marlboro college",
+            "s_val": "marlboro",
+            "npmi": 6202.477750895406
+          },
+          {
+            "r_val": "dalton state college",
+            "s_val": "dalton",
+            "npmi": 6489.756817108953
+          },
+          {
+            "r_val": "trevecca nazarene university",
+            "s_val": "nashville",
+            "npmi": 4003.2480887123234
+          },
+          {
+            "r_val": "messiah college",
+            "s_val": "grantham",
+            "npmi": 9986.807210971125
+          },
+          {
+            "r_val": "faulkner university",
+            "s_val": "montgomery",
+            "npmi": 8872.026939757843
+          },
+          {
+            "r_val": "sierra nevada college",
+            "s_val": "incline village",
+            "npmi": 2240.461290719888
+          },
+          {
+            "r_val": "belhaven university",
+            "s_val": "jackson",
+            "npmi": 5677.682355353635
+          },
+          {
+            "r_val": "mcmurry university",
+            "s_val": "abilene",
+            "npmi": 8534.78435865714
+          },
+          {
+            "r_val": "centre college",
+            "s_val": "danville",
+            "npmi": 10935.890869617877
+          },
+          {
+            "r_val": "franklin college",
+            "s_val": "franklin",
+            "npmi": 8297.431409726663
+          },
+          {
+            "r_val": "george washington university",
+            "s_val": "washington",
+            "npmi": 8733.141543315178
+          },
+          {
+            "r_val": "metropolitan state university",
+            "s_val": "saint paul",
+            "npmi": 3240.113418114678
+          },
+          {
+            "r_val": "michigan state university",
+            "s_val": "east lansing",
+            "npmi": 10127.70795260463
+          },
+          {
+            "r_val": "eastern new mexico university",
+            "s_val": "portales",
+            "npmi": 8985.487996073474
+          },
+          {
+            "r_val": "dordt college",
+            "s_val": "sioux center",
+            "npmi": 7925.4982440024605
+          },
+          {
+            "r_val": "clear creek baptist bible college",
+            "s_val": "pineville",
+            "npmi": 2429.656733043351
+          },
+          {
+            "r_val": "fordham university",
+            "s_val": "bronx",
+            "npmi": 9613.004471773824
+          },
+          {
+            "r_val": "green mountain college",
+            "s_val": "poultney",
+            "npmi": 8199.078120539309
+          },
+          {
+            "r_val": "dakota wesleyan university",
+            "s_val": "mitchell",
+            "npmi": 9288.471195610891
+          },
+          {
+            "r_val": "virginia wesleyan college",
+            "s_val": "virginia beach",
+            "npmi": 4096.931128477402
+          },
+          {
+            "r_val": "southeast missouri state university",
+            "s_val": "cape girardeau",
+            "npmi": 9270.590318075081
+          },
+          {
+            "r_val": "athens state university",
+            "s_val": "athens",
+            "npmi": 3336.302368479666
+          },
+          {
+            "r_val": "northern new mexico college",
+            "s_val": "santa fe",
+            "npmi": 176.2877993457482
+          },
+          {
+            "r_val": "pittsburg state university",
+            "s_val": "pittsburg",
+            "npmi": 10125.592142366504
+          },
+          {
+            "r_val": "graceland university",
+            "s_val": "lamoni",
+            "npmi": 9309.317574631255
+          },
+          {
+            "r_val": "walsh university",
+            "s_val": "north canton",
+            "npmi": 8548.068707369272
+          },
+          {
+            "r_val": "spelman college",
+            "s_val": "atlanta",
+            "npmi": 8184.980704466342
+          },
+          {
+            "r_val": "berea college",
+            "s_val": "berea",
+            "npmi": 9137.729649209125
+          },
+          {
+            "r_val": "illinois state university",
+            "s_val": "normal",
+            "npmi": 9542.700895582499
+          },
+          {
+            "r_val": "oklahoma christian university",
+            "s_val": "edmond",
+            "npmi": 5547.612572104013
+          },
+          {
+            "r_val": "missouri western state university",
+            "s_val": "saint joseph",
+            "npmi": 8654.357938249577
+          },
+          {
+            "r_val": "bethel college",
+            "s_val": "mishawaka",
+            "npmi": 9792.61725178505
+          },
+          {
+            "r_val": "ursuline college",
+            "s_val": "pepper pike",
+            "npmi": 5764.293289465507
+          },
+          {
+            "r_val": "blue mountain college",
+            "s_val": "blue mountain",
+            "npmi": 2875.7586973924117
+          },
+          {
+            "r_val": "waldorf college",
+            "s_val": "forest city",
+            "npmi": 7402.956557385288
+          },
+          {
+            "r_val": "allen university",
+            "s_val": "columbia",
+            "npmi": 9920.181852794844
+          },
+          {
+            "r_val": "albany state university",
+            "s_val": "albany",
+            "npmi": 10531.626374242156
+          },
+          {
+            "r_val": "ave maria university",
+            "s_val": "ave maria",
+            "npmi": 3863.700137324739
+          },
+          {
+            "r_val": "chadron state college",
+            "s_val": "chadron",
+            "npmi": 8581.81361890094
+          },
+          {
+            "r_val": "maranatha baptist bible college",
+            "s_val": "watertown",
+            "npmi": 4388.954723159668
+          },
+          {
+            "r_val": "pacific union college",
+            "s_val": "angwin",
+            "npmi": 5324.111515186808
+          },
+          {
+            "r_val": "allen college",
+            "s_val": "waterloo",
+            "npmi": 3543.913514317153
+          },
+          {
+            "r_val": "fort lewis college",
+            "s_val": "durango",
+            "npmi": 9227.522623010656
+          },
+          {
+            "r_val": "la roche college",
+            "s_val": "pittsburgh",
+            "npmi": 7834.177543302755
+          },
+          {
+            "r_val": "manchester university",
+            "s_val": "north manchester",
+            "npmi": 3780.511570410584
+          },
+          {
+            "r_val": "colorado christian university",
+            "s_val": "lakewood",
+            "npmi": 6912.4847697584555
+          },
+          {
+            "r_val": "wells college",
+            "s_val": "aurora",
+            "npmi": 8373.436182799762
+          },
+          {
+            "r_val": "kentucky state university",
+            "s_val": "frankfort",
+            "npmi": 10643.974947710743
+          },
+          {
+            "r_val": "angelo state university",
+            "s_val": "san angelo",
+            "npmi": 9165.699873800906
+          },
+          {
+            "r_val": "ohio valley university",
+            "s_val": "vienna",
+            "npmi": 3409.5969819704287
+          },
+          {
+            "r_val": "wartburg college",
+            "s_val": "waverly",
+            "npmi": 9264.552988991632
+          },
+          {
+            "r_val": "biola university",
+            "s_val": "la mirada",
+            "npmi": 6776.0688071642
+          },
+          {
+            "r_val": "meredith college",
+            "s_val": "raleigh",
+            "npmi": 8814.081520719308
+          },
+          {
+            "r_val": "framingham state university",
+            "s_val": "framingham",
+            "npmi": 5938.609918758753
+          },
+          {
+            "r_val": "southwestern adventist university",
+            "s_val": "keene",
+            "npmi": 3627.8881932659287
+          },
+          {
+            "r_val": "florida gulf coast university",
+            "s_val": "fort myers",
+            "npmi": 7554.222566854492
+          },
+          {
+            "r_val": "kennesaw state university",
+            "s_val": "kennesaw",
+            "npmi": 8950.198250195026
+          },
+          {
+            "r_val": "united states military academy",
+            "s_val": "new york",
+            "npmi": 53.86074742461858
+          },
+          {
+            "r_val": "maine maritime academy",
+            "s_val": "castine",
+            "npmi": 7933.5259543397215
+          },
+          {
+            "r_val": "webb institute",
+            "s_val": "glen cove",
+            "npmi": 2806.4696427666036
+          },
+          {
+            "r_val": "lindsey wilson college",
+            "s_val": "columbia",
+            "npmi": 9227.996240629274
+          },
+          {
+            "r_val": "middlebury college",
+            "s_val": "middlebury",
+            "npmi": 10149.433581524523
+          },
+          {
+            "r_val": "new orleans baptist theological seminary",
+            "s_val": "new orleans",
+            "npmi": 2777.793626013915
+          },
+          {
+            "r_val": "texas tech university",
+            "s_val": "lubbock",
+            "npmi": 9073.466257860748
+          },
+          {
+            "r_val": "northern kentucky university",
+            "s_val": "highland heights",
+            "npmi": 8874.16744404309
+          },
+          {
+            "r_val": "dickinson college",
+            "s_val": "carlisle",
+            "npmi": 10656.38883850892
+          },
+          {
+            "r_val": "ashland university",
+            "s_val": "ashland",
+            "npmi": 10675.167972403115
+          },
+          {
+            "r_val": "point park university",
+            "s_val": "pittsburgh",
+            "npmi": 7798.363427207814
+          },
+          {
+            "r_val": "longwood university",
+            "s_val": "farmville",
+            "npmi": 6747.126647752864
+          },
+          {
+            "r_val": "swarthmore college",
+            "s_val": "swarthmore",
+            "npmi": 8865.004492383547
+          },
+          {
+            "r_val": "hamline university",
+            "s_val": "saint paul",
+            "npmi": 8911.644145912891
+          },
+          {
+            "r_val": "eastern michigan university",
+            "s_val": "ypsilanti",
+            "npmi": 9176.243601829792
+          },
+          {
+            "r_val": "divine word college",
+            "s_val": "epworth",
+            "npmi": 5096.152935275522
+          },
+          {
+            "r_val": "manhattan college",
+            "s_val": "riverdale",
+            "npmi": 8507.655020113434
+          },
+          {
+            "r_val": "ohio wesleyan university",
+            "s_val": "delaware",
+            "npmi": 9896.63718741696
+          },
+          {
+            "r_val": "simmons college",
+            "s_val": "boston",
+            "npmi": 8717.275694626569
+          },
+          {
+            "r_val": "converse college",
+            "s_val": "spartanburg",
+            "npmi": 9179.215507930658
+          },
+          {
+            "r_val": "kansas state university",
+            "s_val": "manhattan",
+            "npmi": 9106.777119556384
+          },
+          {
+            "r_val": "temple university",
+            "s_val": "philadelphia",
+            "npmi": 8758.868970926373
+          },
+          {
+            "r_val": "nichols college",
+            "s_val": "dudley",
+            "npmi": 8998.186390255312
+          },
+          {
+            "r_val": "oglethorpe university",
+            "s_val": "atlanta",
+            "npmi": 8456.578053405168
+          },
+          {
+            "r_val": "kentucky christian university",
+            "s_val": "grayson",
+            "npmi": 7650.489294054628
+          },
+          {
+            "r_val": "alderson broaddus university",
+            "s_val": "philippi",
+            "npmi": 5375.1302609813965
+          },
+          {
+            "r_val": "hodges university",
+            "s_val": "naples",
+            "npmi": 3773.463818473693
+          },
+          {
+            "r_val": "nyack college",
+            "s_val": "nyack",
+            "npmi": 5537.701333985874
+          },
+          {
+            "r_val": "unity college",
+            "s_val": "unity",
+            "npmi": 3742.201543901252
+          },
+          {
+            "r_val": "muhlenberg college",
+            "s_val": "allentown",
+            "npmi": 10035.189923466545
+          },
+          {
+            "r_val": "east tennessee state university",
+            "s_val": "johnson city",
+            "npmi": 7954.02977614416
+          },
+          {
+            "r_val": "castleton state college",
+            "s_val": "castleton",
+            "npmi": 7901.651848353889
+          },
+          {
+            "r_val": "arcadia university",
+            "s_val": "glenside",
+            "npmi": 8761.186419101296
+          },
+          {
+            "r_val": "misericordia university",
+            "s_val": "dallas",
+            "npmi": 9017.206715233107
+          },
+          {
+            "r_val": "edward waters college",
+            "s_val": "jacksonville",
+            "npmi": 9120.249370267546
+          },
+          {
+            "r_val": "rowan university",
+            "s_val": "glassboro",
+            "npmi": 10549.674233496035
+          },
+          {
+            "r_val": "seattle university",
+            "s_val": "seattle",
+            "npmi": 9834.53588679194
+          },
+          {
+            "r_val": "hillsdale college",
+            "s_val": "hillsdale",
+            "npmi": 9175.844347024204
+          },
+          {
+            "r_val": "hebrew theological college",
+            "s_val": "skokie",
+            "npmi": 1426.788060846339
+          },
+          {
+            "r_val": "westminster college",
+            "s_val": "fulton",
+            "npmi": 10004.017912832214
+          },
+          {
+            "r_val": "hamilton college",
+            "s_val": "clinton",
+            "npmi": 9925.681180023852
+          },
+          {
+            "r_val": "touro college",
+            "s_val": "new york",
+            "npmi": 3071.9029298316027
+          },
+          {
+            "r_val": "lake forest college",
+            "s_val": "lake forest",
+            "npmi": 9595.99909483563
+          },
+          {
+            "r_val": "salem state university",
+            "s_val": "salem",
+            "npmi": 5920.254088412938
+          },
+          {
+            "r_val": "indiana university southeast",
+            "s_val": "new albany",
+            "npmi": 7932.552973097695
+          },
+          {
+            "r_val": "barnard college",
+            "s_val": "new york",
+            "npmi": 7316.311295009997
+          },
+          {
+            "r_val": "furman university",
+            "s_val": "greenville",
+            "npmi": 10184.21040950615
+          },
+          {
+            "r_val": "nicholls state university",
+            "s_val": "thibodaux",
+            "npmi": 9217.163762786004
+          },
+          {
+            "r_val": "hampshire college",
+            "s_val": "amherst",
+            "npmi": 7552.988611673036
+          },
+          {
+            "r_val": "idaho state university",
+            "s_val": "pocatello",
+            "npmi": 9547.715597748647
+          },
+          {
+            "r_val": "indiana state university",
+            "s_val": "terre haute",
+            "npmi": 9373.572037235095
+          },
+          {
+            "r_val": "marian university",
+            "s_val": "fond du lac",
+            "npmi": 6840.079484549268
+          },
+          {
+            "r_val": "montclair state university",
+            "s_val": "montclair",
+            "npmi": 9367.657082268337
+          },
+          {
+            "r_val": "capella university",
+            "s_val": "minneapolis",
+            "npmi": 6168.060305563703
+          },
+          {
+            "r_val": "boise state university",
+            "s_val": "boise",
+            "npmi": 10162.908864332428
+          },
+          {
+            "r_val": "chatham university",
+            "s_val": "pittsburgh",
+            "npmi": 8720.835400377979
+          },
+          {
+            "r_val": "monmouth university",
+            "s_val": "west long branch",
+            "npmi": 9923.834384966844
+          },
+          {
+            "r_val": "alma college",
+            "s_val": "alma",
+            "npmi": 10713.076317784595
+          },
+          {
+            "r_val": "christopher newport university",
+            "s_val": "newport news",
+            "npmi": 10003.699286923109
+          },
+          {
+            "r_val": "lynn university",
+            "s_val": "boca raton",
+            "npmi": 8241.598473911243
+          },
+          {
+            "r_val": "clarkson university",
+            "s_val": "potsdam",
+            "npmi": 8633.725801105858
+          },
+          {
+            "r_val": "malone university",
+            "s_val": "canton",
+            "npmi": 10168.525878205865
+          },
+          {
+            "r_val": "lander university",
+            "s_val": "greenwood",
+            "npmi": 8699.648995845157
+          },
+          {
+            "r_val": "texas wesleyan university",
+            "s_val": "fort worth",
+            "npmi": 8835.703948400178
+          },
+          {
+            "r_val": "yale university",
+            "s_val": "new haven",
+            "npmi": 8666.771003514708
+          },
+          {
+            "r_val": "northwest university",
+            "s_val": "kirkland",
+            "npmi": 7132.407397249959
+          },
+          {
+            "r_val": "depauw university",
+            "s_val": "greencastle",
+            "npmi": 9199.684099914806
+          },
+          {
+            "r_val": "loyola marymount university",
+            "s_val": "los angeles",
+            "npmi": 7734.650628404907
+          },
+          {
+            "r_val": "gettysburg college",
+            "s_val": "gettysburg",
+            "npmi": 10904.574646847968
+          },
+          {
+            "r_val": "bluefield state college",
+            "s_val": "bluefield",
+            "npmi": 7358.936729187108
+          },
+          {
+            "r_val": "averett university",
+            "s_val": "danville",
+            "npmi": 9650.055670971775
+          },
+          {
+            "r_val": "lawrence university",
+            "s_val": "appleton",
+            "npmi": 10344.375612474527
+          },
+          {
+            "r_val": "d'youville college",
+            "s_val": "buffalo",
+            "npmi": 8529.434983727493
+          },
+          {
+            "r_val": "anna maria college",
+            "s_val": "paxton",
+            "npmi": 6982.696473603336
+          },
+          {
+            "r_val": "dickinson state university",
+            "s_val": "dickinson",
+            "npmi": 8691.877270841516
+          },
+          {
+            "r_val": "lasell college",
+            "s_val": "newton",
+            "npmi": 7450.229219601252
+          },
+          {
+            "r_val": "western kentucky university",
+            "s_val": "bowling green",
+            "npmi": 9847.212165859575
+          },
+          {
+            "r_val": "bellevue college",
+            "s_val": "bellevue",
+            "npmi": 2816.6449731261214
+          },
+          {
+            "r_val": "allegheny college",
+            "s_val": "meadville",
+            "npmi": 9815.134352711728
+          },
+          {
+            "r_val": "flagler college",
+            "s_val": "saint augustine",
+            "npmi": 5065.409527793129
+          },
+          {
+            "r_val": "oklahoma state university",
+            "s_val": "stillwater",
+            "npmi": 7083.599442744034
+          },
+          {
+            "r_val": "texas christian university",
+            "s_val": "fort worth",
+            "npmi": 9627.059062261718
+          },
+          {
+            "r_val": "delaware valley college",
+            "s_val": "doylestown",
+            "npmi": 10343.63141763437
+          },
+          {
+            "r_val": "charleston southern university",
+            "s_val": "charleston",
+            "npmi": 9927.810180861436
+          },
+          {
+            "r_val": "midstate college",
+            "s_val": "peoria",
+            "npmi": 3628.0299144527985
+          },
+          {
+            "r_val": "olympic college",
+            "s_val": "bremerton",
+            "npmi": 3152.993962049609
+          },
+          {
+            "r_val": "elizabeth city state university",
+            "s_val": "elizabeth city",
+            "npmi": 9344.569332553829
+          },
+          {
+            "r_val": "emory university",
+            "s_val": "atlanta",
+            "npmi": 10165.257138304354
+          },
+          {
+            "r_val": "benedictine college",
+            "s_val": "atchison",
+            "npmi": 10464.60912063028
+          },
+          {
+            "r_val": "wilkes university",
+            "s_val": "wilkes barre",
+            "npmi": 10329.418937213304
+          },
+          {
+            "r_val": "mckendree university",
+            "s_val": "lebanon",
+            "npmi": 8170.366214390229
+          },
+          {
+            "r_val": "morehead state university",
+            "s_val": "morehead",
+            "npmi": 10159.403875712158
+          },
+          {
+            "r_val": "quinnipiac university",
+            "s_val": "hamden",
+            "npmi": 9411.288858261552
+          },
+          {
+            "r_val": "barton college",
+            "s_val": "wilson",
+            "npmi": 7168.427810477996
+          },
+          {
+            "r_val": "illinois wesleyan university",
+            "s_val": "bloomington",
+            "npmi": 9764.976491123118
+          },
+          {
+            "r_val": "bismarck state college",
+            "s_val": "bismarck",
+            "npmi": 1961.5696095661076
+          },
+          {
+            "r_val": "muskingum university",
+            "s_val": "new concord",
+            "npmi": 5662.656393854267
+          },
+          {
+            "r_val": "pine manor college",
+            "s_val": "chestnut hill",
+            "npmi": 5637.773402028076
+          },
+          {
+            "r_val": "shenandoah university",
+            "s_val": "winchester",
+            "npmi": 10372.715013295327
+          },
+          {
+            "r_val": "wayne state university",
+            "s_val": "detroit",
+            "npmi": 9397.421146838487
+          },
+          {
+            "r_val": "william jessup university",
+            "s_val": "rocklin",
+            "npmi": 4023.303004412394
+          },
+          {
+            "r_val": "trinity lutheran college",
+            "s_val": "issaquah",
+            "npmi": 391.8424545239271
+          },
+          {
+            "r_val": "fort hays state university",
+            "s_val": "hays",
+            "npmi": 9788.330028890476
+          },
+          {
+            "r_val": "thomas more college",
+            "s_val": "crestview hills",
+            "npmi": 9971.977301568906
+          },
+          {
+            "r_val": "indiana university east",
+            "s_val": "richmond",
+            "npmi": 7629.441162452828
+          },
+          {
+            "r_val": "ecpi university",
+            "s_val": "newport news",
+            "npmi": 759.0465229045793
+          },
+          {
+            "r_val": "whitman college",
+            "s_val": "walla walla",
+            "npmi": 8536.548096663017
+          },
+          {
+            "r_val": "cabrini college",
+            "s_val": "radnor",
+            "npmi": 10134.762916101847
+          },
+          {
+            "r_val": "boston university",
+            "s_val": "boston",
+            "npmi": 8226.522377978017
+          },
+          {
+            "r_val": "keiser university",
+            "s_val": "fort lauderdale",
+            "npmi": 3892.478373529971
+          },
+          {
+            "r_val": "victory university",
+            "s_val": "memphis",
+            "npmi": 403.5110767473082
+          },
+          {
+            "r_val": "eastern nazarene college",
+            "s_val": "quincy",
+            "npmi": 6468.900963386297
+          },
+          {
+            "r_val": "bemidji state university",
+            "s_val": "bemidji",
+            "npmi": 9749.295897454049
+          },
+          {
+            "r_val": "central penn college",
+            "s_val": "summerdale",
+            "npmi": 912.1154505059907
+          },
+          {
+            "r_val": "utah valley university",
+            "s_val": "orem",
+            "npmi": 4768.941672784299
+          },
+          {
+            "r_val": "union university",
+            "s_val": "jackson",
+            "npmi": 8931.082340988289
+          },
+          {
+            "r_val": "wilmington university",
+            "s_val": "new castle",
+            "npmi": 5351.580482055329
+          },
+          {
+            "r_val": "simpson college",
+            "s_val": "indianola",
+            "npmi": 10123.8244948767
+          },
+          {
+            "r_val": "cornerstone university",
+            "s_val": "grand rapids",
+            "npmi": 7695.769835325285
+          },
+          {
+            "r_val": "carnegie mellon university",
+            "s_val": "pittsburgh",
+            "npmi": 10145.686595384
+          },
+          {
+            "r_val": "goshen college",
+            "s_val": "goshen",
+            "npmi": 8737.012549741283
+          },
+          {
+            "r_val": "reed college",
+            "s_val": "portland",
+            "npmi": 6927.409266300533
+          },
+          {
+            "r_val": "north central college",
+            "s_val": "naperville",
+            "npmi": 10059.494462656565
+          },
+          {
+            "r_val": "westfield state university",
+            "s_val": "westfield",
+            "npmi": 7117.713978165929
+          },
+          {
+            "r_val": "northwestern health sciences university",
+            "s_val": "bloomington",
+            "npmi": 2366.451948683208
+          },
+          {
+            "r_val": "pitzer college",
+            "s_val": "claremont",
+            "npmi": 6161.0999409848755
+          },
+          {
+            "r_val": "macalester college",
+            "s_val": "saint paul",
+            "npmi": 7739.954404168458
+          },
+          {
+            "r_val": "oklahoma wesleyan university",
+            "s_val": "bartlesville",
+            "npmi": 3651.0922260084826
+          },
+          {
+            "r_val": "eastern connecticut state university",
+            "s_val": "willimantic",
+            "npmi": 8137.685711593877
+          },
+          {
+            "r_val": "neumann university",
+            "s_val": "aston",
+            "npmi": 7968.793968982623
+          },
+          {
+            "r_val": "johnson state college",
+            "s_val": "johnson",
+            "npmi": 7367.330155801498
+          },
+          {
+            "r_val": "albertus magnus college",
+            "s_val": "new haven",
+            "npmi": 6712.419151818161
+          },
+          {
+            "r_val": "alverno college",
+            "s_val": "milwaukee",
+            "npmi": 9522.637168628155
+          },
+          {
+            "r_val": "bluffton university",
+            "s_val": "bluffton",
+            "npmi": 8419.798539263365
+          },
+          {
+            "r_val": "park university",
+            "s_val": "parkville",
+            "npmi": 6813.829994837956
+          },
+          {
+            "r_val": "mcpherson college",
+            "s_val": "mcpherson",
+            "npmi": 7537.661802803694
+          },
+          {
+            "r_val": "eureka college",
+            "s_val": "eureka",
+            "npmi": 9217.824321466394
+          },
+          {
+            "r_val": "salem college",
+            "s_val": "winston salem",
+            "npmi": 4717.769421395034
+          },
+          {
+            "r_val": "sterling college",
+            "s_val": "sterling",
+            "npmi": 8274.046299400103
+          },
+          {
+            "r_val": "willamette university",
+            "s_val": "salem",
+            "npmi": 9096.378922240196
+          },
+          {
+            "r_val": "bacone college",
+            "s_val": "muskogee",
+            "npmi": 8073.59471975039
+          },
+          {
+            "r_val": "norwich university",
+            "s_val": "northfield",
+            "npmi": 10553.774394520204
+          },
+          {
+            "r_val": "susquehanna university",
+            "s_val": "selinsgrove",
+            "npmi": 11458.193228529544
+          },
+          {
+            "r_val": "pepperdine university",
+            "s_val": "malibu",
+            "npmi": 7349.916346467004
+          },
+          {
+            "r_val": "langston university",
+            "s_val": "langston",
+            "npmi": 10635.91284869879
+          },
+          {
+            "r_val": "bauder college",
+            "s_val": "atlanta",
+            "npmi": 1481.2991571674988
+          },
+          {
+            "r_val": "wellesley college",
+            "s_val": "wellesley",
+            "npmi": 8212.780355493525
+          },
+          {
+            "r_val": "madonna university",
+            "s_val": "livonia",
+            "npmi": 8367.331823222285
+          },
+          {
+            "r_val": "ferrum college",
+            "s_val": "ferrum",
+            "npmi": 9527.529605403643
+          },
+          {
+            "r_val": "marygrove college",
+            "s_val": "detroit",
+            "npmi": 7265.844515841002
+          },
+          {
+            "r_val": "south seattle community college",
+            "s_val": "seattle",
+            "npmi": 2237.816053456475
+          },
+          {
+            "r_val": "dean college",
+            "s_val": "franklin",
+            "npmi": 6936.490067197949
+          },
+          {
+            "r_val": "mills college",
+            "s_val": "oakland",
+            "npmi": 8517.899796048692
+          },
+          {
+            "r_val": "cox college",
+            "s_val": "springfield",
+            "npmi": 1879.4034283717237
+          },
+          {
+            "r_val": "mount ida college",
+            "s_val": "newton",
+            "npmi": 8896.082181936701
+          },
+          {
+            "r_val": "olivet college",
+            "s_val": "olivet",
+            "npmi": 9604.665803209711
+          },
+          {
+            "r_val": "bennington college",
+            "s_val": "bennington",
+            "npmi": 7498.329870548265
+          },
+          {
+            "r_val": "southwestern oklahoma state university",
+            "s_val": "weatherford",
+            "npmi": 7262.476594454127
+          },
+          {
+            "r_val": "adams state university",
+            "s_val": "alamosa",
+            "npmi": 4353.3918367896995
+          },
+          {
+            "r_val": "mount vernon nazarene university",
+            "s_val": "mount vernon",
+            "npmi": 7294.186296592357
+          },
+          {
+            "r_val": "glenville state college",
+            "s_val": "glenville",
+            "npmi": 8219.23847392412
+          },
+          {
+            "r_val": "goddard college",
+            "s_val": "plainfield",
+            "npmi": 4804.258720489551
+          },
+          {
+            "r_val": "voorhees college",
+            "s_val": "denmark",
+            "npmi": 6693.777352911615
+          },
+          {
+            "r_val": "radford university",
+            "s_val": "radford",
+            "npmi": 8026.417981031504
+          },
+          {
+            "r_val": "rush university",
+            "s_val": "chicago",
+            "npmi": 808.8150250633138
+          },
+          {
+            "r_val": "rockford university",
+            "s_val": "rockford",
+            "npmi": 3799.078560018751
+          },
+          {
+            "r_val": "east texas baptist university",
+            "s_val": "marshall",
+            "npmi": 8518.289712823733
+          },
+          {
+            "r_val": "marywood university",
+            "s_val": "scranton",
+            "npmi": 9713.617438043028
+          },
+          {
+            "r_val": "olivet nazarene university",
+            "s_val": "bourbonnais",
+            "npmi": 10299.112397956249
+          },
+          {
+            "r_val": "daniel webster college",
+            "s_val": "nashua",
+            "npmi": 6637.155879453608
+          },
+          {
+            "r_val": "marylhurst university",
+            "s_val": "marylhurst",
+            "npmi": 6219.89441056264
+          },
+          {
+            "r_val": "central college",
+            "s_val": "pella",
+            "npmi": 9229.510523609242
+          },
+          {
+            "r_val": "life pacific college",
+            "s_val": "san dimas",
+            "npmi": 2777.351444772191
+          },
+          {
+            "r_val": "william peace university",
+            "s_val": "raleigh",
+            "npmi": 4582.300997377943
+          },
+          {
+            "r_val": "southwestern christian university",
+            "s_val": "bethany",
+            "npmi": 3612.759930879118
+          },
+          {
+            "r_val": "alliant international university",
+            "s_val": "san diego",
+            "npmi": 3782.581357287408
+          },
+          {
+            "r_val": "northwestern college",
+            "s_val": "orange city",
+            "npmi": 8848.43233251806
+          },
+          {
+            "r_val": "philander smith college",
+            "s_val": "little rock",
+            "npmi": 5194.6775518735585
+          },
+          {
+            "r_val": "dallas baptist university",
+            "s_val": "dallas",
+            "npmi": 6804.805631780325
+          },
+          {
+            "r_val": "cogswell polytechnical college",
+            "s_val": "sunnyvale",
+            "npmi": 3852.2386855509294
+          },
+          {
+            "r_val": "kuyper college",
+            "s_val": "grand rapids",
+            "npmi": 1741.3381765606994
+          },
+          {
+            "r_val": "fisk university",
+            "s_val": "nashville",
+            "npmi": 8577.20932171854
+          },
+          {
+            "r_val": "new mexico highlands university",
+            "s_val": "las vegas",
+            "npmi": 9050.384309579656
+          },
+          {
+            "r_val": "creighton university",
+            "s_val": "omaha",
+            "npmi": 9249.324578218058
+          },
+          {
+            "r_val": "american intercontinental university",
+            "s_val": "atlanta",
+            "npmi": 550.069947135521
+          },
+          {
+            "r_val": "gordon state college",
+            "s_val": "barnesville",
+            "npmi": 430.0058295542265
+          },
+          {
+            "r_val": "wesley college",
+            "s_val": "dover",
+            "npmi": 10683.155411595728
+          },
+          {
+            "r_val": "tulane university",
+            "s_val": "new orleans",
+            "npmi": 7753.358791442724
+          },
+          {
+            "r_val": "fairleigh dickinson university",
+            "s_val": "teaneck",
+            "npmi": 7055.516800983689
+          },
+          {
+            "r_val": "fresno pacific university",
+            "s_val": "fresno",
+            "npmi": 6783.7914670013215
+          },
+          {
+            "r_val": "everglades university",
+            "s_val": "fort lauderdale",
+            "npmi": 2305.0446167057034
+          },
+          {
+            "r_val": "ohio northern university",
+            "s_val": "ada",
+            "npmi": 10367.564298216883
+          },
+          {
+            "r_val": "scripps college",
+            "s_val": "claremont",
+            "npmi": 6112.1656670068505
+          },
+          {
+            "r_val": "wilberforce university",
+            "s_val": "wilberforce",
+            "npmi": 3538.778105729679
+          },
+          {
+            "r_val": "dominican university",
+            "s_val": "river forest",
+            "npmi": 9519.96349994235
+          },
+          {
+            "r_val": "la salle university",
+            "s_val": "philadelphia",
+            "npmi": 9886.442665873807
+          },
+          {
+            "r_val": "lake erie college",
+            "s_val": "painesville",
+            "npmi": 9800.93193813577
+          },
+          {
+            "r_val": "james madison university",
+            "s_val": "harrisonburg",
+            "npmi": 9667.3268279325
+          },
+          {
+            "r_val": "post university",
+            "s_val": "waterbury",
+            "npmi": 7226.373862606365
+          },
+          {
+            "r_val": "illinois college",
+            "s_val": "jacksonville",
+            "npmi": 11123.062225011785
+          },
+          {
+            "r_val": "newman university",
+            "s_val": "wichita",
+            "npmi": 5024.612740485019
+          },
+          {
+            "r_val": "centenary college",
+            "s_val": "hackettstown",
+            "npmi": 5423.98829982032
+          },
+          {
+            "r_val": "lamar university",
+            "s_val": "beaumont",
+            "npmi": 8059.049451353765
+          },
+          {
+            "r_val": "marist college",
+            "s_val": "poughkeepsie",
+            "npmi": 10641.875688832242
+          },
+          {
+            "r_val": "hilbert college",
+            "s_val": "hamburg",
+            "npmi": 8262.20099581281
+          },
+          {
+            "r_val": "southern connecticut state university",
+            "s_val": "new haven",
+            "npmi": 9520.530743101925
+          },
+          {
+            "r_val": "benedict college",
+            "s_val": "columbia",
+            "npmi": 10166.100989521085
+          },
+          {
+            "r_val": "la sierra university",
+            "s_val": "riverside",
+            "npmi": 5506.944318380113
+          },
+          {
+            "r_val": "babson college",
+            "s_val": "babson park",
+            "npmi": 7631.6895368333135
+          },
+          {
+            "r_val": "williams college",
+            "s_val": "williamstown",
+            "npmi": 9270.518954119912
+          },
+          {
+            "r_val": "boston college",
+            "s_val": "chestnut hill",
+            "npmi": 10255.863003090868
+          },
+          {
+            "r_val": "central connecticut state university",
+            "s_val": "new britain",
+            "npmi": 9303.236686905366
+          },
+          {
+            "r_val": "gustavus adolphus college",
+            "s_val": "saint peter",
+            "npmi": 9516.043675051236
+          },
+          {
+            "r_val": "delaware state university",
+            "s_val": "dover",
+            "npmi": 9806.766058080175
+          },
+          {
+            "r_val": "colorado state university",
+            "s_val": "fort collins",
+            "npmi": 8479.467412040362
+          },
+          {
+            "r_val": "wright state university",
+            "s_val": "dayton",
+            "npmi": 8951.120123495628
+          },
+          {
+            "r_val": "niagara university",
+            "s_val": "niagara university",
+            "npmi": 4814.603947100555
+          },
+          {
+            "r_val": "wilmington college",
+            "s_val": "wilmington",
+            "npmi": 8903.074983426179
+          },
+          {
+            "r_val": "texas woman's university",
+            "s_val": "denton",
+            "npmi": 8315.453159841723
+          },
+          {
+            "r_val": "shepherd university",
+            "s_val": "shepherdstown",
+            "npmi": 8992.820364851159
+          },
+          {
+            "r_val": "suffolk university",
+            "s_val": "boston",
+            "npmi": 10000.700892253126
+          },
+          {
+            "r_val": "providence college",
+            "s_val": "providence",
+            "npmi": 8809.845585814866
+          },
+          {
+            "r_val": "trinity university",
+            "s_val": "san antonio",
+            "npmi": 9966.143184633107
+          },
+          {
+            "r_val": "wisconsin lutheran college",
+            "s_val": "milwaukee",
+            "npmi": 9138.879381575318
+          },
+          {
+            "r_val": "armstrong atlantic state university",
+            "s_val": "savannah",
+            "npmi": 8485.87018134841
+          },
+          {
+            "r_val": "oakland city university",
+            "s_val": "oakland city",
+            "npmi": 5939.340736303127
+          },
+          {
+            "r_val": "national university",
+            "s_val": "la jolla",
+            "npmi": 5744.917585744004
+          },
+          {
+            "r_val": "harvard university",
+            "s_val": "cambridge",
+            "npmi": 8323.726399795374
+          },
+          {
+            "r_val": "hult international business school",
+            "s_val": "cambridge",
+            "npmi": 724.6132366353353
+          },
+          {
+            "r_val": "southwest baptist university",
+            "s_val": "bolivar",
+            "npmi": 10004.815006261735
+          },
+          {
+            "r_val": "northwood university",
+            "s_val": "midland",
+            "npmi": 9063.968631077927
+          },
+          {
+            "r_val": "san francisco art institute",
+            "s_val": "san francisco",
+            "npmi": 4058.013035791947
+          },
+          {
+            "r_val": "waynesburg university",
+            "s_val": "waynesburg",
+            "npmi": 9951.587184650803
+          },
+          {
+            "r_val": "monmouth college",
+            "s_val": "monmouth",
+            "npmi": 10846.690772143416
+          },
+          {
+            "r_val": "grambling state university",
+            "s_val": "grambling",
+            "npmi": 8294.069686629
+          },
+          {
+            "r_val": "pacific university",
+            "s_val": "forest grove",
+            "npmi": 8221.843544503357
+          },
+          {
+            "r_val": "davidson college",
+            "s_val": "davidson",
+            "npmi": 8728.989370782083
+          },
+          {
+            "r_val": "belmont abbey college",
+            "s_val": "belmont",
+            "npmi": 5712.329514486817
+          },
+          {
+            "r_val": "asbury university",
+            "s_val": "wilmore",
+            "npmi": 3020.2855690779793
+          },
+          {
+            "r_val": "washington college",
+            "s_val": "chestertown",
+            "npmi": 10505.128374672908
+          },
+          {
+            "r_val": "hawaii pacific university",
+            "s_val": "honolulu",
+            "npmi": 9197.07071987919
+          },
+          {
+            "r_val": "patten university",
+            "s_val": "oakland",
+            "npmi": 3081.484227231437
+          },
+          {
+            "r_val": "franklin university",
+            "s_val": "columbus",
+            "npmi": 8459.498443726203
+          },
+          {
+            "r_val": "northeastern university",
+            "s_val": "boston",
+            "npmi": 9906.723639524755
+          },
+          {
+            "r_val": "carlos albizu university",
+            "s_val": "miami",
+            "npmi": 3293.6755754781134
+          },
+          {
+            "r_val": "johnson university",
+            "s_val": "knoxville",
+            "npmi": 2194.872603522285
+          },
+          {
+            "r_val": "caldwell college",
+            "s_val": "caldwell",
+            "npmi": 6617.721711046568
+          },
+          {
+            "r_val": "rust college",
+            "s_val": "holly springs",
+            "npmi": 7986.249118498266
+          },
+          {
+            "r_val": "dakota state university",
+            "s_val": "madison",
+            "npmi": 9795.277531351914
+          },
+          {
+            "r_val": "murray state university",
+            "s_val": "murray",
+            "npmi": 9545.166555650396
+          },
+          {
+            "r_val": "bloomfield college",
+            "s_val": "bloomfield",
+            "npmi": 5560.039429346076
+          },
+          {
+            "r_val": "louisiana college",
+            "s_val": "pineville",
+            "npmi": 9371.488823463349
+          },
+          {
+            "r_val": "berkeley college",
+            "s_val": "new york",
+            "npmi": 4053.843097422176
+          },
+          {
+            "r_val": "mount angel seminary",
+            "s_val": "saint benedict",
+            "npmi": 2470.5756172604115
+          },
+          {
+            "r_val": "butler university",
+            "s_val": "indianapolis",
+            "npmi": 9005.363730157917
+          },
+          {
+            "r_val": "pfeiffer university",
+            "s_val": "misenheimer",
+            "npmi": 8681.456609073415
+          },
+          {
+            "r_val": "aurora university",
+            "s_val": "aurora",
+            "npmi": 8702.717828264198
+          },
+          {
+            "r_val": "potomac college",
+            "s_val": "washington",
+            "npmi": 59.45681099248023
+          },
+          {
+            "r_val": "regent university",
+            "s_val": "virginia beach",
+            "npmi": 7634.680652044724
+          },
+          {
+            "r_val": "north carolina wesleyan college",
+            "s_val": "rocky mount",
+            "npmi": 9425.27261415186
+          },
+          {
+            "r_val": "ranken technical college",
+            "s_val": "saint louis",
+            "npmi": 406.12993916005496
+          },
+          {
+            "r_val": "millikin university",
+            "s_val": "decatur",
+            "npmi": 10541.67660535872
+          },
+          {
+            "r_val": "northwest christian university",
+            "s_val": "eugene",
+            "npmi": 2703.0534297345253
+          },
+          {
+            "r_val": "resurrection university",
+            "s_val": "chicago",
+            "npmi": 548.0685498326409
+          },
+          {
+            "r_val": "merrimack college",
+            "s_val": "north andover",
+            "npmi": 10845.631325485134
+          },
+          {
+            "r_val": "nazarene bible college",
+            "s_val": "colorado springs",
+            "npmi": 2204.296712242664
+          },
+          {
+            "r_val": "tennessee wesleyan college",
+            "s_val": "athens",
+            "npmi": 4772.649873992839
+          },
+          {
+            "r_val": "case western reserve university",
+            "s_val": "cleveland",
+            "npmi": 10203.118221812709
+          },
+          {
+            "r_val": "presentation college",
+            "s_val": "aberdeen",
+            "npmi": 7930.219872808068
+          },
+          {
+            "r_val": "rensselaer polytechnic institute",
+            "s_val": "troy",
+            "npmi": 9496.138983796744
+          },
+          {
+            "r_val": "loyola university maryland",
+            "s_val": "baltimore",
+            "npmi": 8826.132274165264
+          },
+          {
+            "r_val": "miami dade college",
+            "s_val": "miami",
+            "npmi": 6678.346944907745
+          },
+          {
+            "r_val": "nova southeastern university",
+            "s_val": "fort lauderdale",
+            "npmi": 6966.92897010734
+          },
+          {
+            "r_val": "bryn mawr college",
+            "s_val": "bryn mawr",
+            "npmi": 9730.668234536943
+          },
+          {
+            "r_val": "depaul university",
+            "s_val": "chicago",
+            "npmi": 8861.026233081748
+          },
+          {
+            "r_val": "concordia university chicago",
+            "s_val": "river forest",
+            "npmi": 7174.875799370057
+          },
+          {
+            "r_val": "southern adventist university",
+            "s_val": "collegedale",
+            "npmi": 5771.409916431308
+          },
+          {
+            "r_val": "parker university",
+            "s_val": "dallas",
+            "npmi": 3683.082707300795
+          },
+          {
+            "r_val": "marietta college",
+            "s_val": "marietta",
+            "npmi": 9344.76834984796
+          },
+          {
+            "r_val": "bridgewater state university",
+            "s_val": "bridgewater",
+            "npmi": 7466.908559683789
+          },
+          {
+            "r_val": "washburn university",
+            "s_val": "topeka",
+            "npmi": 9752.502714338996
+          },
+          {
+            "r_val": "cornell college",
+            "s_val": "mount vernon",
+            "npmi": 10094.830856671253
+          },
+          {
+            "r_val": "talladega college",
+            "s_val": "talladega",
+            "npmi": 7338.4143021424
+          },
+          {
+            "r_val": "elmira college",
+            "s_val": "elmira",
+            "npmi": 7514.543135527997
+          },
+          {
+            "r_val": "ithaca college",
+            "s_val": "ithaca",
+            "npmi": 10778.301983636959
+          },
+          {
+            "r_val": "hope college",
+            "s_val": "holland",
+            "npmi": 9695.88724825619
+          },
+          {
+            "r_val": "tennessee state university",
+            "s_val": "nashville",
+            "npmi": 8645.8581507431
+          },
+          {
+            "r_val": "buena vista university",
+            "s_val": "storm lake",
+            "npmi": 10280.134806416392
+          },
+          {
+            "r_val": "briarcliffe college",
+            "s_val": "bethpage",
+            "npmi": 6365.33770500262
+          },
+          {
+            "r_val": "king's college",
+            "s_val": "wilkes barre",
+            "npmi": 10716.643620590554
+          },
+          {
+            "r_val": "fort valley state university",
+            "s_val": "fort valley",
+            "npmi": 10591.078454042292
+          },
+          {
+            "r_val": "howard payne university",
+            "s_val": "brownwood",
+            "npmi": 8343.216709136665
+          },
+          {
+            "r_val": "lehigh university",
+            "s_val": "bethlehem",
+            "npmi": 9686.653831461987
+          },
+          {
+            "r_val": "thomas university",
+            "s_val": "thomasville",
+            "npmi": 8655.518891826503
+          },
+          {
+            "r_val": "devry university",
+            "s_val": "chicago",
+            "npmi": 748.5038896324131
+          },
+          {
+            "r_val": "haverford college",
+            "s_val": "haverford",
+            "npmi": 9159.076926043315
+          },
+          {
+            "r_val": "silver lake college",
+            "s_val": "manitowoc",
+            "npmi": 2191.3930065297054
+          },
+          {
+            "r_val": "thomas aquinas college",
+            "s_val": "santa paula",
+            "npmi": 5738.556438957241
+          },
+          {
+            "r_val": "wayne state college",
+            "s_val": "wayne",
+            "npmi": 9009.412420116863
+          },
+          {
+            "r_val": "utica college",
+            "s_val": "utica",
+            "npmi": 10609.284095627085
+          },
+          {
+            "r_val": "valley city state university",
+            "s_val": "valley city",
+            "npmi": 7202.451016050522
+          },
+          {
+            "r_val": "lafayette college",
+            "s_val": "easton",
+            "npmi": 9553.32837279376
+          },
+          {
+            "r_val": "manhattanville college",
+            "s_val": "purchase",
+            "npmi": 7624.064002742154
+          },
+          {
+            "r_val": "roberts wesleyan college",
+            "s_val": "rochester",
+            "npmi": 6937.5815601179775
+          },
+          {
+            "r_val": "michigan technological university",
+            "s_val": "houghton",
+            "npmi": 10037.66514414996
+          },
+          {
+            "r_val": "carroll university",
+            "s_val": "waukesha",
+            "npmi": 9142.811776508854
+          },
+          {
+            "r_val": "cumberland university",
+            "s_val": "lebanon",
+            "npmi": 8559.637218950322
+          },
+          {
+            "r_val": "winthrop university",
+            "s_val": "rock hill",
+            "npmi": 7287.512657291954
+          },
+          {
+            "r_val": "eastern illinois university",
+            "s_val": "charleston",
+            "npmi": 9306.216329854895
+          },
+          {
+            "r_val": "wheaton college",
+            "s_val": "wheaton",
+            "npmi": 9634.263813649428
+          },
+          {
+            "r_val": "oral roberts university",
+            "s_val": "tulsa",
+            "npmi": 7569.101985564508
+          },
+          {
+            "r_val": "united states air force academy",
+            "s_val": "colorado springs",
+            "npmi": 6189.224668091956
+          },
+          {
+            "r_val": "wofford college",
+            "s_val": "spartanburg",
+            "npmi": 9391.301955836683
+          },
+          {
+            "r_val": "spring hill college",
+            "s_val": "mobile",
+            "npmi": 9564.715031830117
+          },
+          {
+            "r_val": "alcorn state university",
+            "s_val": "alcorn state",
+            "npmi": 9415.270189949195
+          },
+          {
+            "r_val": "southern vermont college",
+            "s_val": "bennington",
+            "npmi": 6157.982304940591
+          },
+          {
+            "r_val": "bastyr university",
+            "s_val": "kenmore",
+            "npmi": 2144.9517190670877
+          },
+          {
+            "r_val": "otterbein university",
+            "s_val": "westerville",
+            "npmi": 6420.971535307917
+          },
+          {
+            "r_val": "southern nazarene university",
+            "s_val": "bethany",
+            "npmi": 9189.315137404024
+          },
+          {
+            "r_val": "becker college",
+            "s_val": "worcester",
+            "npmi": 8570.382922147588
+          },
+          {
+            "r_val": "bates college",
+            "s_val": "lewiston",
+            "npmi": 11114.174561339363
+          },
+          {
+            "r_val": "benedictine university",
+            "s_val": "lisle",
+            "npmi": 9798.221417222963
+          },
+          {
+            "r_val": "wichita state university",
+            "s_val": "wichita",
+            "npmi": 7414.737417945117
+          },
+          {
+            "r_val": "central bible college",
+            "s_val": "springfield",
+            "npmi": 6097.807661220968
+          },
+          {
+            "r_val": "roanoke college",
+            "s_val": "salem",
+            "npmi": 7776.197712212955
+          },
+          {
+            "r_val": "sul ross state university",
+            "s_val": "alpine",
+            "npmi": 9162.087872922157
+          },
+          {
+            "r_val": "hastings college",
+            "s_val": "hastings",
+            "npmi": 9097.5300338638
+          },
+          {
+            "r_val": "medaille college",
+            "s_val": "buffalo",
+            "npmi": 9625.043019621846
+          },
+          {
+            "r_val": "rochester college",
+            "s_val": "rochester hills",
+            "npmi": 2719.289951797093
+          },
+          {
+            "r_val": "sarah lawrence college",
+            "s_val": "bronxville",
+            "npmi": 8611.933711233185
+          },
+          {
+            "r_val": "northland college",
+            "s_val": "ashland",
+            "npmi": 5376.334515641086
+          },
+          {
+            "r_val": "austin peay state university",
+            "s_val": "clarksville",
+            "npmi": 8342.364653485258
+          },
+          {
+            "r_val": "keystone college",
+            "s_val": "la plume",
+            "npmi": 6487.892739773894
+          },
+          {
+            "r_val": "florida atlantic university",
+            "s_val": "boca raton",
+            "npmi": 9606.317992134103
+          },
+          {
+            "r_val": "ripon college",
+            "s_val": "ripon",
+            "npmi": 10192.712745452556
+          },
+          {
+            "r_val": "tarleton state university",
+            "s_val": "stephenville",
+            "npmi": 9499.49329918927
+          },
+          {
+            "r_val": "morgan state university",
+            "s_val": "baltimore",
+            "npmi": 8626.319657235093
+          },
+          {
+            "r_val": "crown college",
+            "s_val": "saint bonifacius",
+            "npmi": 7323.809847451704
+          },
+          {
+            "r_val": "middle tennessee state university",
+            "s_val": "murfreesboro",
+            "npmi": 9748.637630307323
+          },
+          {
+            "r_val": "mitchell college",
+            "s_val": "new london",
+            "npmi": 6792.029492461663
+          },
+          {
+            "r_val": "grace bible college",
+            "s_val": "grand rapids",
+            "npmi": 1212.7859928639816
+          },
+          {
+            "r_val": "western international university",
+            "s_val": "phoenix",
+            "npmi": 2835.6497214227643
+          },
+          {
+            "r_val": "lancaster bible college",
+            "s_val": "lancaster",
+            "npmi": 5229.288465090464
+          },
+          {
+            "r_val": "wesleyan college",
+            "s_val": "macon",
+            "npmi": 9140.240983321797
+          },
+          {
+            "r_val": "colgate university",
+            "s_val": "hamilton",
+            "npmi": 9063.805718962427
+          },
+          {
+            "r_val": "bayamon central university",
+            "s_val": "bayamon",
+            "npmi": 4372.974944966623
+          },
+          {
+            "r_val": "mount holyoke college",
+            "s_val": "south hadley",
+            "npmi": 9690.930288595566
+          },
+          {
+            "r_val": "shawnee state university",
+            "s_val": "portsmouth",
+            "npmi": 6176.210930380545
+          },
+          {
+            "r_val": "roosevelt university",
+            "s_val": "chicago",
+            "npmi": 8588.197015000806
+          },
+          {
+            "r_val": "edison state college",
+            "s_val": "fort myers",
+            "npmi": 1141.0272859214263
+          },
+          {
+            "r_val": "texas college",
+            "s_val": "tyler",
+            "npmi": 8354.987789053293
+          },
+          {
+            "r_val": "rivier university",
+            "s_val": "nashua",
+            "npmi": 5906.220608730113
+          },
+          {
+            "r_val": "manhattan christian college",
+            "s_val": "manhattan",
+            "npmi": 3233.770768308067
+          },
+          {
+            "r_val": "alice lloyd college",
+            "s_val": "pippa passes",
+            "npmi": 4547.340530474046
+          },
+          {
+            "r_val": "moravian college",
+            "s_val": "bethlehem",
+            "npmi": 9009.89902953923
+          },
+          {
+            "r_val": "life university",
+            "s_val": "marietta",
+            "npmi": 9152.932863109116
+          },
+          {
+            "r_val": "brandeis university",
+            "s_val": "waltham",
+            "npmi": 10145.34259990471
+          },
+          {
+            "r_val": "colorado college",
+            "s_val": "colorado springs",
+            "npmi": 9651.94167496615
+          },
+          {
+            "r_val": "bryant university",
+            "s_val": "smithfield",
+            "npmi": 9946.513867703454
+          },
+          {
+            "r_val": "lexington college",
+            "s_val": "chicago",
+            "npmi": 3095.6603555710303
+          },
+          {
+            "r_val": "knox college",
+            "s_val": "galesburg",
+            "npmi": 10861.387331970187
+          },
+          {
+            "r_val": "vermont technical college",
+            "s_val": "randolph center",
+            "npmi": 1610.585161497211
+          },
+          {
+            "r_val": "southwestern college",
+            "s_val": "winfield",
+            "npmi": 7268.012702690134
+          },
+          {
+            "r_val": "cedarville university",
+            "s_val": "cedarville",
+            "npmi": 8721.09035545995
+          },
+          {
+            "r_val": "north greenville university",
+            "s_val": "tigerville",
+            "npmi": 9653.525650443133
+          },
+          {
+            "r_val": "concord university",
+            "s_val": "athens",
+            "npmi": 8933.801273204323
+          },
+          {
+            "r_val": "campbell university",
+            "s_val": "buies creek",
+            "npmi": 8314.616042681331
+          },
+          {
+            "r_val": "bethany lutheran college",
+            "s_val": "mankato",
+            "npmi": 5938.790501251348
+          },
+          {
+            "r_val": "grand view university",
+            "s_val": "des moines",
+            "npmi": 8071.275985524965
+          },
+          {
+            "r_val": "endicott college",
+            "s_val": "beverly",
+            "npmi": 8201.160959019095
+          },
+          {
+            "r_val": "stonehill college",
+            "s_val": "easton",
+            "npmi": 9324.150555859647
+          },
+          {
+            "r_val": "towson university",
+            "s_val": "towson",
+            "npmi": 9231.830938755083
+          },
+          {
+            "r_val": "duquesne university",
+            "s_val": "pittsburgh",
+            "npmi": 9823.257817789661
+          },
+          {
+            "r_val": "urbana university",
+            "s_val": "urbana",
+            "npmi": 8544.448781223875
+          },
+          {
+            "r_val": "agnes scott college",
+            "s_val": "decatur",
+            "npmi": 9744.703611935876
+          },
+          {
+            "r_val": "oklahoma city university",
+            "s_val": "oklahoma city",
+            "npmi": 8483.165784042541
+          },
+          {
+            "r_val": "bryan college",
+            "s_val": "dayton",
+            "npmi": 6537.16724534435
+          },
+          {
+            "r_val": "stanford university",
+            "s_val": "stanford",
+            "npmi": 8443.615221582268
+          },
+          {
+            "r_val": "utah state university",
+            "s_val": "logan",
+            "npmi": 7864.964422483987
+          },
+          {
+            "r_val": "warner university",
+            "s_val": "lake wales",
+            "npmi": 3457.072614270542
+          },
+          {
+            "r_val": "concordia college",
+            "s_val": "moorhead",
+            "npmi": 7807.255395526661
+          },
+          {
+            "r_val": "greensboro college",
+            "s_val": "greensboro",
+            "npmi": 10541.224713737409
+          },
+          {
+            "r_val": "menlo college",
+            "s_val": "atherton",
+            "npmi": 8456.676210064945
+          },
+          {
+            "r_val": "baptist bible college",
+            "s_val": "springfield",
+            "npmi": 2506.471678182547
+          },
+          {
+            "r_val": "geneva college",
+            "s_val": "beaver falls",
+            "npmi": 9994.039134610544
+          },
+          {
+            "r_val": "wabash college",
+            "s_val": "crawfordsville",
+            "npmi": 9048.760434083273
+          },
+          {
+            "r_val": "clark atlanta university",
+            "s_val": "atlanta",
+            "npmi": 9917.202064478903
+          },
+          {
+            "r_val": "loma linda university",
+            "s_val": "loma linda",
+            "npmi": 6562.187302547317
+          },
+          {
+            "r_val": "william woods university",
+            "s_val": "fulton",
+            "npmi": 6502.623095659539
+          },
+          {
+            "r_val": "toccoa falls college",
+            "s_val": "toccoa falls",
+            "npmi": 2370.787972491906
+          },
+          {
+            "r_val": "william penn university",
+            "s_val": "oskaloosa",
+            "npmi": 7353.500003066219
+          },
+          {
+            "r_val": "brenau university",
+            "s_val": "gainesville",
+            "npmi": 9077.100999904735
+          },
+          {
+            "r_val": "marymount university",
+            "s_val": "arlington",
+            "npmi": 10165.1097366491
+          },
+          {
+            "r_val": "bellevue university",
+            "s_val": "bellevue",
+            "npmi": 4392.413767167775
+          },
+          {
+            "r_val": "clarke university",
+            "s_val": "dubuque",
+            "npmi": 2599.5673230375514
+          },
+          {
+            "r_val": "kaplan university",
+            "s_val": "davenport",
+            "npmi": 440.37377007938034
+          },
+          {
+            "r_val": "san diego christian college",
+            "s_val": "el cajon",
+            "npmi": 3704.015108684422
+          },
+          {
+            "r_val": "siena heights university",
+            "s_val": "adrian",
+            "npmi": 5946.476480212192
+          },
+          {
+            "r_val": "thomas college",
+            "s_val": "waterville",
+            "npmi": 4191.819932149811
+          },
+          {
+            "r_val": "milligan college",
+            "s_val": "milligan college",
+            "npmi": 5164.284803064591
+          },
+          {
+            "r_val": "daemen college",
+            "s_val": "amherst",
+            "npmi": 7847.408248708796
+          },
+          {
+            "r_val": "appalachian state university",
+            "s_val": "boone",
+            "npmi": 9075.546566680652
+          },
+          {
+            "r_val": "multnomah university",
+            "s_val": "portland",
+            "npmi": 1203.0770342492965
+          },
+          {
+            "r_val": "georgetown university",
+            "s_val": "washington",
+            "npmi": 9753.5756951618
+          },
+          {
+            "r_val": "oglala lakota college",
+            "s_val": "kyle",
+            "npmi": 2490.5335373562198
+          },
+          {
+            "r_val": "georgian court university",
+            "s_val": "lakewood",
+            "npmi": 5735.380547690253
+          },
+          {
+            "r_val": "suny maritime college",
+            "s_val": "bronx",
+            "npmi": 957.8094210597051
+          },
+          {
+            "r_val": "seton hall university",
+            "s_val": "south orange",
+            "npmi": 9867.066383866662
+          },
+          {
+            "r_val": "donnelly college",
+            "s_val": "kansas city",
+            "npmi": 5959.630880257791
+          },
+          {
+            "r_val": "missouri baptist university",
+            "s_val": "saint louis",
+            "npmi": 2386.499363873133
+          },
+          {
+            "r_val": "elon university",
+            "s_val": "elon",
+            "npmi": 9397.628401283888
+          },
+          {
+            "r_val": "capital university",
+            "s_val": "columbus",
+            "npmi": 9991.287885858586
+          },
+          {
+            "r_val": "judson college",
+            "s_val": "marion",
+            "npmi": 2474.9065117908012
+          },
+          {
+            "r_val": "villanova university",
+            "s_val": "villanova",
+            "npmi": 10045.150352855097
+          },
+          {
+            "r_val": "assumption college",
+            "s_val": "worcester",
+            "npmi": 10857.998766739423
+          },
+          {
+            "r_val": "lyon college",
+            "s_val": "batesville",
+            "npmi": 7425.080198805204
+          },
+          {
+            "r_val": "wheelock college",
+            "s_val": "boston",
+            "npmi": 4427.090352318023
+          },
+          {
+            "r_val": "occidental college",
+            "s_val": "los angeles",
+            "npmi": 8870.303989562804
+          },
+          {
+            "r_val": "washington state university",
+            "s_val": "pullman",
+            "npmi": 9743.650838631336
+          },
+          {
+            "r_val": "corban university",
+            "s_val": "salem",
+            "npmi": 2622.325805008432
+          },
+          {
+            "r_val": "keuka college",
+            "s_val": "keuka park",
+            "npmi": 9602.198209161279
+          },
+          {
+            "r_val": "principia college",
+            "s_val": "elsah",
+            "npmi": 8624.185891605326
+          },
+          {
+            "r_val": "northern arizona university",
+            "s_val": "flagstaff",
+            "npmi": 10562.304017573098
+          },
+          {
+            "r_val": "hampton university",
+            "s_val": "hampton",
+            "npmi": 9726.870370975075
+          },
+          {
+            "r_val": "san francisco state university",
+            "s_val": "san francisco",
+            "npmi": 8759.255647867427
+          },
+          {
+            "r_val": "wittenberg university",
+            "s_val": "springfield",
+            "npmi": 10753.685306956857
+          },
+          {
+            "r_val": "lynchburg college",
+            "s_val": "lynchburg",
+            "npmi": 8812.72296946181
+          },
+          {
+            "r_val": "rhode island college",
+            "s_val": "providence",
+            "npmi": 8110.801511682823
+          },
+          {
+            "r_val": "western new mexico university",
+            "s_val": "silver city",
+            "npmi": 11112.080810882724
+          },
+          {
+            "r_val": "grand valley state university",
+            "s_val": "allendale",
+            "npmi": 10113.25184109281
+          },
+          {
+            "r_val": "albright college",
+            "s_val": "reading",
+            "npmi": 11394.813001566372
+          },
+          {
+            "r_val": "kansas wesleyan university",
+            "s_val": "salina",
+            "npmi": 7577.761142399142
+          },
+          {
+            "r_val": "great lakes christian college",
+            "s_val": "lansing",
+            "npmi": 3329.3762922342603
+          },
+          {
+            "r_val": "tougaloo college",
+            "s_val": "tougaloo",
+            "npmi": 5000.932151253336
+          },
+          {
+            "r_val": "naropa university",
+            "s_val": "boulder",
+            "npmi": 2845.295179430013
+          },
+          {
+            "r_val": "oklahoma baptist university",
+            "s_val": "shawnee",
+            "npmi": 9336.895438999363
+          },
+          {
+            "r_val": "california lutheran university",
+            "s_val": "thousand oaks",
+            "npmi": 9711.37934493833
+          },
+          {
+            "r_val": "worcester polytechnic institute",
+            "s_val": "worcester",
+            "npmi": 9705.392638989248
+          },
+          {
+            "r_val": "savannah state university",
+            "s_val": "savannah",
+            "npmi": 9046.358833805833
+          },
+          {
+            "r_val": "lakeland college",
+            "s_val": "plymouth",
+            "npmi": 7375.197424833282
+          },
+          {
+            "r_val": "davis college",
+            "s_val": "johnson city",
+            "npmi": 2447.1105843467276
+          },
+          {
+            "r_val": "western governors university",
+            "s_val": "salt lake city",
+            "npmi": 5957.380955949578
+          },
+          {
+            "r_val": "bridgewater college",
+            "s_val": "bridgewater",
+            "npmi": 8742.91109224158
+          },
+          {
+            "r_val": "portland state university",
+            "s_val": "portland",
+            "npmi": 7958.843300543094
+          },
+          {
+            "r_val": "southern oregon university",
+            "s_val": "ashland",
+            "npmi": 9222.272370378521
+          },
+          {
+            "r_val": "stephens college",
+            "s_val": "columbia",
+            "npmi": 5830.374934235542
+          },
+          {
+            "r_val": "berry college",
+            "s_val": "mount berry",
+            "npmi": 7567.59103419667
+          },
+          {
+            "r_val": "lebanon valley college",
+            "s_val": "annville",
+            "npmi": 11334.533881115174
+          },
+          {
+            "r_val": "jacksonville university",
+            "s_val": "jacksonville",
+            "npmi": 8087.79677585427
+          },
+          {
+            "r_val": "king university",
+            "s_val": "bristol",
+            "npmi": 6289.489086174879
+          },
+          {
+            "r_val": "chicago state university",
+            "s_val": "chicago",
+            "npmi": 7684.759973170892
+          },
+          {
+            "r_val": "united states merchant marine academy",
+            "s_val": "kings point",
+            "npmi": 8399.12993133393
+          },
+          {
+            "r_val": "loyola university new orleans",
+            "s_val": "new orleans",
+            "npmi": 9861.883765863264
+          },
+          {
+            "r_val": "emerson college",
+            "s_val": "boston",
+            "npmi": 6825.7172249759205
+          },
+          {
+            "r_val": "walden university",
+            "s_val": "minneapolis",
+            "npmi": 6381.682420691473
+          },
+          {
+            "r_val": "great basin college",
+            "s_val": "elko",
+            "npmi": 2653.5300143105974
+          },
+          {
+            "r_val": "virginia intermont college",
+            "s_val": "bristol",
+            "npmi": 4006.449726547352
+          },
+          {
+            "r_val": "regis college",
+            "s_val": "weston",
+            "npmi": 9362.819144550025
+          },
+          {
+            "r_val": "herzing university",
+            "s_val": "winter park",
+            "npmi": 915.5091063667321
+          },
+          {
+            "r_val": "concordia university wisconsin",
+            "s_val": "mequon",
+            "npmi": 8792.81231042409
+          },
+          {
+            "r_val": "united states coast guard academy",
+            "s_val": "new london",
+            "npmi": 1026.249980739555
+          },
+          {
+            "r_val": "maryville college",
+            "s_val": "maryville",
+            "npmi": 10019.170593687659
+          },
+          {
+            "r_val": "emmanuel college",
+            "s_val": "boston",
+            "npmi": 7880.235162843949
+          },
+          {
+            "r_val": "suny downstate medical center",
+            "s_val": "brooklyn",
+            "npmi": 4078.660818767803
+          },
+          {
+            "r_val": "ohio dominican university",
+            "s_val": "columbus",
+            "npmi": 9069.165165702343
+          },
+          {
+            "r_val": "piedmont college",
+            "s_val": "demorest",
+            "npmi": 6484.750072072144
+          },
+          {
+            "r_val": "bethel university",
+            "s_val": "saint paul",
+            "npmi": 7742.071666289971
+          },
+          {
+            "r_val": "central state university",
+            "s_val": "wilberforce",
+            "npmi": 9519.905670959211
+          },
+          {
+            "r_val": "five towns college",
+            "s_val": "dix hills",
+            "npmi": 897.2465232751748
+          },
+          {
+            "r_val": "peirce college",
+            "s_val": "philadelphia",
+            "npmi": 8173.648692112783
+          },
+          {
+            "r_val": "bradley university",
+            "s_val": "peoria",
+            "npmi": 9941.34519803176
+          },
+          {
+            "r_val": "francis marion university",
+            "s_val": "florence",
+            "npmi": 8266.728673166232
+          },
+          {
+            "r_val": "webber international university",
+            "s_val": "babson park",
+            "npmi": 7639.735372372294
+          },
+          {
+            "r_val": "southern wesleyan university",
+            "s_val": "central",
+            "npmi": 6681.172362638587
+          },
+          {
+            "r_val": "trinity international university",
+            "s_val": "deerfield",
+            "npmi": 8391.636815864196
+          },
+          {
+            "r_val": "west virginia wesleyan college",
+            "s_val": "buckhannon",
+            "npmi": 9940.892407620722
+          },
+          {
+            "r_val": "adelphi university",
+            "s_val": "garden city",
+            "npmi": 9097.859682836224
+          },
+          {
+            "r_val": "southeastern university",
+            "s_val": "lakeland",
+            "npmi": 4768.414249870572
+          },
+          {
+            "r_val": "coastal carolina university",
+            "s_val": "conway",
+            "npmi": 8838.301943847586
+          },
+          {
+            "r_val": "northern michigan university",
+            "s_val": "marquette",
+            "npmi": 10594.893707291885
+          },
+          {
+            "r_val": "pontifical college josephinum",
+            "s_val": "columbus",
+            "npmi": 1860.1875966542177
+          },
+          {
+            "r_val": "springfield college",
+            "s_val": "springfield",
+            "npmi": 9853.43487518504
+          },
+          {
+            "r_val": "suny empire state college",
+            "s_val": "saratoga springs",
+            "npmi": 3413.178170580196
+          },
+          {
+            "r_val": "western illinois university",
+            "s_val": "macomb",
+            "npmi": 9090.5422009191
+          },
+          {
+            "r_val": "sweet briar college",
+            "s_val": "sweet briar",
+            "npmi": 7899.334889581194
+          },
+          {
+            "r_val": "morningside college",
+            "s_val": "sioux city",
+            "npmi": 8592.830593577992
+          },
+          {
+            "r_val": "william carey university",
+            "s_val": "hattiesburg",
+            "npmi": 1577.0153780222504
+          },
+          {
+            "r_val": "oakwood university",
+            "s_val": "huntsville",
+            "npmi": 6000.122297610562
+          },
+          {
+            "r_val": "prescott college",
+            "s_val": "prescott",
+            "npmi": 584.8742315785851
+          },
+          {
+            "r_val": "stillman college",
+            "s_val": "tuscaloosa",
+            "npmi": 9134.501285402835
+          },
+          {
+            "r_val": "claflin university",
+            "s_val": "orangeburg",
+            "npmi": 8964.445857280436
+          },
+          {
+            "r_val": "united states sports academy",
+            "s_val": "daphne",
+            "npmi": 223.05423168097647
+          },
+          {
+            "r_val": "salem international university",
+            "s_val": "salem",
+            "npmi": 7256.879286364846
+          },
+          {
+            "r_val": "stetson university",
+            "s_val": "deland",
+            "npmi": 9284.965768836057
+          },
+          {
+            "r_val": "christian brothers university",
+            "s_val": "memphis",
+            "npmi": 7080.657317578584
+          },
+          {
+            "r_val": "edgewood college",
+            "s_val": "madison",
+            "npmi": 8593.662969716419
+          },
+          {
+            "r_val": "san diego state university",
+            "s_val": "san diego",
+            "npmi": 9452.161801993318
+          },
+          {
+            "r_val": "samford university",
+            "s_val": "birmingham",
+            "npmi": 9928.290818834666
+          },
+          {
+            "r_val": "midland university",
+            "s_val": "fremont",
+            "npmi": 2313.4534187499903
+          },
+          {
+            "r_val": "sacred heart university",
+            "s_val": "fairfield",
+            "npmi": 10741.58740245966
+          },
+          {
+            "r_val": "belmont university",
+            "s_val": "nashville",
+            "npmi": 9551.192426065265
+          },
+          {
+            "r_val": "millsaps college",
+            "s_val": "jackson",
+            "npmi": 10203.96955403417
+          },
+          {
+            "r_val": "wheeling jesuit university",
+            "s_val": "wheeling",
+            "npmi": 9354.958483912145
+          },
+          {
+            "r_val": "webster university",
+            "s_val": "saint louis",
+            "npmi": 4632.680558038219
+          },
+          {
+            "r_val": "point university",
+            "s_val": "east point",
+            "npmi": 2581.4015816560723
+          },
+          {
+            "r_val": "eckerd college",
+            "s_val": "saint petersburg",
+            "npmi": 5314.250276766365
+          },
+          {
+            "r_val": "kettering university",
+            "s_val": "flint",
+            "npmi": 6835.880593550792
+          },
+          {
+            "r_val": "lincoln university",
+            "s_val": "jefferson city",
+            "npmi": 8177.209501624086
+          },
+          {
+            "r_val": "spring arbor university",
+            "s_val": "spring arbor",
+            "npmi": 7705.707769399222
+          },
+          {
+            "r_val": "juniata college",
+            "s_val": "huntingdon",
+            "npmi": 9676.978839548643
+          },
+          {
+            "r_val": "augsburg college",
+            "s_val": "minneapolis",
+            "npmi": 9292.113429013029
+          },
+          {
+            "r_val": "saginaw valley state university",
+            "s_val": "university center",
+            "npmi": 10353.744621306803
+          },
+          {
+            "r_val": "sonoma state university",
+            "s_val": "rohnert park",
+            "npmi": 4745.655436834676
+          },
+          {
+            "r_val": "rice university",
+            "s_val": "houston",
+            "npmi": 9495.02698530987
+          },
+          {
+            "r_val": "northcentral university",
+            "s_val": "prescott",
+            "npmi": 91.23041378030166
+          },
+          {
+            "r_val": "seattle pacific university",
+            "s_val": "seattle",
+            "npmi": 9540.265917415074
+          },
+          {
+            "r_val": "bucknell university",
+            "s_val": "lewisburg",
+            "npmi": 9727.579955157471
+          },
+          {
+            "r_val": "grace university",
+            "s_val": "omaha",
+            "npmi": 810.0227185731189
+          },
+          {
+            "r_val": "baptist missionary association theological seminary",
+            "s_val": "jacksonville",
+            "npmi": 1985.5457333688448
+          },
+          {
+            "r_val": "mississippi valley state university",
+            "s_val": "itta bena",
+            "npmi": 9425.623710665035
+          },
+          {
+            "r_val": "vincennes university",
+            "s_val": "vincennes",
+            "npmi": 6588.279507690244
+          },
+          {
+            "r_val": "valdosta state university",
+            "s_val": "valdosta",
+            "npmi": 10143.149823517737
+          },
+          {
+            "r_val": "upper iowa university",
+            "s_val": "fayette",
+            "npmi": 10439.172975598623
+          },
+          {
+            "r_val": "walla walla university",
+            "s_val": "college place",
+            "npmi": 4748.8650125690065
+          },
+          {
+            "r_val": "warren wilson college",
+            "s_val": "swannanoa",
+            "npmi": 1485.7003154654672
+          },
+          {
+            "r_val": "american jewish university",
+            "s_val": "los angeles",
+            "npmi": 3383.071047538542
+          },
+          {
+            "r_val": "capitol college",
+            "s_val": "laurel",
+            "npmi": 262.512657239464
+          },
+          {
+            "r_val": "franklin pierce university",
+            "s_val": "rindge",
+            "npmi": 4591.8971663662005
+          },
+          {
+            "r_val": "john brown university",
+            "s_val": "siloam springs",
+            "npmi": 7540.946816217035
+          },
+          {
+            "r_val": "alabama state university",
+            "s_val": "montgomery",
+            "npmi": 10056.005552481467
+          },
+          {
+            "r_val": "whitworth university",
+            "s_val": "spokane",
+            "npmi": 10193.19900341366
+          },
+          {
+            "r_val": "east carolina university",
+            "s_val": "greenville",
+            "npmi": 9854.545465844087
+          },
+          {
+            "r_val": "rosemont college",
+            "s_val": "rosemont",
+            "npmi": 8204.434690647373
+          },
+          {
+            "r_val": "regis university",
+            "s_val": "denver",
+            "npmi": 8898.784901850913
+          },
+          {
+            "r_val": "daytona state college",
+            "s_val": "daytona beach",
+            "npmi": 2507.954349743017
+          },
+          {
+            "r_val": "howard university",
+            "s_val": "washington",
+            "npmi": 9334.688978076465
+          },
+          {
+            "r_val": "kendall college",
+            "s_val": "chicago",
+            "npmi": 3303.119876893975
+          },
+          {
+            "r_val": "carlow university",
+            "s_val": "pittsburgh",
+            "npmi": 8022.17837610724
+          },
+          {
+            "r_val": "columbia college chicago",
+            "s_val": "chicago",
+            "npmi": 4529.72936201603
+          },
+          {
+            "r_val": "vassar college",
+            "s_val": "poughkeepsie",
+            "npmi": 9489.054758751972
+          },
+          {
+            "r_val": "hanover college",
+            "s_val": "hanover",
+            "npmi": 8978.55608867144
+          },
+          {
+            "r_val": "old dominion university",
+            "s_val": "norfolk",
+            "npmi": 9619.465629308263
+          },
+          {
+            "r_val": "quincy university",
+            "s_val": "quincy",
+            "npmi": 10016.347608454917
+          },
+          {
+            "r_val": "augustana college",
+            "s_val": "rock island",
+            "npmi": 10912.69067729495
+          },
+          {
+            "r_val": "hiram college",
+            "s_val": "hiram",
+            "npmi": 9179.484031403648
+          },
+          {
+            "r_val": "drury university",
+            "s_val": "springfield",
+            "npmi": 9649.590453516621
+          },
+          {
+            "r_val": "pacific oaks college",
+            "s_val": "pasadena",
+            "npmi": 2677.583195612408
+          },
+          {
+            "r_val": "shimer college",
+            "s_val": "chicago",
+            "npmi": 4358.961862461561
+          },
+          {
+            "r_val": "mount olive college",
+            "s_val": "mount olive",
+            "npmi": 6986.127999276124
+          },
+          {
+            "r_val": "heidelberg university",
+            "s_val": "tiffin",
+            "npmi": 10585.390407425224
+          },
+          {
+            "r_val": "jacksonville state university",
+            "s_val": "jacksonville",
+            "npmi": 9265.653683274024
+          },
+          {
+            "r_val": "gratz college",
+            "s_val": "melrose park",
+            "npmi": 3920.059379640016
+          },
+          {
+            "r_val": "harvey mudd college",
+            "s_val": "claremont",
+            "npmi": 5269.299723668872
+          },
+          {
+            "r_val": "champlain college",
+            "s_val": "burlington",
+            "npmi": 6695.422821477116
+          },
+          {
+            "r_val": "missouri state university",
+            "s_val": "springfield",
+            "npmi": 9396.036124171802
+          },
+          {
+            "r_val": "chowan university",
+            "s_val": "murfreesboro",
+            "npmi": 8092.166420758993
+          },
+          {
+            "r_val": "antioch university",
+            "s_val": "santa barbara",
+            "npmi": 945.8271055394373
+          },
+          {
+            "r_val": "central washington university",
+            "s_val": "ellensburg",
+            "npmi": 8847.738427406599
+          },
+          {
+            "r_val": "ursinus college",
+            "s_val": "collegeville",
+            "npmi": 10631.38351477224
+          },
+          {
+            "r_val": "denison university",
+            "s_val": "granville",
+            "npmi": 10727.079163366821
+          },
+          {
+            "r_val": "grinnell college",
+            "s_val": "grinnell",
+            "npmi": 9853.041794114331
+          },
+          {
+            "r_val": "bellarmine university",
+            "s_val": "louisville",
+            "npmi": 9297.249239483117
+          },
+          {
+            "r_val": "arkansas state university",
+            "s_val": "state university",
+            "npmi": 8398.559975666883
+          },
+          {
+            "r_val": "georgia regents university",
+            "s_val": "augusta",
+            "npmi": 5818.6096357404585
+          },
+          {
+            "r_val": "kent state university",
+            "s_val": "kent",
+            "npmi": 8809.035744064195
+          },
+          {
+            "r_val": "bluefield college",
+            "s_val": "bluefield",
+            "npmi": 3469.669360733985
+          },
+          {
+            "r_val": "martin university",
+            "s_val": "indianapolis",
+            "npmi": 6210.154473947346
+          },
+          {
+            "r_val": "hartwick college",
+            "s_val": "oneonta",
+            "npmi": 11064.680537121516
+          },
+          {
+            "r_val": "point loma nazarene university",
+            "s_val": "san diego",
+            "npmi": 6343.807238256638
+          },
+          {
+            "r_val": "western carolina university",
+            "s_val": "cullowhee",
+            "npmi": 7644.863386253467
+          },
+          {
+            "r_val": "florida state university",
+            "s_val": "tallahassee",
+            "npmi": 9590.135985375711
+          },
+          {
+            "r_val": "weber state university",
+            "s_val": "ogden",
+            "npmi": 8866.601966626744
+          },
+          {
+            "r_val": "brazosport college",
+            "s_val": "lake jackson",
+            "npmi": 3376.127733897701
+          },
+          {
+            "r_val": "lycoming college",
+            "s_val": "williamsport",
+            "npmi": 9729.304280119763
+          },
+          {
+            "r_val": "valley forge christian college",
+            "s_val": "phoenixville",
+            "npmi": 6174.891020950843
+          },
+          {
+            "r_val": "duke university",
+            "s_val": "durham",
+            "npmi": 8767.24218432435
+          },
+          {
+            "r_val": "paine college",
+            "s_val": "augusta",
+            "npmi": 7221.9111202126915
+          },
+          {
+            "r_val": "plymouth state university",
+            "s_val": "plymouth",
+            "npmi": 9772.052298827826
+          },
+          {
+            "r_val": "andrews university",
+            "s_val": "berrien springs",
+            "npmi": 8491.704316587286
+          },
+          {
+            "r_val": "bellin college",
+            "s_val": "green bay",
+            "npmi": 948.2790421586824
+          },
+          {
+            "r_val": "rockhurst university",
+            "s_val": "kansas city",
+            "npmi": 7638.365643740236
+          },
+          {
+            "r_val": "conception seminary college",
+            "s_val": "conception",
+            "npmi": 1733.125767920399
+          },
+          {
+            "r_val": "lincoln christian university",
+            "s_val": "lincoln",
+            "npmi": 1402.03754997256
+          },
+          {
+            "r_val": "christendom college",
+            "s_val": "front royal",
+            "npmi": 1978.7264056240967
+          },
+          {
+            "r_val": "skidmore college",
+            "s_val": "saratoga springs",
+            "npmi": 9043.740686791694
+          },
+          {
+            "r_val": "adrian college",
+            "s_val": "adrian",
+            "npmi": 10207.686359009671
+          },
+          {
+            "r_val": "coppin state university",
+            "s_val": "baltimore",
+            "npmi": 5624.208027956696
+          },
+          {
+            "r_val": "cleveland state university",
+            "s_val": "cleveland",
+            "npmi": 7589.46405887578
+          },
+          {
+            "r_val": "brescia university",
+            "s_val": "owensboro",
+            "npmi": 5183.578482796698
+          },
+          {
+            "r_val": "ottawa university",
+            "s_val": "ottawa",
+            "npmi": 9787.91463980756
+          },
+          {
+            "r_val": "kean university",
+            "s_val": "union",
+            "npmi": 9488.062896698752
+          },
+          {
+            "r_val": "beloit college",
+            "s_val": "beloit",
+            "npmi": 9664.101512035722
+          },
+          {
+            "r_val": "hood college",
+            "s_val": "frederick",
+            "npmi": 10181.987923351191
+          },
+          {
+            "r_val": "vanderbilt university",
+            "s_val": "nashville",
+            "npmi": 9436.820484517524
+          },
+          {
+            "r_val": "new jersey city university",
+            "s_val": "jersey city",
+            "npmi": 9246.31321359221
+          },
+          {
+            "r_val": "marymount manhattan college",
+            "s_val": "new york",
+            "npmi": 5391.420632037978
+          },
+          {
+            "r_val": "wagner college",
+            "s_val": "staten island",
+            "npmi": 10166.592088338806
+          },
+          {
+            "r_val": "elmhurst college",
+            "s_val": "elmhurst",
+            "npmi": 9628.939823238254
+          },
+          {
+            "r_val": "letourneau university",
+            "s_val": "longview",
+            "npmi": 8393.99928569262
+          },
+          {
+            "r_val": "nebraska wesleyan university",
+            "s_val": "lincoln",
+            "npmi": 10446.594269272442
+          },
+          {
+            "r_val": "western michigan university",
+            "s_val": "kalamazoo",
+            "npmi": 8971.678176815958
+          },
+          {
+            "r_val": "xavier university",
+            "s_val": "cincinnati",
+            "npmi": 8633.224587015186
+          },
+          {
+            "r_val": "viterbo university",
+            "s_val": "la crosse",
+            "npmi": 7745.732153506534
+          },
+          {
+            "r_val": "finlandia university",
+            "s_val": "hancock",
+            "npmi": 6268.005462738563
+          },
+          {
+            "r_val": "charter oak state college",
+            "s_val": "hartford",
+            "npmi": 395.3614486670954
+          },
+          {
+            "r_val": "cincinnati christian university",
+            "s_val": "cincinnati",
+            "npmi": 4651.87793546278
+          },
+          {
+            "r_val": "south dakota state university",
+            "s_val": "brookings",
+            "npmi": 9217.96424517681
+          },
+          {
+            "r_val": "grove city college",
+            "s_val": "grove city",
+            "npmi": 8863.001318071336
+          },
+          {
+            "r_val": "lincoln memorial university",
+            "s_val": "harrogate",
+            "npmi": 8371.322566413817
+          },
+          {
+            "r_val": "midway college",
+            "s_val": "midway",
+            "npmi": 7075.675300691032
+          },
+          {
+            "r_val": "national labor college",
+            "s_val": "silver spring",
+            "npmi": 2979.816166927554
+          },
+          {
+            "r_val": "mary baldwin college",
+            "s_val": "staunton",
+            "npmi": 8979.70173600954
+          },
+          {
+            "r_val": "gannon university",
+            "s_val": "erie",
+            "npmi": 9671.870563786533
+          },
+          {
+            "r_val": "georgia state university",
+            "s_val": "atlanta",
+            "npmi": 8758.980104344848
+          },
+          {
+            "r_val": "woodbury university",
+            "s_val": "burbank",
+            "npmi": 6329.332995384996
+          },
+          {
+            "r_val": "trident university international",
+            "s_val": "cypress",
+            "npmi": 1373.6460059188264
+          },
+          {
+            "r_val": "dallas christian college",
+            "s_val": "denton",
+            "npmi": 608.1500250601041
+          },
+          {
+            "r_val": "wiley college",
+            "s_val": "marshall",
+            "npmi": 7971.640360795463
+          },
+          {
+            "r_val": "rocky mountain college",
+            "s_val": "billings",
+            "npmi": 8010.042868786778
+          },
+          {
+            "r_val": "shorter university",
+            "s_val": "rome",
+            "npmi": 7546.466276552839
+          },
+          {
+            "r_val": "erskine college",
+            "s_val": "due west",
+            "npmi": 7587.244673390858
+          },
+          {
+            "r_val": "drexel university",
+            "s_val": "philadelphia",
+            "npmi": 9093.631424960535
+          },
+          {
+            "r_val": "north carolina central university",
+            "s_val": "durham",
+            "npmi": 9006.577376224546
+          },
+          {
+            "r_val": "oberlin college",
+            "s_val": "oberlin",
+            "npmi": 10034.951210969319
+          },
+          {
+            "r_val": "virginia state university",
+            "s_val": "petersburg",
+            "npmi": 9548.273026532761
+          },
+          {
+            "r_val": "carroll college",
+            "s_val": "helena",
+            "npmi": 10287.821015315327
+          },
+          {
+            "r_val": "sam houston state university",
+            "s_val": "huntsville",
+            "npmi": 9121.478479769185
+          },
+          {
+            "r_val": "avila university",
+            "s_val": "kansas city",
+            "npmi": 9174.641612411695
+          },
+          {
+            "r_val": "beacon college",
+            "s_val": "leesburg",
+            "npmi": 3025.7133470736067
+          },
+          {
+            "r_val": "salisbury university",
+            "s_val": "salisbury",
+            "npmi": 9910.33869778583
+          },
+          {
+            "r_val": "black hills state university",
+            "s_val": "spearfish",
+            "npmi": 8183.225613560068
+          },
+          {
+            "r_val": "boricua college",
+            "s_val": "new york",
+            "npmi": 6810.723843705563
+          },
+          {
+            "r_val": "felician college",
+            "s_val": "lodi",
+            "npmi": 6879.361278003381
+          },
+          {
+            "r_val": "henderson state university",
+            "s_val": "arkadelphia",
+            "npmi": 9763.664384350692
+          },
+          {
+            "r_val": "catawba college",
+            "s_val": "salisbury",
+            "npmi": 11109.538593471463
+          },
+          {
+            "r_val": "grand canyon university",
+            "s_val": "phoenix",
+            "npmi": 7091.097323123701
+          },
+          {
+            "r_val": "clearwater christian college",
+            "s_val": "clearwater",
+            "npmi": 1228.23725717206
+          },
+          {
+            "r_val": "oakland university",
+            "s_val": "rochester",
+            "npmi": 8718.683273092205
+          },
+          {
+            "r_val": "johns hopkins university",
+            "s_val": "baltimore",
+            "npmi": 9590.06592277155
+          },
+          {
+            "r_val": "livingstone college",
+            "s_val": "salisbury",
+            "npmi": 9359.266033915881
+          },
+          {
+            "r_val": "east central university",
+            "s_val": "ada",
+            "npmi": 9646.620055533725
+          },
+          {
+            "r_val": "tiffin university",
+            "s_val": "tiffin",
+            "npmi": 9916.541899263504
+          },
+          {
+            "r_val": "excelsior college",
+            "s_val": "albany",
+            "npmi": 4407.213743722176
+          },
+          {
+            "r_val": "brown university",
+            "s_val": "providence",
+            "npmi": 9177.674803350686
+          },
+          {
+            "r_val": "eastern oregon university",
+            "s_val": "la grande",
+            "npmi": 7205.509852602582
+          },
+          {
+            "r_val": "houston baptist university",
+            "s_val": "houston",
+            "npmi": 9412.610839168758
+          },
+          {
+            "r_val": "pomona college",
+            "s_val": "claremont",
+            "npmi": 8263.03412615234
+          },
+          {
+            "r_val": "barry university",
+            "s_val": "miami shores",
+            "npmi": 8012.378260254774
+          },
+          {
+            "r_val": "ouachita baptist university",
+            "s_val": "arkadelphia",
+            "npmi": 10233.189542322407
+          },
+          {
+            "r_val": "reinhardt university",
+            "s_val": "waleska",
+            "npmi": 5944.973657565439
+          },
+          {
+            "r_val": "mayville state university",
+            "s_val": "mayville",
+            "npmi": 7498.698924403489
+          },
+          {
+            "r_val": "warner pacific college",
+            "s_val": "portland",
+            "npmi": 5978.0882381866995
+          },
+          {
+            "r_val": "appalachian bible college",
+            "s_val": "raleigh",
+            "npmi": 192.81826834834092
+          },
+          {
+            "r_val": "salish kootenai college",
+            "s_val": "pablo",
+            "npmi": 4554.114455190103
+          },
+          {
+            "r_val": "cameron university",
+            "s_val": "lawton",
+            "npmi": 8788.566205466159
+          },
+          {
+            "r_val": "northwestern oklahoma state university",
+            "s_val": "alva",
+            "npmi": 8200.06402101165
+          },
+          {
+            "r_val": "valparaiso university",
+            "s_val": "valparaiso",
+            "npmi": 9689.080331301018
+          },
+          {
+            "r_val": "anderson university",
+            "s_val": "anderson",
+            "npmi": 10515.109059899181
+          },
+          {
+            "r_val": "davenport university",
+            "s_val": "grand rapids",
+            "npmi": 6793.279033438755
+          },
+          {
+            "r_val": "western nevada college",
+            "s_val": "carson city",
+            "npmi": 1284.7564301423438
+          },
+          {
+            "r_val": "california maritime academy",
+            "s_val": "vallejo",
+            "npmi": 3056.0586045958953
+          },
+          {
+            "r_val": "north park university",
+            "s_val": "chicago",
+            "npmi": 9279.384215459035
+          },
+          {
+            "r_val": "cedar crest college",
+            "s_val": "allentown",
+            "npmi": 8179.772700264204
+          },
+          {
+            "r_val": "lincoln college",
+            "s_val": "lincoln",
+            "npmi": 5390.027360626406
+          },
+          {
+            "r_val": "west liberty university",
+            "s_val": "west liberty",
+            "npmi": 7230.552605238805
+          },
+          {
+            "r_val": "columbia college",
+            "s_val": "columbia",
+            "npmi": 7732.992816607294
+          },
+          {
+            "r_val": "peru state college",
+            "s_val": "peru",
+            "npmi": 7228.137673056855
+          },
+          {
+            "r_val": "ohio christian university",
+            "s_val": "circleville",
+            "npmi": 2591.013405608235
+          },
+          {
+            "r_val": "northwest missouri state university",
+            "s_val": "maryville",
+            "npmi": 10476.86256393924
+          },
+          {
+            "r_val": "arkansas baptist college",
+            "s_val": "little rock",
+            "npmi": 8312.381779525935
+          },
+          {
+            "r_val": "new york university",
+            "s_val": "new york",
+            "npmi": 9561.488276427177
+          },
+          {
+            "r_val": "notre dame de namur university",
+            "s_val": "belmont",
+            "npmi": 6724.684958186811
+          },
+          {
+            "r_val": "minot state university",
+            "s_val": "minot",
+            "npmi": 7979.443448710385
+          },
+          {
+            "r_val": "ashford university",
+            "s_val": "clinton",
+            "npmi": 6326.538194029763
+          },
+          {
+            "r_val": "rhodes college",
+            "s_val": "memphis",
+            "npmi": 9765.147027262781
+          },
+          {
+            "r_val": "northern state university",
+            "s_val": "aberdeen",
+            "npmi": 10254.467092453793
+          },
+          {
+            "r_val": "florida international university",
+            "s_val": "miami",
+            "npmi": 9564.107057314446
+          },
+          {
+            "r_val": "central methodist university",
+            "s_val": "fayette",
+            "npmi": 6222.833262815218
+          },
+          {
+            "r_val": "tennessee technological university",
+            "s_val": "cookeville",
+            "npmi": 8198.084091816323
+          },
+          {
+            "r_val": "new england college",
+            "s_val": "henniker",
+            "npmi": 8156.257900372785
+          },
+          {
+            "r_val": "lawrence technological university",
+            "s_val": "southfield",
+            "npmi": 8223.059166047327
+          },
+          {
+            "r_val": "monroe college",
+            "s_val": "bronx",
+            "npmi": 6060.727847983568
+          },
+          {
+            "r_val": "mississippi state university",
+            "s_val": "mississippi state",
+            "npmi": 8268.966111665082
+          },
+          {
+            "r_val": "ball state university",
+            "s_val": "muncie",
+            "npmi": 8751.254303707463
+          },
+          {
+            "r_val": "sacred heart major seminary",
+            "s_val": "detroit",
+            "npmi": 3672.589761593599
+          },
+          {
+            "r_val": "princeton university",
+            "s_val": "princeton",
+            "npmi": 9501.343600002127
+          },
+          {
+            "r_val": "whittier college",
+            "s_val": "whittier",
+            "npmi": 9888.779334818986
+          },
+          {
+            "r_val": "montreat college",
+            "s_val": "montreat",
+            "npmi": 5237.767021871781
+          },
+          {
+            "r_val": "trinity college",
+            "s_val": "hartford",
+            "npmi": 10048.832282914691
+          },
+          {
+            "r_val": "american public university system",
+            "s_val": "charles town",
+            "npmi": 4558.091373431001
+          },
+          {
+            "r_val": "george fox university",
+            "s_val": "newberg",
+            "npmi": 8636.983182777563
+          },
+          {
+            "r_val": "oregon state university",
+            "s_val": "corvallis",
+            "npmi": 9078.282496963526
+          },
+          {
+            "r_val": "friends university",
+            "s_val": "wichita",
+            "npmi": 9052.009201243407
+          },
+          {
+            "r_val": "cairn university",
+            "s_val": "langhorne",
+            "npmi": 6593.113846231981
+          },
+          {
+            "r_val": "brandman university",
+            "s_val": "irvine",
+            "npmi": 719.1435518801943
+          },
+          {
+            "r_val": "carthage college",
+            "s_val": "kenosha",
+            "npmi": 10126.903036283142
+          },
+          {
+            "r_val": "curry college",
+            "s_val": "milton",
+            "npmi": 7996.185656074595
+          },
+          {
+            "r_val": "bethany college",
+            "s_val": "bethany",
+            "npmi": 9481.313256528802
+          },
+          {
+            "r_val": "southwestern christian college",
+            "s_val": "terrell",
+            "npmi": 3126.009242322783
+          },
+          {
+            "r_val": "burlington college",
+            "s_val": "burlington",
+            "npmi": 3744.7554364529824
+          },
+          {
+            "r_val": "georgetown college",
+            "s_val": "georgetown",
+            "npmi": 9110.513660937702
+          },
+          {
+            "r_val": "wilson college",
+            "s_val": "chambersburg",
+            "npmi": 5816.048284548218
+          },
+          {
+            "r_val": "colorado mesa university",
+            "s_val": "grand junction",
+            "npmi": 7048.865377860576
+          },
+          {
+            "r_val": "mount mercy university",
+            "s_val": "cedar rapids",
+            "npmi": 4263.011054372004
+          },
+          {
+            "r_val": "mars hill university",
+            "s_val": "mars hill",
+            "npmi": 2804.6383503128222
+          },
+          {
+            "r_val": "cleary university",
+            "s_val": "ypsilanti",
+            "npmi": 2389.9700430160824
+          },
+          {
+            "r_val": "wesleyan university",
+            "s_val": "middletown",
+            "npmi": 10308.886471763903
+          },
+          {
+            "r_val": "westmont college",
+            "s_val": "santa barbara",
+            "npmi": 8977.64955492167
+          },
+          {
+            "r_val": "troy university",
+            "s_val": "troy",
+            "npmi": 6631.249383480135
+          },
+          {
+            "r_val": "northern illinois university",
+            "s_val": "dekalb",
+            "npmi": 9192.507110973109
+          },
+          {
+            "r_val": "siena college",
+            "s_val": "loudonville",
+            "npmi": 9484.362582135522
+          },
+          {
+            "r_val": "emmaus bible college",
+            "s_val": "dubuque",
+            "npmi": 436.1405628097103
+          },
+          {
+            "r_val": "alaska pacific university",
+            "s_val": "anchorage",
+            "npmi": 668.9316922159534
+          },
+          {
+            "r_val": "san jose state university",
+            "s_val": "san jose",
+            "npmi": 9384.467563509636
+          },
+          {
+            "r_val": "stevenson university",
+            "s_val": "stevenson",
+            "npmi": 8075.194276105315
+          },
+          {
+            "r_val": "thomas edison state college",
+            "s_val": "trenton",
+            "npmi": 6631.286995767308
+          },
+          {
+            "r_val": "george mason university",
+            "s_val": "fairfax",
+            "npmi": 8265.434125911652
+          },
+          {
+            "r_val": "gordon college",
+            "s_val": "wenham",
+            "npmi": 8195.145254866673
+          },
+          {
+            "r_val": "harding university",
+            "s_val": "searcy",
+            "npmi": 9793.548616555641
+          },
+          {
+            "r_val": "lipscomb university",
+            "s_val": "nashville",
+            "npmi": 7137.06656400507
+          },
+          {
+            "r_val": "columbia international university",
+            "s_val": "lexington",
+            "npmi": 136.061065999957
+          },
+          {
+            "r_val": "kansas city art institute",
+            "s_val": "kansas city",
+            "npmi": 820.8014165409061
+          },
+          {
+            "r_val": "linfield college",
+            "s_val": "mcminnville",
+            "npmi": 9017.353806523979
+          },
+          {
+            "r_val": "albion college",
+            "s_val": "albion",
+            "npmi": 10002.92974627981
+          },
+          {
+            "r_val": "fitchburg state university",
+            "s_val": "fitchburg",
+            "npmi": 5445.3650462515325
+          },
+          {
+            "r_val": "lewis university",
+            "s_val": "romeoville",
+            "npmi": 10581.758329998438
+          },
+          {
+            "r_val": "south college",
+            "s_val": "knoxville",
+            "npmi": 3299.7044859108432
+          },
+          {
+            "r_val": "elizabethtown college",
+            "s_val": "elizabethtown",
+            "npmi": 10189.525067578756
+          },
+          {
+            "r_val": "northwest nazarene university",
+            "s_val": "nampa",
+            "npmi": 7297.819092069264
+          },
+          {
+            "r_val": "carleton college",
+            "s_val": "northfield",
+            "npmi": 8811.875606649282
+          },
+          {
+            "r_val": "oklahoma panhandle state university",
+            "s_val": "goodwell",
+            "npmi": 8569.46664184522
+          },
+          {
+            "r_val": "blackburn college",
+            "s_val": "carlinville",
+            "npmi": 8907.233427298155
+          },
+          {
+            "r_val": "texas southern university",
+            "s_val": "houston",
+            "npmi": 9216.30144255058
+          },
+          {
+            "r_val": "brevard college",
+            "s_val": "brevard",
+            "npmi": 8411.002549555904
+          },
+          {
+            "r_val": "chapman university",
+            "s_val": "orange",
+            "npmi": 10522.007454520013
+          },
+          {
+            "r_val": "claremont mckenna college",
+            "s_val": "claremont",
+            "npmi": 8719.723733089782
+          },
+          {
+            "r_val": "southern new hampshire university",
+            "s_val": "manchester",
+            "npmi": 8908.287884938698
+          },
+          {
+            "r_val": "bay path college",
+            "s_val": "longmeadow",
+            "npmi": 4488.305758284216
+          },
+          {
+            "r_val": "iowa state university",
+            "s_val": "ames",
+            "npmi": 9527.67801367526
+          },
+          {
+            "r_val": "luther college",
+            "s_val": "decorah",
+            "npmi": 9433.856936317317
+          },
+          {
+            "r_val": "lee university",
+            "s_val": "cleveland",
+            "npmi": 7515.527755417486
+          },
+          {
+            "r_val": "strayer university",
+            "s_val": "washington",
+            "npmi": 1005.4663044772657
+          },
+          {
+            "r_val": "welch college",
+            "s_val": "nashville",
+            "npmi": 401.7198150884149
+          },
+          {
+            "r_val": "ferris state university",
+            "s_val": "big rapids",
+            "npmi": 10055.56741558299
+          },
+          {
+            "r_val": "robert morris university",
+            "s_val": "moon township",
+            "npmi": 7874.7197696065605
+          },
+          {
+            "r_val": "indiana wesleyan university",
+            "s_val": "marion",
+            "npmi": 9466.460257286722
+          },
+          {
+            "r_val": "jackson state university",
+            "s_val": "jackson",
+            "npmi": 9819.545958448574
+          },
+          {
+            "r_val": "american university",
+            "s_val": "washington",
+            "npmi": 9780.428089274083
+          },
+          {
+            "r_val": "hofstra university",
+            "s_val": "hempstead",
+            "npmi": 8790.322029037483
+          },
+          {
+            "r_val": "hollins university",
+            "s_val": "roanoke",
+            "npmi": 7332.735706034167
+          },
+          {
+            "r_val": "azusa pacific university",
+            "s_val": "azusa",
+            "npmi": 8897.960963492642
+          },
+          {
+            "r_val": "georgia southern university",
+            "s_val": "statesboro",
+            "npmi": 10033.698963289338
+          },
+          {
+            "r_val": "tabor college",
+            "s_val": "hillsboro",
+            "npmi": 8737.283187881745
+          },
+          {
+            "r_val": "north central university",
+            "s_val": "minneapolis",
+            "npmi": 8292.339314492465
+          },
+          {
+            "r_val": "taylor university",
+            "s_val": "upland",
+            "npmi": 10241.810248366406
+          },
+          {
+            "r_val": "connecticut college",
+            "s_val": "new london",
+            "npmi": 8640.688343452632
+          },
+          {
+            "r_val": "martin luther college",
+            "s_val": "new ulm",
+            "npmi": 7980.770524051
+          },
+          {
+            "r_val": "eastern washington university",
+            "s_val": "cheney",
+            "npmi": 9101.450719730827
+          },
+          {
+            "r_val": "simpson university",
+            "s_val": "redding",
+            "npmi": 3278.3638568932943
+          },
+          {
+            "r_val": "lesley university",
+            "s_val": "cambridge",
+            "npmi": 6162.163596982759
+          },
+          {
+            "r_val": "mississippi college",
+            "s_val": "clinton",
+            "npmi": 9880.094726830015
+          },
+          {
+            "r_val": "bowdoin college",
+            "s_val": "brunswick",
+            "npmi": 10746.214409890528
+          },
+          {
+            "r_val": "dowling college",
+            "s_val": "oakdale",
+            "npmi": 7149.701792993919
+          },
+          {
+            "r_val": "southeastern louisiana university",
+            "s_val": "hammond",
+            "npmi": 8543.948228352709
+          },
+          {
+            "r_val": "wake forest university",
+            "s_val": "winston salem",
+            "npmi": 10527.5413539609
+          },
+          {
+            "r_val": "high point university",
+            "s_val": "high point",
+            "npmi": 6135.6658568846815
+          },
+          {
+            "r_val": "florida christian college",
+            "s_val": "kissimmee",
+            "npmi": 1716.2248717605587
+          },
+          {
+            "r_val": "judson university",
+            "s_val": "elgin",
+            "npmi": 3948.6066233192096
+          },
+          {
+            "r_val": "clemson university",
+            "s_val": "clemson",
+            "npmi": 9893.11079230477
+          },
+          {
+            "r_val": "morehouse college",
+            "s_val": "atlanta",
+            "npmi": 9011.891764776035
+          },
+          {
+            "r_val": "santa clara university",
+            "s_val": "santa clara",
+            "npmi": 8231.95280753391
+          },
+          {
+            "r_val": "midwestern state university",
+            "s_val": "wichita falls",
+            "npmi": 9381.308145376262
+          },
+          {
+            "r_val": "baylor university",
+            "s_val": "waco",
+            "npmi": 9778.33574830107
+          },
+          {
+            "r_val": "florida southern college",
+            "s_val": "lakeland",
+            "npmi": 9814.218735909091
+          },
+          {
+            "r_val": "plaza college",
+            "s_val": "jackson heights",
+            "npmi": 2477.657463193493
+          },
+          {
+            "r_val": "georgia southwestern state university",
+            "s_val": "americus",
+            "npmi": 5674.605672858586
+          },
+          {
+            "r_val": "covenant college",
+            "s_val": "lookout mountain",
+            "npmi": 5016.468930914411
+          },
+          {
+            "r_val": "mcdaniel college",
+            "s_val": "westminster",
+            "npmi": 9655.259385464873
+          },
+          {
+            "r_val": "presbyterian college",
+            "s_val": "clinton",
+            "npmi": 9266.35620962551
+          },
+          {
+            "r_val": "williams baptist college",
+            "s_val": "walnut ridge",
+            "npmi": 6774.578510018509
+          },
+          {
+            "r_val": "earlham college",
+            "s_val": "richmond",
+            "npmi": 9951.580392212167
+          },
+          {
+            "r_val": "south texas college",
+            "s_val": "mcallen",
+            "npmi": 7594.497166445867
+          },
+          {
+            "r_val": "southern polytechnic state university",
+            "s_val": "marietta",
+            "npmi": 7383.074470982865
+          },
+          {
+            "r_val": "amherst college",
+            "s_val": "amherst",
+            "npmi": 9840.69191628371
+          },
+          {
+            "r_val": "wingate university",
+            "s_val": "wingate",
+            "npmi": 10185.949324912885
+          },
+          {
+            "r_val": "abilene christian university",
+            "s_val": "abilene",
+            "npmi": 9800.409382596525
+          },
+          {
+            "r_val": "delta state university",
+            "s_val": "cleveland",
+            "npmi": 9540.50162584415
+          },
+          {
+            "r_val": "haskell indian nations university",
+            "s_val": "lawrence",
+            "npmi": 8639.535982199495
+          },
+          {
+            "r_val": "lane college",
+            "s_val": "jackson",
+            "npmi": 8865.628031966247
+          },
+          {
+            "r_val": "calvin college",
+            "s_val": "grand rapids",
+            "npmi": 8636.636262254775
+          },
+          {
+            "r_val": "trine university",
+            "s_val": "angola",
+            "npmi": 9281.340723249825
+          },
+          {
+            "r_val": "lubbock christian university",
+            "s_val": "lubbock",
+            "npmi": 7425.953031983565
+          },
+          {
+            "r_val": "greenville college",
+            "s_val": "greenville",
+            "npmi": 8824.028986551957
+          },
+          {
+            "r_val": "virginia military institute",
+            "s_val": "lexington",
+            "npmi": 8643.393689067962
+          },
+          {
+            "r_val": "defiance college",
+            "s_val": "defiance",
+            "npmi": 9717.842350493447
+          },
+          {
+            "r_val": "eastern mennonite university",
+            "s_val": "harrisonburg",
+            "npmi": 7586.396286542014
+          },
+          {
+            "r_val": "holy family university",
+            "s_val": "philadelphia",
+            "npmi": 7056.551929937585
+          },
+          {
+            "r_val": "western oregon university",
+            "s_val": "monmouth",
+            "npmi": 8095.018221098607
+          },
+          {
+            "r_val": "fairfield university",
+            "s_val": "fairfield",
+            "npmi": 9981.683662396823
+          },
+          {
+            "r_val": "texas lutheran university",
+            "s_val": "seguin",
+            "npmi": 9965.404150194365
+          },
+          {
+            "r_val": "lake superior state university",
+            "s_val": "sault ste marie",
+            "npmi": 8810.918283069095
+          },
+          {
+            "r_val": "northeastern illinois university",
+            "s_val": "chicago",
+            "npmi": 8079.031699990897
+          },
+          {
+            "r_val": "southern methodist university",
+            "s_val": "dallas",
+            "npmi": 9281.830100974195
+          },
+          {
+            "r_val": "shaw university",
+            "s_val": "raleigh",
+            "npmi": 9330.723966883153
+          },
+          {
+            "r_val": "lim college",
+            "s_val": "new york",
+            "npmi": 5197.184355265083
+          },
+          {
+            "r_val": "mount aloysius college",
+            "s_val": "cresson",
+            "npmi": 9113.623862635708
+          },
+          {
+            "r_val": "mount marty college",
+            "s_val": "yankton",
+            "npmi": 6216.860384748811
+          },
+          {
+            "r_val": "drake university",
+            "s_val": "des moines",
+            "npmi": 10089.862319253642
+          },
+          {
+            "r_val": "escuela de artes plasticas de puerto rico",
+            "s_val": "san juan",
+            "npmi": 2290.576198055852
+          },
+          {
+            "r_val": "cornell university",
+            "s_val": "ithaca",
+            "npmi": 9272.311246765112
+          },
+          {
+            "r_val": "columbus state university",
+            "s_val": "columbus",
+            "npmi": 8281.427002345534
+          },
+          {
+            "r_val": "sullivan university",
+            "s_val": "louisville",
+            "npmi": 2095.5084063372556
+          },
+          {
+            "r_val": "united states naval academy",
+            "s_val": "annapolis",
+            "npmi": 5073.721502249448
+          },
+          {
+            "r_val": "loras college",
+            "s_val": "dubuque",
+            "npmi": 9997.599929188627
+          },
+          {
+            "r_val": "moody bible institute",
+            "s_val": "chicago",
+            "npmi": 3217.663559957585
+          },
+          {
+            "r_val": "chancellor university",
+            "s_val": "seven hills",
+            "npmi": 614.371552372392
+          },
+          {
+            "r_val": "trinity christian college",
+            "s_val": "palos heights",
+            "npmi": 5312.140082464205
+          },
+          {
+            "r_val": "liberty university",
+            "s_val": "lynchburg",
+            "npmi": 10385.036495281036
+          },
+          {
+            "r_val": "midamerica nazarene university",
+            "s_val": "olathe",
+            "npmi": 9158.76220236217
+          },
+          {
+            "r_val": "thomas jefferson university",
+            "s_val": "philadelphia",
+            "npmi": 4347.214266544168
+          },
+          {
+            "r_val": "florida college",
+            "s_val": "temple terrace",
+            "npmi": 1964.8524030594422
+          },
+          {
+            "r_val": "abraham baldwin agricultural college",
+            "s_val": "tifton",
+            "npmi": 1228.5823853868242
+          },
+          {
+            "r_val": "bowie state university",
+            "s_val": "bowie",
+            "npmi": 10381.620533437139
+          },
+          {
+            "r_val": "immaculata university",
+            "s_val": "immaculata",
+            "npmi": 10017.468482794917
+          },
+          {
+            "r_val": "campbellsville university",
+            "s_val": "campbellsville",
+            "npmi": 10383.87484074359
+          },
+          {
+            "r_val": "tuskegee university",
+            "s_val": "tuskegee",
+            "npmi": 10453.568021162497
+          },
+          {
+            "r_val": "lourdes university",
+            "s_val": "sylvania",
+            "npmi": 4243.314362941038
+          },
+          {
+            "r_val": "texas state university",
+            "s_val": "san marcos",
+            "npmi": 6182.704608008982
+          },
+          {
+            "r_val": "washington adventist university",
+            "s_val": "takoma park",
+            "npmi": 5245.016235083024
+          },
+          {
+            "r_val": "lyndon state college",
+            "s_val": "lyndonville",
+            "npmi": 6675.052801032679
+          },
+          {
+            "r_val": "newberry college",
+            "s_val": "newberry",
+            "npmi": 9367.599017132186
+          },
+          {
+            "r_val": "gonzaga university",
+            "s_val": "spokane",
+            "npmi": 9171.242411421528
+          },
+          {
+            "r_val": "governors state university",
+            "s_val": "university park",
+            "npmi": 7804.9161827733105
+          },
+          {
+            "r_val": "truman state university",
+            "s_val": "kirksville",
+            "npmi": 10154.838818586779
+          },
+          {
+            "r_val": "amberton university",
+            "s_val": "garland",
+            "npmi": 3267.271989029943
+          },
+          {
+            "r_val": "emporia state university",
+            "s_val": "emporia",
+            "npmi": 10002.086546543314
+          },
+          {
+            "r_val": "lagrange college",
+            "s_val": "lagrange",
+            "npmi": 9933.833278799422
+          },
+          {
+            "r_val": "iowa wesleyan college",
+            "s_val": "mount pleasant",
+            "npmi": 8113.423942187708
+          },
+          {
+            "r_val": "huntingdon college",
+            "s_val": "montgomery",
+            "npmi": 8300.647962304365
+          },
+          {
+            "r_val": "schreiner university",
+            "s_val": "kerrville",
+            "npmi": 4630.634243391075
+          },
+          {
+            "r_val": "transylvania university",
+            "s_val": "lexington",
+            "npmi": 9416.135602084589
+          },
+          {
+            "r_val": "peninsula college",
+            "s_val": "port angeles",
+            "npmi": 2215.3943025539584
+          },
+          {
+            "r_val": "bard college",
+            "s_val": "new york",
+            "npmi": 3491.6799578300256
+          },
+          {
+            "r_val": "humboldt state university",
+            "s_val": "arcata",
+            "npmi": 8463.939625669365
+          },
+          {
+            "r_val": "arizona christian university",
+            "s_val": "phoenix",
+            "npmi": 2271.2014087733473
+          },
+          {
+            "r_val": "coker college",
+            "s_val": "hartsville",
+            "npmi": 7925.098035850877
+          },
+          {
+            "r_val": "cazenovia college",
+            "s_val": "cazenovia",
+            "npmi": 9060.110689521689
+          },
+          {
+            "r_val": "arizona state university",
+            "s_val": "tempe",
+            "npmi": 9151.713308989936
+          },
+          {
+            "r_val": "southwest minnesota state university",
+            "s_val": "marshall",
+            "npmi": 8351.899971088958
+          },
+          {
+            "r_val": "wayland baptist university",
+            "s_val": "plainview",
+            "npmi": 9170.768691841433
+          },
+          {
+            "r_val": "yeshiva university",
+            "s_val": "new york",
+            "npmi": 8223.067645209243
+          },
+          {
+            "r_val": "hope international university",
+            "s_val": "fullerton",
+            "npmi": 6375.150304619381
+          },
+          {
+            "r_val": "fisher college",
+            "s_val": "boston",
+            "npmi": 5117.167637710133
+          },
+          {
+            "r_val": "goucher college",
+            "s_val": "baltimore",
+            "npmi": 9290.673764679204
+          },
+          {
+            "r_val": "massachusetts maritime academy",
+            "s_val": "buzzards bay",
+            "npmi": 7815.479122947427
+          },
+          {
+            "r_val": "mcneese state university",
+            "s_val": "lake charles",
+            "npmi": 9776.294181986035
+          },
+          {
+            "r_val": "guilford college",
+            "s_val": "greensboro",
+            "npmi": 11128.556456898037
+          },
+          {
+            "r_val": "new mexico state university",
+            "s_val": "las cruces",
+            "npmi": 8071.222360305885
+          },
+          {
+            "r_val": "coe college",
+            "s_val": "cedar rapids",
+            "npmi": 9863.006091294521
+          },
+          {
+            "r_val": "keene state college",
+            "s_val": "keene",
+            "npmi": 9899.441990661024
+          },
+          {
+            "r_val": "universidad adventista de las antillas",
+            "s_val": "mayaguez",
+            "npmi": 4248.059167020829
+          },
+          {
+            "r_val": "husson university",
+            "s_val": "bangor",
+            "npmi": 10024.163450539863
+          },
+          {
+            "r_val": "kentucky wesleyan college",
+            "s_val": "owensboro",
+            "npmi": 9612.030844693436
+          },
+          {
+            "r_val": "roger williams university",
+            "s_val": "bristol",
+            "npmi": 9113.27649513592
+          },
+          {
+            "r_val": "mercer university",
+            "s_val": "macon",
+            "npmi": 7083.920543152429
+          },
+          {
+            "r_val": "fontbonne university",
+            "s_val": "saint louis",
+            "npmi": 4792.2815143184625
+          },
+          {
+            "r_val": "dartmouth college",
+            "s_val": "hanover",
+            "npmi": 8677.477130361793
+          },
+          {
+            "r_val": "holy names university",
+            "s_val": "oakland",
+            "npmi": 4032.634795712574
+          },
+          {
+            "r_val": "california baptist university",
+            "s_val": "riverside",
+            "npmi": 7383.587539598641
+          },
+          {
+            "r_val": "rogers state university",
+            "s_val": "claremore",
+            "npmi": 6104.528941608029
+          },
+          {
+            "r_val": "southern utah university",
+            "s_val": "cedar city",
+            "npmi": 8231.465026348276
+          },
+          {
+            "r_val": "tusculum college",
+            "s_val": "greeneville",
+            "npmi": 8607.881920707392
+          },
+          {
+            "r_val": "rollins college",
+            "s_val": "winter park",
+            "npmi": 9472.035170827181
+          },
+          {
+            "r_val": "aquinas college",
+            "s_val": "grand rapids",
+            "npmi": 9827.211233137714
+          },
+          {
+            "r_val": "mount mary university",
+            "s_val": "milwaukee",
+            "npmi": 3806.0865540528084
+          },
+          {
+            "r_val": "colby college",
+            "s_val": "waterville",
+            "npmi": 9690.920798031444
+          },
+          {
+            "r_val": "sitting bull college",
+            "s_val": "fort yates",
+            "npmi": 89.37200609779603
+          },
+          {
+            "r_val": "lindenwood university",
+            "s_val": "baltimore",
+            "npmi": 58.843915359361375
+          },
+          {
+            "r_val": "pacific lutheran university",
+            "s_val": "tacoma",
+            "npmi": 10367.987331783868
+          },
+          {
+            "r_val": "canisius college",
+            "s_val": "buffalo",
+            "npmi": 9587.567357229393
+          },
+          {
+            "r_val": "dillard university",
+            "s_val": "new orleans",
+            "npmi": 8656.855118999809
+          },
+          {
+            "r_val": "worcester state university",
+            "s_val": "worcester",
+            "npmi": 7437.92420567967
+          },
+          {
+            "r_val": "youngstown state university",
+            "s_val": "youngstown",
+            "npmi": 9811.970231531415
+          },
+          {
+            "r_val": "fairmont state university",
+            "s_val": "fairmont",
+            "npmi": 9615.560899799277
+          },
+          {
+            "r_val": "jones international university",
+            "s_val": "centennial",
+            "npmi": 2229.798456307756
+          },
+          {
+            "r_val": "marquette university",
+            "s_val": "milwaukee",
+            "npmi": 9100.510238239272
+          },
+          {
+            "r_val": "frostburg state university",
+            "s_val": "frostburg",
+            "npmi": 9656.548260710257
+          },
+          {
+            "r_val": "evangel university",
+            "s_val": "springfield",
+            "npmi": 9733.186083353188
+          },
+          {
+            "r_val": "concordia university",
+            "s_val": "river forest",
+            "npmi": 7018.070705427394
+          },
+          {
+            "r_val": "clarkson college",
+            "s_val": "omaha",
+            "npmi": 3936.4358595411677
+          },
+          {
+            "r_val": "central michigan university",
+            "s_val": "mount pleasant",
+            "npmi": 9114.531081065368
+          },
+          {
+            "r_val": "tufts university",
+            "s_val": "medford",
+            "npmi": 9414.025602442627
+          },
+          {
+            "r_val": "indiana university northwest",
+            "s_val": "gary",
+            "npmi": 6739.307282750436
+          },
+          {
+            "r_val": "winona state university",
+            "s_val": "winona",
+            "npmi": 9341.680980025792
+          },
+          {
+            "r_val": "missouri southern state university",
+            "s_val": "joplin",
+            "npmi": 11102.691812570412
+          },
+          {
+            "r_val": "cambridge college",
+            "s_val": "cambridge",
+            "npmi": 4771.235555897938
+          },
+          {
+            "r_val": "le moyne college",
+            "s_val": "syracuse",
+            "npmi": 9752.019935961136
+          },
+          {
+            "r_val": "miles college",
+            "s_val": "fairfield",
+            "npmi": 9668.497028608208
+          },
+          {
+            "r_val": "south carolina state university",
+            "s_val": "orangeburg",
+            "npmi": 8123.665764561923
+          },
+          {
+            "r_val": "missouri valley college",
+            "s_val": "marshall",
+            "npmi": 8649.962493470532
+          },
+          {
+            "r_val": "southeastern oklahoma state university",
+            "s_val": "durant",
+            "npmi": 7842.141702470266
+          },
+          {
+            "r_val": "baker university",
+            "s_val": "baldwin city",
+            "npmi": 9196.770195569492
+          },
+          {
+            "r_val": "macmurray college",
+            "s_val": "jacksonville",
+            "npmi": 8539.109420405237
+          },
+          {
+            "r_val": "norfolk state university",
+            "s_val": "norfolk",
+            "npmi": 7783.014728386684
+          },
+          {
+            "r_val": "west virginia state university",
+            "s_val": "institute",
+            "npmi": 10040.700870949482
+          },
+          {
+            "r_val": "york college",
+            "s_val": "york",
+            "npmi": 2292.1319004168713
+          },
+          {
+            "r_val": "alfred university",
+            "s_val": "alfred",
+            "npmi": 10506.578268730453
+          },
+          {
+            "r_val": "northeastern state university",
+            "s_val": "tahlequah",
+            "npmi": 8206.090798349109
+          },
+          {
+            "r_val": "georgia gwinnett college",
+            "s_val": "lawrenceville",
+            "npmi": 3059.878811391453
+          },
+          {
+            "r_val": "houghton college",
+            "s_val": "houghton",
+            "npmi": 7924.594628637391
+          },
+          {
+            "r_val": "southwestern university",
+            "s_val": "georgetown",
+            "npmi": 9439.6874866377
+          },
+          {
+            "r_val": "john carroll university",
+            "s_val": "university heights",
+            "npmi": 9642.245326525659
+          },
+          {
+            "r_val": "american international college",
+            "s_val": "springfield",
+            "npmi": 10547.941534686068
+          },
+          {
+            "r_val": "northwestern university",
+            "s_val": "evanston",
+            "npmi": 9976.630809511285
+          },
+          {
+            "r_val": "texas tech university health sciences center",
+            "s_val": "lubbock",
+            "npmi": 1640.3331470242765
+          },
+          {
+            "r_val": "chipola college",
+            "s_val": "marianna",
+            "npmi": 4555.107481560987
+          },
+          {
+            "r_val": "bowling green state university",
+            "s_val": "bowling green",
+            "npmi": 8767.364799072884
+          },
+          {
+            "r_val": "iona college",
+            "s_val": "new rochelle",
+            "npmi": 9807.986434210097
+          },
+          {
+            "r_val": "central baptist college",
+            "s_val": "conway",
+            "npmi": 3057.9065581594036
+          },
+          {
+            "r_val": "midland college",
+            "s_val": "midland",
+            "npmi": 1587.500815995659
+          },
+          {
+            "r_val": "virginia commonwealth university",
+            "s_val": "richmond",
+            "npmi": 7722.458106592914
+          },
+          {
+            "r_val": "arkansas tech university",
+            "s_val": "russellville",
+            "npmi": 9610.993725062759
+          },
+          {
+            "r_val": "briar cliff university",
+            "s_val": "sioux city",
+            "npmi": 9009.644614219304
+          },
+          {
+            "r_val": "molloy college",
+            "s_val": "rockville centre",
+            "npmi": 6349.17018369478
+          },
+          {
+            "r_val": "philadelphia university",
+            "s_val": "philadelphia",
+            "npmi": 5716.74635423369
+          },
+          {
+            "r_val": "kalamazoo college",
+            "s_val": "kalamazoo",
+            "npmi": 10575.200844633226
+          },
+          {
+            "r_val": "louisiana tech university",
+            "s_val": "ruston",
+            "npmi": 7609.919652476334
+          },
+          {
+            "r_val": "doane college",
+            "s_val": "crete",
+            "npmi": 7620.711942673405
+          },
+          {
+            "r_val": "jarvis christian college",
+            "s_val": "hawkins",
+            "npmi": 7566.483078446917
+          },
+          {
+            "r_val": "eastern kentucky university",
+            "s_val": "richmond",
+            "npmi": 8871.173727835814
+          },
+          {
+            "r_val": "chestnut hill college",
+            "s_val": "philadelphia",
+            "npmi": 6813.378464565856
+          },
+          {
+            "r_val": "marshall university",
+            "s_val": "huntington",
+            "npmi": 9400.470402429506
+          },
+          {
+            "r_val": "heritage university",
+            "s_val": "toppenish",
+            "npmi": 5786.852767479479
+          },
+          {
+            "r_val": "eastern university",
+            "s_val": "saint davids",
+            "npmi": 6619.847865069595
+          },
+          {
+            "r_val": "salve regina university",
+            "s_val": "newport",
+            "npmi": 9446.712641389779
+          },
+          {
+            "r_val": "holy cross college",
+            "s_val": "notre dame",
+            "npmi": 5974.830076950664
+          },
+          {
+            "r_val": "colorado technical university",
+            "s_val": "colorado springs",
+            "npmi": 3517.5429849618868
+          },
+          {
+            "r_val": "spalding university",
+            "s_val": "louisville",
+            "npmi": 7460.0309305289875
+          },
+          {
+            "r_val": "gallaudet university",
+            "s_val": "washington",
+            "npmi": 9381.013966920751
+          },
+          {
+            "r_val": "samuel merritt university",
+            "s_val": "oakland",
+            "npmi": 2561.35349095028
+          },
+          {
+            "r_val": "west virginia university",
+            "s_val": "morgantown",
+            "npmi": 9219.926587591375
+          },
+          {
+            "r_val": "syracuse university",
+            "s_val": "syracuse",
+            "npmi": 10107.756935018224
+          },
+          {
+            "r_val": "morris college",
+            "s_val": "sumter",
+            "npmi": 8231.829456985392
+          },
+          {
+            "r_val": "virginia union university",
+            "s_val": "richmond",
+            "npmi": 9539.534674649347
+          },
+          {
+            "r_val": "smith college",
+            "s_val": "northampton",
+            "npmi": 9727.490112157226
+          },
+          {
+            "r_val": "limestone college",
+            "s_val": "gaffney",
+            "npmi": 8561.434886191224
+          },
+          {
+            "r_val": "fayetteville state university",
+            "s_val": "fayetteville",
+            "npmi": 10459.318920845255
+          },
+          {
+            "r_val": "thiel college",
+            "s_val": "greenville",
+            "npmi": 9042.42651188963
+          },
+          {
+            "r_val": "union college",
+            "s_val": "schenectady",
+            "npmi": 9811.062215923737
+          },
+          {
+            "r_val": "western connecticut state university",
+            "s_val": "danbury",
+            "npmi": 9934.898170393886
+          },
+          {
+            "r_val": "sinte gleska university",
+            "s_val": "mission",
+            "npmi": 4879.867926405862
+          },
+          {
+            "r_val": "granite state college",
+            "s_val": "concord",
+            "npmi": 3499.422573448468
+          },
+          {
+            "r_val": "william jewell college",
+            "s_val": "liberty",
+            "npmi": 10104.342810433376
+          },
+          {
+            "r_val": "huntington university",
+            "s_val": "huntington",
+            "npmi": 7925.4262145106595
+          },
+          {
+            "r_val": "western washington university",
+            "s_val": "bellingham",
+            "npmi": 9217.712825970237
+          },
+          {
+            "r_val": "austin college",
+            "s_val": "sherman",
+            "npmi": 10521.969400533195
+          },
+          {
+            "r_val": "clark university",
+            "s_val": "worcester",
+            "npmi": 9743.075476260132
+          },
+          {
+            "r_val": "drew university",
+            "s_val": "madison",
+            "npmi": 9403.802038643467
+          },
+          {
+            "r_val": "rider university",
+            "s_val": "lawrenceville",
+            "npmi": 8990.471753386557
+          },
+          {
+            "r_val": "hendrix college",
+            "s_val": "conway",
+            "npmi": 8798.09255700773
+          },
+          {
+            "r_val": "cardinal stritch university",
+            "s_val": "milwaukee",
+            "npmi": 7761.187264659073
+          },
+          {
+            "r_val": "martin methodist college",
+            "s_val": "pulaski",
+            "npmi": 6325.0545804511385
+          },
+          {
+            "r_val": "desales university",
+            "s_val": "center valley",
+            "npmi": 9076.905837650866
+          },
+          {
+            "r_val": "bentley university",
+            "s_val": "waltham",
+            "npmi": 10030.286573110465
+          },
+          {
+            "r_val": "kenyon college",
+            "s_val": "gambier",
+            "npmi": 9624.97267360396
+          },
+          {
+            "r_val": "indian river state college",
+            "s_val": "fort pierce",
+            "npmi": 2810.4945734711805
+          },
+          {
+            "r_val": "seton hill university",
+            "s_val": "greensburg",
+            "npmi": 9477.91808008057
+          },
+          {
+            "r_val": "florida memorial university",
+            "s_val": "miami gardens",
+            "npmi": 5179.405786872505
+          },
+          {
+            "r_val": "amridge university",
+            "s_val": "montgomery",
+            "npmi": 1900.2598292566718
+          }
+        ],
+        "num_r": 1317,
+        "num_s": 845,
+        "num_mappings": 1026
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T21:34:47.899187002Z",
+          "end_time": "2025-12-02T21:34:47.914097758Z",
+          "duration_seconds": 0.014910756
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T21:34:47.962552041Z",
+          "end_time": "2025-12-02T21:36:29.153985307Z",
+          "duration_seconds": 101.191433312
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T21:36:29.154015544Z",
+          "end_time": "2025-12-02T21:36:52.106938146Z",
+          "duration_seconds": 22.95292255
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T21:36:52.106943091Z",
+          "end_time": "2025-12-02T21:37:47.251007085Z",
+          "duration_seconds": 55.144064004
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T21:37:47.251029689Z",
+          "end_time": "2025-12-02T21:37:50.113028241Z",
+          "duration_seconds": 2.86199856
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T21:37:50.113056325Z",
+          "end_time": "2025-12-02T21:41:39.99821935Z",
+          "duration_seconds": 229.885163023
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T21:41:39.998260157Z",
+          "end_time": "2025-12-02T21:42:06.226558688Z",
+          "duration_seconds": 26.22829854
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T21:42:06.226575909Z",
+          "end_time": "2025-12-02T21:42:06.425368331Z",
+          "duration_seconds": 0.198792436
+        }
+      },
+      "python_service_timings": {
+        "step1_solve_cilp": 76.04604816436768,
+        "step2_extract_join": 0.15583348274230957,
+        "step3_convert_output": 46.250691413879395,
+        "total_duration": 122.45309233665466
+      }
+    }
+  ]
+}

@@ -1,0 +1,1152 @@
+{
+  "start_time": "2025-12-03T12:23:25.726495",
+  "start_time_berlin": "2025-12-03T13:23:25.726488+01:00",
+  "end_time": "2025-12-03T12:40:03.929967",
+  "total_duration_seconds": 998.203472,
+  "database": "vertica",
+  "total_cases": 1,
+  "successful_cases": 1,
+  "failed_cases": 0,
+  "average_duration_seconds": 998.096603,
+  "median_duration_seconds": 998.096603,
+  "results": [
+    {
+      "case_number": 14,
+      "success": true,
+      "duration_seconds": 998.096603,
+      "error": null,
+      "start_time": "2025-12-03T12:23:25.726932",
+      "end_time": "2025-12-03T12:40:03.823535",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "papua new guinea",
+            "s_val": "pg",
+            "npmi": 2626.8553901855003
+          },
+          {
+            "r_val": "cambodia",
+            "s_val": "kh",
+            "npmi": 2636.519732442726
+          },
+          {
+            "r_val": "kazakhstan",
+            "s_val": "kz",
+            "npmi": 2580.0319419543703
+          },
+          {
+            "r_val": "paraguay",
+            "s_val": "py",
+            "npmi": 2582.02569038584
+          },
+          {
+            "r_val": "syria",
+            "s_val": "sy",
+            "npmi": 2510.5667804156556
+          },
+          {
+            "r_val": "bahamas",
+            "s_val": "bs",
+            "npmi": 2577.327358391447
+          },
+          {
+            "r_val": "solomon islands",
+            "s_val": "sb",
+            "npmi": 2632.5960082591205
+          },
+          {
+            "r_val": "montserrat",
+            "s_val": "ms",
+            "npmi": 2595.4704018544267
+          },
+          {
+            "r_val": "mali",
+            "s_val": "ml",
+            "npmi": 2583.762205327404
+          },
+          {
+            "r_val": "marshall islands",
+            "s_val": "mh",
+            "npmi": 2581.1751464219374
+          },
+          {
+            "r_val": "panama",
+            "s_val": "pa",
+            "npmi": 2530.4579852795737
+          },
+          {
+            "r_val": "laos",
+            "s_val": "la",
+            "npmi": 2497.048353539938
+          },
+          {
+            "r_val": "argentina",
+            "s_val": "ar",
+            "npmi": 2454.663312456028
+          },
+          {
+            "r_val": "falkland islands",
+            "s_val": "fk",
+            "npmi": 2551.436359623575
+          },
+          {
+            "r_val": "seychelles",
+            "s_val": "sc",
+            "npmi": 2598.405334706532
+          },
+          {
+            "r_val": "belize",
+            "s_val": "bz",
+            "npmi": 2560.5338953728137
+          },
+          {
+            "r_val": "zambia",
+            "s_val": "zm",
+            "npmi": 2606.145556181964
+          },
+          {
+            "r_val": "bahrain",
+            "s_val": "bh",
+            "npmi": 2598.0781448581356
+          },
+          {
+            "r_val": "saint barthelemy",
+            "s_val": "bl",
+            "npmi": 2514.409035817443
+          },
+          {
+            "r_val": "namibia",
+            "s_val": "na",
+            "npmi": 2579.8152153118626
+          },
+          {
+            "r_val": "comoros",
+            "s_val": "km",
+            "npmi": 2648.164645106735
+          },
+          {
+            "r_val": "faroe islands",
+            "s_val": "fo",
+            "npmi": 2623.5532921632057
+          },
+          {
+            "r_val": "finland",
+            "s_val": "fi",
+            "npmi": 2486.248954690671
+          },
+          {
+            "r_val": "netherlands antilles",
+            "s_val": "na",
+            "npmi": 2185.562837646342
+          },
+          {
+            "r_val": "georgia",
+            "s_val": "ge",
+            "npmi": 2555.96358224844
+          },
+          {
+            "r_val": "yemen",
+            "s_val": "ye",
+            "npmi": 2623.866291255567
+          },
+          {
+            "r_val": "eritrea",
+            "s_val": "er",
+            "npmi": 2596.996842894228
+          },
+          {
+            "r_val": "puerto rico",
+            "s_val": "pr",
+            "npmi": 2381.9913813516064
+          },
+          {
+            "r_val": "aruba",
+            "s_val": "aw",
+            "npmi": 2592.662606282671
+          },
+          {
+            "r_val": "madagascar",
+            "s_val": "mg",
+            "npmi": 2586.3183259506914
+          },
+          {
+            "r_val": "ivory coast",
+            "s_val": "af",
+            "npmi": 2149.092099653677
+          },
+          {
+            "r_val": "libya",
+            "s_val": "ly",
+            "npmi": 2543.719635520215
+          },
+          {
+            "r_val": "saint martin",
+            "s_val": "na",
+            "npmi": 2193.1680305579803
+          },
+          {
+            "r_val": "sweden",
+            "s_val": "se",
+            "npmi": 2444.4889396946724
+          },
+          {
+            "r_val": "malawi",
+            "s_val": "mw",
+            "npmi": 2595.428347087217
+          },
+          {
+            "r_val": "andorra",
+            "s_val": "ad",
+            "npmi": 2572.3581694520844
+          },
+          {
+            "r_val": "liechtenstein",
+            "s_val": "li",
+            "npmi": 2523.337465696547
+          },
+          {
+            "r_val": "poland",
+            "s_val": "pl",
+            "npmi": 2335.2293496596526
+          },
+          {
+            "r_val": "svalbard",
+            "s_val": "sj",
+            "npmi": 2463.4763035614774
+          },
+          {
+            "r_val": "bulgaria",
+            "s_val": "bg",
+            "npmi": 2483.912628321406
+          },
+          {
+            "r_val": "jordan",
+            "s_val": "jo",
+            "npmi": 2588.8894249620753
+          },
+          {
+            "r_val": "tunisia",
+            "s_val": "tn",
+            "npmi": 2590.581861401631
+          },
+          {
+            "r_val": "tuvalu",
+            "s_val": "tv",
+            "npmi": 2570.0064180987674
+          },
+          {
+            "r_val": "united arab emirates",
+            "s_val": "ae",
+            "npmi": 2569.4886388166624
+          },
+          {
+            "r_val": "kenya",
+            "s_val": "ke",
+            "npmi": 2577.1974134186703
+          },
+          {
+            "r_val": "french polynesia",
+            "s_val": "pf",
+            "npmi": 2640.1218255849094
+          },
+          {
+            "r_val": "brunei",
+            "s_val": "bn",
+            "npmi": 2454.369379881908
+          },
+          {
+            "r_val": "djibouti",
+            "s_val": "dj",
+            "npmi": 2603.0442225676607
+          },
+          {
+            "r_val": "lebanon",
+            "s_val": "lb",
+            "npmi": 2556.3080451741266
+          },
+          {
+            "r_val": "azerbaijan",
+            "s_val": "az",
+            "npmi": 2579.267738127133
+          },
+          {
+            "r_val": "cuba",
+            "s_val": "cu",
+            "npmi": 2558.103037259232
+          },
+          {
+            "r_val": "czech republic",
+            "s_val": "cz",
+            "npmi": 2462.176681949569
+          },
+          {
+            "r_val": "mauritania",
+            "s_val": "mr",
+            "npmi": 2620.8034867745637
+          },
+          {
+            "r_val": "saint lucia",
+            "s_val": "lc",
+            "npmi": 2629.0132956162574
+          },
+          {
+            "r_val": "mayotte",
+            "s_val": "yt",
+            "npmi": 2610.170948129262
+          },
+          {
+            "r_val": "israel",
+            "s_val": "il",
+            "npmi": 2506.8864224774215
+          },
+          {
+            "r_val": "san marino",
+            "s_val": "sm",
+            "npmi": 2581.883821153978
+          },
+          {
+            "r_val": "australia",
+            "s_val": "au",
+            "npmi": 2458.195371623649
+          },
+          {
+            "r_val": "tajikistan",
+            "s_val": "tj",
+            "npmi": 2612.7805979798063
+          },
+          {
+            "r_val": "cameroon",
+            "s_val": "cm",
+            "npmi": 2610.1267500444665
+          },
+          {
+            "r_val": "gibraltar",
+            "s_val": "gi",
+            "npmi": 2579.730362721344
+          },
+          {
+            "r_val": "cyprus",
+            "s_val": "cy",
+            "npmi": 2559.284739503483
+          },
+          {
+            "r_val": "northern mariana islands",
+            "s_val": "mp",
+            "npmi": 2579.7148617416387
+          },
+          {
+            "r_val": "malaysia",
+            "s_val": "my",
+            "npmi": 2482.342975650972
+          },
+          {
+            "r_val": "iceland",
+            "s_val": "il",
+            "npmi": 2557.319637688901
+          },
+          {
+            "r_val": "oman",
+            "s_val": "om",
+            "npmi": 2576.0335111564123
+          },
+          {
+            "r_val": "armenia",
+            "s_val": "am",
+            "npmi": 2567.168325110431
+          },
+          {
+            "r_val": "gabon",
+            "s_val": "ga",
+            "npmi": 2600.6814536344623
+          },
+          {
+            "r_val": "luxembourg",
+            "s_val": "lu",
+            "npmi": 2515.1398194320104
+          },
+          {
+            "r_val": "brazil",
+            "s_val": "br",
+            "npmi": 2370.145302144927
+          },
+          {
+            "r_val": "algeria",
+            "s_val": "dz",
+            "npmi": 2599.2311114213435
+          },
+          {
+            "r_val": "jersey",
+            "s_val": "je",
+            "npmi": 2578.491324524347
+          },
+          {
+            "r_val": "slovenia",
+            "s_val": "si",
+            "npmi": 2515.6936575150935
+          },
+          {
+            "r_val": "colombia",
+            "s_val": "co",
+            "npmi": 2516.2618517357023
+          },
+          {
+            "r_val": "ecuador",
+            "s_val": "ec",
+            "npmi": 2549.5613371853237
+          },
+          {
+            "r_val": "moldova",
+            "s_val": "md",
+            "npmi": 2512.3152266349125
+          },
+          {
+            "r_val": "vanuatu",
+            "s_val": "vu",
+            "npmi": 2595.6861472765368
+          },
+          {
+            "r_val": "honduras",
+            "s_val": "hn",
+            "npmi": 2570.6671671555478
+          },
+          {
+            "r_val": "italy",
+            "s_val": "li",
+            "npmi": 2029.1407439943441
+          },
+          {
+            "r_val": "antarctica",
+            "s_val": "aq",
+            "npmi": 2653.5729548951886
+          },
+          {
+            "r_val": "nauru",
+            "s_val": "nr",
+            "npmi": 2592.777325646654
+          },
+          {
+            "r_val": "haiti",
+            "s_val": "ht",
+            "npmi": 2605.8231534491824
+          },
+          {
+            "r_val": "afghanistan",
+            "s_val": "af",
+            "npmi": 2584.4184407376915
+          },
+          {
+            "r_val": "burundi",
+            "s_val": "bi",
+            "npmi": 2600.728693432949
+          },
+          {
+            "r_val": "singapore",
+            "s_val": "sg",
+            "npmi": 2463.955362440256
+          },
+          {
+            "r_val": "american samoa",
+            "s_val": "ag",
+            "npmi": 2382.597458428028
+          },
+          {
+            "r_val": "christmas island",
+            "s_val": "cx",
+            "npmi": 2617.2904714770957
+          },
+          {
+            "r_val": "russia",
+            "s_val": "ru",
+            "npmi": 2399.5083026865864
+          },
+          {
+            "r_val": "netherlands",
+            "s_val": "nl",
+            "npmi": 2341.0349911970134
+          },
+          {
+            "r_val": "china",
+            "s_val": "cn",
+            "npmi": 2417.0101021531973
+          },
+          {
+            "r_val": "kyrgyzstan",
+            "s_val": "kg",
+            "npmi": 2603.3888436133548
+          },
+          {
+            "r_val": "bhutan",
+            "s_val": "bt",
+            "npmi": 2609.3423626651916
+          },
+          {
+            "r_val": "romania",
+            "s_val": "ro",
+            "npmi": 2363.564549348752
+          },
+          {
+            "r_val": "togo",
+            "s_val": "tg",
+            "npmi": 2592.962060991509
+          },
+          {
+            "r_val": "philippines",
+            "s_val": "ph",
+            "npmi": 2545.7172589251045
+          },
+          {
+            "r_val": "uzbekistan",
+            "s_val": "uz",
+            "npmi": 2596.68510604297
+          },
+          {
+            "r_val": "british virgin islands",
+            "s_val": "na",
+            "npmi": 1937.276996365788
+          },
+          {
+            "r_val": "zimbabwe",
+            "s_val": "zw",
+            "npmi": 2596.5848976830007
+          },
+          {
+            "r_val": "british indian ocean territory",
+            "s_val": "io",
+            "npmi": 2632.930326102746
+          },
+          {
+            "r_val": "montenegro",
+            "s_val": "me",
+            "npmi": 2454.9559550459567
+          },
+          {
+            "r_val": "dominica",
+            "s_val": "dm",
+            "npmi": 2608.2950561971943
+          },
+          {
+            "r_val": "indonesia",
+            "s_val": "id",
+            "npmi": 2422.6260962311235
+          },
+          {
+            "r_val": "benin",
+            "s_val": "bj",
+            "npmi": 2593.309707479626
+          },
+          {
+            "r_val": "angola",
+            "s_val": "ao",
+            "npmi": 2589.509295265302
+          },
+          {
+            "r_val": "sudan",
+            "s_val": "sd",
+            "npmi": 2604.921677047455
+          },
+          {
+            "r_val": "portugal",
+            "s_val": "pt",
+            "npmi": 2457.7060931540354
+          },
+          {
+            "r_val": "new caledonia",
+            "s_val": "nc",
+            "npmi": 2522.543584128985
+          },
+          {
+            "r_val": "grenada",
+            "s_val": "gd",
+            "npmi": 2602.7572357471972
+          },
+          {
+            "r_val": "north korea",
+            "s_val": "kp",
+            "npmi": 2514.6773935362085
+          },
+          {
+            "r_val": "cayman islands",
+            "s_val": "ky",
+            "npmi": 2619.3325743856026
+          },
+          {
+            "r_val": "greece",
+            "s_val": "gr",
+            "npmi": 2501.4478109040506
+          },
+          {
+            "r_val": "latvia",
+            "s_val": "lv",
+            "npmi": 2517.5833595871586
+          },
+          {
+            "r_val": "mongolia",
+            "s_val": "mn",
+            "npmi": 2561.5139959504113
+          },
+          {
+            "r_val": "iran",
+            "s_val": "ir",
+            "npmi": 2458.061583665696
+          },
+          {
+            "r_val": "morocco",
+            "s_val": "ma",
+            "npmi": 2586.6297969529537
+          },
+          {
+            "r_val": "guatemala",
+            "s_val": "gt",
+            "npmi": 2561.7763208158776
+          },
+          {
+            "r_val": "guyana",
+            "s_val": "gy",
+            "npmi": 2583.698054655063
+          },
+          {
+            "r_val": "iraq",
+            "s_val": "iq",
+            "npmi": 2607.6420131221453
+          },
+          {
+            "r_val": "chile",
+            "s_val": "cl",
+            "npmi": 2462.4250171850736
+          },
+          {
+            "r_val": "nepal",
+            "s_val": "np",
+            "npmi": 2589.6079032326797
+          },
+          {
+            "r_val": "tanzania",
+            "s_val": "tz",
+            "npmi": 2600.954387143952
+          },
+          {
+            "r_val": "ukraine",
+            "s_val": "ua",
+            "npmi": 2488.7404730823105
+          },
+          {
+            "r_val": "ghana",
+            "s_val": "gh",
+            "npmi": 2550.1323392819354
+          },
+          {
+            "r_val": "anguilla",
+            "s_val": "ai",
+            "npmi": 2602.265982048542
+          },
+          {
+            "r_val": "india",
+            "s_val": "il",
+            "npmi": 2022.6040808527985
+          },
+          {
+            "r_val": "canada",
+            "s_val": "ca",
+            "npmi": 2267.840832765036
+          },
+          {
+            "r_val": "maldives",
+            "s_val": "mv",
+            "npmi": 2613.2053112995245
+          },
+          {
+            "r_val": "turkey",
+            "s_val": "tr",
+            "npmi": 2389.959446229165
+          },
+          {
+            "r_val": "belgium",
+            "s_val": "bf",
+            "npmi": 2254.3652300244407
+          },
+          {
+            "r_val": "taiwan",
+            "s_val": "tw",
+            "npmi": 2475.4534637621746
+          },
+          {
+            "r_val": "south africa",
+            "s_val": "sa",
+            "npmi": 2181.5160112589506
+          },
+          {
+            "r_val": "bermuda",
+            "s_val": "bm",
+            "npmi": 2612.8515379959235
+          },
+          {
+            "r_val": "central african republic",
+            "s_val": "cf",
+            "npmi": 2643.6389787601374
+          },
+          {
+            "r_val": "jamaica",
+            "s_val": "jm",
+            "npmi": 2593.979677321391
+          },
+          {
+            "r_val": "peru",
+            "s_val": "pe",
+            "npmi": 2549.101849779078
+          },
+          {
+            "r_val": "turkmenistan",
+            "s_val": "tm",
+            "npmi": 2602.0124189021403
+          },
+          {
+            "r_val": "germany",
+            "s_val": "de",
+            "npmi": 2194.204133530876
+          },
+          {
+            "r_val": "fiji",
+            "s_val": "fj",
+            "npmi": 2589.546321663159
+          },
+          {
+            "r_val": "tokelau",
+            "s_val": "tk",
+            "npmi": 2597.1406242189255
+          },
+          {
+            "r_val": "hong kong",
+            "s_val": "hk",
+            "npmi": 2422.4687999944754
+          },
+          {
+            "r_val": "guinea",
+            "s_val": "gn",
+            "npmi": 2615.821502510225
+          },
+          {
+            "r_val": "united states",
+            "s_val": "gb",
+            "npmi": 2116.429421296574
+          },
+          {
+            "r_val": "chad",
+            "s_val": "td",
+            "npmi": 2633.7277217007427
+          },
+          {
+            "r_val": "somalia",
+            "s_val": "so",
+            "npmi": 2598.3515015750113
+          },
+          {
+            "r_val": "pitcairn islands",
+            "s_val": "pn",
+            "npmi": 2540.9147879854104
+          },
+          {
+            "r_val": "thailand",
+            "s_val": "th",
+            "npmi": 2445.958862676621
+          },
+          {
+            "r_val": "equatorial guinea",
+            "s_val": "gq",
+            "npmi": 2637.2711958360474
+          },
+          {
+            "r_val": "kiribati",
+            "s_val": "ki",
+            "npmi": 2602.10267140131
+          },
+          {
+            "r_val": "costa rica",
+            "s_val": "cr",
+            "npmi": 2552.4483886459157
+          },
+          {
+            "r_val": "vietnam",
+            "s_val": "vn",
+            "npmi": 2339.093152394141
+          },
+          {
+            "r_val": "kuwait",
+            "s_val": "kw",
+            "npmi": 2599.1261112546895
+          },
+          {
+            "r_val": "nigeria",
+            "s_val": "ng",
+            "npmi": 2586.1024576617333
+          },
+          {
+            "r_val": "croatia",
+            "s_val": "hr",
+            "npmi": 2457.530480669399
+          },
+          {
+            "r_val": "cook islands",
+            "s_val": "ck",
+            "npmi": 2637.6402925506814
+          },
+          {
+            "r_val": "sri lanka",
+            "s_val": "lk",
+            "npmi": 2565.500299652281
+          },
+          {
+            "r_val": "uruguay",
+            "s_val": "uy",
+            "npmi": 2551.760021290765
+          },
+          {
+            "r_val": "united kingdom",
+            "s_val": "gb",
+            "npmi": 2436.8007850697036
+          },
+          {
+            "r_val": "switzerland",
+            "s_val": "ch",
+            "npmi": 2443.1781839441096
+          },
+          {
+            "r_val": "samoa",
+            "s_val": "ws",
+            "npmi": 2513.8155579365134
+          },
+          {
+            "r_val": "spain",
+            "s_val": "es",
+            "npmi": 2410.2733338053695
+          },
+          {
+            "r_val": "liberia",
+            "s_val": "lr",
+            "npmi": 2602.2413417762928
+          },
+          {
+            "r_val": "venezuela",
+            "s_val": "ve",
+            "npmi": 2519.4770839085445
+          },
+          {
+            "r_val": "burkina faso",
+            "s_val": "bf",
+            "npmi": 2591.870430441903
+          },
+          {
+            "r_val": "swaziland",
+            "s_val": "sz",
+            "npmi": 2607.5728320994544
+          },
+          {
+            "r_val": "palau",
+            "s_val": "pw",
+            "npmi": 2564.749992490936
+          },
+          {
+            "r_val": "estonia",
+            "s_val": "ee",
+            "npmi": 2514.96912716602
+          },
+          {
+            "r_val": "niue",
+            "s_val": "nu",
+            "npmi": 2592.818019178068
+          },
+          {
+            "r_val": "austria",
+            "s_val": "au",
+            "npmi": 2323.4458081442262
+          },
+          {
+            "r_val": "south korea",
+            "s_val": "kr",
+            "npmi": 2437.5887470603006
+          },
+          {
+            "r_val": "mozambique",
+            "s_val": "mz",
+            "npmi": 2595.884321280569
+          },
+          {
+            "r_val": "el salvador",
+            "s_val": "sv",
+            "npmi": 2570.9348395244187
+          },
+          {
+            "r_val": "monaco",
+            "s_val": "mc",
+            "npmi": 2541.385106107668
+          },
+          {
+            "r_val": "guam",
+            "s_val": "gu",
+            "npmi": 2486.8972259023485
+          },
+          {
+            "r_val": "lesotho",
+            "s_val": "ls",
+            "npmi": 2587.3611773042658
+          },
+          {
+            "r_val": "tonga",
+            "s_val": "tk",
+            "npmi": 2340.266531431043
+          },
+          {
+            "r_val": "western sahara",
+            "s_val": "eh",
+            "npmi": 2646.8207600323567
+          },
+          {
+            "r_val": "hungary",
+            "s_val": "hu",
+            "npmi": 2464.2763100936977
+          },
+          {
+            "r_val": "japan",
+            "s_val": "jp",
+            "npmi": 2473.5599527183294
+          },
+          {
+            "r_val": "belarus",
+            "s_val": "bf",
+            "npmi": 2382.5974584280307
+          },
+          {
+            "r_val": "mauritius",
+            "s_val": "mu",
+            "npmi": 2604.2045071942152
+          },
+          {
+            "r_val": "albania",
+            "s_val": "al",
+            "npmi": 2579.4790648772455
+          },
+          {
+            "r_val": "new zealand",
+            "s_val": "nz",
+            "npmi": 2508.8252677265364
+          },
+          {
+            "r_val": "senegal",
+            "s_val": "sn",
+            "npmi": 2572.4865657453493
+          },
+          {
+            "r_val": "macedonia",
+            "s_val": "mk",
+            "npmi": 2438.737075380482
+          },
+          {
+            "r_val": "ethiopia",
+            "s_val": "et",
+            "npmi": 2591.9632299450777
+          },
+          {
+            "r_val": "us virgin islands",
+            "s_val": "vi",
+            "npmi": 2361.2109574107985
+          },
+          {
+            "r_val": "egypt",
+            "s_val": "eg",
+            "npmi": 2563.751208297385
+          },
+          {
+            "r_val": "macau",
+            "s_val": "mo",
+            "npmi": 2581.187503280301
+          },
+          {
+            "r_val": "sierra leone",
+            "s_val": "sl",
+            "npmi": 2591.355580728702
+          },
+          {
+            "r_val": "bolivia",
+            "s_val": "bo",
+            "npmi": 2583.4664472395193
+          },
+          {
+            "r_val": "malta",
+            "s_val": "mt",
+            "npmi": 2508.870787038353
+          },
+          {
+            "r_val": "saudi arabia",
+            "s_val": "sa",
+            "npmi": 2579.2213125437115
+          },
+          {
+            "r_val": "cape verde",
+            "s_val": "cv",
+            "npmi": 2628.8459316821077
+          },
+          {
+            "r_val": "pakistan",
+            "s_val": "pk",
+            "npmi": 2546.8476952104847
+          },
+          {
+            "r_val": "gambia",
+            "s_val": "gm",
+            "npmi": 2613.0092569273306
+          },
+          {
+            "r_val": "ireland",
+            "s_val": "ie",
+            "npmi": 2529.4609033529237
+          },
+          {
+            "r_val": "qatar",
+            "s_val": "qa",
+            "npmi": 2594.161385060228
+          },
+          {
+            "r_val": "slovakia",
+            "s_val": "sk",
+            "npmi": 2442.4551137307835
+          },
+          {
+            "r_val": "france",
+            "s_val": "fr",
+            "npmi": 2387.007109098193
+          },
+          {
+            "r_val": "lithuania",
+            "s_val": "lt",
+            "npmi": 2517.3223609128318
+          },
+          {
+            "r_val": "serbia",
+            "s_val": "rs",
+            "npmi": 2428.0510508388
+          },
+          {
+            "r_val": "niger",
+            "s_val": "ne",
+            "npmi": 2590.9079119292587
+          },
+          {
+            "r_val": "rwanda",
+            "s_val": "rw",
+            "npmi": 2566.1742104617974
+          },
+          {
+            "r_val": "bangladesh",
+            "s_val": "bd",
+            "npmi": 2583.745473264698
+          },
+          {
+            "r_val": "barbados",
+            "s_val": "bb",
+            "npmi": 2582.7604156672983
+          },
+          {
+            "r_val": "nicaragua",
+            "s_val": "ni",
+            "npmi": 2581.2333093175066
+          },
+          {
+            "r_val": "norway",
+            "s_val": "mp",
+            "npmi": 2268.2899895489977
+          },
+          {
+            "r_val": "botswana",
+            "s_val": "bw",
+            "npmi": 2566.963065530695
+          },
+          {
+            "r_val": "denmark",
+            "s_val": "dk",
+            "npmi": 2465.5934104078947
+          },
+          {
+            "r_val": "dominican republic",
+            "s_val": "do",
+            "npmi": 2588.647654832105
+          },
+          {
+            "r_val": "mexico",
+            "s_val": "mx",
+            "npmi": 2412.4182639848855
+          },
+          {
+            "r_val": "uganda",
+            "s_val": "ug",
+            "npmi": 2589.83497120442
+          },
+          {
+            "r_val": "micronesia",
+            "s_val": "fm",
+            "npmi": 2523.1556318862636
+          },
+          {
+            "r_val": "suriname",
+            "s_val": "sr",
+            "npmi": 2584.633750104157
+          },
+          {
+            "r_val": "greenland",
+            "s_val": "gl",
+            "npmi": 2611.2129078983426
+          },
+          {
+            "r_val": "saint helena",
+            "s_val": "sh",
+            "npmi": 2632.489851212536
+          }
+        ],
+        "num_r": 233,
+        "num_s": 233,
+        "num_mappings": 216
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-03T12:23:25.731797557Z",
+          "end_time": "2025-12-03T12:23:25.747261375Z",
+          "duration_seconds": 0.015463812
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2025-12-03T12:23:25.754711063Z",
+          "end_time": "2025-12-03T12:35:47.504928231Z",
+          "duration_seconds": 741.750217171
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-03T12:35:47.505086918Z",
+          "end_time": "2025-12-03T12:37:13.959273324Z",
+          "duration_seconds": 86.454186423
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-03T12:37:13.959304146Z",
+          "end_time": "2025-12-03T12:37:19.234311289Z",
+          "duration_seconds": 5.275007146
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-03T12:37:19.234333564Z",
+          "end_time": "2025-12-03T12:37:54.715803981Z",
+          "duration_seconds": 35.481470433
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-03T12:37:54.715824868Z",
+          "end_time": "2025-12-03T12:38:34.15687978Z",
+          "duration_seconds": 39.441054926
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-03T12:38:34.156898223Z",
+          "end_time": "2025-12-03T12:38:34.391561101Z",
+          "duration_seconds": 0.234662877
+        }
+      },
+      "python_service_timings": {
+        "step1_solve_cilp": 74.2629885673523,
+        "step2_extract_join": 0.004033088684082031,
+        "step3_convert_output": 12.314257860183716,
+        "total_duration": 86.5817666053772
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "start_time": "2025-12-04T02:58:41.632167",
+  "start_time_berlin": "2025-12-04T03:58:41.632160+01:00",
+  "end_time": "2025-12-04T03:00:45.116276",
+  "total_duration_seconds": 123.484109,
+  "database": "vertica",
+  "total_cases": 50,
+  "successful_cases": 0,
+  "failed_cases": 1,
+  "average_duration_seconds": 0.0,
+  "median_duration_seconds": 0.0,
+  "results": [
+    {
+      "case_number": 1,
+      "success": false,
+      "duration_seconds": 122.784955,
+      "error": "",
+      "start_time": "2025-12-04T02:58:41.632633",
+      "end_time": "2025-12-04T03:00:44.417588",
+      "output": null
+    }
+  ]
+}

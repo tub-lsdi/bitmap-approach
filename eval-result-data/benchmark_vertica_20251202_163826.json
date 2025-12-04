@@ -1,0 +1,3164 @@
+{
+  "start_time": "2025-12-02T15:38:26.073171",
+  "start_time_berlin": "2025-12-02T16:38:26.073163+01:00",
+  "end_time": "2025-12-02T16:48:14.793489",
+  "total_duration_seconds": 4188.720318,
+  "database": "vertica",
+  "total_cases": 50,
+  "successful_cases": 8,
+  "failed_cases": 0,
+  "average_duration_seconds": 523.580265375,
+  "median_duration_seconds": 177.48569500000002,
+  "results": [
+    {
+      "case_number": 1,
+      "success": true,
+      "duration_seconds": 204.541437,
+      "error": null,
+      "start_time": "2025-12-02T15:38:26.073690",
+      "end_time": "2025-12-02T15:41:50.615127",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "algeria",
+            "s_val": "africa",
+            "npmi": 2056.773194211967
+          },
+          {
+            "r_val": "angola",
+            "s_val": "africa",
+            "npmi": 2103.1828245541274
+          },
+          {
+            "r_val": "benin",
+            "s_val": "africa",
+            "npmi": 2199.0438587687036
+          },
+          {
+            "r_val": "botswana",
+            "s_val": "africa",
+            "npmi": 2159.3670108941315
+          },
+          {
+            "r_val": "burkina",
+            "s_val": "africa",
+            "npmi": 1655.2284024933258
+          },
+          {
+            "r_val": "burundi",
+            "s_val": "africa",
+            "npmi": 2168.434087524278
+          },
+          {
+            "r_val": "cameroon",
+            "s_val": "africa",
+            "npmi": 2137.7483605829443
+          },
+          {
+            "r_val": "cape verde",
+            "s_val": "africa",
+            "npmi": 2249.0060459342562
+          },
+          {
+            "r_val": "central african republic",
+            "s_val": "africa",
+            "npmi": 2245.683406618777
+          },
+          {
+            "r_val": "chad",
+            "s_val": "africa",
+            "npmi": 2223.3854064768934
+          },
+          {
+            "r_val": "comoros",
+            "s_val": "africa",
+            "npmi": 2213.6918515203597
+          },
+          {
+            "r_val": "congo",
+            "s_val": "africa",
+            "npmi": 2070.2668101806426
+          },
+          {
+            "r_val": "djibouti",
+            "s_val": "africa",
+            "npmi": 2223.7809607532167
+          },
+          {
+            "r_val": "egypt",
+            "s_val": "africa",
+            "npmi": 1855.6206595649483
+          },
+          {
+            "r_val": "equatorial guinea",
+            "s_val": "africa",
+            "npmi": 2268.9440070775745
+          },
+          {
+            "r_val": "eritrea",
+            "s_val": "africa",
+            "npmi": 2235.6165843617805
+          },
+          {
+            "r_val": "ethiopia",
+            "s_val": "africa",
+            "npmi": 2057.866367401329
+          },
+          {
+            "r_val": "gabon",
+            "s_val": "africa",
+            "npmi": 2179.405509185187
+          },
+          {
+            "r_val": "gambia",
+            "s_val": "africa",
+            "npmi": 2200.841563351919
+          },
+          {
+            "r_val": "ghana",
+            "s_val": "africa",
+            "npmi": 2036.0182293761202
+          },
+          {
+            "r_val": "guinea",
+            "s_val": "africa",
+            "npmi": 2166.7750581018313
+          },
+          {
+            "r_val": "ivory coast",
+            "s_val": "africa",
+            "npmi": 2201.9771618837926
+          },
+          {
+            "r_val": "kenya",
+            "s_val": "africa",
+            "npmi": 2024.7281548560086
+          },
+          {
+            "r_val": "lesotho",
+            "s_val": "africa",
+            "npmi": 2195.2065528841676
+          },
+          {
+            "r_val": "liberia",
+            "s_val": "africa",
+            "npmi": 2179.6312834432442
+          },
+          {
+            "r_val": "libya",
+            "s_val": "africa",
+            "npmi": 2196.607225703275
+          },
+          {
+            "r_val": "madagascar",
+            "s_val": "africa",
+            "npmi": 1967.3481646530718
+          },
+          {
+            "r_val": "malawi",
+            "s_val": "africa",
+            "npmi": 2157.5538491030225
+          },
+          {
+            "r_val": "mali",
+            "s_val": "africa",
+            "npmi": 2155.502757939907
+          },
+          {
+            "r_val": "mauritania",
+            "s_val": "africa",
+            "npmi": 2223.4168972173657
+          },
+          {
+            "r_val": "mauritius",
+            "s_val": "africa",
+            "npmi": 2201.630194470652
+          },
+          {
+            "r_val": "morocco",
+            "s_val": "africa",
+            "npmi": 2038.048837456125
+          },
+          {
+            "r_val": "mozambique",
+            "s_val": "africa",
+            "npmi": 2072.4477094879567
+          },
+          {
+            "r_val": "namibia",
+            "s_val": "africa",
+            "npmi": 2193.4180231916657
+          },
+          {
+            "r_val": "niger",
+            "s_val": "africa",
+            "npmi": 2173.141846661513
+          },
+          {
+            "r_val": "nigeria",
+            "s_val": "africa",
+            "npmi": 1962.683872236419
+          },
+          {
+            "r_val": "rwanda",
+            "s_val": "africa",
+            "npmi": 2124.277569801807
+          },
+          {
+            "r_val": "senegal",
+            "s_val": "africa",
+            "npmi": 2056.4267491512264
+          },
+          {
+            "r_val": "seychelles",
+            "s_val": "africa",
+            "npmi": 2233.4596428656664
+          },
+          {
+            "r_val": "sierra leone",
+            "s_val": "africa",
+            "npmi": 2190.288209304627
+          },
+          {
+            "r_val": "somalia",
+            "s_val": "africa",
+            "npmi": 2173.0554045245267
+          },
+          {
+            "r_val": "south africa",
+            "s_val": "africa",
+            "npmi": 1893.1495803303344
+          },
+          {
+            "r_val": "south sudan",
+            "s_val": "africa",
+            "npmi": 2120.4674216396156
+          },
+          {
+            "r_val": "sudan",
+            "s_val": "africa",
+            "npmi": 2059.1459908171605
+          },
+          {
+            "r_val": "swaziland",
+            "s_val": "africa",
+            "npmi": 2198.1046599740735
+          },
+          {
+            "r_val": "tanzania",
+            "s_val": "africa",
+            "npmi": 1950.0282164106918
+          },
+          {
+            "r_val": "togo",
+            "s_val": "africa",
+            "npmi": 2193.0886386875263
+          },
+          {
+            "r_val": "tunisia",
+            "s_val": "africa",
+            "npmi": 2082.9393400043327
+          },
+          {
+            "r_val": "uganda",
+            "s_val": "africa",
+            "npmi": 2072.859232690888
+          },
+          {
+            "r_val": "zambia",
+            "s_val": "africa",
+            "npmi": 2108.813121583669
+          },
+          {
+            "r_val": "zimbabwe",
+            "s_val": "africa",
+            "npmi": 2076.8649110425745
+          },
+          {
+            "r_val": "afghanistan",
+            "s_val": "asia",
+            "npmi": 1678.3342726697228
+          },
+          {
+            "r_val": "bahrain",
+            "s_val": "asia",
+            "npmi": 2238.8348784571117
+          },
+          {
+            "r_val": "bangladesh",
+            "s_val": "asia",
+            "npmi": 2006.2360858278244
+          },
+          {
+            "r_val": "bhutan",
+            "s_val": "asia",
+            "npmi": 2223.356113443154
+          },
+          {
+            "r_val": "brunei",
+            "s_val": "asia",
+            "npmi": 2222.2501342355263
+          },
+          {
+            "r_val": "cambodia",
+            "s_val": "asia",
+            "npmi": 2136.893666728482
+          },
+          {
+            "r_val": "china",
+            "s_val": "asia",
+            "npmi": 1604.9688769771385
+          },
+          {
+            "r_val": "east timor",
+            "s_val": "asia",
+            "npmi": 2282.3339794343915
+          },
+          {
+            "r_val": "india",
+            "s_val": "asia",
+            "npmi": 1797.5287679055552
+          },
+          {
+            "r_val": "indonesia",
+            "s_val": "asia",
+            "npmi": 1894.6243659136758
+          },
+          {
+            "r_val": "iran",
+            "s_val": "asia",
+            "npmi": 1843.1966570140917
+          },
+          {
+            "r_val": "iraq",
+            "s_val": "asia",
+            "npmi": 2013.1632653943843
+          },
+          {
+            "r_val": "israel",
+            "s_val": "asia",
+            "npmi": 1904.2033653469157
+          },
+          {
+            "r_val": "japan",
+            "s_val": "asia",
+            "npmi": 1868.0618669206574
+          },
+          {
+            "r_val": "jordan",
+            "s_val": "asia",
+            "npmi": 2198.8150864850413
+          },
+          {
+            "r_val": "kazakhstan",
+            "s_val": "asia",
+            "npmi": 2137.1173001846696
+          },
+          {
+            "r_val": "kuwait",
+            "s_val": "asia",
+            "npmi": 2186.223380095734
+          },
+          {
+            "r_val": "kyrgyzstan",
+            "s_val": "asia",
+            "npmi": 2265.3996462118553
+          },
+          {
+            "r_val": "laos",
+            "s_val": "asia",
+            "npmi": 2160.950605450458
+          },
+          {
+            "r_val": "lebanon",
+            "s_val": "asia",
+            "npmi": 2105.307150239408
+          },
+          {
+            "r_val": "malaysia",
+            "s_val": "asia",
+            "npmi": 2017.382078894802
+          },
+          {
+            "r_val": "maldives",
+            "s_val": "asia",
+            "npmi": 2250.9756942817708
+          },
+          {
+            "r_val": "mongolia",
+            "s_val": "asia",
+            "npmi": 2106.9130495802433
+          },
+          {
+            "r_val": "nepal",
+            "s_val": "asia",
+            "npmi": 2121.9761843956094
+          },
+          {
+            "r_val": "oman",
+            "s_val": "asia",
+            "npmi": 2256.3471521258257
+          },
+          {
+            "r_val": "pakistan",
+            "s_val": "asia",
+            "npmi": 2033.0834406221238
+          },
+          {
+            "r_val": "philippines",
+            "s_val": "asia",
+            "npmi": 1809.2505430153558
+          },
+          {
+            "r_val": "qatar",
+            "s_val": "asia",
+            "npmi": 2203.2885983527726
+          },
+          {
+            "r_val": "russian federation",
+            "s_val": "asia",
+            "npmi": 1649.9705021250602
+          },
+          {
+            "r_val": "saudi arabia",
+            "s_val": "asia",
+            "npmi": 2071.4803386630447
+          },
+          {
+            "r_val": "singapore",
+            "s_val": "asia",
+            "npmi": 1983.0698184989615
+          },
+          {
+            "r_val": "sri lanka",
+            "s_val": "asia",
+            "npmi": 2082.9265711735015
+          },
+          {
+            "r_val": "syria",
+            "s_val": "asia",
+            "npmi": 2082.183725761222
+          },
+          {
+            "r_val": "tajikistan",
+            "s_val": "asia",
+            "npmi": 2256.4472399709184
+          },
+          {
+            "r_val": "thailand",
+            "s_val": "asia",
+            "npmi": 1680.0810887712641
+          },
+          {
+            "r_val": "turkey",
+            "s_val": "asia",
+            "npmi": 1908.3083004495106
+          },
+          {
+            "r_val": "turkmenistan",
+            "s_val": "asia",
+            "npmi": 2246.527437230128
+          },
+          {
+            "r_val": "united arab emirates",
+            "s_val": "asia",
+            "npmi": 2214.1758758888427
+          },
+          {
+            "r_val": "uzbekistan",
+            "s_val": "asia",
+            "npmi": 2215.977261176767
+          },
+          {
+            "r_val": "vietnam",
+            "s_val": "asia",
+            "npmi": 2045.5733060690804
+          },
+          {
+            "r_val": "yemen",
+            "s_val": "asia",
+            "npmi": 2090.30526237582
+          },
+          {
+            "r_val": "albania",
+            "s_val": "europe",
+            "npmi": 2131.4167805513875
+          },
+          {
+            "r_val": "andorra",
+            "s_val": "europe",
+            "npmi": 2125.4953895537533
+          },
+          {
+            "r_val": "armenia",
+            "s_val": "asia",
+            "npmi": 2138.3942184246266
+          },
+          {
+            "r_val": "austria",
+            "s_val": "europe",
+            "npmi": 1835.899884105772
+          },
+          {
+            "r_val": "azerbaijan",
+            "s_val": "asia",
+            "npmi": 2191.6366035241526
+          },
+          {
+            "r_val": "belarus",
+            "s_val": "europe",
+            "npmi": 2085.7006552142716
+          },
+          {
+            "r_val": "belgium",
+            "s_val": "europe",
+            "npmi": 1807.3490158152485
+          },
+          {
+            "r_val": "bulgaria",
+            "s_val": "europe",
+            "npmi": 2006.7554861364638
+          },
+          {
+            "r_val": "croatia",
+            "s_val": "europe",
+            "npmi": 1992.1796018278444
+          },
+          {
+            "r_val": "cyprus",
+            "s_val": "asia",
+            "npmi": 2104.218581328887
+          },
+          {
+            "r_val": "czech republic",
+            "s_val": "europe",
+            "npmi": 1883.0756101856318
+          },
+          {
+            "r_val": "denmark",
+            "s_val": "europe",
+            "npmi": 1502.334038148937
+          },
+          {
+            "r_val": "estonia",
+            "s_val": "europe",
+            "npmi": 2016.253632951465
+          },
+          {
+            "r_val": "finland",
+            "s_val": "europe",
+            "npmi": 1735.1198068135996
+          },
+          {
+            "r_val": "france",
+            "s_val": "europe",
+            "npmi": 1565.5949868220362
+          },
+          {
+            "r_val": "georgia",
+            "s_val": "europe",
+            "npmi": 2114.497258025765
+          },
+          {
+            "r_val": "germany",
+            "s_val": "europe",
+            "npmi": 1513.868392426655
+          },
+          {
+            "r_val": "greece",
+            "s_val": "europe",
+            "npmi": 1824.7573717824237
+          },
+          {
+            "r_val": "hungary",
+            "s_val": "europe",
+            "npmi": 1914.1969371351129
+          },
+          {
+            "r_val": "iceland",
+            "s_val": "europe",
+            "npmi": 2051.8307550439113
+          },
+          {
+            "r_val": "ireland",
+            "s_val": "europe",
+            "npmi": 1784.1264379937863
+          },
+          {
+            "r_val": "italy",
+            "s_val": "europe",
+            "npmi": 1726.1547575371287
+          },
+          {
+            "r_val": "latvia",
+            "s_val": "europe",
+            "npmi": 1992.9220584786772
+          },
+          {
+            "r_val": "liechtenstein",
+            "s_val": "europe",
+            "npmi": 2215.362681848537
+          },
+          {
+            "r_val": "lithuania",
+            "s_val": "europe",
+            "npmi": 1980.0129344186503
+          },
+          {
+            "r_val": "luxembourg",
+            "s_val": "europe",
+            "npmi": 2005.255138890651
+          },
+          {
+            "r_val": "macedonia",
+            "s_val": "europe",
+            "npmi": 2131.057233898599
+          },
+          {
+            "r_val": "malta",
+            "s_val": "europe",
+            "npmi": 2061.651983749382
+          },
+          {
+            "r_val": "moldova",
+            "s_val": "europe",
+            "npmi": 2260.557113454511
+          },
+          {
+            "r_val": "monaco",
+            "s_val": "europe",
+            "npmi": 2115.432916041525
+          },
+          {
+            "r_val": "montenegro",
+            "s_val": "europe",
+            "npmi": 2246.576242530651
+          },
+          {
+            "r_val": "netherlands",
+            "s_val": "europe",
+            "npmi": 1589.5728521297078
+          },
+          {
+            "r_val": "norway",
+            "s_val": "europe",
+            "npmi": 1809.012096994125
+          },
+          {
+            "r_val": "poland",
+            "s_val": "europe",
+            "npmi": 1802.7594913787293
+          },
+          {
+            "r_val": "portugal",
+            "s_val": "europe",
+            "npmi": 1755.132287978771
+          },
+          {
+            "r_val": "romania",
+            "s_val": "europe",
+            "npmi": 1853.1719700541591
+          },
+          {
+            "r_val": "san marino",
+            "s_val": "europe",
+            "npmi": 2201.641842113197
+          },
+          {
+            "r_val": "serbia",
+            "s_val": "europe",
+            "npmi": 1990.098367304704
+          },
+          {
+            "r_val": "slovakia",
+            "s_val": "europe",
+            "npmi": 2010.909294630263
+          },
+          {
+            "r_val": "slovenia",
+            "s_val": "europe",
+            "npmi": 1994.0567181595181
+          },
+          {
+            "r_val": "spain",
+            "s_val": "europe",
+            "npmi": 1636.1452387640454
+          },
+          {
+            "r_val": "sweden",
+            "s_val": "europe",
+            "npmi": 1700.6268431474332
+          },
+          {
+            "r_val": "switzerland",
+            "s_val": "europe",
+            "npmi": 1772.5971308022554
+          },
+          {
+            "r_val": "ukraine",
+            "s_val": "europe",
+            "npmi": 1644.0277915506922
+          },
+          {
+            "r_val": "united kingdom",
+            "s_val": "europe",
+            "npmi": 1422.578978489546
+          },
+          {
+            "r_val": "vatican city",
+            "s_val": "europe",
+            "npmi": 2139.1928791921764
+          },
+          {
+            "r_val": "bahamas",
+            "s_val": "north america",
+            "npmi": 2212.9096786162763
+          },
+          {
+            "r_val": "barbados",
+            "s_val": "north america",
+            "npmi": 2190.4451071001213
+          },
+          {
+            "r_val": "belize",
+            "s_val": "north america",
+            "npmi": 2228.058942504898
+          },
+          {
+            "r_val": "canada",
+            "s_val": "north america",
+            "npmi": 1820.4228081728577
+          },
+          {
+            "r_val": "costa rica",
+            "s_val": "north america",
+            "npmi": 2116.91178253979
+          },
+          {
+            "r_val": "cuba",
+            "s_val": "north america",
+            "npmi": 2063.8295705304913
+          },
+          {
+            "r_val": "dominica",
+            "s_val": "north america",
+            "npmi": 2277.926104791695
+          },
+          {
+            "r_val": "dominican republic",
+            "s_val": "north america",
+            "npmi": 2164.6932298570027
+          },
+          {
+            "r_val": "el salvador",
+            "s_val": "north america",
+            "npmi": 2124.6657537205524
+          },
+          {
+            "r_val": "grenada",
+            "s_val": "north america",
+            "npmi": 2260.437625414353
+          },
+          {
+            "r_val": "guatemala",
+            "s_val": "north america",
+            "npmi": 2122.7257131223823
+          },
+          {
+            "r_val": "haiti",
+            "s_val": "north america",
+            "npmi": 2239.366924018259
+          },
+          {
+            "r_val": "honduras",
+            "s_val": "north america",
+            "npmi": 2207.6745380020884
+          },
+          {
+            "r_val": "jamaica",
+            "s_val": "north america",
+            "npmi": 2178.1758784551553
+          },
+          {
+            "r_val": "mexico",
+            "s_val": "north america",
+            "npmi": 1723.241938679545
+          },
+          {
+            "r_val": "nicaragua",
+            "s_val": "north america",
+            "npmi": 2217.6648090353424
+          },
+          {
+            "r_val": "panama",
+            "s_val": "north america",
+            "npmi": 2163.6229723873307
+          },
+          {
+            "r_val": "saint lucia",
+            "s_val": "north america",
+            "npmi": 2228.4782268324366
+          },
+          {
+            "r_val": "united states",
+            "s_val": "north america",
+            "npmi": 1578.0247781053326
+          },
+          {
+            "r_val": "australia",
+            "s_val": "oceania",
+            "npmi": 1920.2942521994332
+          },
+          {
+            "r_val": "fiji",
+            "s_val": "oceania",
+            "npmi": 2203.224163468272
+          },
+          {
+            "r_val": "kiribati",
+            "s_val": "oceania",
+            "npmi": 2178.3668197020243
+          },
+          {
+            "r_val": "marshall islands",
+            "s_val": "oceania",
+            "npmi": 2263.790865593816
+          },
+          {
+            "r_val": "micronesia",
+            "s_val": "oceania",
+            "npmi": 2221.980840061931
+          },
+          {
+            "r_val": "nauru",
+            "s_val": "oceania",
+            "npmi": 2233.4880620553236
+          },
+          {
+            "r_val": "new zealand",
+            "s_val": "oceania",
+            "npmi": 1986.5724329374405
+          },
+          {
+            "r_val": "palau",
+            "s_val": "oceania",
+            "npmi": 2234.1771871406254
+          },
+          {
+            "r_val": "papua new guinea",
+            "s_val": "oceania",
+            "npmi": 2159.3856047090826
+          },
+          {
+            "r_val": "samoa",
+            "s_val": "oceania",
+            "npmi": 2203.5282471410724
+          },
+          {
+            "r_val": "solomon islands",
+            "s_val": "oceania",
+            "npmi": 2222.7469195864433
+          },
+          {
+            "r_val": "tonga",
+            "s_val": "oceania",
+            "npmi": 2186.752492797395
+          },
+          {
+            "r_val": "tuvalu",
+            "s_val": "oceania",
+            "npmi": 2222.0825890893134
+          },
+          {
+            "r_val": "vanuatu",
+            "s_val": "oceania",
+            "npmi": 2207.585839575274
+          },
+          {
+            "r_val": "argentina",
+            "s_val": "south america",
+            "npmi": 1818.0312608893612
+          },
+          {
+            "r_val": "bolivia",
+            "s_val": "south america",
+            "npmi": 1951.0078447376998
+          },
+          {
+            "r_val": "brazil",
+            "s_val": "south america",
+            "npmi": 1780.0249382750335
+          },
+          {
+            "r_val": "chile",
+            "s_val": "south america",
+            "npmi": 1896.4341069589996
+          },
+          {
+            "r_val": "colombia",
+            "s_val": "south america",
+            "npmi": 1861.5344266686695
+          },
+          {
+            "r_val": "ecuador",
+            "s_val": "south america",
+            "npmi": 2029.330106795703
+          },
+          {
+            "r_val": "guyana",
+            "s_val": "south america",
+            "npmi": 2123.082016216473
+          },
+          {
+            "r_val": "paraguay",
+            "s_val": "south america",
+            "npmi": 2081.0147353925786
+          },
+          {
+            "r_val": "peru",
+            "s_val": "south america",
+            "npmi": 1819.0108855814597
+          },
+          {
+            "r_val": "suriname",
+            "s_val": "south america",
+            "npmi": 2145.1690685063004
+          },
+          {
+            "r_val": "uruguay",
+            "s_val": "south america",
+            "npmi": 2034.0927131572475
+          },
+          {
+            "r_val": "venezuela",
+            "s_val": "south america",
+            "npmi": 1998.5031874692577
+          }
+        ],
+        "num_r": 194,
+        "num_s": 7,
+        "num_mappings": 183
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T15:38:26.07785923Z",
+          "end_time": "2025-12-02T15:38:26.08677478Z",
+          "duration_seconds": 0.008915548
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T15:38:26.086850559Z",
+          "end_time": "2025-12-02T15:40:06.968073001Z",
+          "duration_seconds": 100.881222442
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T15:40:06.968100607Z",
+          "end_time": "2025-12-02T15:40:31.04449721Z",
+          "duration_seconds": 24.076396581
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T15:40:31.044502501Z",
+          "end_time": "2025-12-02T15:40:46.800453978Z",
+          "duration_seconds": 15.75595149
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T15:40:46.800481709Z",
+          "end_time": "2025-12-02T15:40:47.123482931Z",
+          "duration_seconds": 0.323001222
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T15:40:47.123520447Z",
+          "end_time": "2025-12-02T15:41:02.209972622Z",
+          "duration_seconds": 15.086452192
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T15:41:02.209996163Z",
+          "end_time": "2025-12-02T15:41:32.992555105Z",
+          "duration_seconds": 30.782558947
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T15:41:32.992573468Z",
+          "end_time": "2025-12-02T15:41:32.998375723Z",
+          "duration_seconds": 0.005802036
+        }
+      }
+    },
+    {
+      "case_number": 2,
+      "success": true,
+      "duration_seconds": 92.408913,
+      "error": null,
+      "start_time": "2025-12-02T15:41:50.621350",
+      "end_time": "2025-12-02T15:43:23.030263",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "parnate",
+            "s_val": "tranylcypromine",
+            "npmi": 259.92871566182674
+          },
+          {
+            "r_val": "nardil",
+            "s_val": "phenelzine",
+            "npmi": 260.875623310468
+          },
+          {
+            "r_val": "marplan",
+            "s_val": "isocarboxazid",
+            "npmi": 253.7883468343879
+          },
+          {
+            "r_val": "anafranil",
+            "s_val": "clomipramine",
+            "npmi": 260.06855878740436
+          },
+          {
+            "r_val": "elavil",
+            "s_val": "amitriptyline",
+            "npmi": 259.1590705593561
+          },
+          {
+            "r_val": "norpramin",
+            "s_val": "desipramine",
+            "npmi": 259.15897536646776
+          },
+          {
+            "r_val": "pamelor",
+            "s_val": "nortriptyline",
+            "npmi": 263.2147542749037
+          },
+          {
+            "r_val": "sinequan",
+            "s_val": "doxepin",
+            "npmi": 259.7237120341799
+          },
+          {
+            "r_val": "surmontil",
+            "s_val": "trimipramine",
+            "npmi": 260.58816848295095
+          },
+          {
+            "r_val": "celexa",
+            "s_val": "citalopram",
+            "npmi": 255.1944817290629
+          },
+          {
+            "r_val": "lexapro",
+            "s_val": "escitalopram",
+            "npmi": 248.11897791342673
+          },
+          {
+            "r_val": "luvox",
+            "s_val": "fluvoxamine",
+            "npmi": 259.35813696518846
+          },
+          {
+            "r_val": "paxil",
+            "s_val": "paroxetine",
+            "npmi": 256.37529246462975
+          },
+          {
+            "r_val": "prozac",
+            "s_val": "fluoxetine",
+            "npmi": 258.21534481392035
+          },
+          {
+            "r_val": "zoloft",
+            "s_val": "sertraline",
+            "npmi": 256.2098142527556
+          },
+          {
+            "r_val": "cymbalta",
+            "s_val": "duloxetine",
+            "npmi": 249.48169703677812
+          },
+          {
+            "r_val": "effexor",
+            "s_val": "venlafaxine",
+            "npmi": 258.5691285061315
+          },
+          {
+            "r_val": "remeron",
+            "s_val": "mirtazapine",
+            "npmi": 255.01645034642078
+          },
+          {
+            "r_val": "wellbutrin",
+            "s_val": "bupropion",
+            "npmi": 257.4484300360921
+          },
+          {
+            "r_val": "desyrel",
+            "s_val": "trazodone",
+            "npmi": 262.45589837764084
+          }
+        ],
+        "num_r": 20,
+        "num_s": 20,
+        "num_mappings": 20
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T15:41:50.623504337Z",
+          "end_time": "2025-12-02T15:41:50.632384794Z",
+          "duration_seconds": 0.008880463
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T15:41:50.632404368Z",
+          "end_time": "2025-12-02T15:42:56.42867187Z",
+          "duration_seconds": 65.796267507
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T15:42:56.428689649Z",
+          "end_time": "2025-12-02T15:42:56.444284584Z",
+          "duration_seconds": 0.015594938
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T15:42:56.444289598Z",
+          "end_time": "2025-12-02T15:42:56.491732369Z",
+          "duration_seconds": 0.047442771
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T15:42:56.491740988Z",
+          "end_time": "2025-12-02T15:42:56.496090295Z",
+          "duration_seconds": 0.004349307
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T15:42:56.496099852Z",
+          "end_time": "2025-12-02T15:42:56.566734355Z",
+          "duration_seconds": 0.070634507
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T15:42:56.566741872Z",
+          "end_time": "2025-12-02T15:43:22.965274997Z",
+          "duration_seconds": 26.398533134
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T15:43:22.965298748Z",
+          "end_time": "2025-12-02T15:43:22.965374392Z",
+          "duration_seconds": 7.565e-05
+        }
+      }
+    },
+    {
+      "case_number": 3,
+      "success": true,
+      "duration_seconds": 2868.686631,
+      "error": null,
+      "start_time": "2025-12-02T15:43:23.033765",
+      "end_time": "2025-12-02T16:31:11.720396",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "ac",
+            "s_val": "seaborgium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "ag",
+            "s_val": "iridium",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "al",
+            "s_val": "helium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "am",
+            "s_val": "lithium",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "ar",
+            "s_val": "boron",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "au",
+            "s_val": "yttrium",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "b",
+            "s_val": "argon",
+            "npmi": 1702.670493237175
+          },
+          {
+            "r_val": "ba",
+            "s_val": "manganese",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "bh",
+            "s_val": "magnesium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "bi",
+            "s_val": "sodium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "bk",
+            "s_val": "fluorine",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "br",
+            "s_val": "silicon",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "c",
+            "s_val": "argon",
+            "npmi": 1702.670493237175
+          },
+          {
+            "r_val": "ca",
+            "s_val": "calcium",
+            "npmi": 1342.9162946525819
+          },
+          {
+            "r_val": "cd",
+            "s_val": "iron",
+            "npmi": 1813.1195087688898
+          },
+          {
+            "r_val": "ce",
+            "s_val": "mendelevium",
+            "npmi": 1813.1195087688893
+          },
+          {
+            "r_val": "cf",
+            "s_val": "chlorine",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "cl",
+            "s_val": "californium",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "cm",
+            "s_val": "iron",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "co",
+            "s_val": "darmstadtium",
+            "npmi": 1813.8126559494501
+          },
+          {
+            "r_val": "cr",
+            "s_val": "titanium",
+            "npmi": 1742.418496351773
+          },
+          {
+            "r_val": "cs",
+            "s_val": "calcium",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "cu",
+            "s_val": "manganese",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "db",
+            "s_val": "nickel",
+            "npmi": 1742.4184963517737
+          },
+          {
+            "r_val": "ds",
+            "s_val": "darmstadtium",
+            "npmi": 170.46576543357986
+          },
+          {
+            "r_val": "dy",
+            "s_val": "nitrogen",
+            "npmi": 1813.1195087688898
+          },
+          {
+            "r_val": "er",
+            "s_val": "gallium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "es",
+            "s_val": "terbium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "eu",
+            "s_val": "germanium",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "f",
+            "s_val": "berkelium",
+            "npmi": 1795.6970214378339
+          },
+          {
+            "r_val": "fe",
+            "s_val": "cadmium",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "fm",
+            "s_val": "thallium",
+            "npmi": 1883.820521186002
+          },
+          {
+            "r_val": "fr",
+            "s_val": "bromine",
+            "npmi": 1883.820521186003
+          },
+          {
+            "r_val": "ga",
+            "s_val": "rubidium",
+            "npmi": 1813.1195087688902
+          },
+          {
+            "r_val": "gd",
+            "s_val": "nickel",
+            "npmi": 1883.820521186003
+          },
+          {
+            "r_val": "ge",
+            "s_val": "europium",
+            "npmi": 1813.1195087688898
+          },
+          {
+            "r_val": "h",
+            "s_val": "actinium",
+            "npmi": 1813.1195087688898
+          },
+          {
+            "r_val": "he",
+            "s_val": "molybdenum",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "hf",
+            "s_val": "zirconium",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "hg",
+            "s_val": "radon",
+            "npmi": 1813.1195087688898
+          },
+          {
+            "r_val": "ho",
+            "s_val": "technetium",
+            "npmi": 1813.1195087688905
+          },
+          {
+            "r_val": "hs",
+            "s_val": "niobium",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "i",
+            "s_val": "lithium",
+            "npmi": 1813.1195087688898
+          },
+          {
+            "r_val": "ir",
+            "s_val": "promethium",
+            "npmi": 1813.1195087688905
+          },
+          {
+            "r_val": "k",
+            "s_val": "rhenium",
+            "npmi": 1813.1195087688902
+          },
+          {
+            "r_val": "kr",
+            "s_val": "gadolinium",
+            "npmi": 1813.8126559494501
+          },
+          {
+            "r_val": "la",
+            "s_val": "meitnerium",
+            "npmi": 1813.8126559494494
+          },
+          {
+            "r_val": "li",
+            "s_val": "americium",
+            "npmi": 1813.8126559494497
+          },
+          {
+            "r_val": "lr",
+            "s_val": "antimony",
+            "npmi": 1883.820521186002
+          },
+          {
+            "r_val": "lu",
+            "s_val": "phosphorus",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "md",
+            "s_val": "thorium",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "mg",
+            "s_val": "bohrium",
+            "npmi": 1813.81265594945
+          },
+          {
+            "r_val": "mn",
+            "s_val": "barium",
+            "npmi": 1813.1195087688898
+          },
+          {
+            "r_val": "mo",
+            "s_val": "helium",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "mt",
+            "s_val": "lanthanum",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "n",
+            "s_val": "dysprosium",
+            "npmi": 1761.0838381865424
+          },
+          {
+            "r_val": "na",
+            "s_val": "neptunium",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "nb",
+            "s_val": "hassium",
+            "npmi": 1813.81265594945
+          },
+          {
+            "r_val": "nd",
+            "s_val": "promethium",
+            "npmi": 1849.215521227806
+          },
+          {
+            "r_val": "ne",
+            "s_val": "beryllium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "ni",
+            "s_val": "gadolinium",
+            "npmi": 1813.8126559494494
+          },
+          {
+            "r_val": "np",
+            "s_val": "europium",
+            "npmi": 1883.820521186002
+          },
+          {
+            "r_val": "o",
+            "s_val": "thulium",
+            "npmi": 1813.1195087688895
+          },
+          {
+            "r_val": "os",
+            "s_val": "erbium",
+            "npmi": 1813.1195087688902
+          },
+          {
+            "r_val": "p",
+            "s_val": "lutetium",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "pa",
+            "s_val": "silicon",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "pb",
+            "s_val": "tellurium",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "pd",
+            "s_val": "iodine",
+            "npmi": 1813.1195087688902
+          },
+          {
+            "r_val": "pm",
+            "s_val": "neodymium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "po",
+            "s_val": "rubidium",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "pr",
+            "s_val": "osmium",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "pt",
+            "s_val": "hafnium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "pu",
+            "s_val": "tantalum",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "ra",
+            "s_val": "gold",
+            "npmi": 1883.820521186002
+          },
+          {
+            "r_val": "rb",
+            "s_val": "gallium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "re",
+            "s_val": "thallium",
+            "npmi": 1883.820521186002
+          },
+          {
+            "r_val": "rf",
+            "s_val": "radon",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "rg",
+            "s_val": "roentgenium",
+            "npmi": 170.89019115179045
+          },
+          {
+            "r_val": "rh",
+            "s_val": "lead",
+            "npmi": 1813.81265594945
+          },
+          {
+            "r_val": "rn",
+            "s_val": "mercury",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "ru",
+            "s_val": "hydrogen",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "s",
+            "s_val": "americium",
+            "npmi": 1813.8126559494501
+          },
+          {
+            "r_val": "sb",
+            "s_val": "beryllium",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "sc",
+            "s_val": "chlorine",
+            "npmi": 1839.9291484504238
+          },
+          {
+            "r_val": "se",
+            "s_val": "thorium",
+            "npmi": 1813.1195087688898
+          },
+          {
+            "r_val": "sg",
+            "s_val": "actinium",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "si",
+            "s_val": "bromine",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "sm",
+            "s_val": "neon",
+            "npmi": 1883.8205211860027
+          },
+          {
+            "r_val": "sn",
+            "s_val": "lawrencium",
+            "npmi": 1813.1195087688902
+          },
+          {
+            "r_val": "sr",
+            "s_val": "plutonium",
+            "npmi": 1813.8126559494506
+          },
+          {
+            "r_val": "ta",
+            "s_val": "plutonium",
+            "npmi": 1813.8126559494501
+          },
+          {
+            "r_val": "tb",
+            "s_val": "niobium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "tc",
+            "s_val": "berkelium",
+            "npmi": 1773.1483621029731
+          },
+          {
+            "r_val": "te",
+            "s_val": "lead",
+            "npmi": 1813.81265594945
+          },
+          {
+            "r_val": "th",
+            "s_val": "selenium",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "ti",
+            "s_val": "chromium",
+            "npmi": 1771.7620677418536
+          },
+          {
+            "r_val": "tl",
+            "s_val": "rhenium",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "tm",
+            "s_val": "oxygen",
+            "npmi": 1883.8205211860022
+          },
+          {
+            "r_val": "u",
+            "s_val": "seaborgium",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "uub",
+            "s_val": "ununbium",
+            "npmi": 133.5081980006944
+          },
+          {
+            "r_val": "uuh",
+            "s_val": "ununhexium",
+            "npmi": 147.9216216386367
+          },
+          {
+            "r_val": "uuo",
+            "s_val": "ununoctium",
+            "npmi": 159.97258391457729
+          },
+          {
+            "r_val": "uup",
+            "s_val": "ununpentium",
+            "npmi": 159.29990890661045
+          },
+          {
+            "r_val": "uuq",
+            "s_val": "ununquadium",
+            "npmi": 147.5917137525869
+          },
+          {
+            "r_val": "uus",
+            "s_val": "ununseptium",
+            "npmi": 147.4756693222148
+          },
+          {
+            "r_val": "uut",
+            "s_val": "ununtrium",
+            "npmi": 159.56703802081648
+          },
+          {
+            "r_val": "v",
+            "s_val": "bohrium",
+            "npmi": 1813.8126559494501
+          },
+          {
+            "r_val": "w",
+            "s_val": "polonium",
+            "npmi": 1813.11950876889
+          },
+          {
+            "r_val": "xe",
+            "s_val": "hassium",
+            "npmi": 1813.81265594945
+          },
+          {
+            "r_val": "y",
+            "s_val": "darmstadtium",
+            "npmi": 1773.1483621029731
+          },
+          {
+            "r_val": "yb",
+            "s_val": "meitnerium",
+            "npmi": 1813.8126559494501
+          },
+          {
+            "r_val": "zn",
+            "s_val": "roentgenium",
+            "npmi": 1883.8205211860025
+          },
+          {
+            "r_val": "zr",
+            "s_val": "hafnium",
+            "npmi": 1813.11950876889
+          }
+        ],
+        "num_r": 118,
+        "num_s": 118,
+        "num_mappings": 113
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T15:43:23.035948065Z",
+          "end_time": "2025-12-02T15:43:23.049795381Z",
+          "duration_seconds": 0.013847316
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T15:43:23.050153463Z",
+          "end_time": "2025-12-02T15:49:44.267931005Z",
+          "duration_seconds": 381.217777547
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T15:49:44.267953968Z",
+          "end_time": "2025-12-02T15:55:24.034542383Z",
+          "duration_seconds": 339.766588416
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T15:55:24.034549498Z",
+          "end_time": "2025-12-02T15:55:50.590858234Z",
+          "duration_seconds": 26.556308728
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T15:55:50.590874284Z",
+          "end_time": "2025-12-02T15:55:51.13647566Z",
+          "duration_seconds": 0.545601387
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T15:55:51.136494313Z",
+          "end_time": "2025-12-02T16:05:38.636162928Z",
+          "duration_seconds": 587.499668613
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T16:05:38.636196792Z",
+          "end_time": "2025-12-02T16:06:13.571420889Z",
+          "duration_seconds": 34.935224104
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T16:06:13.571438912Z",
+          "end_time": "2025-12-02T16:06:13.660360338Z",
+          "duration_seconds": 0.088921424
+        }
+      }
+    },
+    {
+      "case_number": 4,
+      "success": true,
+      "duration_seconds": 78.951122,
+      "error": null,
+      "start_time": "2025-12-02T16:31:11.757153",
+      "end_time": "2025-12-02T16:32:30.708275",
+      "output": {
+        "mappings": [],
+        "num_r": 107,
+        "num_s": 10,
+        "num_mappings": 0
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T16:31:11.759301173Z",
+          "end_time": "2025-12-02T16:31:11.774281421Z",
+          "duration_seconds": 0.014980248
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T16:31:11.774349153Z",
+          "end_time": "2025-12-02T16:32:03.243600964Z",
+          "duration_seconds": 51.469251825
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T16:32:03.243662552Z",
+          "end_time": "2025-12-02T16:32:03.298775365Z",
+          "duration_seconds": 0.055112779
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T16:32:03.298779948Z",
+          "end_time": "2025-12-02T16:32:03.323669638Z",
+          "duration_seconds": 0.024889691
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T16:32:03.323674528Z",
+          "end_time": "2025-12-02T16:32:03.324021878Z",
+          "duration_seconds": 0.000347359
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T16:32:03.324032125Z",
+          "end_time": "2025-12-02T16:32:03.325841384Z",
+          "duration_seconds": 0.001809258
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T16:32:03.32584434Z",
+          "end_time": "2025-12-02T16:32:30.672449858Z",
+          "duration_seconds": 27.34660554
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T16:32:30.672474513Z",
+          "end_time": "2025-12-02T16:32:30.672480133Z",
+          "duration_seconds": 5.62e-06
+        }
+      }
+    },
+    {
+      "case_number": 5,
+      "success": true,
+      "duration_seconds": 265.295768,
+      "error": null,
+      "start_time": "2025-12-02T16:32:30.712838",
+      "end_time": "2025-12-02T16:36:56.008606",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "montgomery",
+            "s_val": "alabama",
+            "npmi": 545.6169590211728
+          },
+          {
+            "r_val": "juneau",
+            "s_val": "alaska",
+            "npmi": 571.9114620425986
+          },
+          {
+            "r_val": "phoenix",
+            "s_val": "arizona",
+            "npmi": 519.4200506048994
+          },
+          {
+            "r_val": "little rock",
+            "s_val": "arkansas",
+            "npmi": 545.9757519483779
+          },
+          {
+            "r_val": "sacramento",
+            "s_val": "california",
+            "npmi": 524.9401014185415
+          },
+          {
+            "r_val": "denver",
+            "s_val": "colorado",
+            "npmi": 513.1200029817328
+          },
+          {
+            "r_val": "hartford",
+            "s_val": "connecticut",
+            "npmi": 544.4179823029883
+          },
+          {
+            "r_val": "dover",
+            "s_val": "delaware",
+            "npmi": 569.8324954183928
+          },
+          {
+            "r_val": "tallahassee",
+            "s_val": "florida",
+            "npmi": 526.8101677688907
+          },
+          {
+            "r_val": "atlanta",
+            "s_val": "georgia",
+            "npmi": 505.1480570388701
+          },
+          {
+            "r_val": "honolulu",
+            "s_val": "hawaii",
+            "npmi": 517.3830371009708
+          },
+          {
+            "r_val": "boise",
+            "s_val": "idaho",
+            "npmi": 532.6962352888814
+          },
+          {
+            "r_val": "springfield",
+            "s_val": "illinois",
+            "npmi": 562.1355017827078
+          },
+          {
+            "r_val": "indianapolis",
+            "s_val": "indiana",
+            "npmi": 522.1941636428251
+          },
+          {
+            "r_val": "des moines",
+            "s_val": "iowa",
+            "npmi": 544.1247690262173
+          },
+          {
+            "r_val": "topeka",
+            "s_val": "kansas",
+            "npmi": 554.1735351924823
+          },
+          {
+            "r_val": "frankfort",
+            "s_val": "kentucky",
+            "npmi": 577.8334971031956
+          },
+          {
+            "r_val": "baton rouge",
+            "s_val": "louisiana",
+            "npmi": 550.6121782832747
+          },
+          {
+            "r_val": "augusta",
+            "s_val": "maine",
+            "npmi": 571.9023625440794
+          },
+          {
+            "r_val": "annapolis",
+            "s_val": "maryland",
+            "npmi": 561.7534929592407
+          },
+          {
+            "r_val": "boston",
+            "s_val": "massachusetts",
+            "npmi": 516.007600489007
+          },
+          {
+            "r_val": "lansing",
+            "s_val": "michigan",
+            "npmi": 548.2966322933518
+          },
+          {
+            "r_val": "saint paul",
+            "s_val": "nebraska",
+            "npmi": 602.8276748824782
+          },
+          {
+            "r_val": "jackson",
+            "s_val": "michigan",
+            "npmi": 538.7004286481348
+          },
+          {
+            "r_val": "jefferson city",
+            "s_val": "missouri",
+            "npmi": 582.1081761140747
+          },
+          {
+            "r_val": "helena",
+            "s_val": "montana",
+            "npmi": 569.8445223835689
+          },
+          {
+            "r_val": "lincoln",
+            "s_val": "nebraska",
+            "npmi": 554.487909671471
+          },
+          {
+            "r_val": "carson city",
+            "s_val": "nevada",
+            "npmi": 565.3708465352108
+          },
+          {
+            "r_val": "concord",
+            "s_val": "new hampshire",
+            "npmi": 570.147609211273
+          },
+          {
+            "r_val": "trenton",
+            "s_val": "missouri",
+            "npmi": 560.7385217071247
+          },
+          {
+            "r_val": "santa fe",
+            "s_val": "new mexico",
+            "npmi": 552.1097489293365
+          },
+          {
+            "r_val": "albany",
+            "s_val": "georgia",
+            "npmi": 537.2146472352881
+          },
+          {
+            "r_val": "raleigh",
+            "s_val": "mississippi",
+            "npmi": 583.365349693286
+          },
+          {
+            "r_val": "bismarck",
+            "s_val": "north dakota",
+            "npmi": 574.2283660184978
+          },
+          {
+            "r_val": "columbus",
+            "s_val": "nebraska",
+            "npmi": 552.4233264783528
+          },
+          {
+            "r_val": "oklahoma city",
+            "s_val": "oklahoma",
+            "npmi": 525.4672891002182
+          },
+          {
+            "r_val": "salem",
+            "s_val": "south dakota",
+            "npmi": 574.9433515242889
+          },
+          {
+            "r_val": "harrisburg",
+            "s_val": "pennsylvania",
+            "npmi": 563.2255660977467
+          },
+          {
+            "r_val": "providence",
+            "s_val": "rhode island",
+            "npmi": 533.3523256381354
+          },
+          {
+            "r_val": "columbia",
+            "s_val": "south carolina",
+            "npmi": 549.9231284276808
+          },
+          {
+            "r_val": "pierre",
+            "s_val": "south dakota",
+            "npmi": 584.1882210441404
+          },
+          {
+            "r_val": "nashville",
+            "s_val": "tennessee",
+            "npmi": 535.5249959622671
+          },
+          {
+            "r_val": "austin",
+            "s_val": "minnesota",
+            "npmi": 551.3384898582923
+          },
+          {
+            "r_val": "salt lake city",
+            "s_val": "utah",
+            "npmi": 526.4455748523968
+          },
+          {
+            "r_val": "montpelier",
+            "s_val": "vermont",
+            "npmi": 577.0677187912036
+          },
+          {
+            "r_val": "richmond",
+            "s_val": "virginia",
+            "npmi": 532.8594376632446
+          },
+          {
+            "r_val": "olympia",
+            "s_val": "washington",
+            "npmi": 567.462277369357
+          },
+          {
+            "r_val": "charleston",
+            "s_val": "west virginia",
+            "npmi": 565.1235284977896
+          },
+          {
+            "r_val": "madison",
+            "s_val": "south dakota",
+            "npmi": 563.7953609840043
+          },
+          {
+            "r_val": "cheyenne",
+            "s_val": "oklahoma",
+            "npmi": 571.3483696848288
+          }
+        ],
+        "num_r": 50,
+        "num_s": 50,
+        "num_mappings": 50
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T16:32:30.715399295Z",
+          "end_time": "2025-12-02T16:32:30.728730742Z",
+          "duration_seconds": 0.013331446
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T16:32:30.728872532Z",
+          "end_time": "2025-12-02T16:33:38.347375738Z",
+          "duration_seconds": 67.618503206
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T16:33:38.347422638Z",
+          "end_time": "2025-12-02T16:33:54.466073458Z",
+          "duration_seconds": 16.118650763
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T16:33:54.466093236Z",
+          "end_time": "2025-12-02T16:34:08.319434867Z",
+          "duration_seconds": 13.853341662
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T16:34:08.319464169Z",
+          "end_time": "2025-12-02T16:34:08.933838142Z",
+          "duration_seconds": 0.614373962
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T16:34:08.933869045Z",
+          "end_time": "2025-12-02T16:35:20.401282523Z",
+          "duration_seconds": 71.467413488
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T16:35:20.401301717Z",
+          "end_time": "2025-12-02T16:36:00.658345689Z",
+          "duration_seconds": 40.257044
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T16:36:00.658368678Z",
+          "end_time": "2025-12-02T16:36:00.670775318Z",
+          "duration_seconds": 0.012406638
+        }
+      }
+    },
+    {
+      "case_number": 6,
+      "success": true,
+      "duration_seconds": 98.527573,
+      "error": null,
+      "start_time": "2025-12-02T16:36:56.016271",
+      "end_time": "2025-12-02T16:38:34.543844",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "william henry harrison",
+            "s_val": "virginia",
+            "npmi": 301.1954895561498
+          },
+          {
+            "r_val": "martin van buren",
+            "s_val": "new york",
+            "npmi": 414.7632141172731
+          },
+          {
+            "r_val": "john adams",
+            "s_val": "massachusetts",
+            "npmi": 403.82038494118615
+          },
+          {
+            "r_val": "george washington",
+            "s_val": "virginia",
+            "npmi": 334.4698668631405
+          },
+          {
+            "r_val": "zachary taylor",
+            "s_val": "virginia",
+            "npmi": 430.84508445808257
+          },
+          {
+            "r_val": "richard nixon",
+            "s_val": "california",
+            "npmi": 391.2821183531165
+          },
+          {
+            "r_val": "john quincy adams",
+            "s_val": "massachusetts",
+            "npmi": 419.2963556942957
+          },
+          {
+            "r_val": "herbert hoover",
+            "s_val": "iowa",
+            "npmi": 414.9274293243787
+          },
+          {
+            "r_val": "bill clinton",
+            "s_val": "arkansas",
+            "npmi": 386.2146650220319
+          },
+          {
+            "r_val": "jimmy carter",
+            "s_val": "georgia",
+            "npmi": 403.7504312549923
+          },
+          {
+            "r_val": "thomas jefferson",
+            "s_val": "virginia",
+            "npmi": 403.73312339621253
+          },
+          {
+            "r_val": "james madison",
+            "s_val": "virginia",
+            "npmi": 367.6780376706872
+          },
+          {
+            "r_val": "andrew johnson",
+            "s_val": "north carolina",
+            "npmi": 435.5969946677533
+          },
+          {
+            "r_val": "john tyler",
+            "s_val": "virginia",
+            "npmi": 418.2179397628506
+          },
+          {
+            "r_val": "andrew jackson",
+            "s_val": "south carolina",
+            "npmi": 431.27130978701285
+          },
+          {
+            "r_val": "william howard taft",
+            "s_val": "ohio",
+            "npmi": 416.34502614905506
+          },
+          {
+            "r_val": "ronald reagan",
+            "s_val": "illinois",
+            "npmi": 407.2307860173861
+          },
+          {
+            "r_val": "woodrow wilson",
+            "s_val": "virginia",
+            "npmi": 400.06043240729423
+          },
+          {
+            "r_val": "grover cleveland",
+            "s_val": "new jersey",
+            "npmi": 430.3943430051047
+          },
+          {
+            "r_val": "james buchanan",
+            "s_val": "pennsylvania",
+            "npmi": 418.8435218799546
+          },
+          {
+            "r_val": "gerald ford",
+            "s_val": "nebraska",
+            "npmi": 417.128521811808
+          },
+          {
+            "r_val": "benjamin harrison",
+            "s_val": "ohio",
+            "npmi": 432.66543138416245
+          },
+          {
+            "r_val": "franklin pierce",
+            "s_val": "new hampshire",
+            "npmi": 424.5061435531794
+          },
+          {
+            "r_val": "abraham lincoln",
+            "s_val": "kentucky",
+            "npmi": 435.91617345414136
+          },
+          {
+            "r_val": "calvin coolidge",
+            "s_val": "vermont",
+            "npmi": 408.11556337888567
+          },
+          {
+            "r_val": "millard fillmore",
+            "s_val": "new york",
+            "npmi": 416.09045779709527
+          },
+          {
+            "r_val": "barack obama",
+            "s_val": "hawaii",
+            "npmi": 380.2740190682979
+          },
+          {
+            "r_val": "james monroe",
+            "s_val": "virginia",
+            "npmi": 416.0879664970696
+          },
+          {
+            "r_val": "william mckinley",
+            "s_val": "ohio",
+            "npmi": 422.6898560393312
+          },
+          {
+            "r_val": "theodore roosevelt",
+            "s_val": "new york",
+            "npmi": 410.18455150176106
+          }
+        ],
+        "num_r": 43,
+        "num_s": 21,
+        "num_mappings": 30
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T16:36:56.018231611Z",
+          "end_time": "2025-12-02T16:36:56.032534309Z",
+          "duration_seconds": 0.014302707
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T16:36:56.032585317Z",
+          "end_time": "2025-12-02T16:37:54.040213531Z",
+          "duration_seconds": 58.007628219
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T16:37:54.040245648Z",
+          "end_time": "2025-12-02T16:37:59.033000792Z",
+          "duration_seconds": 4.992755086
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T16:37:59.033004872Z",
+          "end_time": "2025-12-02T16:38:01.382296444Z",
+          "duration_seconds": 2.349291578
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T16:38:01.382302751Z",
+          "end_time": "2025-12-02T16:38:01.388397385Z",
+          "duration_seconds": 0.006094638
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T16:38:01.388405419Z",
+          "end_time": "2025-12-02T16:38:01.637359135Z",
+          "duration_seconds": 0.248953738
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T16:38:01.637366445Z",
+          "end_time": "2025-12-02T16:38:32.24736201Z",
+          "duration_seconds": 30.60999561
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T16:38:32.247386785Z",
+          "end_time": "2025-12-02T16:38:32.249034842Z",
+          "duration_seconds": 0.00164809
+        }
+      }
+    },
+    {
+      "case_number": 7,
+      "success": true,
+      "duration_seconds": 429.800726,
+      "error": null,
+      "start_time": "2025-12-02T16:38:34.547862",
+      "end_time": "2025-12-02T16:45:44.348588",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "north carolina",
+            "s_val": "wa",
+            "npmi": 779.8406745639619
+          },
+          {
+            "r_val": "indiana",
+            "s_val": "ca",
+            "npmi": 715.377986771887
+          },
+          {
+            "r_val": "wyoming",
+            "s_val": "va",
+            "npmi": 831.880917239471
+          },
+          {
+            "r_val": "utah",
+            "s_val": "mt",
+            "npmi": 721.3568327757564
+          },
+          {
+            "r_val": "arizona",
+            "s_val": "ut",
+            "npmi": 746.9750750051927
+          },
+          {
+            "r_val": "montana",
+            "s_val": "nd",
+            "npmi": 725.1273538203244
+          },
+          {
+            "r_val": "kentucky",
+            "s_val": "az",
+            "npmi": 798.6098525725938
+          },
+          {
+            "r_val": "california",
+            "s_val": "mn",
+            "npmi": 798.6098525725937
+          },
+          {
+            "r_val": "kansas",
+            "s_val": "ri",
+            "npmi": 765.3387879057161
+          },
+          {
+            "r_val": "delaware",
+            "s_val": "sc",
+            "npmi": 779.1475273834017
+          },
+          {
+            "r_val": "florida",
+            "s_val": "wy",
+            "npmi": 782.0378991412977
+          },
+          {
+            "r_val": "pennsylvania",
+            "s_val": "tn",
+            "npmi": 831.8809172394712
+          },
+          {
+            "r_val": "iowa",
+            "s_val": "nh",
+            "npmi": 650.6986780245883
+          },
+          {
+            "r_val": "mississippi",
+            "s_val": "me",
+            "npmi": 831.8809172394708
+          },
+          {
+            "r_val": "illinois",
+            "s_val": "ma",
+            "npmi": 745.8764627165244
+          },
+          {
+            "r_val": "texas",
+            "s_val": "tx",
+            "npmi": 505.4309037424895
+          },
+          {
+            "r_val": "connecticut",
+            "s_val": "tn",
+            "npmi": 779.1475273834017
+          },
+          {
+            "r_val": "georgia",
+            "s_val": "ct",
+            "npmi": 781.2269689250818
+          },
+          {
+            "r_val": "maryland",
+            "s_val": "ut",
+            "npmi": 746.9750750051924
+          },
+          {
+            "r_val": "virginia",
+            "s_val": "sc",
+            "npmi": 693.1430728604553
+          },
+          {
+            "r_val": "idaho",
+            "s_val": "ok",
+            "npmi": 745.8764627165242
+          },
+          {
+            "r_val": "oregon",
+            "s_val": "vt",
+            "npmi": 732.0677232388388
+          },
+          {
+            "r_val": "vermont",
+            "s_val": "ar",
+            "npmi": 831.880917239471
+          },
+          {
+            "r_val": "maine",
+            "s_val": "sd",
+            "npmi": 746.5696098970843
+          },
+          {
+            "r_val": "oklahoma",
+            "s_val": "ct",
+            "npmi": 746.5696098970843
+          },
+          {
+            "r_val": "tennessee",
+            "s_val": "id",
+            "npmi": 766.0319350862762
+          },
+          {
+            "r_val": "alabama",
+            "s_val": "ny",
+            "npmi": 713.991692410767
+          },
+          {
+            "r_val": "arkansas",
+            "s_val": "vt",
+            "npmi": 765.3387879057165
+          },
+          {
+            "r_val": "south carolina",
+            "s_val": "ky",
+            "npmi": 779.1475273834019
+          },
+          {
+            "r_val": "washington",
+            "s_val": "ks",
+            "npmi": 627.2722831414875
+          },
+          {
+            "r_val": "nebraska",
+            "s_val": "mo",
+            "npmi": 725.4511773379786
+          },
+          {
+            "r_val": "west virginia",
+            "s_val": "wv",
+            "npmi": 525.0594601547267
+          },
+          {
+            "r_val": "colorado",
+            "s_val": "co",
+            "npmi": 508.40466961257926
+          },
+          {
+            "r_val": "massachusetts",
+            "s_val": "mt",
+            "npmi": 831.8809172394708
+          },
+          {
+            "r_val": "missouri",
+            "s_val": "az",
+            "npmi": 800.6892941142735
+          },
+          {
+            "r_val": "alaska",
+            "s_val": "ca",
+            "npmi": 798.6098525725938
+          },
+          {
+            "r_val": "north dakota",
+            "s_val": "oh",
+            "npmi": 738.4772300848161
+          },
+          {
+            "r_val": "wisconsin",
+            "s_val": "ar",
+            "npmi": 831.8809172394708
+          },
+          {
+            "r_val": "nevada",
+            "s_val": "ma",
+            "npmi": 831.880917239471
+          },
+          {
+            "r_val": "new york",
+            "s_val": "ri",
+            "npmi": 684.2040266588314
+          },
+          {
+            "r_val": "rhode island",
+            "s_val": "wa",
+            "npmi": 831.8809172394708
+          },
+          {
+            "r_val": "hawaii",
+            "s_val": "ms",
+            "npmi": 798.6098525725938
+          },
+          {
+            "r_val": "south dakota",
+            "s_val": "ny",
+            "npmi": 831.880917239471
+          },
+          {
+            "r_val": "minnesota",
+            "s_val": "ak",
+            "npmi": 756.014191803754
+          },
+          {
+            "r_val": "new jersey",
+            "s_val": "nj",
+            "npmi": 506.3955250917046
+          },
+          {
+            "r_val": "michigan",
+            "s_val": "ar",
+            "npmi": 798.6098525725937
+          },
+          {
+            "r_val": "new mexico",
+            "s_val": "ms",
+            "npmi": 738.477230084816
+          },
+          {
+            "r_val": "new hampshire",
+            "s_val": "mt",
+            "npmi": 831.8809172394707
+          },
+          {
+            "r_val": "louisiana",
+            "s_val": "sd",
+            "npmi": 798.6098525725938
+          },
+          {
+            "r_val": "ohio",
+            "s_val": "nv",
+            "npmi": 779.1475273834016
+          }
+        ],
+        "num_r": 50,
+        "num_s": 50,
+        "num_mappings": 50
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T16:38:34.549849803Z",
+          "end_time": "2025-12-02T16:38:34.564213071Z",
+          "duration_seconds": 0.014363286
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T16:38:34.564409898Z",
+          "end_time": "2025-12-02T16:40:21.40820676Z",
+          "duration_seconds": 106.843796864
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T16:40:21.408241417Z",
+          "end_time": "2025-12-02T16:41:03.567196267Z",
+          "duration_seconds": 42.158954785
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T16:41:03.567200126Z",
+          "end_time": "2025-12-02T16:41:26.733301405Z",
+          "duration_seconds": 23.166101298
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T16:41:26.733331553Z",
+          "end_time": "2025-12-02T16:41:27.593936707Z",
+          "duration_seconds": 0.860605157
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T16:41:27.593977868Z",
+          "end_time": "2025-12-02T16:43:52.854482253Z",
+          "duration_seconds": 145.260504398
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T16:43:52.854500174Z",
+          "end_time": "2025-12-02T16:44:24.022607861Z",
+          "duration_seconds": 31.168107704
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T16:44:24.022643849Z",
+          "end_time": "2025-12-02T16:44:24.047665461Z",
+          "duration_seconds": 0.025021611
+        }
+      }
+    },
+    {
+      "case_number": 8,
+      "success": true,
+      "duration_seconds": 150.429953,
+      "error": null,
+      "start_time": "2025-12-02T16:45:44.362546",
+      "end_time": "2025-12-02T16:48:14.792499",
+      "output": {
+        "mappings": [
+          {
+            "r_val": "methane",
+            "s_val": "ch4",
+            "npmi": 945.6290019385581
+          },
+          {
+            "r_val": "water",
+            "s_val": "h2o",
+            "npmi": 1010.9393250551632
+          },
+          {
+            "r_val": "zince sulfide",
+            "s_val": "zns",
+            "npmi": 1390.2838946107283
+          },
+          {
+            "r_val": "silver chromate",
+            "s_val": "ag2cro4",
+            "npmi": 1235.90107850607
+          },
+          {
+            "r_val": "magnesium chromate",
+            "s_val": "mgcro4",
+            "npmi": 1363.2511545688906
+          },
+          {
+            "r_val": "carbon monoxide",
+            "s_val": "co",
+            "npmi": 987.52273053832
+          },
+          {
+            "r_val": "silver hydroxide",
+            "s_val": "agoh",
+            "npmi": 1285.7083916960814
+          },
+          {
+            "r_val": "ammonium bromide",
+            "s_val": "nh4br",
+            "npmi": 1281.4598469659861
+          },
+          {
+            "r_val": "potassium carbonate",
+            "s_val": "k2co3",
+            "npmi": 1180.6008523148732
+          },
+          {
+            "r_val": "calcium sulfate",
+            "s_val": "caso4",
+            "npmi": 1231.1951328347347
+          },
+          {
+            "r_val": "potassium iodide",
+            "s_val": "ki",
+            "npmi": 1206.06200821243
+          },
+          {
+            "r_val": "zinc chloride",
+            "s_val": "zncl2",
+            "npmi": 1234.101513718128
+          },
+          {
+            "r_val": "calcium carbonate",
+            "s_val": "caco3",
+            "npmi": 1152.7226019639834
+          },
+          {
+            "r_val": "ammonium acetate",
+            "s_val": "nh4c2h3o2",
+            "npmi": 1276.7731470972678
+          },
+          {
+            "r_val": "sodium nitrate",
+            "s_val": "nano3",
+            "npmi": 1202.2415067230158
+          },
+          {
+            "r_val": "calcium sulfide",
+            "s_val": "cas",
+            "npmi": 1276.8627803152535
+          },
+          {
+            "r_val": "potassium nitrate",
+            "s_val": "kno3",
+            "npmi": 1171.9139881432116
+          },
+          {
+            "r_val": "hydrogen sulfide",
+            "s_val": "h2s",
+            "npmi": 1051.6131272664745
+          },
+          {
+            "r_val": "zinc bromide",
+            "s_val": "znbr2",
+            "npmi": 1262.1134321558566
+          },
+          {
+            "r_val": "zinc sulfate",
+            "s_val": "znso4",
+            "npmi": 1208.1964047308936
+          },
+          {
+            "r_val": "oxygen",
+            "s_val": "o2",
+            "npmi": 1051.9989308856873
+          },
+          {
+            "r_val": "potassium phosphate",
+            "s_val": "k3po4",
+            "npmi": 1212.8059784368816
+          },
+          {
+            "r_val": "barium sulfate",
+            "s_val": "baso4",
+            "npmi": 1235.8972965214632
+          },
+          {
+            "r_val": "sodium chromate",
+            "s_val": "na2cro4",
+            "npmi": 1251.0571378755549
+          },
+          {
+            "r_val": "sodium iodide",
+            "s_val": "nai",
+            "npmi": 1229.4900876671543
+          },
+          {
+            "r_val": "barium sulfide",
+            "s_val": "bas",
+            "npmi": 1298.6346780887982
+          },
+          {
+            "r_val": "aluminum sulfide",
+            "s_val": "al2s3",
+            "npmi": 1282.874312204072
+          },
+          {
+            "r_val": "silver sulfate",
+            "s_val": "ag2so4",
+            "npmi": 1197.5599525038397
+          },
+          {
+            "r_val": "silver sulfide",
+            "s_val": "ag2s",
+            "npmi": 1245.7400855857938
+          },
+          {
+            "r_val": "sodium phosphate",
+            "s_val": "na3po4",
+            "npmi": 1221.6097777349348
+          },
+          {
+            "r_val": "sulfur dioxide",
+            "s_val": "so2",
+            "npmi": 1033.542869129
+          },
+          {
+            "r_val": "magnesium hydroxide",
+            "s_val": "koh",
+            "npmi": 0.0
+          },
+          {
+            "r_val": "sodium sulfide",
+            "s_val": "na2s",
+            "npmi": 1274.1599498466317
+          },
+          {
+            "r_val": "hydrogen fluoride",
+            "s_val": "hf",
+            "npmi": 1045.7779937309247
+          },
+          {
+            "r_val": "calcium bromide",
+            "s_val": "cabr2",
+            "npmi": 1232.7039120221295
+          },
+          {
+            "r_val": "calcium chloride",
+            "s_val": "cacl2",
+            "npmi": 1180.138362441724
+          },
+          {
+            "r_val": "silver nitrate",
+            "s_val": "agno3",
+            "npmi": 1197.6141351326473
+          },
+          {
+            "r_val": "chlorine",
+            "s_val": "cl2",
+            "npmi": 1134.3711530460653
+          },
+          {
+            "r_val": "calcium chromate",
+            "s_val": "cacro4",
+            "npmi": 1272.2751961059337
+          },
+          {
+            "r_val": "nitrogen",
+            "s_val": "n2",
+            "npmi": 1062.939774854029
+          },
+          {
+            "r_val": "ammonia",
+            "s_val": "nh3",
+            "npmi": 1033.7238484204486
+          },
+          {
+            "r_val": "aluminum nitrate",
+            "s_val": "h2o",
+            "npmi": 18.792293975013113
+          },
+          {
+            "r_val": "sodium sulfate",
+            "s_val": "na2so4",
+            "npmi": 1203.2253651265564
+          },
+          {
+            "r_val": "aluminum iodide",
+            "s_val": "ali3",
+            "npmi": 1288.1762986418225
+          },
+          {
+            "r_val": "potassium sulfate",
+            "s_val": "k2so4",
+            "npmi": 1207.8254629472015
+          },
+          {
+            "r_val": "hydrogen iodide",
+            "s_val": "hi",
+            "npmi": 1184.7551441208482
+          },
+          {
+            "r_val": "carbon dioxide",
+            "s_val": "co2",
+            "npmi": 984.0310353972808
+          },
+          {
+            "r_val": "sodium carbonate",
+            "s_val": "na2co3",
+            "npmi": 1171.8631344755427
+          },
+          {
+            "r_val": "aluminum phosphate",
+            "s_val": "alpo4",
+            "npmi": 1250.4848709700657
+          },
+          {
+            "r_val": "barium chromate",
+            "s_val": "bacro4",
+            "npmi": 1227.2039678561932
+          },
+          {
+            "r_val": "silver carbonate",
+            "s_val": "ag2co3",
+            "npmi": 1227.0052219629576
+          },
+          {
+            "r_val": "ammonium chloride",
+            "s_val": "nh4cl",
+            "npmi": 1196.107731131693
+          },
+          {
+            "r_val": "aluminun oxide",
+            "s_val": "al2o3",
+            "npmi": 1390.2838946107283
+          },
+          {
+            "r_val": "aluminum chloride",
+            "s_val": "alcl3",
+            "npmi": 1253.2664912267026
+          },
+          {
+            "r_val": "ammonium nitrate",
+            "s_val": "nh4no3",
+            "npmi": 1207.8966172988091
+          },
+          {
+            "r_val": "sodium bromide",
+            "s_val": "nabr",
+            "npmi": 1210.7617782210834
+          },
+          {
+            "r_val": "potassium chloride",
+            "s_val": "kcl",
+            "npmi": 1161.9079373118766
+          },
+          {
+            "r_val": "potassium sulfide",
+            "s_val": "k2s",
+            "npmi": 1287.5234360260758
+          },
+          {
+            "r_val": "potassium acetate",
+            "s_val": "kc2h3o2",
+            "npmi": 1279.5854293006475
+          },
+          {
+            "r_val": "potassium chromate",
+            "s_val": "k2cro4",
+            "npmi": 1279.5576750035666
+          },
+          {
+            "r_val": "hydrogen chloride",
+            "s_val": "hcl",
+            "npmi": 1035.2232723658635
+          },
+          {
+            "r_val": "silver acetate",
+            "s_val": "agc2h3o2",
+            "npmi": 1243.6622083507925
+          },
+          {
+            "r_val": "silver phosphate",
+            "s_val": "ag3po4",
+            "npmi": 1241.4367773963593
+          },
+          {
+            "r_val": "potassium hydroxide",
+            "s_val": "koh",
+            "npmi": 1146.1698166990807
+          },
+          {
+            "r_val": "sodium acetate",
+            "s_val": "nac2h3o2",
+            "npmi": 1251.1800649221216
+          },
+          {
+            "r_val": "magnesium bromide",
+            "s_val": "mgbr2",
+            "npmi": 1238.9628488220662
+          },
+          {
+            "r_val": "sodium chloride",
+            "s_val": "nacl",
+            "npmi": 1152.3744848671572
+          },
+          {
+            "r_val": "calcium nitrate",
+            "s_val": "h2o",
+            "npmi": 18.792293975013113
+          },
+          {
+            "r_val": "silver bromide",
+            "s_val": "agbr",
+            "npmi": 1262.0520987438344
+          },
+          {
+            "r_val": "iodine chloride",
+            "s_val": "icl",
+            "npmi": 1329.2869427214534
+          },
+          {
+            "r_val": "aluminum bromide",
+            "s_val": "albr3",
+            "npmi": 1267.0555355360507
+          },
+          {
+            "r_val": "barium carbonate",
+            "s_val": "baco3",
+            "npmi": 1230.1111389611394
+          },
+          {
+            "r_val": "calcium iodide",
+            "s_val": "cai2",
+            "npmi": 1221.9064408123215
+          },
+          {
+            "r_val": "silver chloride",
+            "s_val": "agcl",
+            "npmi": 1235.3750146687405
+          },
+          {
+            "r_val": "magnesium sulfate",
+            "s_val": "mgso4",
+            "npmi": 1180.8865588885471
+          },
+          {
+            "r_val": "barium chloride",
+            "s_val": "bacl2",
+            "npmi": 1274.5566290877398
+          },
+          {
+            "r_val": "magnesium chloride",
+            "s_val": "mgcl2",
+            "npmi": 1197.6978415797303
+          },
+          {
+            "r_val": "zinc chromate",
+            "s_val": "zncro4",
+            "npmi": 1270.849939285113
+          },
+          {
+            "r_val": "barium bromide",
+            "s_val": "babr2",
+            "npmi": 1270.8232503708823
+          },
+          {
+            "r_val": "magnesium sulfide",
+            "s_val": "mgs",
+            "npmi": 1195.9768112192842
+          },
+          {
+            "r_val": "magnesium oxide",
+            "s_val": "mgo",
+            "npmi": 1153.2697662853873
+          },
+          {
+            "r_val": "barium iodide",
+            "s_val": "bai2",
+            "npmi": 1270.093104011194
+          },
+          {
+            "r_val": "ammonium iodide",
+            "s_val": "nh4i",
+            "npmi": 1310.1800547716043
+          },
+          {
+            "r_val": "hydrogen",
+            "s_val": "h2",
+            "npmi": 1074.2715229128137
+          },
+          {
+            "r_val": "silver iodide",
+            "s_val": "agi",
+            "npmi": 1250.7500447919574
+          },
+          {
+            "r_val": "zinc iodide",
+            "s_val": "zni2",
+            "npmi": 1239.3121444979856
+          },
+          {
+            "r_val": "magnesium carbonate",
+            "s_val": "mgco3",
+            "npmi": 1216.2485667382007
+          },
+          {
+            "r_val": "potassium bromide",
+            "s_val": "kbr",
+            "npmi": 1206.374595940023
+          },
+          {
+            "r_val": "magnesium iodide",
+            "s_val": "mgi2",
+            "npmi": 1233.4220055232472
+          },
+          {
+            "r_val": "ethane",
+            "s_val": "c2h6",
+            "npmi": 985.3575737267903
+          },
+          {
+            "r_val": "ammonium hydroxide",
+            "s_val": "nh4oh",
+            "npmi": 1215.7642742560547
+          },
+          {
+            "r_val": "sodium hydroxide",
+            "s_val": "naoh",
+            "npmi": 1107.5973357626378
+          },
+          {
+            "r_val": "zinc carbonate",
+            "s_val": "znco3",
+            "npmi": 1207.3857549326044
+          }
+        ],
+        "num_r": 201,
+        "num_s": 197,
+        "num_mappings": 93
+      },
+      "go_service_timings": {
+        "vertica_connection": {
+          "start_time": "2025-12-02T16:45:44.364727254Z",
+          "end_time": "2025-12-02T16:45:44.380573398Z",
+          "duration_seconds": 0.015846127
+        },
+        "load_table_rows": {
+          "start_time": "2025-12-02T16:45:44.381836488Z",
+          "end_time": "2025-12-02T16:46:46.220065952Z",
+          "duration_seconds": 61.838229453
+        },
+        "create_bitmap_store": {
+          "start_time": "2025-12-02T16:46:46.22009185Z",
+          "end_time": "2025-12-02T16:46:47.312162922Z",
+          "duration_seconds": 1.092071069
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2025-12-02T16:46:47.312183152Z",
+          "end_time": "2025-12-02T16:46:47.933421951Z",
+          "duration_seconds": 0.621238841
+        },
+        "calculate_pair_table_counts": {
+          "start_time": "2025-12-02T16:46:47.933450841Z",
+          "end_time": "2025-12-02T16:46:47.985438576Z",
+          "duration_seconds": 0.051987713
+        },
+        "calculate_quad_scores": {
+          "start_time": "2025-12-02T16:46:47.985460047Z",
+          "end_time": "2025-12-02T16:46:48.358483656Z",
+          "duration_seconds": 0.373023588
+        },
+        "get_total_table_count": {
+          "start_time": "2025-12-02T16:46:48.358490387Z",
+          "end_time": "2025-12-02T16:47:29.447602528Z",
+          "duration_seconds": 41.089112157
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2025-12-02T16:47:29.447618826Z",
+          "end_time": "2025-12-02T16:47:29.448518079Z",
+          "duration_seconds": 0.000899256
+        }
+      }
+    }
+  ]
+}

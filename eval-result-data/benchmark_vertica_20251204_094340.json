@@ -1,0 +1,35 @@
+{
+  "start_time": "2025-12-04T08:43:40.107815",
+  "start_time_berlin": "2025-12-04T09:43:40.107808+01:00",
+  "end_time": "2025-12-04T08:43:40.975467",
+  "total_duration_seconds": 0.867652,
+  "database": "vertica",
+  "total_cases": 37,
+  "successful_cases": 1,
+  "failed_cases": 0,
+  "average_duration_seconds": 0.867107,
+  "median_duration_seconds": 0.867107,
+  "results": [
+    {
+      "case_number": 14,
+      "success": true,
+      "duration_seconds": 0.867107,
+      "error": null,
+      "start_time": "2025-12-04T08:43:40.108263",
+      "end_time": "2025-12-04T08:43:40.975370",
+      "output": {
+        "mappings": [],
+        "num_r": 233,
+        "num_s": 233,
+        "num_mappings": 0
+      },
+      "go_service_timings": {},
+      "python_service_timings": {
+        "step1_solve_cilp": 0.8524019718170166,
+        "step2_extract_join": 0.006891727447509766,
+        "step3_convert_output": 4.363059997558594e-05,
+        "total_duration": 0.8595292568206787
+      }
+    }
+  ]
+}
