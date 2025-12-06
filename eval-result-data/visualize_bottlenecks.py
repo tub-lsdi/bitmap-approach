@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Visualize detailed timing breakdown showing bottlenecks.
-Shows where time is spent in Go service (Vertica operations) and Python service.
+Shows where time is spent in Go service (DuckDB operations) and Python service.
 """
 
 import json
@@ -29,8 +29,8 @@ def extract_detailed_timings(benchmark_data):
 
         # Extract Go service timings
         go_timings = result.get('go_service_timings', {})
-        vertica_connection = go_timings.get(
-            'vertica_connection', {}).get('duration_seconds', 0)
+        duckdb_connection = go_timings.get(
+            'duckdb_connection', {}).get('duration_seconds', 0)
         load_bitmaps = go_timings.get(
             'load_and_create_bitmaps', {}).get('duration_seconds', 0)
         filter_bitmaps = go_timings.get(
@@ -54,14 +54,14 @@ def extract_detailed_timings(benchmark_data):
         total_duration = result['duration_seconds']
 
         # Calculate "other" time (overhead, network, etc.)
-        accounted_time = (vertica_connection + load_bitmaps + filter_bitmaps +
+        accounted_time = (duckdb_connection + load_bitmaps + filter_bitmaps +
                           pair_counts + quad_scores + total_count + pmi_scores +
                           solve_cilp + extract_join + convert_output)
         other_time = max(0, total_duration - accounted_time)
 
         case_timings.append({
             'case': case_num,
-            'vertica_connection': vertica_connection,
+            'duckdb_connection': duckdb_connection,
             'load_bitmaps': load_bitmaps,
             'filter_bitmaps': filter_bitmaps,
             'pair_counts': pair_counts,
@@ -85,9 +85,9 @@ def create_stacked_bar_chart(case_timings, output_path):
     cases = [ct['case'] for ct in case_timings]
 
     # Group operations by where they execute:
-    # NOTE: load_bitmaps includes Vertica query + network transfer + Go bitmap creation (inseparable)
-    vertica_query_load = np.array([ct['load_bitmaps'] for ct in case_timings])
-    vertica_total_count = np.array([ct['total_count'] for ct in case_timings])
+    # NOTE: load_bitmaps includes DuckDB query + network transfer + Go bitmap creation (inseparable)
+    duckdb_query_load = np.array([ct['load_bitmaps'] for ct in case_timings])
+    duckdb_total_count = np.array([ct['total_count'] for ct in case_timings])
 
     # GO SERVICE operations (pure in-memory bitmap operations)
     go_filter = np.array([ct['filter_bitmaps'] for ct in case_timings])
@@ -99,29 +99,29 @@ def create_stacked_bar_chart(case_timings, output_path):
                           ct['convert_output'] for ct in case_timings])
 
     # OTHER (connection setup)
-    other = np.array([ct['other'] + ct['vertica_connection']
+    other = np.array([ct['other'] + ct['duckdb_connection']
                      for ct in case_timings])
 
     x = np.arange(len(cases))
     width = 0.8
 
     # Create stacked bars with clear labeling
-    p1 = ax.bar(x, vertica_query_load, width,
-                label='Data Loading (Vertica query + network + bitmap creation)',
+    p1 = ax.bar(x, duckdb_query_load, width,
+                label='Data Loading (DuckDB query + network + bitmap creation)',
                 color='#d62728', alpha=0.8)
-    p2 = ax.bar(x, vertica_total_count, width, bottom=vertica_query_load,
-                label='Vertica: COUNT Query', color='#ff7f0e', alpha=0.8)
+    p2 = ax.bar(x, duckdb_total_count, width, bottom=duckdb_query_load,
+                label='DuckDB: COUNT Query', color='#ff7f0e', alpha=0.8)
     p3 = ax.bar(x, go_filter, width,
-                bottom=vertica_query_load + vertica_total_count,
+                bottom=duckdb_query_load + duckdb_total_count,
                 label='Go: Filter Bitmaps', color='#1f77b4', alpha=0.8)
     p4 = ax.bar(x, go_calc, width,
-                bottom=vertica_query_load + vertica_total_count + go_filter,
+                bottom=duckdb_query_load + duckdb_total_count + go_filter,
                 label='Go: Bitmap Calculations', color='#17becf', alpha=0.8)
     p5 = ax.bar(x, python_ops, width,
-                bottom=vertica_query_load + vertica_total_count + go_filter + go_calc,
+                bottom=duckdb_query_load + duckdb_total_count + go_filter + go_calc,
                 label='Python: CILP Solver', color='#2ca02c', alpha=0.8)
     p6 = ax.bar(x, other, width,
-                bottom=vertica_query_load + vertica_total_count +
+                bottom=duckdb_query_load + duckdb_total_count +
                 go_filter + go_calc + python_ops,
                 label='Connection Overhead', color='#7f7f7f', alpha=0.8)
 
@@ -153,7 +153,7 @@ def create_average_breakdown_pie(case_timings, output_path):
                        ct['pmi_scores'] for ct in case_timings])
     avg_python = np.mean([ct['solve_cilp'] + ct['extract_join'] +
                          ct['convert_output'] for ct in case_timings])
-    avg_other = np.mean([ct['other'] + ct['vertica_connection']
+    avg_other = np.mean([ct['other'] + ct['duckdb_connection']
                         for ct in case_timings])
 
     total_avg = avg_load_bitmaps + avg_total_count + \
@@ -162,7 +162,7 @@ def create_average_breakdown_pie(case_timings, output_path):
     # Pie chart 1: Average time breakdown
     labels = [
         'Data Loading\n(DB+Network+Bitmaps)',
-        'Vertica COUNT Query',
+        'DuckDB COUNT Query',
         'Go: Filter Bitmaps',
         'Go: Calculations',
         'Python: CILP',
@@ -186,10 +186,10 @@ def create_average_breakdown_pie(case_timings, output_path):
 
     # Pie chart 2: High-level breakdown
     data_loading = avg_load_bitmaps  # This is the mixed operation
-    db_queries = avg_total_count     # Pure Vertica
+    db_queries = avg_total_count     # Pure DuckDB
     go_processing = avg_filter + avg_calc  # Pure Go
     labels2 = ['Data Loading\n(mixed: DB scan + network + Go)',
-               'Vertica Queries', 'Go Processing', 'Python', 'Other']
+               'DuckDB Queries', 'Go Processing', 'Python', 'Other']
     sizes2 = [data_loading, db_queries, go_processing, avg_python, avg_other]
     colors2 = ['#d62728', '#ff7f0e', '#1f77b4', '#2ca02c', '#7f7f7f']
     explode2 = (0.15, 0.05, 0, 0, 0)
@@ -226,12 +226,12 @@ def create_bottleneck_analysis(case_timings, output_path):
     total_solve_cilp = sum([ct['solve_cilp'] for ct in case_timings])
     total_extract_join = sum([ct['extract_join'] for ct in case_timings])
     total_convert_output = sum([ct['convert_output'] for ct in case_timings])
-    total_other = sum([ct['other'] + ct['vertica_connection']
+    total_other = sum([ct['other'] + ct['duckdb_connection']
                       for ct in case_timings])
 
     operations = [
-        'Data Loading (Vertica scan + network + Go bitmap creation)',
-        'Vertica: COUNT(DISTINCT tableid) Query',
+        'Data Loading (DuckDB scan + network + Go bitmap creation)',
+        'DuckDB: COUNT(DISTINCT tableid) Query',
         'Go: Filter Bitmaps',
         'Python: Solve CILP',
         'Go: Calculate Quad Scores',
@@ -294,7 +294,7 @@ def create_bottleneck_analysis(case_timings, output_path):
         Patch(facecolor='#2ca02c', alpha=0.8, label='Python Service'),
         Patch(facecolor='#7f7f7f', alpha=0.8, label='Connection Overhead')
     ]
-    ax.legend(handles=legend_elements, loc='lower right', fontsize=11)
+    ax.legend(handles=legend_elements, loc='upper right', fontsize=11)
 
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
@@ -302,8 +302,8 @@ def create_bottleneck_analysis(case_timings, output_path):
     plt.close()
 
 
-def create_vertica_operations_detail(case_timings, output_path):
-    """Create detailed breakdown of all Go service operations (Vertica + in-memory)."""
+def create_duckdb_operations_detail(case_timings, output_path):
+    """Create detailed breakdown of all Go service operations (DuckDB + in-memory)."""
     fig, ax = plt.subplots(figsize=(20, 8))
 
     cases = [ct['case'] for ct in case_timings]
@@ -348,22 +348,28 @@ def create_vertica_operations_detail(case_timings, output_path):
 
 
 def main():
+    import sys
+
+    # Parse command line arguments
+    if len(sys.argv) < 2:
+        print("Usage: python visualize_bottlenecks.py <benchmark_json_file>")
+        print("Example: python visualize_bottlenecks.py benchmark_vertica_20251206_233016.json")
+        sys.exit(1)
+
     # Paths
     base_dir = Path(__file__).parent
-    benchmark_file1 = base_dir / "benchmark_vertica_20251204_094407.json"
-    benchmark_file2 = base_dir / "benchmark_vertica_20251204_111450.json"
+    benchmark_file = Path(sys.argv[1])
+
+    # If relative path provided, make it relative to base_dir
+    if not benchmark_file.is_absolute():
+        benchmark_file = base_dir / benchmark_file
 
     # Load benchmark data
     print("Loading detailed timing data...")
-    data1 = load_benchmark_data(benchmark_file1)
-    data2 = load_benchmark_data(benchmark_file2)
+    data = load_benchmark_data(benchmark_file)
 
     # Extract detailed timings
-    timings1 = extract_detailed_timings(data1)
-    timings2 = extract_detailed_timings(data2)
-
-    # Combine
-    all_timings = timings2 + timings1
+    all_timings = extract_detailed_timings(data)
 
     print(f"Total cases with detailed timing: {len(all_timings)}")
 
@@ -389,9 +395,9 @@ def main():
         output_dir / "16_bottleneck_analysis.png"
     )
 
-    create_vertica_operations_detail(
+    create_duckdb_operations_detail(
         all_timings,
-        output_dir / "17_vertica_operations_detail.png"
+        output_dir / "17_duckdb_operations_detail.png"
     )
 
     # Print summary
@@ -406,7 +412,7 @@ def main():
                        ct['pmi_scores'] for ct in all_timings])
     avg_python = np.mean([ct['solve_cilp'] + ct['extract_join'] +
                          ct['convert_output'] for ct in all_timings])
-    avg_other = np.mean([ct['other'] + ct['vertica_connection']
+    avg_other = np.mean([ct['other'] + ct['duckdb_connection']
                         for ct in all_timings])
     avg_total = avg_load + avg_total_count + \
         avg_filter + avg_calc + avg_python + avg_other
@@ -419,13 +425,13 @@ def main():
     print(
         f"\n🔴 DATA LOADING (mixed operation): {data_loading:.1f}s ({data_loading/avg_total*100:.1f}%)")
     print(f"   This includes (inseparable in current implementation):")
-    print(f"   - Vertica: Scanning main_tokenized table")
-    print(f"   - Vertica: Filtering WHERE tokenized IN (...)")
+    print(f"   - DuckDB: Scanning cells table")
+    print(f"   - DuckDB: Filtering WHERE value IN (...)")
     print(f"   - Network: Transferring result set")
     print(f"   - Go: Creating bitmap data structures")
     print(
-        f"\n🟠 VERTICA COUNT QUERY: {count_query:.1f}s ({count_query/avg_total*100:.1f}%)")
-    print(f"   Pure database operation: SELECT COUNT(DISTINCT tableid)")
+        f"\n🟠 DUCKDB COUNT QUERY: {count_query:.1f}s ({count_query/avg_total*100:.1f}%)")
+    print(f"   Pure database operation: SELECT COUNT(DISTINCT table_id)")
     print(
         f"\n🔵 GO IN-MEMORY PROCESSING: {go_processing:.1f}s ({go_processing/avg_total*100:.1f}%)")
     print(
@@ -444,11 +450,11 @@ def main():
     print(
         f"The 'Data Loading' operation ({data_loading:.1f}s, {data_loading/avg_total*100:.1f}%) is likely dominated by:")
     print(
-        f"  • Vertica table scan (probably 70-80% of the {data_loading:.1f}s)")
+        f"  • DuckDB table scan (probably 70-80% of the {data_loading:.1f}s)")
     print(f"  • Network transfer (probably 10-20%)")
     print(f"  • Bitmap creation in Go (probably 5-10%)")
     print(f"\nTo optimize, focus on:")
-    print(f"  1. Vertica table indexing/projections on 'tokenized' column")
+    print(f"  1. DuckDB table indexing on 'value' column")
     print(f"  2. Query optimization (batch queries, caching)")
     print(f"  3. Network bandwidth if transferring many rows")
 

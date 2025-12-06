@@ -2,9 +2,9 @@ package handler
 
 import (
 	"bitmap-approach/internal/config"
+	"bitmap-approach/internal/duckdb"
 	"bitmap-approach/internal/model"
 	"bitmap-approach/internal/service"
-	"bitmap-approach/internal/vertica"
 	"log"
 	"net/http"
 	"strings"
@@ -74,31 +74,31 @@ func CalculateQuadScores(c *gin.Context) {
 	listS := normalizeStrings(req.ListS)
 	log.Printf("Normalized lists: listR=%d items, listS=%d items", len(listR), len(listS))
 
-	host, port, database, username, password := config.VerticaConfig()
-	if host == "" || port == "" || database == "" || username == "" || password == "" {
-		log.Printf("Error: Vertica environment variables are not set")
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Vertica environment variables are not set. Required: VERTICA_HOST, VERTICA_PORT, VERTICA_DATABASE, VERTICA_USERNAME, VERTICA_PASSWORD"})
+	dbPath := config.DuckDBPath()
+	if dbPath == "" {
+		log.Printf("Error: DuckDB path is not configured")
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "DuckDB path is not configured"})
 		return
 	}
 
 	timings := make([]TimingInfo, 0)
 
-	verticaConnectStart := time.Now()
-	log.Printf("Connecting to Vertica: %s@%s:%s/%s", username, host, port, database)
-	verticaClient, err := vertica.NewClient(host, port, database, username, password)
+	dbConnectStart := time.Now()
+	log.Printf("Connecting to DuckDB: %s", dbPath)
+	dbClient, err := duckdb.NewClient(dbPath)
 	if err != nil {
-		log.Printf("Error creating Vertica client: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create Vertica client: " + err.Error()})
+		log.Printf("Error creating DuckDB client: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create DuckDB client: " + err.Error()})
 		return
 	}
-	defer verticaClient.Close()
-	verticaConnectEnd := time.Now()
-	log.Printf("Successfully connected to Vertica")
+	defer dbClient.Close()
+	dbConnectEnd := time.Now()
+	log.Printf("Successfully connected to DuckDB")
 	timings = append(timings, TimingInfo{
-		Step:            "vertica_connection",
-		StartTime:       verticaConnectStart.Format(time.RFC3339Nano),
-		EndTime:         verticaConnectEnd.Format(time.RFC3339Nano),
-		DurationSeconds: verticaConnectEnd.Sub(verticaConnectStart).Seconds(),
+		Step:            "duckdb_connection",
+		StartTime:       dbConnectStart.Format(time.RFC3339Nano),
+		EndTime:         dbConnectEnd.Format(time.RFC3339Nano),
+		DurationSeconds: dbConnectEnd.Sub(dbConnectStart).Seconds(),
 	})
 
 	pairs := make([][2]string, 0, len(listR)*len(listS))
@@ -115,7 +115,7 @@ func CalculateQuadScores(c *gin.Context) {
 	createBitmapStart := time.Now()
 	log.Printf("Loading and processing table rows for %d values...", len(allValues))
 	bitmapStore, tableRowsLoaded, err := service.NewBitmapStoreStreaming(func(processor func(model.TableRow) error) error {
-		return verticaClient.LoadTableRowsStreaming(allValues, processor)
+		return dbClient.LoadTableRowsStreaming(allValues, processor)
 	})
 	if err != nil {
 		log.Printf("Error creating bitmap store: %v", err)
@@ -177,7 +177,7 @@ func CalculateQuadScores(c *gin.Context) {
 
 	getTotalTablesStart := time.Now()
 	log.Printf("Getting total table count...")
-	totalTables, err := verticaClient.GetTotalTableCount()
+	totalTables, err := dbClient.GetTotalTableCount()
 	if err != nil {
 		log.Printf("Error getting total table count: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get total table count: " + err.Error()})

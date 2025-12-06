@@ -1,9 +1,5 @@
-# Vertica Configuration (for client-server database)
-VERTICA_HOST=localhost
-VERTICA_PORT=5433
-VERTICA_DATABASE=your_database
-VERTICA_USERNAME=your_username
-VERTICA_PASSWORD=your_password
+# DuckDB Configuration (local database file)
+DUCKDB_PATH=corpus.db
 
 # Server Configuration
 SERVER_PORT=8080

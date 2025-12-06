@@ -1,4 +1,10 @@
-FROM golang:1.24-alpine AS builder
+FROM golang:1.24-bookworm AS builder
+
+# Install build dependencies for CGO (required by DuckDB)
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -7,11 +13,14 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /app/bin/server ./cmd/server
+# Enable CGO for DuckDB driver
+RUN CGO_ENABLED=1 GOOS=linux go build -o /app/bin/server ./cmd/server
 
-FROM alpine:latest
+FROM debian:bookworm-slim
 
-RUN apk --no-cache add ca-certificates
+RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/
 

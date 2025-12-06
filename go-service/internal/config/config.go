@@ -2,15 +2,23 @@ package config
 
 import (
 	"os"
+	"path/filepath"
 )
 
-func VerticaConfig() (host, port, database, username, password string) {
-	host = os.Getenv("VERTICA_HOST")
-	port = os.Getenv("VERTICA_PORT")
-	database = os.Getenv("VERTICA_DATABASE")
-	username = os.Getenv("VERTICA_USERNAME")
-	password = os.Getenv("VERTICA_PASSWORD")
-	return host, port, database, username, password
+func DuckDBPath() string {
+	dbPath := os.Getenv("DUCKDB_PATH")
+	if dbPath == "" {
+		// Default to corpus.db in project root
+		return "corpus.db"
+	}
+	// Convert to absolute path if relative
+	if !filepath.IsAbs(dbPath) {
+		absPath, err := filepath.Abs(dbPath)
+		if err == nil {
+			return absPath
+		}
+	}
+	return dbPath
 }
 
 func ServerPort() string {

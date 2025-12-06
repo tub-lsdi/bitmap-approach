@@ -4,12 +4,10 @@ services:
       context: ./go-service
       dockerfile: Dockerfile
     container_name: bitmap-go-service
+    volumes:
+      - ./corpus.db:/root/corpus.db:ro
     environment:
-      - VERTICA_HOST=${VERTICA_HOST:-localhost}
-      - VERTICA_PORT=${VERTICA_PORT:-5433}
-      - VERTICA_DATABASE=${VERTICA_DATABASE:-your_database}
-      - VERTICA_USERNAME=${VERTICA_USERNAME:-your_username}
-      - VERTICA_PASSWORD=${VERTICA_PASSWORD:-your_password}
+      - DUCKDB_PATH=/root/corpus.db
       - SERVER_PORT=${SERVER_PORT:-8080}
     restart: unless-stopped
 

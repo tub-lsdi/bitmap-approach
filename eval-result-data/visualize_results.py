@@ -208,25 +208,26 @@ def create_heatmap(cases, precisions, recalls, f1_scores, output_path, title_suf
 
 
 def main():
+    # Parse command line arguments
+    if len(sys.argv) < 2:
+        print("Usage: python visualize_results.py <comparison_json_file>")
+        print("Example: python visualize_results.py comparison_all_cases_benchmark_vertica_20251206_233016.json")
+        sys.exit(1)
+
     # Paths
     base_dir = Path(__file__).parent
-    file1 = base_dir / "comparison_all_cases_benchmark_vertica_20251204_094407.json"
-    file2 = base_dir / "comparison_all_cases_benchmark_vertica_20251204_111450.json"
+    comparison_file = Path(sys.argv[1])
 
-    # Load both files
+    # If relative path provided, make it relative to base_dir
+    if not comparison_file.is_absolute():
+        comparison_file = base_dir / comparison_file
+
+    # Load comparison file
     print("Loading comparison data...")
-    data1 = load_comparison_data(file1)
-    data2 = load_comparison_data(file2)
+    data = load_comparison_data(comparison_file)
 
-    # Extract metrics from both files
-    cases1, prec1, rec1, f1_1 = extract_metrics(data1)
-    cases2, prec2, rec2, f1_2 = extract_metrics(data2)
-
-    # Combine data
-    all_cases = cases2 + cases1  # Cases 1-12 then 14-50
-    all_precisions = prec2 + prec1
-    all_recalls = rec2 + rec1
-    all_f1_scores = f1_2 + f1_1
+    # Extract metrics
+    all_cases, all_precisions, all_recalls, all_f1_scores = extract_metrics(data)
 
     print(f"Total cases: {len(all_cases)}")
     print(f"Cases: {all_cases}")
@@ -235,97 +236,39 @@ def main():
     output_dir = base_dir / "visualizations"
     output_dir.mkdir(exist_ok=True)
 
-    # 1. Create visualizations with all data (highlighting cases 4 and 18)
-    print("\nCreating visualizations with all cases (highlighting cases 4 & 18 as outliers)...")
+    # Create visualizations
+    print("\nCreating visualizations...")
     create_combined_bar_chart(
         all_cases, all_precisions, all_recalls, all_f1_scores,
-        output_dir / "01_combined_metrics_all_cases_with_outliers.png",
-        title_suffix=" (Cases 4 & 18 Highlighted as Outliers)",
-        highlight_outliers=[4, 18]
+        output_dir / "01_combined_metrics_all_cases.png"
     )
 
     create_f1_line_chart(
         all_cases, all_f1_scores,
-        output_dir / "02_f1_progression_with_outliers.png",
-        title_suffix=" (Cases 4 & 18 Highlighted as Outliers)",
-        highlight_outliers=[4, 18]
+        output_dir / "02_f1_progression.png"
     )
 
     create_metrics_distribution(
         all_cases, all_precisions, all_recalls, all_f1_scores,
-        output_dir / "03_metrics_distribution_with_outliers.png",
-        title_suffix=" (Including Cases 4 & 18)"
+        output_dir / "03_metrics_distribution.png"
     )
 
     create_heatmap(
         all_cases, all_precisions, all_recalls, all_f1_scores,
-        output_dir / "04_performance_heatmap_with_outliers.png",
-        title_suffix=" (Including Cases 4 & 18)"
+        output_dir / "04_performance_heatmap.png"
     )
 
-    # 2. Create visualizations without cases 4 and 18
-    print("\nCreating visualizations without cases 4 & 18...")
-    # Filter out cases 4 and 18
-    filtered_data = [(c, p, r, f) for c, p, r, f in zip(
-        all_cases, all_precisions, all_recalls, all_f1_scores) if c not in [4, 18]]
-    filtered_cases, filtered_prec, filtered_rec, filtered_f1 = zip(
-        *filtered_data)
-    filtered_cases = list(filtered_cases)
-    filtered_prec = list(filtered_prec)
-    filtered_rec = list(filtered_rec)
-    filtered_f1 = list(filtered_f1)
-
-    create_combined_bar_chart(
-        filtered_cases, filtered_prec, filtered_rec, filtered_f1,
-        output_dir / "05_combined_metrics_without_outliers.png",
-        title_suffix=" (Excluding Cases 4 & 18)"
-    )
-
-    create_f1_line_chart(
-        filtered_cases, filtered_f1,
-        output_dir / "06_f1_progression_without_outliers.png",
-        title_suffix=" (Excluding Cases 4 & 18)"
-    )
-
-    create_metrics_distribution(
-        filtered_cases, filtered_prec, filtered_rec, filtered_f1,
-        output_dir / "07_metrics_distribution_without_outliers.png",
-        title_suffix=" (Excluding Cases 4 & 18)"
-    )
-
-    create_heatmap(
-        filtered_cases, filtered_prec, filtered_rec, filtered_f1,
-        output_dir / "08_performance_heatmap_without_outliers.png",
-        title_suffix=" (Excluding Cases 4 & 18)"
-    )
-
-    # 3. Print summary statistics
+    # Print summary statistics
     print("\n" + "="*80)
     print("SUMMARY STATISTICS")
     print("="*80)
-    print("\nWith Cases 4 & 18 (all 49 cases):")
+    print(f"\nAll Cases ({len(all_cases)} cases):")
     print(
         f"  Average Precision: {np.mean(all_precisions):.4f} (±{np.std(all_precisions):.4f})")
     print(
         f"  Average Recall:    {np.mean(all_recalls):.4f} (±{np.std(all_recalls):.4f})")
     print(
         f"  Average F1 Score:  {np.mean(all_f1_scores):.4f} (±{np.std(all_f1_scores):.4f})")
-
-    print("\nWithout Cases 4 & 18 (47 cases):")
-    print(
-        f"  Average Precision: {np.mean(filtered_prec):.4f} (±{np.std(filtered_prec):.4f})")
-    print(
-        f"  Average Recall:    {np.mean(filtered_rec):.4f} (±{np.std(filtered_rec):.4f})")
-    print(
-        f"  Average F1 Score:  {np.mean(filtered_f1):.4f} (±{np.std(filtered_f1):.4f})")
-
-    print("\nOutlier metrics:")
-    idx_4 = all_cases.index(4)
-    idx_18 = all_cases.index(18)
-    print(
-        f"  Case 4  - Precision: {all_precisions[idx_4]:.4f}, Recall: {all_recalls[idx_4]:.4f}, F1: {all_f1_scores[idx_4]:.4f}")
-    print(
-        f"  Case 18 - Precision: {all_precisions[idx_18]:.4f}, Recall: {all_recalls[idx_18]:.4f}, F1: {all_f1_scores[idx_18]:.4f}")
 
     print("\n" + "="*80)
     print(f"All visualizations saved to: {output_dir}")

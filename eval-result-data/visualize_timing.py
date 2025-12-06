@@ -245,55 +245,48 @@ def create_timing_vs_accuracy_chart(cases, durations, f1_scores, output_path, ti
 
 
 def main():
+    # Parse command line arguments
+    if len(sys.argv) < 2:
+        print("Usage: python visualize_timing.py <benchmark_json_file>")
+        print("Example: python visualize_timing.py benchmark_vertica_20251206_233016.json")
+        sys.exit(1)
+
     # Paths
     base_dir = Path(__file__).parent
-    benchmark_file1 = base_dir / "benchmark_vertica_20251204_094407.json"
-    benchmark_file2 = base_dir / "benchmark_vertica_20251204_111450.json"
-    comparison_file1 = base_dir / \
-        "comparison_all_cases_benchmark_vertica_20251204_094407.json"
-    comparison_file2 = base_dir / \
-        "comparison_all_cases_benchmark_vertica_20251204_111450.json"
+    benchmark_file = Path(sys.argv[1])
+
+    # If relative path provided, make it relative to base_dir
+    if not benchmark_file.is_absolute():
+        benchmark_file = base_dir / benchmark_file
+
+    # Derive comparison file from benchmark file
+    comparison_file = benchmark_file.parent / f"comparison_all_cases_{benchmark_file.stem}.json"
 
     # Load benchmark data
     print("Loading benchmark timing data...")
-    data1 = load_benchmark_data(benchmark_file1)
-    data2 = load_benchmark_data(benchmark_file2)
+    data = load_benchmark_data(benchmark_file)
 
     # Extract timing data
-    cases1, durations1 = extract_timing_data(data1)
-    cases2, durations2 = extract_timing_data(data2)
-
-    # Combine data
-    all_cases = cases2 + cases1
-    all_durations = durations2 + durations1
+    all_cases, all_durations = extract_timing_data(data)
 
     print(f"Total cases with timing: {len(all_cases)}")
     print(f"Cases: {all_cases}")
 
     # Load comparison data for F1 scores
     print("\nLoading F1 score data...")
-    with open(comparison_file1, 'r') as f:
-        comp_data1 = json.load(f)
-    with open(comparison_file2, 'r') as f:
-        comp_data2 = json.load(f)
+    with open(comparison_file, 'r') as f:
+        comp_data = json.load(f)
 
     # Extract F1 scores
-    cases_comp1 = []
-    f1_scores1 = []
-    for case_num, case_data in comp_data1.get('cases', comp_data1).items():
+    cases_comp = []
+    f1_scores = []
+    for case_num, case_data in comp_data.get('cases', comp_data).items():
         if case_num.isdigit():
-            cases_comp1.append(int(case_num))
-            f1_scores1.append(case_data['f1_score'])
+            cases_comp.append(int(case_num))
+            f1_scores.append(case_data['f1_score'])
 
-    cases_comp2 = []
-    f1_scores2 = []
-    for case_num, case_data in comp_data2.get('cases', comp_data2).items():
-        if case_num.isdigit():
-            cases_comp2.append(int(case_num))
-            f1_scores2.append(case_data['f1_score'])
-
-    all_f1_cases = cases_comp2 + cases_comp1
-    all_f1_scores = f1_scores2 + f1_scores1
+    all_f1_cases = cases_comp
+    all_f1_scores = f1_scores
 
     # Create output directory
     output_dir = base_dir / "visualizations"
@@ -320,13 +313,6 @@ def main():
         title_suffix=" - All Cases"
     )
 
-    # Compare two benchmark runs
-    create_comparison_chart(
-        "Cases 1-12", cases2, durations2,
-        "Cases 14-50", cases1, durations1,
-        output_dir / "12_timing_comparison_between_runs.png"
-    )
-
     # Timing vs Accuracy
     create_timing_vs_accuracy_chart(
         all_cases, all_durations, all_f1_scores,
@@ -349,20 +335,6 @@ def main():
         f"  Min Time: {np.min(all_durations):.1f}s (Case {all_cases[np.argmin(all_durations)]})")
     print(
         f"  Max Time: {np.max(all_durations):.1f}s (Case {all_cases[np.argmax(all_durations)]})")
-
-    print(f"\nCases 1-12 ({len(cases2)} cases):")
-    print(
-        f"  Total Time: {np.sum(durations2):.1f}s ({np.sum(durations2)/3600:.2f}h)")
-    print(
-        f"  Average Time: {np.mean(durations2):.1f}s (±{np.std(durations2):.1f}s)")
-    print(f"  Median Time: {np.median(durations2):.1f}s")
-
-    print(f"\nCases 14-50 ({len(cases1)} cases):")
-    print(
-        f"  Total Time: {np.sum(durations1):.1f}s ({np.sum(durations1)/3600:.2f}h)")
-    print(
-        f"  Average Time: {np.mean(durations1):.1f}s (±{np.std(durations1):.1f}s)")
-    print(f"  Median Time: {np.median(durations1):.1f}s")
 
     # Top 5 slowest cases
     slowest_indices = np.argsort(all_durations)[-5:][::-1]
