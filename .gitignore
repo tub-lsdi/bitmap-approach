@@ -81,3 +81,4 @@ Temporary Items
 bin
 results
 .env
+corpus.db
