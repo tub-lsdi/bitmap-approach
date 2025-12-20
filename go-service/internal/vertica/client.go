@@ -12,10 +12,8 @@ import (
 )
 
 type Client struct {
-	db                  *sql.DB
-	totalTableCount     int
-	totalTableCountOnce sync.Once
-	totalTableCountErr  error
+	db              *sql.DB
+	totalTableCount int
 }
 
 func NewClient(host, port, database, username, password string) (*Client, error) {
@@ -38,7 +36,17 @@ func NewClient(host, port, database, username, password string) (*Client, error)
 		return nil, fmt.Errorf("failed to ping Vertica: %w", err)
 	}
 
-	return &Client{db: db}, nil
+	client := &Client{db: db}
+
+	// Fetch total table count during initialization
+	query := `SELECT COUNT(DISTINCT tableid) FROM main_tokenized`
+	err = db.QueryRow(query).Scan(&client.totalTableCount)
+	if err != nil {
+		db.Close()
+		return nil, fmt.Errorf("failed to get total table count: %w", err)
+	}
+
+	return client, nil
 }
 
 func (c *Client) Close() error {
@@ -81,24 +89,7 @@ func (c *Client) LoadTableRows(tableIDs []uint64, values []string, limit int) ([
 }
 
 func (c *Client) GetTotalTableCount() (int, error) {
-	// Use sync.Once to ensure the query is only executed once per client
-	c.totalTableCountOnce.Do(func() {
-		query := `SELECT COUNT(DISTINCT tableid) FROM main_tokenized`
-
-		var count int
-		err := c.db.QueryRow(query).Scan(&count)
-		if err != nil {
-			c.totalTableCountErr = fmt.Errorf("failed to get total table count: %w", err)
-			return
-		}
-
-		c.totalTableCount = count
-	})
-
-	if c.totalTableCountErr != nil {
-		return 0, c.totalTableCountErr
-	}
-
+	// Return cached value that was fetched during client initialization
 	return c.totalTableCount, nil
 }
 
