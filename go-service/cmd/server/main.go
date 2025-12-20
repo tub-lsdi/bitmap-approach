@@ -12,6 +12,7 @@ func main() {
 	r := gin.Default()
 
 	r.POST("/calculate-quad-scores", handler.CalculateQuadScores)
+	r.POST("/row-pmis", handler.CalculateRowPMIs)
 
 	port := config.ServerPort()
 	log.Printf("Starting server on port %s", port)

@@ -88,10 +88,10 @@ func NewBitmapStoreStreaming(streamFunc func(func(model.TableRow) error) error) 
 	}
 
 
-	const batchSize = 2000000  // Process 2M rows per batch 
+	const batchSize = 2000000  // Process 2M rows per batch
 	shardChannels := make([]chan rowBatch, numShards)
 	for i := range shardChannels {
-		shardChannels[i] = make(chan rowBatch, 2000000)  // 2M buffer per shard 
+		shardChannels[i] = make(chan rowBatch, 2000000)  // 2M buffer per shard
 	}
 
 	var rowsProcessed atomic.Int64

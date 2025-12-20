@@ -1,6 +1,5 @@
 FROM golang:1.24-bookworm AS builder
 
-# Install build dependencies for CGO (required by DuckDB)
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
@@ -20,13 +19,16 @@ FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y \
     ca-certificates \
+    curl \
+    procps \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/
 
 COPY --from=builder /app/bin/server .
 
+ENV DUCKDB_PATH=/data/corpus.db
+
 EXPOSE 8080
 
 CMD ["./server"]
-

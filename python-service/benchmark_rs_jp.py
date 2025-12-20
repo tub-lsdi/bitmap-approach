@@ -10,7 +10,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from cs_jp_lp import CSJPLPAlgorithm
+from rs_jp import RSJPAlgorithm
 from loguru import logger
 
 
@@ -34,17 +34,17 @@ def parse_case_input(case_file: Path) -> Tuple[List[str], List[str]]:
     return list_r, list_s
 
 
-def call_go_service(
+def call_go_service_row_pmis(
     list_r: List[str],
     list_s: List[str],
     service_url: Optional[str] = None,
-) -> Tuple[Dict[Tuple[str, str, str, str], float], List[Dict]]:
-    """Call Go service to get PMI scores for quads"""
+) -> Tuple[Dict[Tuple[str, str], float], List[Dict]]:
+    """Call Go service /row-pmis endpoint to get row-level NPMI scores"""
     if service_url is None:
         logger.error("Service URL is required but not provided")
         return {}, []
 
-    endpoint = f"{service_url}/calculate-quad-scores"
+    endpoint = f"{service_url}/row-pmis"
     payload = {"listR": list_r, "listS": list_s}
 
     try:
@@ -58,19 +58,20 @@ def call_go_service(
         results = data.get("results", [])
         timings = data.get("timings", [])
 
-        # Response format: [{"quad": "r_i,s_j,r_k,s_l", "pmi": 2.5}, ...]
-        # Convert to: {(r_i, s_j, r_k, s_l): 2.5, ...}
+        # Response format: [{"r_i": "val", "s_j": "val", "pmi": 0.85}, ...]
+        # Convert to: {(r_i, s_j): 0.85, ...}
         pmi_scores = {}
         for item in results:
-            quad_str = item.get("quad", "")
+            r_val = item.get("r_i", "")
+            s_val = item.get("s_j", "")
             pmi = item.get("pmi", 0.0)
 
-            parts = quad_str.split(",")
-            if len(parts) == 4:
-                quad_tuple = (parts[0], parts[1], parts[2], parts[3])
-                pmi_scores[quad_tuple] = float(pmi)
-            else:
-                logger.warning(f"Invalid quad format: {quad_str}")
+            if r_val and s_val:
+                pmi_scores[(r_val, s_val)] = float(pmi)
+                # Validate NPMI range
+                if pmi < -1.0 or pmi > 1.0:
+                    logger.warning(
+                        f"NPMI value out of range [-1, 1]: {pmi} for ({r_val}, {s_val})")
 
         logger.info(f"Received {len(pmi_scores)} PMI scores from Go service")
         return pmi_scores, timings
@@ -123,13 +124,13 @@ def run_single_case(
         list_r_normalized = [s.lower().strip() for s in list_r]
         list_s_normalized = [s.lower().strip() for s in list_s]
 
-        w_ijkl_scores, go_service_timings = call_go_service(
+        pmi_scores, go_service_timings = call_go_service_row_pmis(
             list_r_normalized, list_s_normalized, service_url
         )
 
-        algorithm = CSJPLPAlgorithm()
+        algorithm = RSJPAlgorithm()
         bridge_table, python_timings = algorithm.create_bridge(
-            list_r_normalized, list_s_normalized, w_ijkl_scores
+            list_r_normalized, list_s_normalized, pmi_scores, top_k=1
         )
 
         end_time = datetime.now()
@@ -196,7 +197,7 @@ def save_results_json(benchmark_run: Dict, output_file: Path):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Benchmark CS-JP-LP algorithm with semantic join test cases"
+        description="Benchmark RS-JP algorithm with semantic join test cases"
     )
     parser.add_argument(
         "-c", "--case", type=int, help="Single case number to run (e.g., 1 for Case1)"
@@ -236,7 +237,7 @@ def main():
     start_time = datetime.now()
 
     benchmark_run = {
-        "algorithm": "cs_jp_lp",
+        "algorithm": "rs_jp",
         "start_time": start_time.isoformat(),
         "start_time_berlin": start_time_berlin.isoformat(),
         "end_time": None,
@@ -251,8 +252,8 @@ def main():
     }
 
     logger.info(
-        f"Starting CS-JP-LP benchmark run at {benchmark_run['start_time']}")
-    logger.info(f"Algorithm: cs_jp_lp")
+        f"Starting RS-JP benchmark run at {benchmark_run['start_time']}")
+    logger.info(f"Algorithm: rs_jp")
     logger.info(f"Database: duckdb")
     logger.info(
         f"Cases: {case_numbers[0]}-{case_numbers[-1] if len(case_numbers) > 1 else case_numbers[0]}"
@@ -263,7 +264,7 @@ def main():
     output_dir = Path("/app/results")
     output_dir.mkdir(parents=True, exist_ok=True)
     output_file = output_dir / \
-        f"benchmark_cs_jp_lp_duckdb_{timestamp_berlin}.json"
+        f"benchmark_rs_jp_duckdb_{timestamp_berlin}.json"
 
     for case_num in case_numbers:
         logger.info(f"\nRunning Case {case_num}...")
@@ -305,7 +306,7 @@ def main():
 
     logger.info("=" * 80)
     logger.info("\nBenchmark Summary:")
-    logger.info(f"  Algorithm: cs_jp_lp")
+    logger.info(f"  Algorithm: rs_jp")
     logger.info(f"  Total cases: {benchmark_run['total_cases']}")
     logger.info(f"  Successful: {benchmark_run['successful_cases']}")
     logger.info(f"  Failed: {benchmark_run['failed_cases']}")
