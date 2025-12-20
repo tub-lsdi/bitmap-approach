@@ -12,7 +12,10 @@ import (
 )
 
 type Client struct {
-	db *sql.DB
+	db                  *sql.DB
+	totalTableCount     int
+	totalTableCountOnce sync.Once
+	totalTableCountErr  error
 }
 
 func NewClient(host, port, database, username, password string) (*Client, error) {
@@ -78,15 +81,25 @@ func (c *Client) LoadTableRows(tableIDs []uint64, values []string, limit int) ([
 }
 
 func (c *Client) GetTotalTableCount() (int, error) {
-	query := `SELECT COUNT(DISTINCT tableid) FROM main_tokenized`
+	// Use sync.Once to ensure the query is only executed once per client
+	c.totalTableCountOnce.Do(func() {
+		query := `SELECT COUNT(DISTINCT tableid) FROM main_tokenized`
 
-	var count int
-	err := c.db.QueryRow(query).Scan(&count)
-	if err != nil {
-		return 0, fmt.Errorf("failed to get total table count: %w", err)
+		var count int
+		err := c.db.QueryRow(query).Scan(&count)
+		if err != nil {
+			c.totalTableCountErr = fmt.Errorf("failed to get total table count: %w", err)
+			return
+		}
+
+		c.totalTableCount = count
+	})
+
+	if c.totalTableCountErr != nil {
+		return 0, c.totalTableCountErr
 	}
 
-	return count, nil
+	return c.totalTableCount, nil
 }
 
 // LoadTableRowsStreaming streams table rows directly to a processor function
