@@ -12,6 +12,14 @@ services:
       - VERTICA_PASSWORD=${VERTICA_PASSWORD:-your_password}
       - SERVER_PORT=${SERVER_PORT:-8080}
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '14.0'
+          memory: 128G
+        reservations:
+          cpus: '2.0'
+          memory: 8G
 
   python-service:
     build:
@@ -24,3 +32,11 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - SERVICE_URL=http://go-service:8080
+    deploy:
+      resources:
+        limits:
+          cpus: '14.0'
+          memory: 128G
+        reservations:
+          cpus: '2.0'
+          memory: 8G
