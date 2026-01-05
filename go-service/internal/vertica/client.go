@@ -62,7 +62,7 @@ func (c *Client) LoadTableRows(tableIDs []uint64, values []string, limit int) ([
 
 	query := fmt.Sprintf(
 		`SELECT tableid, rowid, colid, tokenized
-		 FROM main_tokenized /**PROJS('public.inv_index_proj')*/
+		 FROM main_tokenized
 		 WHERE tokenized IN %s`, inClause)
 
 	rows, err := c.db.Query(query)
@@ -102,7 +102,7 @@ func (c *Client) LoadTableRowsStreaming(values []string, processor func(model.Ta
 
 	query := fmt.Sprintf(
 		`SELECT tableid, rowid, colid, tokenized
-		 FROM main_tokenized /**PROJS('public.inv_index_proj')*/
+		 FROM main_tokenized
 		 WHERE tokenized IN %s`, inClause)
 
 	rows, err := c.db.Query(query)
@@ -164,7 +164,7 @@ func (c *Client) LoadTableRowsStreamingBatched(values []string, processor func(m
 			inClause := buildInClause(batchValues)
 			query := fmt.Sprintf(
 				`SELECT tableid, rowid, colid, tokenized
-				 FROM main_tokenized /**PROJS('public.inv_index_proj')*/
+				 FROM main_tokenized
 				 WHERE tokenized IN %s`, inClause)
 
 			rows, err := c.db.Query(query)
