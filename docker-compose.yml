@@ -19,7 +19,7 @@ services:
           memory: 220G
         reservations:
           cpus: "2.0"
-          memory: 8G
+          memory: 64G
 
   python-service:
     build:
@@ -39,4 +39,4 @@ services:
           memory: 220G
         reservations:
           cpus: "2.0"
-          memory: 8G
+          memory: 32G
