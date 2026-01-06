@@ -248,48 +248,47 @@ func buildBitmapsFromPositions(
 	var lastReportedPercent atomic.Int64
 	lastReportedPercent.Store(-1)
 
-	for idx, value := range values {
+	maxWorkers := runtime.NumCPU() * 2
+	if maxWorkers > len(values) {
+		maxWorkers = len(values)
+	}
+
+	workChan := make(chan string, len(values))
+	for _, value := range values {
+		workChan <- value
+	}
+	close(workChan)
+
+	for w := 0; w < maxWorkers; w++ {
 		wg.Add(1)
-		go func(val string, valIdx int) {
+		go func() {
 			defer wg.Done()
+			for val := range workChan {
+				rowPos := rowPositions[val]
+				colPos := colPositions[val]
 
-			rowPos := rowPositions[val]
-			colPos := colPositions[val]
-
-			var wg2 sync.WaitGroup
-			var rowBitmap, colBitmap *roaring64.Bitmap
-
-			wg2.Add(2)
-			go func() {
-				defer wg2.Done()
-				rowBitmap = roaring64.NewBitmap()
+				rowBitmap := roaring64.NewBitmap()
 				rowBitmap.AddMany(rowPos)
-				log.Printf("buildBitmapsFromPositions: Value '%s' (index %d): Row bitmap complete, %d positions, cardinality: %d", val, valIdx, len(rowPos), rowBitmap.GetCardinality())
-			}()
 
-			go func() {
-				defer wg2.Done()
-				colBitmap = roaring64.NewBitmap()
+				colBitmap := roaring64.NewBitmap()
 				colBitmap.AddMany(colPos)
-				log.Printf("buildBitmapsFromPositions: Value '%s' (index %d): Col bitmap complete, %d positions, cardinality: %d", val, valIdx, len(colPos), colBitmap.GetCardinality())
-			}()
-			wg2.Wait()
 
-			mu.Lock()
-			rowBitmaps[val] = rowBitmap
-			colBitmaps[val] = colBitmap
-			mu.Unlock()
+				mu.Lock()
+				rowBitmaps[val] = rowBitmap
+				colBitmaps[val] = colBitmap
+				mu.Unlock()
 
-			completed := completedCount.Add(1)
-			currentPercent := (completed * 100) / int64(totalValues)
-			lastPercent := lastReportedPercent.Load()
-			if currentPercent > lastPercent && lastReportedPercent.CompareAndSwap(lastPercent, currentPercent) {
-				elapsed := time.Since(startTime)
-				rate := float64(completed) / elapsed.Seconds()
-				remaining := time.Duration(float64(int64(totalValues)-completed)/rate) * time.Second
-				log.Printf("buildBitmapsFromPositions: Progress %d%% (%d/%d values, %.2f values/sec, ETA: %v)", currentPercent, completed, totalValues, rate, remaining)
+				completed := completedCount.Add(1)
+				currentPercent := (completed * 100) / int64(totalValues)
+				lastPercent := lastReportedPercent.Load()
+				if currentPercent > lastPercent && lastReportedPercent.CompareAndSwap(lastPercent, currentPercent) {
+					elapsed := time.Since(startTime)
+					rate := float64(completed) / elapsed.Seconds()
+					remaining := time.Duration(float64(int64(totalValues)-completed)/rate) * time.Second
+					log.Printf("buildBitmapsFromPositions: Progress %d%% (%d/%d values, %.2f values/sec, ETA: %v)", currentPercent, completed, totalValues, rate, remaining)
+				}
 			}
-		}(value, idx)
+		}()
 	}
 
 	wg.Wait()
