@@ -87,11 +87,10 @@ func NewBitmapStoreStreaming(streamFunc func(func(model.TableRow) error) error) 
 		}
 	}
 
-
-	const batchSize = 2000000  // Process 2M rows per batch 
+	const batchSize = 2000000 // Process 2M rows per batch
 	shardChannels := make([]chan rowBatch, numShards)
 	for i := range shardChannels {
-		shardChannels[i] = make(chan rowBatch, 2000000)  // 2M buffer per shard 
+		shardChannels[i] = make(chan rowBatch, 2000000) // 2M buffer per shard
 	}
 
 	var rowsProcessed atomic.Int64
@@ -220,7 +219,7 @@ func mergeShards(shards []*bitmapShard) (map[string]*roaring64.Bitmap, map[strin
 	log.Printf("Merged positions for %d values", len(finalRowPositions))
 
 	// Build bitmaps in parallel
-	log.Printf("Building bitmaps in parallel using all CPU cores...")
+	log.Printf("Building bitmaps in parallel")
 	return buildBitmapsFromPositions(finalRowPositions, finalColPositions)
 }
 
@@ -236,86 +235,43 @@ func buildBitmapsFromPositions(
 	var mu sync.Mutex
 	var wg sync.WaitGroup
 
-	// Get all unique values
 	values := make([]string, 0, len(rowPositions))
 	for value := range rowPositions {
 		values = append(values, value)
 	}
 
-	// Build bitmaps in parallel - one goroutine per value
-	for _, value := range values {
+	totalValues := len(values)
+	log.Printf("buildBitmapsFromPositions: Starting to build bitmaps for %d values", totalValues)
+
+	var completedCount atomic.Int64
+	startTime := time.Now()
+	var lastReportedPercent atomic.Int64
+	lastReportedPercent.Store(-1)
+
+	for idx, value := range values {
 		wg.Add(1)
-		go func(val string) {
+		go func(val string, valIdx int) {
 			defer wg.Done()
 
-			// For position slices, chunk and build in parallel
-			chunkSize := 5000000 // 5M positions per chunk
 			rowPos := rowPositions[val]
 			colPos := colPositions[val]
 
-			// Build row and col bitmaps in parallel
 			var wg2 sync.WaitGroup
 			var rowBitmap, colBitmap *roaring64.Bitmap
 
 			wg2.Add(2)
 			go func() {
 				defer wg2.Done()
-				if len(rowPos) <= chunkSize {
-					rowBitmap = roaring64.NewBitmap()
-					rowBitmap.AddMany(rowPos)
-				} else {
-					// Split into chunks for values
-					chunks := (len(rowPos) + chunkSize - 1) / chunkSize
-					chunkBitmaps := make([]*roaring64.Bitmap, chunks)
-					var wg3 sync.WaitGroup
-					for i := 0; i < chunks; i++ {
-						wg3.Add(1)
-						start := i * chunkSize
-						end := min((i+1)*chunkSize, len(rowPos))
-						go func(idx int, chunk []uint64) {
-							defer wg3.Done()
-							bm := roaring64.NewBitmap()
-							bm.AddMany(chunk)
-							chunkBitmaps[idx] = bm
-						}(i, rowPos[start:end])
-					}
-					wg3.Wait()
-					// Merge chunks
-					rowBitmap = chunkBitmaps[0]
-					for i := 1; i < len(chunkBitmaps); i++ {
-						rowBitmap.Or(chunkBitmaps[i])
-					}
-				}
+				rowBitmap = roaring64.NewBitmap()
+				rowBitmap.AddMany(rowPos)
+				log.Printf("buildBitmapsFromPositions: Value '%s' (index %d): Row bitmap complete, %d positions, cardinality: %d", val, valIdx, len(rowPos), rowBitmap.GetCardinality())
 			}()
 
 			go func() {
 				defer wg2.Done()
-				if len(colPos) <= chunkSize {
-					colBitmap = roaring64.NewBitmap()
-					colBitmap.AddMany(colPos)
-				} else {
-					// Split into chunks for values
-					chunks := (len(colPos) + chunkSize - 1) / chunkSize
-					chunkBitmaps := make([]*roaring64.Bitmap, chunks)
-					var wg3 sync.WaitGroup
-					for i := 0; i < chunks; i++ {
-						wg3.Add(1)
-						start := i * chunkSize
-						end := min((i+1)*chunkSize, len(colPos))
-						go func(idx int, chunk []uint64) {
-							defer wg3.Done()
-							bm := roaring64.NewBitmap()
-							bm.AddMany(chunk)
-							chunkBitmaps[idx] = bm
-						}(i, colPos[start:end])
-					}
-					wg3.Wait()
-					// Merge chunks
-					colBitmap = chunkBitmaps[0]
-					for i := 1; i < len(chunkBitmaps); i++ {
-						colBitmap.Or(chunkBitmaps[i])
-					}
-				}
+				colBitmap = roaring64.NewBitmap()
+				colBitmap.AddMany(colPos)
+				log.Printf("buildBitmapsFromPositions: Value '%s' (index %d): Col bitmap complete, %d positions, cardinality: %d", val, valIdx, len(colPos), colBitmap.GetCardinality())
 			}()
 			wg2.Wait()
 
@@ -323,11 +279,22 @@ func buildBitmapsFromPositions(
 			rowBitmaps[val] = rowBitmap
 			colBitmaps[val] = colBitmap
 			mu.Unlock()
-		}(value)
+
+			completed := completedCount.Add(1)
+			currentPercent := (completed * 100) / int64(totalValues)
+			lastPercent := lastReportedPercent.Load()
+			if currentPercent > lastPercent && lastReportedPercent.CompareAndSwap(lastPercent, currentPercent) {
+				elapsed := time.Since(startTime)
+				rate := float64(completed) / elapsed.Seconds()
+				remaining := time.Duration(float64(int64(totalValues)-completed)/rate) * time.Second
+				log.Printf("buildBitmapsFromPositions: Progress %d%% (%d/%d values, %.2f values/sec, ETA: %v)", currentPercent, completed, totalValues, rate, remaining)
+			}
+		}(value, idx)
 	}
 
 	wg.Wait()
-	log.Printf("Built bitmaps for %d values in parallel", len(values))
+	elapsed := time.Since(startTime)
+	log.Printf("buildBitmapsFromPositions: Completed building bitmaps for %d values in %v (avg %.2f values/sec)", totalValues, elapsed, float64(totalValues)/elapsed.Seconds())
 
 	return rowBitmaps, colBitmaps
 }
