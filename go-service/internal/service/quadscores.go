@@ -261,22 +261,30 @@ func buildBitmapsFromPositions(
 
 	for w := 0; w < maxWorkers; w++ {
 		wg.Add(1)
-		go func() {
+		go func(workerID int) {
 			defer wg.Done()
 			for val := range workChan {
 				rowPos := rowPositions[val]
 				colPos := colPositions[val]
+				
+				rowCard := len(rowPos)
+				colCard := len(colPos)
+				
+				log.Printf("Worker %d: Starting to build bitmaps for value '%s' (row cardinality: %d, col cardinality: %d)", workerID, val, rowCard, colCard)
+				valueStart := time.Now()
 
-				rowBitmap := roaring64.NewBitmap()
-				rowBitmap.AddMany(rowPos)
-
-				colBitmap := roaring64.NewBitmap()
-				colBitmap.AddMany(colPos)
+				// Create bitmaps efficiently by sorting first then adding in chunks
+				// This avoids the O(n) variadic expansion and is much faster for large slices
+				rowBitmap := createBitmapFromSortedPositions(rowPos)
+				colBitmap := createBitmapFromSortedPositions(colPos)
 
 				mu.Lock()
 				rowBitmaps[val] = rowBitmap
 				colBitmaps[val] = colBitmap
 				mu.Unlock()
+				
+				valueElapsed := time.Since(valueStart)
+				log.Printf("Worker %d: Completed value '%s' in %v (row: %d, col: %d)", workerID, val, valueElapsed, rowCard, colCard)
 
 				completed := completedCount.Add(1)
 				currentPercent := (completed * 100) / int64(totalValues)
@@ -288,7 +296,7 @@ func buildBitmapsFromPositions(
 					log.Printf("buildBitmapsFromPositions: Progress %d%% (%d/%d values, %.2f values/sec, ETA: %v)", currentPercent, completed, totalValues, rate, remaining)
 				}
 			}
-		}()
+		}(w)
 	}
 
 	wg.Wait()
@@ -321,6 +329,32 @@ func hashString(s string) uint64 {
 		hash = ((hash << 5) + hash) + uint64(s[i])
 	}
 	return hash
+}
+func createBitmapFromSortedPositions(positions []uint64) *roaring64.Bitmap {
+	if len(positions) == 0 {
+		return roaring64.NewBitmap()
+	}
+
+	// Sort positions for optimal bitmap performance
+	sort.Slice(positions, func(i, j int) bool {
+		return positions[i] < positions[j]
+	})
+
+	bitmap := roaring64.NewBitmap()
+	
+	// Add in chunks to amortize overhead
+	const chunkSize = 100000
+	for i := 0; i < len(positions); i += chunkSize {
+		end := i + chunkSize
+		if end > len(positions) {
+			end = len(positions)
+		}
+		
+		// Use AddMany for reasonable chunk sizes (much faster than individual Add calls)
+		bitmap.AddMany(positions[i:end])
+	}
+
+	return bitmap
 }
 
 // GetRowBitmap returns the bitmap of row positions for a value.
