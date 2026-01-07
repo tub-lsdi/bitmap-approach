@@ -144,6 +144,41 @@ class CorpusParser:
 
         return normalized_rows
 
+    def extract_rows_from_parquet_records(self, records: list[dict[str, Any]]) -> list[list[str]]:
+        """
+        Extract and normalize rows from parquet records with flat JSON structure.
+
+        Each record becomes one row, with field values extracted in their original order.
+        Example: {"filename":"song.wav","Artist":"Name","Title":"Song","genre":"pop"}
+
+        Args:
+            records: List of record dictionaries from parquet file
+
+        Returns:
+            List of normalized rows
+        """
+        if not records:
+            return []
+
+        # Get column order from first record (all records have same schema)
+        column_order = list(records[0].keys())
+
+        normalized_rows = []
+        for record in records:
+            cleaned_row = []
+            # Iterate through columns in their original order
+            for key in column_order:
+                value = record.get(key)
+                if value is not None:
+                    normalized_val = self.normalize_value(value)
+                    if normalized_val:
+                        cleaned_row.append(normalized_val)
+
+            if cleaned_row:
+                normalized_rows.append(cleaned_row)
+
+        return normalized_rows
+
     def stream_json_tables(self, path: str) -> Iterator[dict[str, Any]]:
         """
         Generator yielding parsed JSON tables from an NDJSON file.
@@ -237,3 +272,13 @@ def table_hash(rows: list[list[str]]) -> str:
     Convenience function for backward compatibility.
     """
     return CorpusParser.table_hash(rows)
+
+
+def extract_rows_from_parquet_records(records: list[dict[str, Any]]) -> list[list[str]]:
+    """
+    Extract rows from parquet records using global parser.
+
+    Convenience function for backward compatibility.
+    """
+    return _default_parser.extract_rows_from_parquet_records(records)
+
