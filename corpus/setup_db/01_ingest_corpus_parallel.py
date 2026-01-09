@@ -1,6 +1,10 @@
+import gc
+import math
 import os
 import shutil
+from pyexpat.errors import XML_ERROR_TAG_MISMATCH
 
+import polars as pl
 import pyarrow as pa
 import pyarrow.parquet as pq
 
@@ -22,18 +26,18 @@ from normalization import NormalizationStrategy, set_normalization_strategy
 # --- Configuration ---
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent.parent
-INPUT_DIR = PROJECT_ROOT / "corpus" / "example_data"
-TEMP_META_DIR = PROJECT_ROOT / "temp_parquet_meta"
-TEMP_CELLS_DIR = PROJECT_ROOT / "temp_parquet_cells"
-DB_PATH = PROJECT_ROOT / "corpus.db"
-DB_TEMP_DIR = PROJECT_ROOT / "duckdb_temp"
+INPUT_DIR = "/Volumes/FR_SSD/sema_join/git_tables"
+TEMP_META_DIR = "/Volumes/FR_SSD/sema_join/tmp_dir/temp_parquet_meta"
+TEMP_CELLS_DIR = "/Volumes/FR_SSD/sema_join/tmp_dir/temp_parquet_cells"
+DB_PATH = "/Volumes/FR_SSD/sema_join/dbs/git_corpus.db"
+DB_TEMP_DIR = "/Volumes/FR_SSD/sema_join/tmp_dir/duckdb_temp"
+META_TEMP_LOAD_PATH = Path(DB_TEMP_DIR) / "batch_load.parquet"
 
 # Batching thresholds
 CELL_FLUSH_THRESHOLD = 500000
 META_FLUSH_THRESHOLD = 50000
 FILE_CHUNK_SIZE = 100
-NUM_INGESTION_CHUNKS = 4
-
+INGESTION_BATCH_SIZE = 100
 
 def get_db_connection() -> duckdb.DuckDBPyConnection:
     """Get connection to DuckDB database."""
@@ -64,27 +68,28 @@ def create_schema(con: duckdb.DuckDBPyConnection):
     """
     con.execute("CREATE SEQUENCE IF NOT EXISTS table_id_seq START 1;")
 
-    con.execute(
-        """
-        CREATE TABLE IF NOT EXISTS tables_meta (
-                                                table_id BIGINT PRIMARY KEY DEFAULT nextval('table_id_seq'),
-                                                table_hash TEXT UNIQUE,
-                                                source_file TEXT,
-                                                url TEXT
-                                                );
-        """
-    )
+    con.execute("""
+                CREATE TABLE IF NOT EXISTS tables_meta (
+                                                           table_id BIGINT PRIMARY KEY DEFAULT nextval('table_id_seq'),
+                    table_hash TEXT UNIQUE,
+                    source_file TEXT,
+                    url TEXT
+                    );
+                """)
 
-    con.execute(
-        """
-        CREATE TABLE IF NOT EXISTS cells (
-                                            table_id BIGINT REFERENCES tables_meta(table_id),
-                                            row_id INTEGER,
-                                            col_id INTEGER,
-                                            value TEXT
-                                            );
-        """
-    )
+    # CHANGED: Removed 'REFERENCES tables_meta(table_id)'
+    # We enforce this link ourselves via the JOIN during insertion.
+    con.execute("""
+                CREATE TABLE IF NOT EXISTS cells (
+                                                     table_id BIGINT,
+                                                     row_id INTEGER,
+                                                     col_id INTEGER,
+                                                     value TEXT
+                );
+                """)
+
+    con.commit()
+    logger.info("Schema created (Foreign Keys removed for bulk-load speed).")
 
     con.commit()
     logger.info("Schema created/verified successfully.")
@@ -302,18 +307,18 @@ def main():
     try:
         con = get_db_connection()
 
-        # 1. Set Memory Limit to ~80% of RAM (e.g., '12GB' for a 16GB machine)
-        # This is CRITICAL. It tells DuckDB to spill to disk rather than crashing.
-        con.execute("SET memory_limit='12GB';")
+        con.execute("SET memory_limit='8GB';")
         con.execute(f"SET threads TO {cpu_count()};")
+        con.execute("SET preserve_insertion_order=false;")
 
         create_schema(con)
 
-        # --- Metadata (Do this once, it's usually safe) ---
-        logger.info("Ingesting and deduplicating metadata...")
+        # --- Metadata Ingestion ---
+        logger.info("Ingesting metadata...")
         meta_files = [
-            str(f) for f in Path(TEMP_META_DIR).glob("*.parquet")
-            if f.is_file() and not f.name.startswith("._")
+            str(f)
+            for f in Path(TEMP_META_DIR).glob("*.parquet")
+            if not f.name.startswith("._")
         ]
 
         if meta_files:
@@ -325,54 +330,76 @@ def main():
                 """)
             con.commit()
 
-            # Analyze is crucial for the Join logic below
-            logger.info("Analyzing metadata table...")
-            con.execute("ANALYZE tables_meta;")
-            con.commit()
-        else:
-            logger.warning("No valid meta parquet files found.")
+        # Build ID Map (Polars)
+        logger.info("Loading ID map into Polars...")
+        arrow_table = con.execute(
+            "SELECT table_hash, table_id FROM tables_meta"
+        ).fetch_arrow_table()
+        ids_df = pl.from_arrow(arrow_table)
 
-        # --- Cell Data (The Optimized Strategy) ---
+        ids_df = ids_df.with_columns(pl.col("table_id").cast(pl.Int64))
+
+        logger.info(f"Map loaded. {ids_df.height} tables ready.")
+
+        # --- Cell Ingestion (The Decoupled Loop) ---
         logger.info("Ingesting cell data...")
         cells_files = [
-            str(f) for f in Path(TEMP_CELLS_DIR).glob("*.parquet")
-            if f.is_file() and not f.name.startswith("._")
+            str(f)
+            for f in Path(TEMP_CELLS_DIR).glob("*.parquet")
+            if not f.name.startswith("._")
         ]
+
+        # Temp file location on your SSD
+        os.makedirs(DB_TEMP_DIR, exist_ok=True)
 
         if not cells_files:
             logger.warning("No valid cell parquet files found.")
         else:
-            # STRATEGY:
-            # Instead of small batches (overhead heavy), we use LARGE CHUNKS.
-            # Splitting into ~10 chunks is usually the perfect balance.
-            # It amortizes the Join cost while preventing Infinite Transaction Growth.
+            total_files = len(cells_files)
 
-            # Calculate chunk size (ceiling division)
-            chunk_size = (len(cells_files) + NUM_INGESTION_CHUNKS - 1) // NUM_INGESTION_CHUNKS
+            with tqdm(total=total_files, desc="Ingesting Files", unit="file") as pbar:
+                for i in range(0, total_files, INGESTION_BATCH_SIZE):
+                    batch_files = cells_files[i : i + INGESTION_BATCH_SIZE]
 
-            logger.info(f"Processing {len(cells_files)} files in {NUM_INGESTION_CHUNKS} chunks of ~{chunk_size} files.")
+                    try:
+                        try:
+                            batch_df = pl.read_parquet(
+                                batch_files,
+                                columns=["table_hash", "row_id", "col_id", "value"],
+                            )
+                            joined_df = batch_df.join(
+                                ids_df, on="table_hash", how="inner"
+                            )
+                            final_df = joined_df.select(
+                                ["table_id", "row_id", "col_id", "value"]
+                            )
+                            final_df.write_parquet(META_TEMP_LOAD_PATH, compression="snappy")
 
-            with tqdm(total=len(cells_files), desc="Ingesting Cell Chunks") as pbar:
-                for i in range(0, len(cells_files), chunk_size):
-                    # 1. Get the list of files for this large chunk
-                    batch_files = cells_files[i : i + chunk_size]
+                            # CLEAR RAM
+                            del batch_df
+                            del joined_df
+                            del final_df
+                            gc.collect()
 
-                    # 2. Direct Stream Insert
-                    # We skip 'CREATE TEMP TABLE'. We stream strictly from Parquet.
-                    # DuckDB will manage the memory buffering automatically thanks to 'memory_limit'.
-                    con.execute(f"""
-                            INSERT INTO cells (table_id, row_id, col_id, value)
-                            SELECT m.table_id, s.row_id, s.col_id, s.value
-                            FROM read_parquet({batch_files}) AS s
-                            JOIN tables_meta AS m ON s.table_hash = m.table_hash;
-                        """)
+                        except Exception as e:
+                            logger.warning(f"Skipping corrupt batch/file: {e}")
+                            pbar.update(len(batch_files))
+                            continue
 
-                    # 3. Commit
-                    # This frees the Transaction Log (WAL) space on disk.
-                    con.commit()
+                        con.execute(
+                            f"INSERT INTO cells SELECT * FROM read_parquet('{META_TEMP_LOAD_PATH}')"
+                        )
+                        con.commit()
+
+                        if META_TEMP_LOAD_PATH.exists():
+                            os.remove(META_TEMP_LOAD_PATH)
+
+                    except Exception as e:
+                        logger.error(
+                            f"Failed on batch starting with {Path(batch_files[0]).name}: {e}"
+                        )
 
                     pbar.update(len(batch_files))
-
 
         logger.info(f"--- Phase 2 Complete ---")
 
@@ -383,14 +410,20 @@ def main():
 
         con.execute("CREATE INDEX IF NOT EXISTS idx_cells_table_id ON cells(table_id);")
         con.execute("CREATE INDEX IF NOT EXISTS idx_cells_value ON cells(value);")
-        con.execute("CREATE INDEX IF NOT EXISTS idx_cells_table_row ON cells(table_id, row_id);")
-        con.execute("CREATE INDEX IF NOT EXISTS idx_cells_table_col ON cells(table_id, col_id);")
+        con.execute(
+            "CREATE INDEX IF NOT EXISTS idx_cells_table_row ON cells(table_id, row_id);"
+        )
+        con.execute(
+            "CREATE INDEX IF NOT EXISTS idx_cells_table_col ON cells(table_id, col_id);"
+        )
 
         con.commit()
         logger.info(f"--- Phase 3 Complete ---")
 
         con.close()
-        logger.info(f"✅ Ingestion complete. Total tables in database: {total_db_tables}")
+        logger.info(
+            f"✅ Ingestion complete. Total tables in database: {total_db_tables}"
+        )
 
     except Exception as e:
         logger.error(f"Failed during Phase 2 (Database Ingestion): {e}")
