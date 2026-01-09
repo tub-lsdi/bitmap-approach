@@ -32,6 +32,7 @@ DB_TEMP_DIR = PROJECT_ROOT / "duckdb_temp"
 CELL_FLUSH_THRESHOLD = 500000
 META_FLUSH_THRESHOLD = 50000
 FILE_CHUNK_SIZE = 100
+NUM_INGESTION_CHUNKS = 4
 
 
 def get_db_connection() -> duckdb.DuckDBPyConnection:
@@ -300,95 +301,96 @@ def main():
 
     try:
         con = get_db_connection()
-        create_schema(con)  # Ensure schema is up-to-date
 
-        # Create a staging table for metadata, deduplicating at the source
+        # 1. Set Memory Limit to ~80% of RAM (e.g., '12GB' for a 16GB machine)
+        # This is CRITICAL. It tells DuckDB to spill to disk rather than crashing.
+        con.execute("SET memory_limit='12GB';")
+        con.execute(f"SET threads TO {cpu_count()};")
+
+        create_schema(con)
+
+        # --- Metadata (Do this once, it's usually safe) ---
         logger.info("Ingesting and deduplicating metadata...")
         meta_files = [
-            str(f)
-            for f in Path(TEMP_META_DIR).glob("*.parquet")
+            str(f) for f in Path(TEMP_META_DIR).glob("*.parquet")
             if f.is_file() and not f.name.startswith("._")
         ]
 
-        if not meta_files:
-            logger.warning(
-                "No valid meta parquet files found. Skipping meta ingestion."
-            )
-        else:
-            con.execute(
-                f"""
-                        CREATE TEMP TABLE meta_staging AS
-                        SELECT DISTINCT table_hash, source_file, url
-                        FROM read_parquet({meta_files});
-                    """
-            )
-            # Insert new metadata. ON CONFLICT handles deduplication.
-            con.execute(
-                """
-                INSERT INTO tables_meta (table_hash, source_file, url)
-                SELECT table_hash, source_file, url
-                FROM meta_staging
+        if meta_files:
+            con.execute(f"""
+                    INSERT INTO tables_meta (table_hash, source_file, url)
+                    SELECT DISTINCT table_hash, source_file, url
+                    FROM read_parquet({meta_files})
                     ON CONFLICT (table_hash) DO NOTHING;
-                """
-            )
-            con.execute("DROP TABLE meta_staging;")
-            logger.info("Metadata ingestion complete.")
+                """)
+            con.commit()
 
-        # Create a staging table for all cell data
-        logger.info("Staging cell data...")
+            # Analyze is crucial for the Join logic below
+            logger.info("Analyzing metadata table...")
+            con.execute("ANALYZE tables_meta;")
+            con.commit()
+        else:
+            logger.warning("No valid meta parquet files found.")
+
+        # --- Cell Data (The Optimized Strategy) ---
+        logger.info("Ingesting cell data...")
         cells_files = [
-            str(f)
-            for f in Path(TEMP_CELLS_DIR).glob("*.parquet")
+            str(f) for f in Path(TEMP_CELLS_DIR).glob("*.parquet")
             if f.is_file() and not f.name.startswith("._")
         ]
 
         if not cells_files:
-            logger.warning(
-                "No valid cell parquet files found. Skipping cell ingestion."
-            )
+            logger.warning("No valid cell parquet files found.")
         else:
-            con.execute(
-                f"""
-                        CREATE TEMP TABLE cells_staging AS
-                        SELECT * FROM read_parquet({cells_files});
-                    """
-            )
-            # Ingest cells by joining with the meta table
-            logger.info("Joining and ingesting cell data...")
-            con.execute(
-                """
-                INSERT INTO cells (table_id, row_id, col_id, value)
-                SELECT m.table_id, s.row_id, s.col_id, s.value
-                FROM cells_staging AS s
-                         JOIN tables_meta AS m ON s.table_hash = m.table_hash;
-                """
-            )
-            con.execute("DROP TABLE cells_staging;")
+            # STRATEGY:
+            # Instead of small batches (overhead heavy), we use LARGE CHUNKS.
+            # Splitting into ~10 chunks is usually the perfect balance.
+            # It amortizes the Join cost while preventing Infinite Transaction Growth.
 
-        con.commit()
+            # Calculate chunk size (ceiling division)
+            chunk_size = (len(cells_files) + NUM_INGESTION_CHUNKS - 1) // NUM_INGESTION_CHUNKS
 
-        total_db_tables = con.execute("SELECT COUNT(*) FROM tables_meta;").fetchone()[0]
+            logger.info(f"Processing {len(cells_files)} files in {NUM_INGESTION_CHUNKS} chunks of ~{chunk_size} files.")
+
+            with tqdm(total=len(cells_files), desc="Ingesting Cell Chunks") as pbar:
+                for i in range(0, len(cells_files), chunk_size):
+                    # 1. Get the list of files for this large chunk
+                    batch_files = cells_files[i : i + chunk_size]
+
+                    # 2. Direct Stream Insert
+                    # We skip 'CREATE TEMP TABLE'. We stream strictly from Parquet.
+                    # DuckDB will manage the memory buffering automatically thanks to 'memory_limit'.
+                    con.execute(f"""
+                            INSERT INTO cells (table_id, row_id, col_id, value)
+                            SELECT m.table_id, s.row_id, s.col_id, s.value
+                            FROM read_parquet({batch_files}) AS s
+                            JOIN tables_meta AS m ON s.table_hash = m.table_hash;
+                        """)
+
+                    # 3. Commit
+                    # This frees the Transaction Log (WAL) space on disk.
+                    con.commit()
+
+                    pbar.update(len(batch_files))
+
 
         logger.info(f"--- Phase 2 Complete ---")
+
+        # Check total tables
+        total_db_tables = con.execute("SELECT COUNT(*) FROM tables_meta;").fetchone()[0]
 
         logger.info(f"Starting Phase 3: Create Indexes")
 
         con.execute("CREATE INDEX IF NOT EXISTS idx_cells_table_id ON cells(table_id);")
         con.execute("CREATE INDEX IF NOT EXISTS idx_cells_value ON cells(value);")
-        con.execute(
-            "CREATE INDEX IF NOT EXISTS idx_cells_table_row ON cells(table_id, row_id);"
-        )
-        con.execute(
-            "CREATE INDEX IF NOT EXISTS idx_cells_table_col ON cells(table_id, col_id);"
-        )
+        con.execute("CREATE INDEX IF NOT EXISTS idx_cells_table_row ON cells(table_id, row_id);")
+        con.execute("CREATE INDEX IF NOT EXISTS idx_cells_table_col ON cells(table_id, col_id);")
 
         con.commit()
         logger.info(f"--- Phase 3 Complete ---")
 
         con.close()
-        logger.info(
-            f"✅ Ingestion complete. Total tables in database: {total_db_tables}"
-        )
+        logger.info(f"✅ Ingestion complete. Total tables in database: {total_db_tables}")
 
     except Exception as e:
         logger.error(f"Failed during Phase 2 (Database Ingestion): {e}")
