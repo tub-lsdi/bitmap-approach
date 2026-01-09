@@ -1,8 +1,6 @@
 import gc
-import math
 import os
 import shutil
-from pyexpat.errors import XML_ERROR_TAG_MISMATCH
 
 import polars as pl
 import pyarrow as pa
@@ -26,11 +24,11 @@ from normalization import NormalizationStrategy, set_normalization_strategy
 # --- Configuration ---
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent.parent
-INPUT_DIR = "/Volumes/FR_SSD/sema_join/git_tables"
-TEMP_META_DIR = "/Volumes/FR_SSD/sema_join/tmp_dir/temp_parquet_meta"
-TEMP_CELLS_DIR = "/Volumes/FR_SSD/sema_join/tmp_dir/temp_parquet_cells"
-DB_PATH = "/Volumes/FR_SSD/sema_join/dbs/git_corpus.db"
-DB_TEMP_DIR = "/Volumes/FR_SSD/sema_join/tmp_dir/duckdb_temp"
+INPUT_DIR = PROJECT_ROOT / "corpus" / "example_data"
+TEMP_META_DIR = PROJECT_ROOT / "temp_parquet_meta"
+TEMP_CELLS_DIR = PROJECT_ROOT / "temp_parquet_cells"
+DB_PATH = PROJECT_ROOT / "corpus.db"
+DB_TEMP_DIR = PROJECT_ROOT / "duckdb_temp"
 META_TEMP_LOAD_PATH = Path(DB_TEMP_DIR) / "batch_load.parquet"
 
 # Batching thresholds
@@ -341,7 +339,7 @@ def main():
 
         logger.info(f"Map loaded. {ids_df.height} tables ready.")
 
-        # --- Cell Ingestion (The Decoupled Loop) ---
+        # --- Cell Ingestion ---
         logger.info("Ingesting cell data...")
         cells_files = [
             str(f)
@@ -349,7 +347,6 @@ def main():
             if not f.name.startswith("._")
         ]
 
-        # Temp file location on your SSD
         os.makedirs(DB_TEMP_DIR, exist_ok=True)
 
         if not cells_files:
@@ -375,7 +372,7 @@ def main():
                             )
                             final_df.write_parquet(META_TEMP_LOAD_PATH, compression="snappy")
 
-                            # CLEAR RAM
+                            # clear ram
                             del batch_df
                             del joined_df
                             del final_df
