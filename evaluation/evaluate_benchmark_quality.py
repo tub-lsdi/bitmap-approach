@@ -6,6 +6,7 @@ import polars as pl
 import matplotlib.pyplot as plt
 import seaborn as sns
 from typing import List, Dict, Tuple, Set
+import matplotlib.ticker as ticker
 
 def load_groundtruth(filepath: str) -> Set[Tuple[str, str]]:
     mappings = set()
@@ -117,18 +118,86 @@ def plot_comparison(dfs: List[pl.DataFrame], output_file: str = None):
         print("Combined data is empty.")
         return
 
-    plt.figure(figsize=(16, 8))
-    sns.barplot(data=combined_df.to_pandas(), x='case', y='f1', hue='file')
-    plt.title("F1 Score Comparison per Case")
-    plt.xlabel("Case Number")
-    plt.ylabel("F1 Score")
-    plt.xticks(rotation=45)
-    plt.ylim(0, 1.05)
-    plt.legend(title='File', bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.tight_layout()
+    # Calculate summary stats
+    summary_df = combined_df.group_by("file", maintain_order=True).agg([
+        pl.col("precision").mean().alias("Precision"),
+        pl.col("recall").mean().alias("Recall"),
+        pl.col("f1").mean().alias("F1"),
+        pl.col("duration").mean().alias("Duration (s)")
+    ])
+    
+    # Predefined colors (20)
+    colors = [
+        "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
+        "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf",
+        "#aec7e8", "#ffbb78", "#98df8a", "#ff9896", "#c5b0d5",
+        "#c49c94", "#f7b6d2", "#c7c7c7", "#dbdb8d", "#9edae5"
+    ]
+    
+    unique_files = summary_df['file'].to_list()
+    file_colors = {f: colors[i % len(colors)] for i, f in enumerate(unique_files)}
+
+    # Convert to pandas
+    plot_data = combined_df.to_pandas()
+    summary_data = summary_df.to_pandas()
+    
+    # Format summary data for table
+    cell_text = []
+    row_colors = []
+    
+    for _, row in summary_data.iterrows():
+        filename = row['file']
+        # First column is empty (will be colored)
+        r = [""]
+        r.append(f"{row['Precision']:.3f}")
+        r.append(f"{row['Recall']:.3f}")
+        r.append(f"{row['F1']:.3f}")
+        r.append(f"{row['Duration (s)']:.2f}")
+        cell_text.append(r)
+        row_colors.append(file_colors[filename])
+
+    col_labels = ["File", "Precision", "Recall", "F1", "Duration (s)"]
+
+    # Create figure with extra width to accommodate table on the right
+    fig, ax = plt.subplots(figsize=(20, 8))
+    
+    sns.barplot(data=plot_data, x='case', y='f1', hue='file', ax=ax, palette=file_colors)
+    ax.set_title("F1 Score Comparison per Case")
+    ax.set_xlabel("Case Number")
+    ax.set_ylabel("F1 Score")
+    
+    # Fix for UserWarning: set_ticklabels() should only be used with a fixed number of ticks
+    ax.xaxis.set_major_locator(ticker.FixedLocator(ax.get_xticks()))
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+
+    ax.set_ylim(0, 1.05)
+    
+    # Place legend at top right, outside
+    legend = ax.legend(title='File', bbox_to_anchor=(1.01, 1), loc='upper left')
+    
+    # Adjust layout to make room on the right
+    plt.subplots_adjust(right=0.65)
+    
+    # Add table below the legend
+    # bbox=[left, bottom, width, height] in axes coordinates
+    table = plt.table(cellText=cell_text,
+                      colLabels=col_labels,
+                      loc='right',
+                      bbox=[1.02, 0.4, 0.45, 0.3])
+    
+    table.auto_set_font_size(False)
+    table.set_fontsize(9)
+    table.scale(1, 1.5)
+    
+    # Color the first column cells
+    for i, color in enumerate(row_colors):
+        # Row index starts at 1 (0 is header)
+        # Column index 0 is the "File" column
+        cell = table[i + 1, 0]
+        cell.set_facecolor(color)
     
     if output_file:
-        plt.savefig(output_file)
+        plt.savefig(output_file, bbox_inches='tight')
         print(f"Comparison plot saved to {output_file}")
     else:
         plt.show()
