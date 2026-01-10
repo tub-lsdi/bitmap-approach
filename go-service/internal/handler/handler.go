@@ -152,6 +152,20 @@ func CalculateQuadScores(c *gin.Context) {
 		DurationSeconds: createBitmapEnd.Sub(createBitmapStart).Seconds(),
 	})
 
+	calculatePairCountsStart := time.Now()
+	log.Printf("Calculating pair table counts from bitmaps (over full corpus)...")
+	pairTableCounts := bitmapStore.CalculatePairTableCounts(pairs)
+	calculatePairCountsEnd := time.Now()
+	log.Printf("Calculated pair table counts for %d pairs", len(pairTableCounts))
+	timings = append(timings, TimingInfo{
+		Step:            "calculate_pair_table_counts",
+		StartTime:       calculatePairCountsStart.Format(time.RFC3339Nano),
+		EndTime:         calculatePairCountsEnd.Format(time.RFC3339Nano),
+		DurationSeconds: calculatePairCountsEnd.Sub(calculatePairCountsStart).Seconds(),
+	})
+
+	// Now filter bitmaps for efficient quad calculation
+	// The filtering only affects quad counts, not the pair marginal probabilities
 	filterBitmapsStart := time.Now()
 	log.Printf("Computing relevant table IDs and filtering bitmaps...")
 	relevantTableIDsRS := service.ComputeRelevantTableIDsCrossPairs(listR, listS, bitmapStore)
@@ -165,18 +179,6 @@ func CalculateQuadScores(c *gin.Context) {
 		StartTime:       filterBitmapsStart.Format(time.RFC3339Nano),
 		EndTime:         filterBitmapsEnd.Format(time.RFC3339Nano),
 		DurationSeconds: filterBitmapsEnd.Sub(filterBitmapsStart).Seconds(),
-	})
-
-	calculatePairCountsStart := time.Now()
-	log.Printf("Calculating pair table counts from bitmaps...")
-	pairTableCounts := bitmapStore.CalculatePairTableCounts(pairs)
-	calculatePairCountsEnd := time.Now()
-	log.Printf("Calculated pair table counts for %d pairs", len(pairTableCounts))
-	timings = append(timings, TimingInfo{
-		Step:            "calculate_pair_table_counts",
-		StartTime:       calculatePairCountsStart.Format(time.RFC3339Nano),
-		EndTime:         calculatePairCountsEnd.Format(time.RFC3339Nano),
-		DurationSeconds: calculatePairCountsEnd.Sub(calculatePairCountsStart).Seconds(),
 	})
 
 	calculateQuadScoresStart := time.Now()
