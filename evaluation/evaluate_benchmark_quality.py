@@ -17,7 +17,6 @@ def load_groundtruth(filepath: str) -> Set[Tuple[str, str]]:
             for line in f:
                 parts = line.strip().split('\t')
                 if len(parts) >= 2:
-                    # Lowercase for comparison
                     mappings.add((parts[0].lower().strip(), parts[1].lower().strip()))
     except FileNotFoundError:
         print(f"Error: Groundtruth file {filepath} not found.", file=sys.stderr)
@@ -66,8 +65,6 @@ def process_file(file_path: str, groundtruth_dir: str) -> pl.DataFrame:
     if filename.startswith("benchmark_"):
         filename = filename[len("benchmark_"):]
     filename = os.path.splitext(filename)[0]
-    
-    # Remove timestamp pattern like _20260110_102555
     filename = re.sub(r'_\d{8}_\d{6}$', '', filename)
     
     eval_data = []
@@ -77,7 +74,6 @@ def process_file(file_path: str, groundtruth_dir: str) -> pl.DataFrame:
         gt_file = os.path.join(groundtruth_dir, f"Case{case_num}_groundtruth.txt")
         
         if not os.path.exists(gt_file):
-            # Try alternative naming if needed, or just warn
             print(f"Warning: Groundtruth file {gt_file} not found for case {case_num}.")
             continue
             
@@ -136,7 +132,7 @@ def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None):
         pl.col("duration").median().alias("Duration (s)")
     ])
     
-    # Predefined colors (20)
+    # Predefined colors
     colors = [
         "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
         "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf",
@@ -147,17 +143,15 @@ def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None):
     unique_files = summary_df['file'].to_list()
     file_colors = {f: colors[i % len(colors)] for i, f in enumerate(unique_files)}
 
-    # Convert to pandas
+    # Convert to pandas for plotting
     plot_data = combined_df.to_pandas()
     summary_data = summary_df.to_pandas()
     
-    # Format summary data for table
     cell_text = []
     row_colors = []
     
     for _, row in summary_data.iterrows():
         filename = row['file']
-        # First column is empty (will be colored)
         r = [""]
         r.append(f"{row['Precision']:.3f}")
         r.append(f"{row['Recall']:.3f}")
@@ -176,33 +170,24 @@ def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None):
     ax.set_xlabel("Case Number")
     ax.set_ylabel("F1 Score")
     
-    # Fix for UserWarning: set_ticklabels() should only be used with a fixed number of ticks
     ax.xaxis.set_major_locator(ticker.FixedLocator(ax.get_xticks()))
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
     
     ax.set_ylim(0, 1.05)
     
-    # Place legend at top right, outside
     legend = ax.legend(title='File', bbox_to_anchor=(1.01, 1), loc='upper left')
-    
-    # Adjust layout to make room on the right
     plt.subplots_adjust(right=0.65)
     
-    # Add table below the legend
-    # bbox=[left, bottom, width, height] in axes coordinates
     table = plt.table(cellText=cell_text,
                       colLabels=col_labels,
                       loc='right',
                       bbox=[1.02, 0.4, 0.45, 0.3])
-    
     table.auto_set_font_size(False)
     table.set_fontsize(9)
     table.scale(1, 1.5)
     
     # Color the first column cells
     for i, color in enumerate(row_colors):
-        # Row index starts at 1 (0 is header)
-        # Column index 0 is the "File" column
         cell = table[i + 1, 0]
         cell.set_facecolor(color)
     
@@ -230,7 +215,6 @@ def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None):
         pl.col("duration").median().alias("Duration (s)")
     ])
     
-    # Prepare table data
     summary_data = summary_df.to_pandas()
     cell_text = []
     
@@ -244,17 +228,14 @@ def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None):
         
     col_labels = ["File", "Precision", "Recall", "F1", "Duration (s)"]
 
-    # Pivot for heatmap
     try:
         pivot_df = combined_df.pivot(values="f1", index="file", on="case", aggregate_function="first")
     except TypeError:
-        # Fallback for older polars versions
         pivot_df = combined_df.pivot(values="f1", index="file", columns="case", aggregate_function="first")
         
     pandas_df = pivot_df.to_pandas()
     pandas_df.set_index("file", inplace=True)
     
-    # Sort columns (cases)
     try:
         sorted_cols = sorted(pandas_df.columns, key=lambda x: int(x))
     except:
@@ -262,19 +243,14 @@ def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None):
     pandas_df = pandas_df.reindex(sorted_cols, axis=1)
     
     # Figure layout
-    # Heatmap on left, Table on right
-    # Adjust height based on number of files, but ensure minimum height
-    # Reduced height multiplier to reduce white space
     fig_height = max(3, len(dfs) * 0.4 + 1.5)
     fig = plt.figure(figsize=(24, fig_height))
     
-    # Increase width ratio for table to give it more space
     gs = GridSpec(1, 2, width_ratios=[4, 2], figure=fig)
     ax_heatmap = fig.add_subplot(gs[0])
     ax_table = fig.add_subplot(gs[1])
     ax_table.axis('off')
     
-    # Heatmap with square cells and RdYlGn colormap
     sns.heatmap(pandas_df, annot=False, cmap="RdYlGn", fmt=".2f",
                 cbar_kws={'label': 'F1 Score', 'shrink': 0.5}, ax=ax_heatmap, vmin=0, vmax=1, square=True)
     
@@ -283,7 +259,6 @@ def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None):
     ax_heatmap.set_ylabel("File")
     
     # Table
-    # Define column widths: File gets 40%, others get 15%
     col_widths = [0.4, 0.15, 0.15, 0.15, 0.15]
     
     table = ax_table.table(cellText=cell_text,
@@ -329,7 +304,6 @@ def main():
         for f in args.files:
             files_to_process.append(os.path.join(results_dir, f))
     else:
-        # If no files specified, list all json files in results_dir
         for f in os.listdir(results_dir):
             if f.endswith(".json"):
                 files_to_process.append(os.path.join(results_dir, f))
