@@ -114,7 +114,7 @@ def plot_single_file(df: pl.DataFrame, output_file: str = None):
     else:
         plt.show()
 
-def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None):
+def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None, show_table: bool = True):
     if not dfs:
         print("No data to compare.")
         return
@@ -162,8 +162,8 @@ def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None):
 
     col_labels = ["File", "Precision", "Recall", "F1", "Duration (s)"]
 
-    # Create figure with extra width to accommodate table on the right
-    fig, ax = plt.subplots(figsize=(20, 8))
+    fig_width = 20 if show_table else 14
+    fig, ax = plt.subplots(figsize=(fig_width, 8))
     
     sns.barplot(data=plot_data, x='case', y='f1', hue='file', ax=ax, palette=file_colors)
     ax.set_title("F1 Score Comparison per Case")
@@ -176,20 +176,24 @@ def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None):
     ax.set_ylim(0, 1.05)
     
     legend = ax.legend(title='File', bbox_to_anchor=(1.01, 1), loc='upper left')
-    plt.subplots_adjust(right=0.65)
     
-    table = plt.table(cellText=cell_text,
-                      colLabels=col_labels,
-                      loc='right',
-                      bbox=[1.02, 0.4, 0.45, 0.3])
-    table.auto_set_font_size(False)
-    table.set_fontsize(9)
-    table.scale(1, 1.5)
-    
-    # Color the first column cells
-    for i, color in enumerate(row_colors):
-        cell = table[i + 1, 0]
-        cell.set_facecolor(color)
+    if show_table:
+        plt.subplots_adjust(right=0.65)
+        
+        table = plt.table(cellText=cell_text,
+                          colLabels=col_labels,
+                          loc='right',
+                          bbox=[1.02, 0.4, 0.45, 0.3])
+        
+        table.auto_set_font_size(False)
+        table.set_fontsize(9)
+        table.scale(1, 1.5)
+        
+        for i, color in enumerate(row_colors):
+            cell = table[i + 1, 0]
+            cell.set_facecolor(color)
+    else:
+        plt.tight_layout()
     
     if output_file:
         plt.savefig(output_file, bbox_inches='tight')
@@ -197,7 +201,7 @@ def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None):
     else:
         plt.show()
 
-def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None):
+def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None, show_table: bool = True):
     if not dfs:
         print("No data to plot.")
         return
@@ -244,12 +248,16 @@ def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None):
     
     # Figure layout
     fig_height = max(3, len(dfs) * 0.4 + 1.5)
-    fig = plt.figure(figsize=(24, fig_height))
     
-    gs = GridSpec(1, 2, width_ratios=[4, 2], figure=fig)
-    ax_heatmap = fig.add_subplot(gs[0])
-    ax_table = fig.add_subplot(gs[1])
-    ax_table.axis('off')
+    if show_table:
+        fig = plt.figure(figsize=(24, fig_height))
+        gs = GridSpec(1, 2, width_ratios=[4, 2], figure=fig)
+        ax_heatmap = fig.add_subplot(gs[0])
+        ax_table = fig.add_subplot(gs[1])
+        ax_table.axis('off')
+    else:
+        fig = plt.figure(figsize=(16, fig_height))
+        ax_heatmap = fig.add_subplot(111)
     
     sns.heatmap(pandas_df, annot=False, cmap="RdYlGn", fmt=".2f",
                 cbar_kws={'label': 'F1 Score', 'shrink': 0.5}, ax=ax_heatmap, vmin=0, vmax=1, square=True)
@@ -258,16 +266,17 @@ def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None):
     ax_heatmap.set_xlabel("Case Number")
     ax_heatmap.set_ylabel("File")
     
-    # Table
-    col_widths = [0.4, 0.15, 0.15, 0.15, 0.15]
-    
-    table = ax_table.table(cellText=cell_text,
-                           colLabels=col_labels,
-                           colWidths=col_widths,
-                           loc='center')
-    table.auto_set_font_size(False)
-    table.set_fontsize(10)
-    table.scale(1, 1.5)
+    if show_table:
+        # Table
+        col_widths = [0.4, 0.15, 0.15, 0.15, 0.15]
+        
+        table = ax_table.table(cellText=cell_text,
+                               colLabels=col_labels,
+                               colWidths=col_widths,
+                               loc='center')
+        table.auto_set_font_size(False)
+        table.set_fontsize(10)
+        table.scale(1, 1.5)
     
     plt.tight_layout()
     
@@ -285,6 +294,7 @@ def main():
     parser.add_argument("--plot", nargs='?', const='bar', default=None, help="Generate plots. Options: 'bar' (default), 'heatmap'")
     parser.add_argument("--output", help="Output file for plot (e.g., plot.png)")
     parser.add_argument("--summary", action="store_true", help="Print summary statistics")
+    parser.add_argument("--no-table", action="store_true", help="Do not show the summary table in the plot")
     
     args = parser.parse_args()
     
@@ -329,13 +339,14 @@ def main():
                 print("-" * 40)
 
     if args.plot and dfs:
+        show_table = not args.no_table
         if args.plot == 'heatmap':
-            plot_heatmap(dfs, args.output)
+            plot_heatmap(dfs, args.output, show_table)
         else:
             if len(dfs) == 1:
                 plot_single_file(dfs[0], args.output)
             else:
-                plot_bar_comparison(dfs, args.output)
+                plot_bar_comparison(dfs, args.output, show_table)
 
 if __name__ == "__main__":
     main()
