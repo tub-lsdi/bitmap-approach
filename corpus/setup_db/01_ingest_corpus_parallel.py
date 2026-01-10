@@ -37,6 +37,7 @@ META_FLUSH_THRESHOLD = 50000
 FILE_CHUNK_SIZE = 100
 INGESTION_BATCH_SIZE = 100
 
+
 def get_db_connection() -> duckdb.DuckDBPyConnection:
     """Get connection to DuckDB database."""
     return duckdb.connect(str(DB_PATH), config={"temp_directory": DB_TEMP_DIR})
@@ -103,7 +104,8 @@ def _write_parquet_batch(
     try:
         os.makedirs(directory, exist_ok=True)
         table = pa.Table.from_pylist(batch, schema=schema)
-        pq.write_table(table, os.path.join(directory, file_name), compression="ZSTD")
+        pq.write_table(table, os.path.join(
+            directory, file_name), compression="ZSTD")
     except Exception as e:
         logger.error(f"Failed to write batch {file_name}: {e}")
 
@@ -133,7 +135,7 @@ def _stream_parquet_file(file_path):
 def chunk_list(data, size):
     """Yield successive chunks from data."""
     for i in range(0, len(data), size):
-        yield data[i : i + size]
+        yield data[i: i + size]
 
 
 def process_data_chunk(file_paths: list[str]) -> tuple[int, int, int]:
@@ -227,11 +229,13 @@ def process_data_chunk(file_paths: list[str]) -> tuple[int, int, int]:
     # Write any remaining data
     if cell_batch:
         file_name = f"chunk_{worker_pid}_{chunk_id}_cells_{cell_batch_index}.parquet"
-        _write_parquet_batch(cell_batch, str(TEMP_CELLS_DIR), file_name, CELL_SCHEMA)
+        _write_parquet_batch(cell_batch, str(
+            TEMP_CELLS_DIR), file_name, CELL_SCHEMA)
 
     if meta_batch:
         file_name = f"chunk_{worker_pid}_{chunk_id}_meta_{meta_batch_index}.parquet"
-        _write_parquet_batch(meta_batch, str(TEMP_META_DIR), file_name, META_SCHEMA)
+        _write_parquet_batch(meta_batch, str(
+            TEMP_META_DIR), file_name, META_SCHEMA)
 
     return files_processed_count, tables_processed_count, failure_count
 
@@ -255,12 +259,14 @@ def main():
     all_files = json_files + parquet_files
 
     if not all_files:
-        logger.warning(f"No .json or .parquet files found in {INPUT_DIR}. Exiting.")
+        logger.warning(
+            f"No .json or .parquet files found in {INPUT_DIR}. Exiting.")
         return
 
     # 1. Parallel ETL -> Parquet
     logger.info("--- Starting Phase 1: Parallel ETL to Parquet ---")
-    logger.info(f"Found {len(json_files)} JSON and {len(parquet_files)} Parquet files.")
+    logger.info(
+        f"Found {len(json_files)} JSON and {len(parquet_files)} Parquet files.")
 
     # Clean up temp directories from a previous failed run if they exist
     if os.path.exists(TEMP_META_DIR):
@@ -305,7 +311,7 @@ def main():
     try:
         con = get_db_connection()
 
-        con.execute("SET memory_limit='8GB';")
+        con.execute("SET memory_limit='32GB';")
         con.execute(f"SET threads TO {cpu_count()};")
         con.execute("SET preserve_insertion_order=false;")
 
@@ -356,13 +362,14 @@ def main():
 
             with tqdm(total=total_files, desc="Ingesting Files", unit="file") as pbar:
                 for i in range(0, total_files, INGESTION_BATCH_SIZE):
-                    batch_files = cells_files[i : i + INGESTION_BATCH_SIZE]
+                    batch_files = cells_files[i: i + INGESTION_BATCH_SIZE]
 
                     try:
                         try:
                             batch_df = pl.read_parquet(
                                 batch_files,
-                                columns=["table_hash", "row_id", "col_id", "value"],
+                                columns=["table_hash", "row_id",
+                                         "col_id", "value"],
                             )
                             joined_df = batch_df.join(
                                 ids_df, on="table_hash", how="inner"
@@ -370,7 +377,8 @@ def main():
                             final_df = joined_df.select(
                                 ["table_id", "row_id", "col_id", "value"]
                             )
-                            final_df.write_parquet(META_TEMP_LOAD_PATH, compression="snappy")
+                            final_df.write_parquet(
+                                META_TEMP_LOAD_PATH, compression="snappy")
 
                             # clear ram
                             del batch_df
@@ -401,12 +409,15 @@ def main():
         logger.info(f"--- Phase 2 Complete ---")
 
         # Check total tables
-        total_db_tables = con.execute("SELECT COUNT(*) FROM tables_meta;").fetchone()[0]
+        total_db_tables = con.execute(
+            "SELECT COUNT(*) FROM tables_meta;").fetchone()[0]
 
         logger.info(f"Starting Phase 3: Create Indexes")
 
-        con.execute("CREATE INDEX IF NOT EXISTS idx_cells_table_id ON cells(table_id);")
-        con.execute("CREATE INDEX IF NOT EXISTS idx_cells_value ON cells(value);")
+        con.execute(
+            "CREATE INDEX IF NOT EXISTS idx_cells_table_id ON cells(table_id);")
+        con.execute(
+            "CREATE INDEX IF NOT EXISTS idx_cells_value ON cells(value);")
         con.execute(
             "CREATE INDEX IF NOT EXISTS idx_cells_table_row ON cells(table_id, row_id);"
         )

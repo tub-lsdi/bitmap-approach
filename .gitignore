@@ -82,6 +82,9 @@ bin
 results
 .env
 corpus.db
-corpus/example_data/tables.json
+corpus/example_data/*
 corpus/setup_db/__pycache__/corpus_utils.cpython-314.pyc
 corpus/setup_db/__pycache__/normalization.cpython-314.pyc
+temp_parquet_cells
+temp_parquet_meta
+duckdb_temp
