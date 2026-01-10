@@ -2,11 +2,13 @@ import argparse
 import json
 import os
 import sys
+import re
 import polars as pl
 import matplotlib.pyplot as plt
 import seaborn as sns
 from typing import List, Dict, Tuple, Set
 import matplotlib.ticker as ticker
+from matplotlib.gridspec import GridSpec
 
 def load_groundtruth(filepath: str) -> Set[Tuple[str, str]]:
     mappings = set()
@@ -60,6 +62,14 @@ def process_file(file_path: str, groundtruth_dir: str) -> pl.DataFrame:
     results_data = load_results(file_path)
     filename = os.path.basename(file_path)
     
+    # Clean filename: remove benchmark_ prefix, extension, and trailing timestamp
+    if filename.startswith("benchmark_"):
+        filename = filename[len("benchmark_"):]
+    filename = os.path.splitext(filename)[0]
+    
+    # Remove timestamp pattern like _20260110_102555
+    filename = re.sub(r'_\d{8}_\d{6}$', '', filename)
+    
     eval_data = []
     
     for case in results_data:
@@ -108,7 +118,7 @@ def plot_single_file(df: pl.DataFrame, output_file: str = None):
     else:
         plt.show()
 
-def plot_comparison(dfs: List[pl.DataFrame], output_file: str = None):
+def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None):
     if not dfs:
         print("No data to compare.")
         return
@@ -169,7 +179,7 @@ def plot_comparison(dfs: List[pl.DataFrame], output_file: str = None):
     # Fix for UserWarning: set_ticklabels() should only be used with a fixed number of ticks
     ax.xaxis.set_major_locator(ticker.FixedLocator(ax.get_xticks()))
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
-
+    
     ax.set_ylim(0, 1.05)
     
     # Place legend at top right, outside
@@ -202,12 +212,102 @@ def plot_comparison(dfs: List[pl.DataFrame], output_file: str = None):
     else:
         plt.show()
 
+def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None):
+    if not dfs:
+        print("No data to plot.")
+        return
+        
+    combined_df = pl.concat(dfs)
+    if combined_df.is_empty():
+        print("Combined data is empty.")
+        return
+
+    # Calculate summary stats for table
+    summary_df = combined_df.group_by("file", maintain_order=True).agg([
+        pl.col("precision").mean().alias("Precision"),
+        pl.col("recall").mean().alias("Recall"),
+        pl.col("f1").mean().alias("F1"),
+        pl.col("duration").mean().alias("Duration (s)")
+    ])
+    
+    # Prepare table data
+    summary_data = summary_df.to_pandas()
+    cell_text = []
+    
+    for _, row in summary_data.iterrows():
+        r = [row['file']]
+        r.append(f"{row['Precision']:.3f}")
+        r.append(f"{row['Recall']:.3f}")
+        r.append(f"{row['F1']:.3f}")
+        r.append(f"{row['Duration (s)']:.2f}")
+        cell_text.append(r)
+        
+    col_labels = ["File", "Precision", "Recall", "F1", "Duration (s)"]
+
+    # Pivot for heatmap
+    try:
+        pivot_df = combined_df.pivot(values="f1", index="file", on="case", aggregate_function="first")
+    except TypeError:
+        # Fallback for older polars versions
+        pivot_df = combined_df.pivot(values="f1", index="file", columns="case", aggregate_function="first")
+        
+    pandas_df = pivot_df.to_pandas()
+    pandas_df.set_index("file", inplace=True)
+    
+    # Sort columns (cases)
+    try:
+        sorted_cols = sorted(pandas_df.columns, key=lambda x: int(x))
+    except:
+        sorted_cols = sorted(pandas_df.columns)
+    pandas_df = pandas_df.reindex(sorted_cols, axis=1)
+    
+    # Figure layout
+    # Heatmap on left, Table on right
+    # Adjust height based on number of files, but ensure minimum height
+    # Reduced height multiplier to reduce white space
+    fig_height = max(3, len(dfs) * 0.4 + 1.5)
+    fig = plt.figure(figsize=(24, fig_height))
+    
+    # Increase width ratio for table to give it more space
+    gs = GridSpec(1, 2, width_ratios=[4, 2], figure=fig)
+    ax_heatmap = fig.add_subplot(gs[0])
+    ax_table = fig.add_subplot(gs[1])
+    ax_table.axis('off')
+    
+    # Heatmap with square cells and RdYlGn colormap
+    sns.heatmap(pandas_df, annot=False, cmap="RdYlGn", fmt=".2f",
+                cbar_kws={'label': 'F1 Score', 'shrink': 0.5}, ax=ax_heatmap, vmin=0, vmax=1, square=True)
+    
+    ax_heatmap.set_title("F1 Score Heatmap per Case")
+    ax_heatmap.set_xlabel("Case Number")
+    ax_heatmap.set_ylabel("File")
+    
+    # Table
+    # Define column widths: File gets 40%, others get 15%
+    col_widths = [0.4, 0.15, 0.15, 0.15, 0.15]
+    
+    table = ax_table.table(cellText=cell_text,
+                           colLabels=col_labels,
+                           colWidths=col_widths,
+                           loc='center')
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    table.scale(1, 1.5)
+    
+    plt.tight_layout()
+    
+    if output_file:
+        plt.savefig(output_file, bbox_inches='tight')
+        print(f"Heatmap saved to {output_file}")
+    else:
+        plt.show()
+
 def main():
     parser = argparse.ArgumentParser(description="Evaluate benchmark results.")
     parser.add_argument("--groundtruth_dir", default="benchmark-data", help="Directory containing groundtruth files")
     parser.add_argument("--results_dir", default="eval-result-data/duckdb_git_tables_bench", help="Directory containing result files")
     parser.add_argument("--files", nargs='+', help="Specific result files to evaluate (filenames in results_dir)")
-    parser.add_argument("--plot", action="store_true", help="Generate plots")
+    parser.add_argument("--plot", nargs='?', const='bar', default=None, help="Generate plots. Options: 'bar' (default), 'heatmap'")
     parser.add_argument("--output", help="Output file for plot (e.g., plot.png)")
     parser.add_argument("--summary", action="store_true", help="Print summary statistics")
     
@@ -255,10 +355,13 @@ def main():
                 print("-" * 40)
 
     if args.plot and dfs:
-        if len(dfs) == 1:
-            plot_single_file(dfs[0], args.output)
+        if args.plot == 'heatmap':
+            plot_heatmap(dfs, args.output)
         else:
-            plot_comparison(dfs, args.output)
+            if len(dfs) == 1:
+                plot_single_file(dfs[0], args.output)
+            else:
+                plot_bar_comparison(dfs, args.output)
 
 if __name__ == "__main__":
     main()
