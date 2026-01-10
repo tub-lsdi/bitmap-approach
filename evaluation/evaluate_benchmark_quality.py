@@ -133,7 +133,7 @@ def plot_bar_comparison(dfs: List[pl.DataFrame], output_file: str = None):
         pl.col("precision").mean().alias("Precision"),
         pl.col("recall").mean().alias("Recall"),
         pl.col("f1").mean().alias("F1"),
-        pl.col("duration").mean().alias("Duration (s)")
+        pl.col("duration").median().alias("Duration (s)")
     ])
     
     # Predefined colors (20)
@@ -227,7 +227,7 @@ def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None):
         pl.col("precision").mean().alias("Precision"),
         pl.col("recall").mean().alias("Recall"),
         pl.col("f1").mean().alias("F1"),
-        pl.col("duration").mean().alias("Duration (s)")
+        pl.col("duration").median().alias("Duration (s)")
     ])
     
     # Prepare table data
@@ -350,7 +350,7 @@ def main():
                     pl.col("precision").mean().alias("mean_precision"),
                     pl.col("recall").mean().alias("mean_recall"),
                     pl.col("f1").mean().alias("mean_f1"),
-                    pl.col("duration").mean().alias("mean_duration")
+                    pl.col("duration").median().alias("mean_duration")
                 ]))
                 print("-" * 40)
 
