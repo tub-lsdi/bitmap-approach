@@ -88,3 +88,4 @@ corpus/setup_db/__pycache__/normalization.cpython-314.pyc
 temp_parquet_cells
 temp_parquet_meta
 duckdb_temp
+eval-result-data/.venv
