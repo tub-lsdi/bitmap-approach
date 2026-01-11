@@ -89,3 +89,5 @@ temp_parquet_cells
 temp_parquet_meta
 duckdb_temp
 eval-result-data/.venv
+git_corpus.db
+wiki_corpus.db
