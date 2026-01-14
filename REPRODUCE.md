@@ -31,7 +31,7 @@ This document provides detailed instructions for reproducing the benchmark resul
 
 **For AI Benchmarking:**
 - **Python 3** - Python runtime (version 3.10+)
-- **uv** - Fast Python package manager
+- **uv** - Python package manager
   ```bash
   # Install uv
   curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -48,22 +48,23 @@ This document provides detailed instructions for reproducing the benchmark resul
 
 # Benchmarking (RS JP with Top K=1 and CS JP LP)
 
+**Note on Benchmark Execution:**
+- **Wiki Tables and Git Tables**: Benchmarks were run on a local machine (see Hardware Specifications above)
+- **WDC Tables (Vertica)**: Benchmarks were run on the big-dama-2 server due to resource requirements
+  - Some cases (e.g., Case 10) are too resource-heavy for local execution
+  - Most cases can run locally, but larger cases may require server resources
+
 ## Reproduction Steps
 
-### 1. Build Docker Images
-```bash
-make build
-```
+### 1. Setup Environment
 
-**Expected Output:**
-- Go service Docker image built successfully
-- Python service Docker image built with dependencies (PuLP, HiGHS, loguru, requests, numpy)
-
-### 2. Prepare Corpus Database
-
-Before starting services, ensure the correct corpus database is named `corpus.db` in the project root:
+#### Option A: DuckDB (Wiki Tables or Git Tables)
 
 ```bash
+# Ensure you're on the duckdb-only branch
+git checkout duckdb-only
+
+# Prepare corpus database - must be named corpus.db and placed in the project root
 # For Wiki Tables benchmarks:
 cp /path/to/wiki_tables.db corpus.db
 
@@ -71,7 +72,54 @@ cp /path/to/wiki_tables.db corpus.db
 cp /path/to/git_tables.db corpus.db
 ```
 
-**Important:** The database file MUST be named `corpus.db` for the services to locate it.
+**Important:** The database file MUST be named `corpus.db` and placed in the project root folder for the services to locate it.
+
+#### Option B: Vertica WDC Corpus
+
+**Prerequisites:** Access to big-dama-2.dima.tu-berlin.de server
+
+```bash
+# SSH into the server
+ssh username@big-dama-2.dima.tu-berlin.de
+
+# Clone the repository and checkout vertica-only branch
+git clone https://github.com/tub-lsdi/bitmap-approach.git
+cd bitmap-approach
+git checkout vertica-only
+
+# OR if repository already exists, pull latest changes
+# cd bitmap-approach
+# git pull
+# git checkout vertica-only
+```
+
+Create a `.env` file in the project root:
+
+```bash
+# Vertica Database Connection
+VERTICA_HOST="YOUR_VERTICA_HOST"
+VERTICA_PORT=YOUR_VERTICA_PORT
+VERTICA_DATABASE="YOUR_DATABASE_NAME"
+VERTICA_USERNAME="YOUR_USERNAME"
+VERTICA_PASSWORD="YOUR_PASSWORD"
+
+# Go Server Configuration (internal Docker port)
+SERVER_PORT=8080
+
+# Benchmark Configuration
+RESULTS_DIR="/home/YOUR_USERNAME/bitmap-approach/results"
+```
+
+**Important:** Replace placeholders with your actual Vertica credentials and adjust `RESULTS_DIR` to match your user directory on the server (e.g., `/home/lsdi_semajoin/code/bitmap-approach/results`).
+
+### 2. Build Docker Images
+```bash
+make build
+```
+
+**Expected Output:**
+- Go service Docker image built successfully
+- Python service Docker image built with dependencies (PuLP, HiGHS, loguru, requests, numpy)
 
 ### 3. Start Services
 ```bash
@@ -198,6 +246,45 @@ Case 13 is intentionally excluded from all benchmarks.
 
 **How It Works:** You provide an existing RS-JP benchmark JSON file as input. For each value that has multiple candidates, the AI evaluates them and picks the most semantically appropriate match, providing an explanation for its choice.
 
+## Prerequisites
+
+**IMPORTANT:** Before running AI benchmarking, you must first generate RS-JP results with `top_k=5` (instead of the default `top_k=1`).
+
+### Adjust top_k Parameter
+
+1. Open the file `python-service/benchmark_rs_jp.py`
+2. Find the line (around line 132):
+   ```python
+   bridge_table, python_timings = algorithm.create_bridge(
+       list_r_normalized, list_s_normalized, pmi_scores, top_k=1
+   )
+   ```
+3. Change `top_k=1` to `top_k=5`:
+   ```python
+   bridge_table, python_timings = algorithm.create_bridge(
+       list_r_normalized, list_s_normalized, pmi_scores, top_k=5
+   )
+   ```
+
+### Generate RS-JP Benchmark with top_k=5
+
+After adjusting the parameter, rebuild and start the services:
+
+```bash
+# Rebuild Docker images with the updated code
+make build
+
+# Start services
+make up
+
+# Run RS-JP benchmark with top_k=5
+./benchmark.sh rs_jp 1 50
+```
+
+This will generate a benchmark JSON file in `results/benchmark_rs_jp_duckdb_YYYYMMDD_HHMMSS.json` that contains up to 5 candidates per value, which can then be used as input for AI benchmarking.
+
+**Note:** Remember to change `top_k` back to `1` if you want to run the standard RS-JP benchmark later (and rebuild with `make build`).
+
 ## Reproduction Steps
 
 ### 1. Install Ollama
@@ -211,8 +298,16 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 ### 2. Pull Ollama Model
 
+For AI benchmarking, we use **Mistral 7B** - a 7 billion parameter model that provides good performance for semantic evaluation tasks.
+
+**Model Information:**
+- **Model**: Mistral 7B v0.3 (mistral:latest points to 7B as of 14.01.2026)
+- **Size**: 4.4 GB
+- **Parameters**: 7B
+- **Context Window**: 32K tokens
+
 ```bash
-# Pull mistral model (recommended)
+# Pull mistral model (latest tag points to 7B)
 ollama pull mistral:latest
 
 # Verify installation

@@ -77,14 +77,11 @@ If you use this work, please cite the original Sema-Join paper:
 
 ```bibtex
 @inproceedings{he2015sema-join,
-  author = {He, Yeye and Ganjam, Kris and Chu, Xu},
-  title = {SEMA-JOIN: Joining Semantically-Related Tables Using Big Table Corpora},
-  booktitle = {Proceedings of the VLDB Endowment},
-  year = {2015},
-  volume = {8},
-  number = {12},
-  pages = {1358--1369}
-}
+author = {He, Yeye and Ganjam, Kris and Chu, Xu},
+title = {SEMA-JOIN: Joining Semantically-Related Tables Using Big Table Corpora},
+booktitle = {International Conference on Very Large Databases (VLDB)},
+year = {2015},
+month = {June}
 ```
 
 ## References
