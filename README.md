@@ -9,7 +9,7 @@ This document provides detailed instructions for reproducing the benchmark resul
 - **GPU**: NVIDIA GeForce RTX 3070 (8 GB VRAM)
 - **RAM**: 32 GB DDR4 @ 3200 MHz
 - **Storage**: 1 TB NVMe M.2 SSD
-- **Operating System**: Operating System: Ubuntu 24.04 LTS (kernel 6.8.0-90-generic)
+- **Operating System**: Ubuntu 24.04 LTS (kernel 6.8.0-90-generic)
 
 ## Prerequisites
 
