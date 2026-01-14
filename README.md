@@ -282,6 +282,12 @@ Processing cases...
 ...
 ```
 
+**What This Does:**
+1. Loads the RS-JP benchmark results from the specified JSON file
+2. For each r_val with multiple s_val candidates, queries the Ollama AI model
+3. AI evaluates semantic relationships and selects the most appropriate match
+4. Saves results with AI's choices and explanations to `results/` directory
+
 **Output File:**
 - `results/ai_evaluation_results_YYYYMMDD_HHMMSS.json`
 
