@@ -1,5 +1,3 @@
-# About
-
 ## Overview
 
 This repository reproduces and extends the **Sema-Join** approach from Microsoft Research, implementing bitmap-based algorithms for discovering join relationships between database tables. The system automatically identifies which columns from different tables should be joined together by analyzing co-occurrence patterns in large table corpora.
