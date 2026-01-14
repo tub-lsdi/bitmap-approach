@@ -227,7 +227,13 @@ def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None, show_table: b
         r.append(f"{row['Precision']:.3f}")
         r.append(f"{row['Recall']:.3f}")
         r.append(f"{row['F1']:.3f}")
-        r.append(f"{row['Duration (s)']:.2f}")
+        duration = row.get('Duration (s)', 0.0)
+        try:
+            if duration is None or duration != duration:
+                duration = 0.0
+        except Exception:
+            duration = 0.0
+        r.append(f"{float(duration):.2f}")
         cell_text.append(r)
         
     col_labels = ["File", "Precision", "Recall", "F1", "Duration (s)"]
