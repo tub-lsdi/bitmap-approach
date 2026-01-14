@@ -4,12 +4,12 @@ This document provides detailed instructions for reproducing the benchmark resul
 
 ## Hardware Specifications
 
-### Test System Configuration
+### System Configuration
 - **CPU**: Intel Core i5-13600K (14 cores: 6 P-cores @ 3.5-5.1 GHz + 8 E-cores @ 2.6-3.9 GHz, 20 threads)
 - **GPU**: NVIDIA GeForce RTX 3070 (8 GB VRAM)
 - **RAM**: 32 GB DDR4 @ 3200 MHz
 - **Storage**: 1 TB NVMe M.2 SSD
-- **Operating System**: Linux (Ubuntu/Debian-based)
+- **Operating System**: Operating System: Ubuntu 24.04 LTS (kernel 6.8.0-90-generic)
 
 ## Prerequisites
 
