@@ -16,6 +16,7 @@ RUN uv sync --frozen
 
 COPY benchmark_cs_jp_lp.py ./
 COPY benchmark_rs_jp.py ./
+COPY benchmark_ai_rs_jp.py ./
 COPY cs_jp_lp.py ./
 COPY rs_jp.py ./
 
