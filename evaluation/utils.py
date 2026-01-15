@@ -1,5 +1,7 @@
 import json
 import sys
+import os
+import re
 from typing import Set, Tuple, List, Dict
 
 
@@ -51,3 +53,38 @@ def calculate_case_metrics(groundtruth: Set[Tuple[str, str]], results: List[Dict
         "fp": fp,
         "fn": fn
     }
+
+
+def extract_case_timings(case: Dict) -> Dict:
+    """
+    Extracts duration_seconds from go_service_timings and python_service_timings.
+    Returns a dictionary with the same structure containing only the duration values.
+    """
+    timings = {
+        "go_service_timings": {},
+        "python_service_timings": {}
+    }
+
+    for service in ["go_service_timings", "python_service_timings"]:
+        service_data = case.get(service, {})
+        for step, data in service_data.items():
+            if isinstance(data, dict):
+                timings[service][step] = data.get("duration_seconds")
+            else:
+                # Handle cases where it might already be a float
+                timings[service][step] = data
+
+    return timings
+
+
+def get_short_filename(filepath: str) -> str:
+    """
+    Shortens a benchmark filename by removing the 'benchmark_' prefix,
+    the extension, and the trailing timestamp.
+    """
+    filename = os.path.basename(filepath)
+    if filename.startswith("benchmark_"):
+        filename = filename[len("benchmark_"):]
+    filename = os.path.splitext(filename)[0]
+    filename = re.sub(r'_\d{8}_\d{6}$', '', filename)
+    return filename
