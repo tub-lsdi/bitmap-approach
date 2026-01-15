@@ -3,6 +3,8 @@ import os
 import re
 import sys
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 def transform_file(input_path, benchmark_path=None):
     output_dir = os.path.dirname(input_path)
     basename = os.path.basename(input_path)

@@ -10,52 +10,10 @@ from typing import List, Dict, Tuple, Set
 import matplotlib.ticker as ticker
 from matplotlib.gridspec import GridSpec
 
-def load_groundtruth(filepath: str) -> Set[Tuple[str, str]]:
-    mappings = set()
-    try:
-        with open(filepath, 'r') as f:
-            for line in f:
-                parts = line.strip().split('\t')
-                if len(parts) >= 2:
-                    mappings.add((parts[0].lower().strip(), parts[1].lower().strip()))
-    except FileNotFoundError:
-        print(f"Error: Groundtruth file {filepath} not found.", file=sys.stderr)
-    return mappings
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-def load_results(filepath: str) -> List[Dict]:
-    try:
-        with open(filepath, 'r') as f:
-            data = json.load(f)
-        return data.get('results', [])
-    except FileNotFoundError:
-        print(f"Error: Result file {filepath} not found.", file=sys.stderr)
-        return []
-    except json.JSONDecodeError:
-        print(f"Error: Failed to decode JSON from {filepath}.", file=sys.stderr)
-        return []
+from evaluation.utils import load_results, load_groundtruth, calculate_case_metrics
 
-def evaluate_case(groundtruth: Set[Tuple[str, str]], results: List[Dict]) -> Dict:
-    result_mappings = set()
-    for m in results:
-        if 'r_val' in m and 's_val' in m:
-             result_mappings.add((m['r_val'].lower().strip(), m['s_val'].lower().strip()))
-    
-    tp = len(groundtruth.intersection(result_mappings))
-    fp = len(result_mappings - groundtruth)
-    fn = len(groundtruth - result_mappings)
-    
-    precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-    recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
-    f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
-    
-    return {
-        "precision": precision,
-        "recall": recall,
-        "f1": f1,
-        "tp": tp,
-        "fp": fp,
-        "fn": fn
-    }
 
 def process_file(file_path: str, groundtruth_dir: str) -> pl.DataFrame:
     results_data = load_results(file_path)
@@ -81,7 +39,7 @@ def process_file(file_path: str, groundtruth_dir: str) -> pl.DataFrame:
         if not gt_mappings:
              print(f"Warning: No mappings found in groundtruth for case {case_num}.")
              
-        metrics = evaluate_case(gt_mappings, case.get('output', {}).get('mappings', []))
+        metrics = calculate_case_metrics(gt_mappings, case.get('output', {}).get('mappings', []))
         
         metrics['case'] = case_num
         metrics['file'] = filename
@@ -295,7 +253,7 @@ def plot_heatmap(dfs: List[pl.DataFrame], output_file: str = None, show_table: b
 def main():
     parser = argparse.ArgumentParser(description="Evaluate benchmark results.")
     parser.add_argument("--groundtruth_dir", default="benchmark-data", help="Directory containing groundtruth files")
-    parser.add_argument("--results_dir", default="eval-result-data/duckdb_git_tables_bench", help="Directory containing result files")
+    parser.add_argument("--results_dir", default="", help="Directory containing result files")
     parser.add_argument("--files", nargs='+', help="Specific result files to evaluate (filenames in results_dir)")
     parser.add_argument("--plot", nargs='?', const='bar', default=None, help="Generate plots. Options: 'bar' (default), 'heatmap'")
     parser.add_argument("--output", help="Output file for plot (e.g., plot.png)")
@@ -305,7 +263,7 @@ def main():
     args = parser.parse_args()
     
     groundtruth_dir = args.groundtruth_dir
-    results_dir = args.results_dir
+    results_dir = args.results_dir if args.results_dir and args.results_dir != "" else os.curdir
 
     if not os.path.exists(groundtruth_dir):
         print(f"Error: Groundtruth directory {groundtruth_dir} does not exist.")
