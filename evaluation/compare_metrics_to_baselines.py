@@ -11,17 +11,11 @@ import numpy as np
 # Add the project root directory to sys.path to allow imports from the evaluation package
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from evaluation.utils import load_groundtruth, load_results, calculate_case_metrics
+from evaluation.utils import load_groundtruth, load_results, calculate_case_metrics, get_short_filename
 
 def process_file(file_path: str, groundtruth_dir: str) -> Tuple[str, pl.DataFrame]:
     results_data = load_results(file_path)
-    filename = os.path.basename(file_path)
-    
-    # Clean filename: remove benchmark_ prefix, extension, and trailing timestamp
-    if filename.startswith("benchmark_"):
-        filename = filename[len("benchmark_"):]
-    filename = os.path.splitext(filename)[0]
-    filename = re.sub(r'_\d{8}_\d{6}$', '', filename)
+    filename = get_short_filename(file_path)
     
     eval_data = []
     
@@ -64,7 +58,9 @@ def plot_comparison(baseline_name: str, diffs: List[Dict], is_percentage: bool, 
     
     # Assign colors to files
     unique_files = sorted(list(set(d['file'] for d in diffs)))
-    colors = sns.color_palette("husl", len(unique_files))
+    
+    # Use a color palette with blue and orange at the start (e.g., 'tab10')
+    colors = sns.color_palette("colorblind", len(unique_files))
     file_colors = {f: c for f, c in zip(unique_files, colors)}
     
     fig, ax = plt.subplots(figsize=(10, 6))
