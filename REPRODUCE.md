@@ -174,68 +174,81 @@ docker ps
 ## Output Structure
 
 ### Benchmark JSON Format
+
 ```json
 {
   "algorithm": "cs_jp_lp" | "rs_jp",
+  "start_time": "2026-01-13T14:43:39.260237",
+  "start_time_berlin": "2026-01-13T15:43:39.260237+01:00",
+  "end_time": "2026-01-13T15:12:45.123456",
+  "total_duration_seconds": 1745.86,
   "database": "duckdb",
-  "start_time": "ISO 8601 timestamp",
-  "start_time_berlin": "ISO 8601 timestamp (Europe/Berlin)",
-  "end_time": "ISO 8601 timestamp",
-  "total_duration_seconds": 1234.56,
   "total_cases": 49,
   "successful_cases": 49,
   "failed_cases": 0,
-  "average_duration_seconds": 25.19,
-  "median_duration_seconds": 18.45,
+  "average_duration_seconds": 35.63,
+  "median_duration_seconds": 28.45,
   "results": [
     {
       "case_number": 1,
       "success": true,
       "duration_seconds": 12.34,
-      "start_time": "ISO 8601 timestamp",
-      "end_time": "ISO 8601 timestamp",
+      "error": null,
+      "start_time": "2026-01-13T14:43:39.260237",
+      "end_time": "2026-01-13T14:43:51.604321",
+      "output": {
+        "mappings": [
+          {"r_val": "dover", "s_val": "delaware", "npmi": 0.85}
+        ],
+        "num_r": 201,
+        "num_s": 201,
+        "num_mappings": 8
+      },
       "go_service_timings": {
-        "duckdb_connection": {"duration_seconds": 0.05},
-        "load_and_create_bitmaps": {"duration_seconds": 8.12},
-        "filter_bitmaps": {"duration_seconds": 2.34},
-        "get_total_table_count": {"duration_seconds": 0.01},
-        "calculate_pmi_scores": {"duration_seconds": 1.23}
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:43:39.270000",
+          "end_time": "2026-01-13T14:43:39.320000",
+          "duration_seconds": 0.05
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:43:39.320000",
+          "end_time": "2026-01-13T14:43:47.440000",
+          "duration_seconds": 8.12
+        },
+        "filter_bitmaps": {
+          "start_time": "2026-01-13T14:43:47.440000",
+          "end_time": "2026-01-13T14:43:49.780000",
+          "duration_seconds": 2.34
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:43:49.780000",
+          "end_time": "2026-01-13T14:43:49.790000",
+          "duration_seconds": 0.01
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:43:49.790000",
+          "end_time": "2026-01-13T14:43:51.020000",
+          "duration_seconds": 1.23
+        }
       },
       "python_service_timings": {
         "step1_solve_cilp": 0.45,
         "step2_extract_join": 0.03,
         "step3_convert_output": 0.01,
         "total_duration": 0.49
-      },
-      "output": {
-        "mappings": [
-          {"r_val": "example", "s_val": "matched", "npmi": 0.85}
-        ],
-        "num_r": 10,
-        "num_s": 15,
-        "num_mappings": 8
       }
     }
   ]
 }
 ```
 
-### Timing Breakdown
-
-**CS-JP-LP Timing Components:**
-- Go Service: DuckDB query + bitmap operations + PMI calculation
-- Python Service: Linear Programming, extraction, formatting
-
-**RS-JP Timing Components:**
-- Go Service: DuckDB query + bitmap operations + NPMI calculation (row-level)
-- Python Service: Grouping + top-k selection
 
 ### Missing Case 13
 Case 13 is intentionally excluded from all benchmarks.
 
 ---
 
-# Benchmarking (RS JP with Top K=5 & Large Language Model)
+# Benchmarking (RS JP with Top K=5 & Large Language Model - Naive Approach)
 
 **The Problem:** The RS-JP with Top K=5 algorithm returns up to 5 candidate matches for each value based on statistical correlation (NPMI scores). For example, given "dover", it might return candidates like ["delaware", "kentucky", "maryland"]. But which one should actually be used for the join?
 
@@ -336,26 +349,26 @@ time=... level=INFO msg=inference compute="..." name="..." total="X GiB" availab
 
 **Keep this terminal running** - the Ollama server needs to stay active during AI benchmarking.
 
-### 4. Run AI Benchmarking
+### 4. Run AI Benchmarking (Naive)
 
 In your main terminal (from project root), run:
 
 ```bash
-./benchmark.sh ai -i <path_to_benchmark_json>
+./benchmark.sh ai_naiv -i <path_to_benchmark_json>
 ```
 
 **Example:**
 ```bash
 # Evaluate Wiki Tables RS-JP benchmark
-./benchmark.sh ai -i eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154339.json
+./benchmark.sh ai_naiv -i eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154339.json
 
 # Evaluate Git Tables RS-JP benchmark
-./benchmark.sh ai -i eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_155003.json
+./benchmark.sh ai_naiv -i eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_155003.json
 ```
 
 **Expected Output:**
 ```
-Running AI benchmarking mode
+Running AI benchmarking mode (Naive)
 ================================================================================
 Benchmark AI RS-JP Evaluation
 ================================================================================
@@ -379,8 +392,8 @@ Processing cases...
 
 **What This Does:**
 1. Loads the RS-JP benchmark results from the specified JSON file
-2. For each r_val with multiple s_val candidates, queries the Ollama AI model
-3. AI evaluates semantic relationships and selects the most appropriate match
+2. For each r_val with multiple s_val candidates, queries the Ollama AI model directly
+3. AI evaluates semantic relationships and selects the most appropriate match (single-step, no context determination)
 4. Saves results with AI's choices and explanations to `results/` directory
 
 **Output File:**
@@ -389,38 +402,59 @@ Processing cases...
 ## Output Structure
 
 ### Output JSON Format
+
 ```json
 {
   "summary": {
     "benchmark_metadata": {
       "algorithm": "rs_jp",
       "database": "duckdb",
-      "benchmark_total_cases": 49
+      "benchmark_start_time": "2026-01-13T14:43:39.260237",
+      "benchmark_total_cases": 49,
+      "benchmark_successful_cases": 49
     },
     "ai_evaluation": {
       "total_cases": 49,
-      "cases_processed": 49,
-      "total_r_vals_processed": 256,
+      "cases_processed": 47,
+      "cases_skipped": 0,
+      "total_r_vals_processed": 4640,
       "total_duration_seconds": 1234.56,
-      "model_used": "mistral:latest"
+      "model_used": "mistral:latest",
+      "timestamp": "20260114_132612",
+      "input_file": "/path/to/benchmark_rs_jp_duckdb_YYYYMMDD_HHMMSS.json",
+      "output_file": "/path/to/results/ai_evaluation_results_YYYYMMDD_HHMMSS.json"
     }
   },
   "cases": [
     {
       "case_number": 1,
-      "num_r_vals": 8,
+      "num_r_vals": 188,
       "mappings": [
+        {
+          "r_val": "algeria",
+          "s_vals": ["africa"],
+          "chosen_s_val": "africa",
+          "raw_ai_response": null,
+          "ai_explanation": null,
+          "ai_duration_seconds": 0,
+          "ai_success": true,
+          "ai_error": null,
+          "ai_called": false
+        },
         {
           "r_val": "dover",
           "s_vals": ["delaware", "kentucky"],
           "chosen_s_val": "delaware",
+          "raw_ai_response": "{\"r_val\": \"dover\", \"s_val\": \"delaware\", \"explanation\": \"...\"}",
           "ai_explanation": "Dover is the capital city of Delaware",
-          "raw_ai_response": "{...}",
-          "ai_duration_seconds": 2.34,
+          "ai_duration_seconds": 1.26,
+          "ai_success": true,
+          "ai_error": null,
           "ai_called": true
         }
       ],
-      "total_duration_seconds": 18.72
+      "total_duration_seconds": 18.72,
+      "case_had_mappings": true
     }
   ]
 }
@@ -436,5 +470,189 @@ Processing cases...
 
 **Full Command Format:**
 ```bash
-./benchmark.sh ai -i <input_file> [-m model] [-o output_dir] [--ollama-host host]
+./benchmark.sh ai_naiv -i <input_file> [-m model] [-o output_dir] [--ollama-host host]
+```
+
+---
+
+# Benchmarking (RS JP with Top K=5 & Large Language Model - Context Approach)
+
+This approach provides better accuracy by first understanding the semantic relationship between lists before making matching decisions.
+
+**Differences from Naive Approach:**
+- Two-step AI query: (1) Context determination, (2) Matching with context
+- Random sampling: 100 rows from each list to determine context
+- Reproducible: Uses random seed 42
+- Better accuracy: AI has domain understanding before matching
+
+## Prerequisites
+
+Same as naive approach above (Ollama installed, model pulled, server running), plus:
+- RS-JP benchmark results with `top_k=5` (see previous section)
+- `benchmark-data/` directory with case input files (Case1_input.txt, etc.)
+
+## Reproduction Steps
+
+### 1. Ensure Prerequisites Are Met
+
+Make sure you have:
+- Ollama server running (see previous section)
+- Mistral model pulled (`ollama pull mistral:latest`)
+- RS-JP results with top_k=5 generated
+- `benchmark-data/` directory in project root
+
+### 2. Run Context-Enhanced AI Benchmarking
+
+**Command:**
+```bash
+./benchmark.sh ai -i <path_to_benchmark_json> --random-seed 42
+```
+
+**Example:**
+```bash
+# Evaluate Wiki Tables RS-JP benchmark
+./benchmark.sh ai \
+  -i results/benchmark_rs_jp_duckdb_20260113_154339.json \
+  --random-seed 42
+
+# Evaluate Git Tables RS-JP benchmark
+./benchmark.sh ai \
+  -i results/benchmark_rs_jp_duckdb_20260113_155003.json \
+  --random-seed 42
+```
+
+**Note:** Use `--random-seed 42` to reproduce the benchmark results. This ensures the same random sample of 100 rows is selected for context determination.
+
+### 3. Expected Output
+
+```
+Running AI benchmarking mode (Context)
+================================================================================
+Benchmark AI RS-JP Evaluation (Context)
+================================================================================
+Input file: /path/to/benchmark_file.json
+Output file: /path/to/results/ai_evaluation_results_20260114_HHMMSS.json
+Benchmark data dir: /path/to/benchmark-data
+Ollama model: mistral:latest
+Ollama API: http://0.0.0.0:11434
+Using random seed: 42
+================================================================================
+
+Loading benchmark file...
+Loaded 49 cases
+
+Processing cases...
+[1/49] Processing case #1 (success=True)...
+  Querying AI for join context (List R: 100 rows sampled from 201, List S: 100 rows sampled from 201)...
+  ✓ Context determined: cities to states
+  Querying AI for r_val='dover' with 2 candidate(s)...
+  ✓ AI chose 'delaware' (explanation: Dover is the capital city of Delaware...)
+  ✓ Completed in 32.45 seconds
+    Processed 8 r_val(s)
+    Context: cities to states
+...
+```
+
+**What This Does:**
+1. For each case, loads the corresponding input file (e.g., `Case1_input.txt`)
+2. Randomly samples 100 rows from List R and 100 rows from List S (using seed 42)
+3. Sends samples to AI to determine the semantic relationship
+4. For each r_val with multiple candidates, uses the context to make informed decisions
+5. Saves results with context information to `results/` directory
+
+**Output File:**
+- `results/ai_evaluation_results_YYYYMMDD_HHMMSS.json`
+
+## Output Structure
+
+### Output JSON Format
+
+```json
+{
+  "summary": {
+    "benchmark_metadata": {
+      "algorithm": "rs_jp",
+      "database": "duckdb",
+      "benchmark_start_time": "2026-01-13T14:43:39.260237",
+      "benchmark_total_cases": 49,
+      "benchmark_successful_cases": 49
+    },
+    "ai_evaluation": {
+      "total_cases": 49,
+      "cases_processed": 47,
+      "cases_skipped": 0,
+      "total_r_vals_processed": 4640,
+      "context_queries_successful": 47,
+      "total_duration_seconds": 1970.85,
+      "model_used": "mistral:latest",
+      "timestamp": "20260114_132612",
+      "input_file": "/path/to/benchmark_rs_jp_duckdb_YYYYMMDD_HHMMSS.json",
+      "output_file": "/path/to/results/ai_evaluation_results_YYYYMMDD_HHMMSS.json",
+      "benchmark_data_dir": "/path/to/benchmark-data",
+      "random_seed": 42,
+      "sampling_method": "random"
+    }
+  },
+  "cases": [
+    {
+      "case_number": 1,
+      "num_r_vals": 188,
+      "mappings": [
+        {
+          "r_val": "algeria",
+          "s_vals": ["africa"],
+          "chosen_s_val": "africa",
+          "raw_ai_response": null,
+          "ai_explanation": null,
+          "ai_duration_seconds": 0,
+          "ai_success": true,
+          "ai_error": null,
+          "ai_called": false
+        },
+        {
+          "r_val": "dover",
+          "s_vals": ["delaware", "kentucky"],
+          "chosen_s_val": "delaware",
+          "raw_ai_response": "{\"r_val\": \"dover\", \"s_val\": \"delaware\", \"explanation\": \"...\"}",
+          "ai_explanation": "Dover is the capital city of Delaware",
+          "ai_duration_seconds": 1.26,
+          "ai_success": true,
+          "ai_error": null,
+          "ai_called": true
+        }
+      ],
+      "total_duration_seconds": 24.93,
+      "case_had_mappings": true,
+      "context_query": {
+        "context_info": {
+          "relationship_type": "cities to states",
+          "list_r_description": "List R contains city names",
+          "list_s_description": "List S contains state names",
+          "join_context": "Each city should be matched to its home state"
+        },
+        "raw_response": "{\"relationship_type\": \"cities to states\", ...}",
+        "duration_seconds": 2.14,
+        "success": true,
+        "error": null
+      }
+    }
+  ]
+}
+```
+
+## Command Options Reference
+
+**Required Options:**
+- `-i, --input FILE`: Path to benchmark JSON file (required)
+
+**Optional Options:**
+- `-m, --model MODEL`: Ollama model to use (default: `mistral:latest`)
+- `-o, --output-dir DIR`: Output directory (default: `<project_root>/results`)
+- `--ollama-host HOST`: Ollama API host (default: `http://0.0.0.0:11434`)
+- `--benchmark-data-dir DIR`: Benchmark data directory (default: `<project_root>/benchmark-data`)
+- `--random-seed SEED`: Random seed (default: none, but use 42 for reproducibility)
+
+**Full Command Format:**
+```bash
+./benchmark.sh ai -i <input_file> --random-seed 42 [-m model] [-o output_dir] [--ollama-host host] [--benchmark-data-dir dir]
 ```

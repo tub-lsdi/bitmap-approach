@@ -3,7 +3,6 @@ import requests
 import time
 import sys
 import argparse
-import random
 from pathlib import Path
 from typing import List, Dict, Any
 from datetime import datetime
@@ -57,165 +56,29 @@ def group_mappings_by_r_val(mappings: List[Dict[str, Any]]) -> List[Dict[str, An
     return grouped
 
 
-def load_case_input_file(case_number: int, benchmark_data_dir: Path) -> tuple[List[str], List[str]]:
+def ask_ollama(r_val: str, s_vals: List[str], model: str = "mistral:latest") -> Dict[str, Any]:
     """
-    Load the input file for a specific case and parse the two lists.
-    Returns (list_r, list_s)
-    """
-    case_file = benchmark_data_dir / f"Case{case_number}_input.txt"
-
-    if not case_file.exists():
-        print(f"  Warning: Case input file not found: {case_file}")
-        return [], []
-
-    with open(case_file, 'r') as f:
-        lines = [line.strip() for line in f.readlines()]
-
-    # Split on empty line
-    try:
-        separator_idx = lines.index('')
-        list_r = [line for line in lines[:separator_idx] if line]
-        list_s = [line for line in lines[separator_idx+1:] if line]
-        return list_r, list_s
-    except ValueError:
-        # No separator found, treat all as one list
-        return lines, []
-
-
-def ask_ollama_context(list_r_sample: List[str], list_s_sample: List[str],
-                       model: str = "mistral:latest", ollama_host: str = "http://0.0.0.0:11434") -> Dict[str, Any]:
-    """
-    First AI query: Ask Ollama to determine the context/nature of the join between the two lists.
-    Returns the context description and timing information.
-    """
-    # Prepare sample lists for display
-    list_r_display = "\n".join([f"  - {val}" for val in list_r_sample[:50]])
-    list_s_display = "\n".join([f"  - {val}" for val in list_s_sample[:50]])
-
-    prompt = f"""You are analyzing two lists of values to determine the semantic relationship and join context between them.
-
-List R (first {len(list_r_sample)} values):
-{list_r_display}
-
-List S (first {len(list_s_sample)} values):
-{list_s_display}
-
-INSTRUCTIONS:
-- Analyze the semantic nature and domain of both lists
-- Identify the relationship type (e.g., "countries to capitals", "drugs brand names to generic names", "cities to states", "universities to locations", etc.)
-- Determine what kind of join would make sense between these lists
-- Be specific about the domain and relationship
-
-REQUIRED OUTPUT FORMAT - JSON ONLY:
-You MUST respond with ONLY valid JSON in this exact format:
-{{
-  "relationship_type": "brief description of the relationship (e.g., 'countries to capitals')",
-  "list_r_description": "what List R contains (e.g., 'country names')",
-  "list_s_description": "what List S contains (e.g., 'capital city names')",
-  "join_context": "detailed explanation of how these lists should be joined"
-}}
-
-CRITICAL RULES:
-- Return ONLY valid JSON, no other text before or after
-- Be specific and concise
-- Focus on the SEMANTIC relationship between the lists
-- Do NOT add any text outside the JSON structure
-
-JSON Response:"""
-
-    url = f"{ollama_host}/api/generate"
-    payload = {
-        "model": model,
-        "prompt": prompt,
-        "stream": False,
-        "options": {
-            "temperature": 0.2,
-            "top_p": 0.9
-        }
-    }
-
-    start_time = time.time()
-    try:
-        response = requests.post(url, json=payload, timeout=120)
-        response.raise_for_status()
-        result = response.json()
-        raw_response = result['response'].strip()
-        duration = time.time() - start_time
-
-        # Try to parse JSON
-        context_info = None
-        try:
-            json_start = raw_response.find('{')
-            json_end = raw_response.rfind('}') + 1
-
-            if json_start != -1 and json_end > json_start:
-                json_str = raw_response[json_start:json_end]
-                context_info = json.loads(json_str)
-                print(f"  ✓ Context determined: {context_info.get('relationship_type', 'unknown')}")
-        except json.JSONDecodeError as e:
-            print(f"  Warning: Could not parse context JSON: {e}")
-
-        return {
-            'context_info': context_info,
-            'raw_response': raw_response,
-            'duration_seconds': duration,
-            'success': True,
-            'error': None
-        }
-    except Exception as e:
-        duration = time.time() - start_time
-        print(f"  Error calling Ollama API for context: {e}")
-        return {
-            'context_info': None,
-            'raw_response': None,
-            'duration_seconds': duration,
-            'success': False,
-            'error': str(e)
-        }
-
-
-def ask_ollama(r_val: str, s_vals: List[str], context_info: Dict[str, Any] = None,
-               model: str = "mistral:latest", ollama_host: str = "http://0.0.0.0:11434") -> Dict[str, Any]:
-    """
-    Second AI query: Ask Ollama which s_val is the best match for joining with r_val,
-    using the context from the first query.
+    Ask Ollama which s_val is the best match for joining with r_val.
     Returns the chosen value and timing information.
     """
     # Construct the prompt
     if len(s_vals) == 1:
+        s_vals_str = f'"{s_vals[0]}"'
         s_vals_list = f'1. {s_vals[0]}'
     else:
+        s_vals_str = ", ".join([f'"{s}"' for s in s_vals])
         s_vals_list = "\n".join([f'{i+1}. {s}' for i, s in enumerate(s_vals)])
 
-    # Build context section if available
-    context_section = ""
-    if context_info:
-        relationship = context_info.get('relationship_type', 'unknown')
-        list_r_desc = context_info.get('list_r_description', 'unknown')
-        list_s_desc = context_info.get('list_s_description', 'unknown')
-        join_context = context_info.get('join_context', '')
-
-        context_section = f"""
-CONTEXT FROM PREVIOUS ANALYSIS:
-- Relationship type: {relationship}
-- List R contains: {list_r_desc}
-- List S contains: {list_s_desc}
-- Join context: {join_context}
-
-Use this context to inform your decision.
-"""
-
     prompt = f"""You are a semantic matching system for database joins. Think critically about the relationships between values.
-{context_section}
-Target value from List R: {r_val}
 
-Available candidates from List S:
+Target value: {r_val}
+
+Available candidates:
 {s_vals_list}
 
 INSTRUCTIONS:
-- Consider the CONTEXT provided above about the relationship between the lists
 - Think critically about the SEMANTIC meaning and relationships
-- Consider: Which candidate is most related to, associated with, or semantically similar to "{r_val}" given the context?
+- Consider: Is one candidate related to, associated with, or semantically similar to "{r_val}"?
 - You MUST always choose exactly ONE candidate, even if the match seems imperfect
 - Base your choice on semantic similarity, contextual relationships, or domain knowledge
 - If no perfect match exists, choose the semantically closest or most related option
@@ -225,26 +88,27 @@ You MUST respond with ONLY valid JSON in this exact format:
 {{
   "r_val": "{r_val}",
   "s_val": "your_chosen_candidate_here",
-  "explanation": "explain the semantic relationship or why you chose this given the context"
+  "explanation": "explain the semantic relationship or why you chose this"
 }}
 
 CRITICAL RULES:
 - Return ONLY valid JSON, no other text before or after
 - The "s_val" MUST be exactly one of the candidates from the numbered list above
-- Use the "explanation" field to describe your reasoning based on the context
+- Use the "explanation" field to describe your reasoning
 - You CANNOT refuse to choose - selecting one candidate is MANDATORY
-- Think semantically using the provided context
+- Think semantically: cities→states, moons→planets, universities→locations, etc.
 - Do NOT add any text outside the JSON structure
 
 JSON Response:"""
 
-    url = f"{ollama_host}/api/generate"
+    # Make API call to Ollama
+    url = "http://0.0.0.0:11434/api/generate"
     payload = {
         "model": model,
         "prompt": prompt,
         "stream": False,
         "options": {
-            "temperature": 0.1,
+            "temperature": 0.1,  # Lower temperature for more deterministic responses
             "top_p": 0.9
         }
     }
@@ -262,6 +126,8 @@ JSON Response:"""
         explanation = None
 
         try:
+            # Try to extract JSON from the response
+            # Sometimes the response has extra text before/after JSON
             json_start = raw_response.find('{')
             json_end = raw_response.rfind('}') + 1
 
@@ -269,6 +135,7 @@ JSON Response:"""
                 json_str = raw_response[json_start:json_end]
                 parsed = json.loads(json_str)
 
+                # Extract s_val from the JSON
                 chosen_s_val = parsed.get('s_val', '').strip()
                 explanation = parsed.get('explanation', '')
 
@@ -279,9 +146,11 @@ JSON Response:"""
                         break
 
                 if matched_val:
-                    print(f"  ✓ AI chose '{matched_val}' (explanation: {explanation[:60]}...)")
+                    print(
+                        f"  ✓ AI chose '{matched_val}' (explanation: {explanation[:60]}...)")
                 else:
-                    print(f"  Warning: AI returned '{chosen_s_val}' which is not in candidates")
+                    print(
+                        f"  Warning: AI returned '{chosen_s_val}' which is not in candidates")
 
         except json.JSONDecodeError as e:
             print(f"  Warning: Could not parse JSON response: {e}")
@@ -289,16 +158,20 @@ JSON Response:"""
         # Fallback: Try to match the raw response to one of the candidates
         if matched_val is None:
             raw_lower = raw_response.lower()
+
+            # Check if any candidate appears in the response
             for s_val in s_vals:
                 if s_val.lower() in raw_lower:
                     matched_val = s_val
-                    print(f"  Info: Extracted '{s_val}' from non-JSON response")
+                    print(
+                        f"  Info: Extracted '{s_val}' from non-JSON response")
                     break
 
         # If still no match found, default to first value
         if matched_val is None:
             matched_val = s_vals[0]
-            print(f"  Warning: Could not extract valid s_val from response, defaulting to '{s_vals[0]}'")
+            print(
+                f"  Warning: Could not extract valid s_val from response, defaulting to '{s_vals[0]}'")
             print(f"  Raw response: {raw_response[:200]}")
 
         return {
@@ -313,7 +186,7 @@ JSON Response:"""
         duration = time.time() - start_time
         print(f"  Error calling Ollama API: {e}")
         return {
-            'chosen_s_val': s_vals[0],
+            'chosen_s_val': s_vals[0],  # Default to first value if error
             'raw_response': None,
             'explanation': None,
             'duration_seconds': duration,
@@ -322,10 +195,8 @@ JSON Response:"""
         }
 
 
-def process_case(case: Dict[str, Any], model: str = "mistral:latest",
-                 ollama_host: str = "http://0.0.0.0:11434",
-                 benchmark_data_dir: Path = None) -> Dict[str, Any]:
-    """Process a single benchmark case with two-step AI query."""
+def process_case(case: Dict[str, Any], model: str = "mistral:latest") -> Dict[str, Any]:
+    """Process a single benchmark case."""
     case_number = case['case_number']
     mappings = case.get('output', {}).get('mappings', [])
 
@@ -335,36 +206,15 @@ def process_case(case: Dict[str, Any], model: str = "mistral:latest",
             'num_r_vals': 0,
             'mappings': [],
             'total_duration_seconds': 0,
-            'case_had_mappings': False,
-            'context_query': None
+            'case_had_mappings': False
         }
-
-    case_start_time = time.time()
-
-    # Step 1: Load case input file and determine context
-    context_result = None
-    if benchmark_data_dir:
-        list_r, list_s = load_case_input_file(case_number, benchmark_data_dir)
-
-        if list_r and list_s:
-            # Randomly sample up to 100 rows from each list
-            # Use random.sample for proper random sampling without replacement
-            list_r_sample = random.sample(list_r, min(100, len(list_r)))
-            list_s_sample = random.sample(list_s, min(100, len(list_s)))
-
-            print(f"  Querying AI for join context (List R: {len(list_r_sample)} rows sampled from {len(list_r)}, List S: {len(list_s_sample)} rows sampled from {len(list_s)})...")
-            context_result = ask_ollama_context(list_r_sample, list_s_sample, model, ollama_host)
-        else:
-            print(f"  Warning: Could not load case input file for case {case_number}")
-
-    # Extract context info for use in subsequent queries
-    context_info = context_result.get('context_info') if context_result else None
 
     # Group mappings by r_val
     grouped = group_mappings_by_r_val(mappings)
 
-    # Step 2: Process each r_val with context
+    # Process each r_val
     mappings_results = []
+    case_start_time = time.time()
 
     for group in grouped:
         r_val = group['r_val']
@@ -372,7 +222,8 @@ def process_case(case: Dict[str, Any], model: str = "mistral:latest",
 
         # If only 1 candidate, no need to ask AI
         if len(s_vals) == 1:
-            print(f"  r_val='{r_val}' has only 1 candidate, using '{s_vals[0]}' directly (no AI call)")
+            print(
+                f"  r_val='{r_val}' has only 1 candidate, using '{s_vals[0]}' directly (no AI call)")
             mappings_results.append({
                 'r_val': r_val,
                 's_vals': s_vals,
@@ -385,8 +236,9 @@ def process_case(case: Dict[str, Any], model: str = "mistral:latest",
                 'ai_called': False
             })
         else:
-            print(f"  Querying AI for r_val='{r_val}' with {len(s_vals)} candidate(s)...")
-            ai_result = ask_ollama(r_val, s_vals, context_info, model, ollama_host)
+            print(
+                f"  Querying AI for r_val='{r_val}' with {len(s_vals)} candidate(s)...")
+            ai_result = ask_ollama(r_val, s_vals, model)
 
             mappings_results.append({
                 'r_val': r_val,
@@ -407,14 +259,7 @@ def process_case(case: Dict[str, Any], model: str = "mistral:latest",
         'num_r_vals': len(grouped),
         'mappings': mappings_results,
         'total_duration_seconds': total_duration,
-        'case_had_mappings': True,
-        'context_query': {
-            'context_info': context_result.get('context_info') if context_result else None,
-            'raw_response': context_result.get('raw_response') if context_result else None,
-            'duration_seconds': context_result.get('duration_seconds') if context_result else 0,
-            'success': context_result.get('success') if context_result else False,
-            'error': context_result.get('error') if context_result else None
-        } if context_result else None
+        'case_had_mappings': True
     }
 
 
@@ -450,24 +295,8 @@ Examples:
         default='http://0.0.0.0:11434',
         help='Ollama API host (default: http://0.0.0.0:11434)'
     )
-    parser.add_argument(
-        '--benchmark-data-dir',
-        default=None,
-        help='Directory containing benchmark input files (default: <project_root>/benchmark-data)'
-    )
-    parser.add_argument(
-        '--random-seed',
-        type=int,
-        default=None,
-        help='Random seed for reproducible sampling (optional)'
-    )
 
     args = parser.parse_args()
-
-    # Set random seed if provided for reproducible results
-    if args.random_seed is not None:
-        random.seed(args.random_seed)
-        print(f"Using random seed: {args.random_seed}")
 
     # Configuration
     input_file = args.input
@@ -487,14 +316,6 @@ Examples:
         project_root = Path(__file__).parent.parent
         output_dir = project_root / "results"
 
-    # Determine benchmark data directory
-    if args.benchmark_data_dir:
-        benchmark_data_dir = Path(args.benchmark_data_dir)
-    else:
-        # Default to <project_root>/benchmark-data
-        project_root = Path(__file__).parent.parent
-        benchmark_data_dir = project_root / "benchmark-data"
-
     # Generate output filename with timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     # Create results directory if it doesn't exist
@@ -506,11 +327,10 @@ Examples:
     ollama_host = args.ollama_host
 
     print("=" * 80)
-    print("Benchmark AI RS-JP Evaluation (Context-Enhanced)")
+    print("Benchmark AI RS-JP Evaluation")
     print("=" * 80)
     print(f"Input file: {input_file}")
     print(f"Output file: {output_file}")
-    print(f"Benchmark data dir: {benchmark_data_dir}")
     print(f"Ollama model: {model}")
     print(f"Ollama API: {ollama_host}")
     print("=" * 80)
@@ -552,14 +372,11 @@ Examples:
             })
             continue
 
-        result = process_case(case, model, ollama_host, benchmark_data_dir)
+        result = process_case(case, model)
         all_results.append(result)
-        print(f"  ✓ Completed in {result['total_duration_seconds']:.2f} seconds")
+        print(
+            f"  ✓ Completed in {result['total_duration_seconds']:.2f} seconds")
         print(f"    Processed {result['num_r_vals']} r_val(s)")
-        if result.get('context_query') and result['context_query'].get('success'):
-            ctx = result['context_query']['context_info']
-            if ctx:
-                print(f"    Context: {ctx.get('relationship_type', 'unknown')}")
 
     overall_duration = time.time() - overall_start_time
 
@@ -577,15 +394,11 @@ Examples:
             'cases_processed': sum(1 for r in all_results if r.get('case_had_mappings', False)),
             'cases_skipped': sum(1 for r in all_results if r.get('skipped', False)),
             'total_r_vals_processed': sum(r.get('num_r_vals', 0) for r in all_results),
-            'context_queries_successful': sum(1 for r in all_results if r.get('context_query') and r['context_query'].get('success')),
             'total_duration_seconds': overall_duration,
             'model_used': model,
             'timestamp': timestamp,
             'input_file': input_file,
-            'output_file': str(output_file),
-            'benchmark_data_dir': str(benchmark_data_dir),
-            'random_seed': args.random_seed,
-            'sampling_method': 'random'
+            'output_file': str(output_file)
         }
     }
 
@@ -605,10 +418,12 @@ Examples:
     print(f"  Total cases: {summary['ai_evaluation']['total_cases']}")
     print(f"  Cases processed: {summary['ai_evaluation']['cases_processed']}")
     print(f"  Cases skipped: {summary['ai_evaluation']['cases_skipped']}")
-    print(f"  Context queries successful: {summary['ai_evaluation']['context_queries_successful']}")
-    print(f"  Total r_vals processed: {summary['ai_evaluation']['total_r_vals_processed']}")
-    print(f"  Total duration: {summary['ai_evaluation']['total_duration_seconds']:.2f} seconds")
-    print(f"  Average time per case: {summary['ai_evaluation']['total_duration_seconds'] / max(summary['ai_evaluation']['cases_processed'], 1):.2f} seconds")
+    print(
+        f"  Total r_vals processed: {summary['ai_evaluation']['total_r_vals_processed']}")
+    print(
+        f"  Total duration: {summary['ai_evaluation']['total_duration_seconds']:.2f} seconds")
+    print(
+        f"  Average time per case: {summary['ai_evaluation']['total_duration_seconds'] / max(summary['ai_evaluation']['cases_processed'], 1):.2f} seconds")
     print(f"\n✓ Done!")
     print("=" * 80)
 
