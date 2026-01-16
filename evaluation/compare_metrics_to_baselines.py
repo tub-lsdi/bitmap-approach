@@ -62,35 +62,29 @@ def plot_absolute_values(results: List[Dict], output_file: str = None):
     
     fig, ax = plt.subplots(figsize=(12, 6))
     
+    n_files = len(filenames)
     n_metrics = len(metrics)
-    indices = np.arange(n_metrics)
-    bar_width = 0.5
     
-    for i, metric in enumerate(metrics):
-        # Get values for this metric
-        metric_values = []
-        for r in results:
-            metric_values.append((r['file'], r[metric.lower()]))
-            
-        # Sort by value descending so larger bars are plotted first (behind smaller ones)
-        # This ensures smaller bars are visible in front
-        metric_values.sort(key=lambda x: x[1], reverse=True)
+    total_width = 0.8
+    bar_width = total_width / n_files
+    indices = np.arange(n_metrics)
+    
+    for i, file_data in enumerate(results):
+        filename = file_data['file']
+        values = [file_data['precision'], file_data['recall'], file_data['f1']]
         
-        for filename, val in metric_values:
-            # Plot all bars at the same x position (layered)
-            # zorder ensures correct layering if needed, but plotting order handles it too
-            ax.bar(indices[i], val, width=bar_width, label=filename if i == 0 else "", 
-                   color=file_colors[filename])
-
+        positions = indices - (total_width / 2) + (i * bar_width) + (bar_width / 2)
+        
+        ax.bar(positions, values, width=bar_width, label=filename, color=file_colors[filename])
+        
     ax.set_xticks(indices)
     ax.set_xticklabels(metrics)
     ax.set_ylabel("Score")
     ax.set_title("Absolute Metrics Comparison")
     ax.set_ylim(0, 1.05)
     
-    # Create legend (deduplicated)
-    handles = [plt.Rectangle((0,0),1,1, color=file_colors[f]) for f in filenames]
-    ax.legend(handles, filenames, title="Files", bbox_to_anchor=(1.05, 1), loc='upper left')
+    # Create legend
+    ax.legend(title="Files", bbox_to_anchor=(1.05, 1), loc='upper left')
     
     plt.tight_layout()
     
@@ -125,34 +119,11 @@ def plot_comparison(baseline_name: str, diffs: List[Dict], is_percentage: bool, 
         for d in diffs:
             metric_diffs.append((d['file'], d[metric]))
             
-        # Split into pos and neg
-        pos_diffs = [x for x in metric_diffs if x[1] >= 0]
-        neg_diffs = [x for x in metric_diffs if x[1] < 0]
-        
-        # Sort by absolute value ascending
-        pos_diffs.sort(key=lambda x: abs(x[1]))
-        neg_diffs.sort(key=lambda x: abs(x[1]))
-        
-        # Plot positives
-        # In stacked bar charts, we need to accumulate the bottom
-        # However, the user mentioned that the comparison might be wrong because of stacking.
-        # If we stack positive values, they add up visually.
-        # If we want to compare individual differences to baseline, we should probably NOT stack them
-        # but layer them like we did for absolute values, OR group them.
-        # The original code was stacking them: `bottom=current_bottom`.
-        # If multiple files have +0.1 diff, the second one starts at 0.1 and goes to 0.2.
-        # This makes the total height 0.2, but the individual bar is 0.1.
-        # If the user wants to see the difference for EACH file relative to baseline (0),
-        # they should all start from 0.
-        
-        # Let's change this to layered bars (all starting from 0) instead of stacked bars.
-        # We will use the same logic as absolute values: sort by absolute size descending so smaller ones are in front.
-        
         # Re-sort all diffs by absolute value descending
         metric_diffs.sort(key=lambda x: abs(x[1]), reverse=True)
         
         for filename, val in metric_diffs:
-            ax.bar(indices[i], val, width=bar_width, 
+            ax.bar(indices[i], val, width=bar_width,
                    color=file_colors[filename], label=filename if i == 0 else "")
 
     ax.set_xticks(indices)
