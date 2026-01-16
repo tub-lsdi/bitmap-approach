@@ -771,6 +771,42 @@
         "num_r": 188,
         "num_s": 6,
         "num_mappings": 188
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:50:03.049735402Z",
+          "end_time": "2026-01-13T14:50:03.064213398Z",
+          "duration_seconds": 0.014477995
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:50:03.064228577Z",
+          "end_time": "2026-01-13T14:50:12.052643492Z",
+          "duration_seconds": 8.988414915
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:50:12.052647826Z",
+          "end_time": "2026-01-13T14:50:12.079655888Z",
+          "duration_seconds": 0.027008067
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:50:12.079668448Z",
+          "end_time": "2026-01-13T14:50:12.466480549Z",
+          "duration_seconds": 0.386812105
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:50:12.466492024Z",
+          "end_time": "2026-01-13T14:50:12.472278132Z",
+          "duration_seconds": 0.005786109
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 0.00014281272888183594,
+        "step2_select_topk": 0.00019788742065429688,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00040435791015625
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 51.03439950942993
       }
     },
     {
@@ -796,6 +832,42 @@
         "num_r": 3,
         "num_s": 3,
         "num_mappings": 3
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:50:13.234699295Z",
+          "end_time": "2026-01-13T14:50:13.245231241Z",
+          "duration_seconds": 0.010531944
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:50:13.245243394Z",
+          "end_time": "2026-01-13T14:50:23.754536183Z",
+          "duration_seconds": 10.509292793
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:50:23.754539584Z",
+          "end_time": "2026-01-13T14:50:23.755004802Z",
+          "duration_seconds": 0.000465218
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:50:23.755009021Z",
+          "end_time": "2026-01-13T14:50:24.150339257Z",
+          "duration_seconds": 0.395330239
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:50:24.150350042Z",
+          "end_time": "2026-01-13T14:50:24.150450816Z",
+          "duration_seconds": 0.000100774
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.6689300537109375e-06,
+        "step2_select_topk": 0.000263214111328125,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0002913475036621094
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -1253,6 +1325,42 @@
         "num_r": 111,
         "num_s": 98,
         "num_mappings": 111
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:50:24.865916862Z",
+          "end_time": "2026-01-13T14:50:24.880558316Z",
+          "duration_seconds": 0.014641448
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:50:24.880571811Z",
+          "end_time": "2026-01-13T14:50:40.502669312Z",
+          "duration_seconds": 15.622097502
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:50:40.502672126Z",
+          "end_time": "2026-01-13T14:50:40.620941931Z",
+          "duration_seconds": 0.118269821
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:50:40.6209635Z",
+          "end_time": "2026-01-13T14:50:41.137174871Z",
+          "duration_seconds": 0.516211367
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:50:41.137184715Z",
+          "end_time": "2026-01-13T14:50:41.153028165Z",
+          "duration_seconds": 0.015843447
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 0.00017833709716796875,
+        "step2_select_topk": 0.00027632713317871094,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0004975795745849609
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 68.9053111076355
       }
     },
     {
@@ -1278,6 +1386,42 @@
         "num_r": 3,
         "num_s": 3,
         "num_mappings": 3
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:50:42.578931208Z",
+          "end_time": "2026-01-13T14:50:42.601566588Z",
+          "duration_seconds": 0.022635374
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:50:42.601578387Z",
+          "end_time": "2026-01-13T14:50:50.363666088Z",
+          "duration_seconds": 7.762087702
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:50:50.363668658Z",
+          "end_time": "2026-01-13T14:50:50.364307271Z",
+          "duration_seconds": 0.00063862
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:50:50.364313758Z",
+          "end_time": "2026-01-13T14:50:50.744477303Z",
+          "duration_seconds": 0.380163538
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:50:50.744488799Z",
+          "end_time": "2026-01-13T14:50:50.744717462Z",
+          "duration_seconds": 0.000228665
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.9073486328125e-06,
+        "step2_select_topk": 0.0009789466857910156,
+        "step3_format_output": 0.0,
+        "total_duration": 0.001004934310913086
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -1487,6 +1631,42 @@
         "num_r": 49,
         "num_s": 45,
         "num_mappings": 49
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:50:51.385499917Z",
+          "end_time": "2026-01-13T14:50:51.403518396Z",
+          "duration_seconds": 0.018018482
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:50:51.403528676Z",
+          "end_time": "2026-01-13T14:51:00.324388553Z",
+          "duration_seconds": 8.920859878
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:51:00.324391514Z",
+          "end_time": "2026-01-13T14:51:00.360765494Z",
+          "duration_seconds": 0.036373993
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:51:00.36078131Z",
+          "end_time": "2026-01-13T14:51:00.778993788Z",
+          "duration_seconds": 0.418212469
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:51:00.779006357Z",
+          "end_time": "2026-01-13T14:51:00.782089612Z",
+          "duration_seconds": 0.003083256
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 0.00010538101196289062,
+        "step2_select_topk": 7.891654968261719e-05,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00021409988403320312
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 28.774503231048584
       }
     },
     {
@@ -1508,6 +1688,42 @@
         "num_r": 2,
         "num_s": 2,
         "num_mappings": 2
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:51:01.515162824Z",
+          "end_time": "2026-01-13T14:51:01.525785226Z",
+          "duration_seconds": 0.010622401
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:51:01.525794345Z",
+          "end_time": "2026-01-13T14:51:12.454352514Z",
+          "duration_seconds": 10.928558179
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:51:12.45435661Z",
+          "end_time": "2026-01-13T14:51:12.471753214Z",
+          "duration_seconds": 0.017396608
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:51:12.471768523Z",
+          "end_time": "2026-01-13T14:51:13.066401017Z",
+          "duration_seconds": 0.594632484
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:51:13.066415676Z",
+          "end_time": "2026-01-13T14:51:13.06680857Z",
+          "duration_seconds": 0.000392891
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 3.337860107421875e-06,
+        "step2_select_topk": 0.0003914833068847656,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0004220008850097656
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 1.1159141063690186
       }
     },
     {
@@ -1721,6 +1937,42 @@
         "num_r": 50,
         "num_s": 47,
         "num_mappings": 50
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:51:14.03277658Z",
+          "end_time": "2026-01-13T14:51:14.049840446Z",
+          "duration_seconds": 0.017063866
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:51:14.049856191Z",
+          "end_time": "2026-01-13T14:51:33.925568402Z",
+          "duration_seconds": 19.875712202
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:51:33.925573485Z",
+          "end_time": "2026-01-13T14:51:34.232989643Z",
+          "duration_seconds": 0.307416174
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:51:34.233114569Z",
+          "end_time": "2026-01-13T14:51:34.712813866Z",
+          "duration_seconds": 0.479699253
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:51:34.712824241Z",
+          "end_time": "2026-01-13T14:51:34.776507085Z",
+          "duration_seconds": 0.063682848
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 3.933906555175781e-05,
+        "step2_select_topk": 0.0004544258117675781,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0005238056182861328
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 49.03791928291321
       }
     },
     {
@@ -1786,6 +2038,42 @@
         "num_r": 13,
         "num_s": 12,
         "num_mappings": 13
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:51:35.662869199Z",
+          "end_time": "2026-01-13T14:51:35.673924371Z",
+          "duration_seconds": 0.011055172
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:51:35.673963413Z",
+          "end_time": "2026-01-13T14:51:50.372122471Z",
+          "duration_seconds": 14.698159062
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:51:50.372125168Z",
+          "end_time": "2026-01-13T14:51:50.39518815Z",
+          "duration_seconds": 0.023062993
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:51:50.395327898Z",
+          "end_time": "2026-01-13T14:51:50.905050408Z",
+          "duration_seconds": 0.509722507
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:51:50.905059173Z",
+          "end_time": "2026-01-13T14:51:50.911960578Z",
+          "duration_seconds": 0.006901419
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 7.3909759521484375e-06,
+        "step2_select_topk": 0.004197835922241211,
+        "step3_format_output": 0.0,
+        "total_duration": 0.004248380661010742
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 6.851140260696411
       }
     },
     {
@@ -2563,6 +2851,42 @@
         "num_r": 191,
         "num_s": 39,
         "num_mappings": 191
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:51:51.768815031Z",
+          "end_time": "2026-01-13T14:51:51.782268106Z",
+          "duration_seconds": 0.013453077
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:51:51.782285011Z",
+          "end_time": "2026-01-13T14:52:03.893206588Z",
+          "duration_seconds": 12.110921584
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:52:03.893210548Z",
+          "end_time": "2026-01-13T14:52:03.976224663Z",
+          "duration_seconds": 0.083014135
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:52:03.976346035Z",
+          "end_time": "2026-01-13T14:52:04.515146626Z",
+          "duration_seconds": 0.538800576
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:52:04.515155677Z",
+          "end_time": "2026-01-13T14:52:04.528813904Z",
+          "duration_seconds": 0.013658228
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 0.00013518333435058594,
+        "step2_select_topk": 0.010512590408325195,
+        "step3_format_output": 0.0,
+        "total_duration": 0.010672569274902344
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 20.7028865814209
       }
     },
     {
@@ -3300,6 +3624,42 @@
         "num_r": 181,
         "num_s": 164,
         "num_mappings": 181
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:52:05.534062813Z",
+          "end_time": "2026-01-13T14:52:05.548510965Z",
+          "duration_seconds": 0.014448152
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:52:05.548524208Z",
+          "end_time": "2026-01-13T14:52:17.954013457Z",
+          "duration_seconds": 12.40548928
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:52:17.954023122Z",
+          "end_time": "2026-01-13T14:52:18.728102644Z",
+          "duration_seconds": 0.774079503
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:52:18.728119115Z",
+          "end_time": "2026-01-13T14:52:19.123775375Z",
+          "duration_seconds": 0.395656255
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:52:19.123787383Z",
+          "end_time": "2026-01-13T14:52:19.28771747Z",
+          "duration_seconds": 0.163930088
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 6.29425048828125e-05,
+        "step2_select_topk": 0.0009627342224121094,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0010535717010498047
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 104.36353278160095
       }
     },
     {
@@ -3325,6 +3685,42 @@
         "num_r": 3,
         "num_s": 3,
         "num_mappings": 3
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:52:20.048854159Z",
+          "end_time": "2026-01-13T14:52:20.062384772Z",
+          "duration_seconds": 0.013530612
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:52:20.062393682Z",
+          "end_time": "2026-01-13T14:52:34.639736266Z",
+          "duration_seconds": 14.577342599
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:52:34.63974463Z",
+          "end_time": "2026-01-13T14:52:34.683579422Z",
+          "duration_seconds": 0.043834779
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:52:34.683679443Z",
+          "end_time": "2026-01-13T14:52:35.181816251Z",
+          "duration_seconds": 0.498136804
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:52:35.181828258Z",
+          "end_time": "2026-01-13T14:52:35.181911374Z",
+          "duration_seconds": 8.3117e-05
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.9073486328125e-06,
+        "step2_select_topk": 0.00015497207641601562,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00018310546875
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 1.0553147792816162
       }
     },
     {
@@ -3890,6 +4286,42 @@
         "num_r": 138,
         "num_s": 69,
         "num_mappings": 138
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:52:36.047518461Z",
+          "end_time": "2026-01-13T14:52:36.061107762Z",
+          "duration_seconds": 0.013589301
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:52:36.061123944Z",
+          "end_time": "2026-01-13T14:52:51.106432489Z",
+          "duration_seconds": 15.045308547
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:52:51.106436263Z",
+          "end_time": "2026-01-13T14:52:52.068167196Z",
+          "duration_seconds": 0.961730953
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:52:52.068189821Z",
+          "end_time": "2026-01-13T14:52:52.514535563Z",
+          "duration_seconds": 0.446345729
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:52:52.514546985Z",
+          "end_time": "2026-01-13T14:52:52.813318298Z",
+          "duration_seconds": 0.298771316
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 4.172325134277344e-05,
+        "step2_select_topk": 0.011924028396606445,
+        "step3_format_output": 0.0,
+        "total_duration": 0.011992931365966797
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 55.927485704422
       }
     },
     {
@@ -4815,6 +5247,42 @@
         "num_r": 228,
         "num_s": 174,
         "num_mappings": 228
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:52:53.703896362Z",
+          "end_time": "2026-01-13T14:52:53.722482586Z",
+          "duration_seconds": 0.018586223
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:52:53.722495499Z",
+          "end_time": "2026-01-13T14:53:10.566860209Z",
+          "duration_seconds": 16.844364727
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:53:10.566868478Z",
+          "end_time": "2026-01-13T14:53:13.597489364Z",
+          "duration_seconds": 3.030620867
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:53:13.597504927Z",
+          "end_time": "2026-01-13T14:53:14.046227752Z",
+          "duration_seconds": 0.448722825
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:53:14.046239171Z",
+          "end_time": "2026-01-13T14:53:15.353562758Z",
+          "duration_seconds": 1.307323593
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 0.00038433074951171875,
+        "step2_select_topk": 0.0003924369812011719,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0008044242858886719
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 246.092276096344
       }
     },
     {
@@ -5740,6 +6208,42 @@
         "num_r": 228,
         "num_s": 199,
         "num_mappings": 228
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:53:16.301246128Z",
+          "end_time": "2026-01-13T14:53:16.315083301Z",
+          "duration_seconds": 0.013837176
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:53:16.31509581Z",
+          "end_time": "2026-01-13T14:53:25.835009718Z",
+          "duration_seconds": 9.519913908
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:53:25.835015109Z",
+          "end_time": "2026-01-13T14:53:26.561529376Z",
+          "duration_seconds": 0.726514281
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:53:26.56154371Z",
+          "end_time": "2026-01-13T14:53:27.055076524Z",
+          "duration_seconds": 0.493532814
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:53:27.055098475Z",
+          "end_time": "2026-01-13T14:53:27.600764329Z",
+          "duration_seconds": 0.545665851
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 8.368492126464844e-05,
+        "step2_select_topk": 0.00033736228942871094,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0004513263702392578
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 173.01987028121948
       }
     },
     {
@@ -5773,6 +6277,42 @@
         "num_r": 5,
         "num_s": 4,
         "num_mappings": 5
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:53:29.132267817Z",
+          "end_time": "2026-01-13T14:53:29.153666578Z",
+          "duration_seconds": 0.021398762
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:53:29.153677624Z",
+          "end_time": "2026-01-13T14:53:42.955849921Z",
+          "duration_seconds": 13.802172327
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:53:42.955858581Z",
+          "end_time": "2026-01-13T14:53:42.974835467Z",
+          "duration_seconds": 0.018976899
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:53:42.974864637Z",
+          "end_time": "2026-01-13T14:53:43.445749495Z",
+          "duration_seconds": 0.47088481
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:53:43.445765955Z",
+          "end_time": "2026-01-13T14:53:43.447809421Z",
+          "duration_seconds": 0.002043467
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.1457672119140625e-06,
+        "step2_select_topk": 0.0001723766326904297,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00020051002502441406
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 1.0651562213897705
       }
     },
     {
@@ -5790,6 +6330,42 @@
         "num_r": 1,
         "num_s": 1,
         "num_mappings": 1
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:53:44.188916138Z",
+          "end_time": "2026-01-13T14:53:44.206925194Z",
+          "duration_seconds": 0.01800906
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:53:44.206936664Z",
+          "end_time": "2026-01-13T14:54:00.141370383Z",
+          "duration_seconds": 15.934433718
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:54:00.141374062Z",
+          "end_time": "2026-01-13T14:54:00.145686694Z",
+          "duration_seconds": 0.004312636
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:54:00.145695728Z",
+          "end_time": "2026-01-13T14:54:00.609042667Z",
+          "duration_seconds": 0.463346938
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:54:00.609057604Z",
+          "end_time": "2026-01-13T14:54:00.609302402Z",
+          "duration_seconds": 0.000244798
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.430511474609375e-06,
+        "step2_select_topk": 0.00012254714965820312,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00014972686767578125
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -5802,6 +6378,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:54:01.406599444Z",
+          "end_time": "2026-01-13T14:54:01.419907056Z",
+          "duration_seconds": 0.013307617
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:54:01.419926719Z",
+          "end_time": "2026-01-13T14:54:12.444648413Z",
+          "duration_seconds": 11.024721715
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:54:12.444786417Z",
+          "end_time": "2026-01-13T14:54:12.452745115Z",
+          "duration_seconds": 0.007958663
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:54:12.452754131Z",
+          "end_time": "2026-01-13T14:54:12.991626436Z",
+          "duration_seconds": 0.538872302
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:54:12.991638063Z",
+          "end_time": "2026-01-13T14:54:12.992112891Z",
+          "duration_seconds": 0.000474828
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 4.76837158203125e-07,
+        "step2_select_topk": 0.0001609325408935547,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00018739700317382812
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -5843,6 +6455,42 @@
         "num_r": 7,
         "num_s": 7,
         "num_mappings": 7
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:54:13.955805364Z",
+          "end_time": "2026-01-13T14:54:13.988502396Z",
+          "duration_seconds": 0.032697031
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:54:13.988612533Z",
+          "end_time": "2026-01-13T14:54:25.043437365Z",
+          "duration_seconds": 11.054824853
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:54:25.04345039Z",
+          "end_time": "2026-01-13T14:54:25.05018515Z",
+          "duration_seconds": 0.006734737
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:54:25.050195633Z",
+          "end_time": "2026-01-13T14:54:25.490652366Z",
+          "duration_seconds": 0.44045672
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:54:25.490663171Z",
+          "end_time": "2026-01-13T14:54:25.5030755Z",
+          "duration_seconds": 0.01241234
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.6226043701171875e-06,
+        "step2_select_topk": 0.0009579658508300781,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0009851455688476562
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -6160,6 +6808,42 @@
         "num_r": 76,
         "num_s": 75,
         "num_mappings": 76
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:54:26.236031622Z",
+          "end_time": "2026-01-13T14:54:26.249922544Z",
+          "duration_seconds": 0.013890924
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:54:26.249937942Z",
+          "end_time": "2026-01-13T14:54:45.210312873Z",
+          "duration_seconds": 18.960374928
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:54:45.210319009Z",
+          "end_time": "2026-01-13T14:54:45.254566873Z",
+          "duration_seconds": 0.044247861
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:54:45.254672653Z",
+          "end_time": "2026-01-13T14:54:45.840684661Z",
+          "duration_seconds": 0.586012011
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:54:45.840696443Z",
+          "end_time": "2026-01-13T14:54:45.854806715Z",
+          "duration_seconds": 0.014110275
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.71661376953125e-05,
+        "step2_select_topk": 0.0003178119659423828,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00035953521728515625
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 2.602959632873535
       }
     },
     {
@@ -6257,6 +6941,42 @@
         "num_r": 21,
         "num_s": 16,
         "num_mappings": 21
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:54:47.134986496Z",
+          "end_time": "2026-01-13T14:54:47.154201622Z",
+          "duration_seconds": 0.019215123
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:54:47.154211269Z",
+          "end_time": "2026-01-13T14:55:01.568180168Z",
+          "duration_seconds": 14.413968898
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:55:01.568676823Z",
+          "end_time": "2026-01-13T14:55:01.718738928Z",
+          "duration_seconds": 0.150062144
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:55:01.719021101Z",
+          "end_time": "2026-01-13T14:55:02.306013578Z",
+          "duration_seconds": 0.586992453
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:55:02.306025276Z",
+          "end_time": "2026-01-13T14:55:02.31080152Z",
+          "duration_seconds": 0.004776243
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 6.67572021484375e-06,
+        "step2_select_topk": 0.00024700164794921875,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00027871131896972656
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 15.672735214233398
       }
     },
     {
@@ -6318,6 +7038,42 @@
         "num_r": 12,
         "num_s": 3,
         "num_mappings": 12
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:55:03.210304106Z",
+          "end_time": "2026-01-13T14:55:03.222485216Z",
+          "duration_seconds": 0.01218111
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:55:03.222494047Z",
+          "end_time": "2026-01-13T14:55:13.149355462Z",
+          "duration_seconds": 9.926861425
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:55:13.149359134Z",
+          "end_time": "2026-01-13T14:55:13.152199333Z",
+          "duration_seconds": 0.002840195
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:55:13.152205505Z",
+          "end_time": "2026-01-13T14:55:13.551506169Z",
+          "duration_seconds": 0.399300665
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:55:13.551516885Z",
+          "end_time": "2026-01-13T14:55:13.552144994Z",
+          "duration_seconds": 0.000628107
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 4.0531158447265625e-06,
+        "step2_select_topk": 0.0013628005981445312,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0013971328735351562
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -6503,6 +7259,42 @@
         "num_r": 43,
         "num_s": 22,
         "num_mappings": 43
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:55:14.343813545Z",
+          "end_time": "2026-01-13T14:55:14.359880002Z",
+          "duration_seconds": 0.016066458
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:55:14.359888956Z",
+          "end_time": "2026-01-13T14:55:28.07573877Z",
+          "duration_seconds": 13.71584983
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:55:28.075885069Z",
+          "end_time": "2026-01-13T14:55:28.311578262Z",
+          "duration_seconds": 0.235693228
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:55:28.311766251Z",
+          "end_time": "2026-01-13T14:55:28.95649612Z",
+          "duration_seconds": 0.644729834
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:55:28.956507771Z",
+          "end_time": "2026-01-13T14:55:28.964625849Z",
+          "duration_seconds": 0.008118079
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.1444091796875e-05,
+        "step2_select_topk": 0.0007154941558837891,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0009021759033203125
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 8.496204614639282
       }
     },
     {
@@ -7004,6 +7796,42 @@
         "num_r": 122,
         "num_s": 103,
         "num_mappings": 122
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:55:29.979122172Z",
+          "end_time": "2026-01-13T14:55:29.990252123Z",
+          "duration_seconds": 0.011129952
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:55:29.990260293Z",
+          "end_time": "2026-01-13T14:55:46.74035133Z",
+          "duration_seconds": 16.750091041
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:55:46.740484224Z",
+          "end_time": "2026-01-13T14:55:47.341898525Z",
+          "duration_seconds": 0.601414311
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:55:47.341912343Z",
+          "end_time": "2026-01-13T14:55:47.871908568Z",
+          "duration_seconds": 0.529996229
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:55:47.871917894Z",
+          "end_time": "2026-01-13T14:55:48.089843012Z",
+          "duration_seconds": 0.217925118
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 7.176399230957031e-05,
+        "step2_select_topk": 0.0011067390441894531,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0012049674987792969
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 90.4180600643158
       }
     },
     {
@@ -7073,6 +7901,42 @@
         "num_r": 14,
         "num_s": 14,
         "num_mappings": 14
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:55:49.087148617Z",
+          "end_time": "2026-01-13T14:55:49.103866185Z",
+          "duration_seconds": 0.01671757
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:55:49.103886775Z",
+          "end_time": "2026-01-13T14:56:00.202383298Z",
+          "duration_seconds": 11.098496529
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:56:00.202528516Z",
+          "end_time": "2026-01-13T14:56:00.233686918Z",
+          "duration_seconds": 0.03115841
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:56:00.233708206Z",
+          "end_time": "2026-01-13T14:56:00.69888522Z",
+          "duration_seconds": 0.465177012
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:56:00.698896538Z",
+          "end_time": "2026-01-13T14:56:00.703243128Z",
+          "duration_seconds": 0.004346591
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 3.814697265625e-06,
+        "step2_select_topk": 0.00047469139099121094,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0005016326904296875
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -7085,6 +7949,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:56:01.634828998Z",
+          "end_time": "2026-01-13T14:56:01.65152821Z",
+          "duration_seconds": 0.016699206
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:56:01.651535827Z",
+          "end_time": "2026-01-13T14:56:12.227402823Z",
+          "duration_seconds": 10.575866997
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:56:12.227406704Z",
+          "end_time": "2026-01-13T14:56:12.228014407Z",
+          "duration_seconds": 0.000607703
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:56:12.228018486Z",
+          "end_time": "2026-01-13T14:56:12.650826834Z",
+          "duration_seconds": 0.422808347
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:56:12.650838377Z",
+          "end_time": "2026-01-13T14:56:12.651287716Z",
+          "duration_seconds": 0.000449339
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.384185791015625e-07,
+        "step2_select_topk": 0.0004608631134033203,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0005676746368408203
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -7097,6 +7997,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:56:13.426174149Z",
+          "end_time": "2026-01-13T14:56:13.443323365Z",
+          "duration_seconds": 0.017149216
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:56:13.443331349Z",
+          "end_time": "2026-01-13T14:56:24.681253215Z",
+          "duration_seconds": 11.237921901
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:56:24.681349972Z",
+          "end_time": "2026-01-13T14:56:24.683730577Z",
+          "duration_seconds": 0.002380601
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:56:24.683916296Z",
+          "end_time": "2026-01-13T14:56:25.330681902Z",
+          "duration_seconds": 0.646765583
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:56:25.330694008Z",
+          "end_time": "2026-01-13T14:56:25.335740574Z",
+          "duration_seconds": 0.005046573
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 4.76837158203125e-07,
+        "step2_select_topk": 0.00036787986755371094,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0005991458892822266
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -7206,6 +8142,42 @@
         "num_r": 24,
         "num_s": 22,
         "num_mappings": 24
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:56:26.417471855Z",
+          "end_time": "2026-01-13T14:56:26.434694203Z",
+          "duration_seconds": 0.017222352
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:56:26.434706811Z",
+          "end_time": "2026-01-13T14:56:38.8964261Z",
+          "duration_seconds": 12.461719332
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:56:38.896437435Z",
+          "end_time": "2026-01-13T14:56:39.22196294Z",
+          "duration_seconds": 0.325525468
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:56:39.221976154Z",
+          "end_time": "2026-01-13T14:56:39.605597237Z",
+          "duration_seconds": 0.383621084
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:56:39.605608436Z",
+          "end_time": "2026-01-13T14:56:39.618126827Z",
+          "duration_seconds": 0.012518394
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.1920928955078125e-05,
+        "step2_select_topk": 0.00028896331787109375,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00040602684020996094
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 3.012625217437744
       }
     },
     {
@@ -7479,6 +8451,42 @@
         "num_r": 65,
         "num_s": 24,
         "num_mappings": 65
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:56:40.330801085Z",
+          "end_time": "2026-01-13T14:56:40.344375718Z",
+          "duration_seconds": 0.013574632
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:56:40.344392132Z",
+          "end_time": "2026-01-13T14:56:51.969735466Z",
+          "duration_seconds": 11.625343337
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:56:51.969739144Z",
+          "end_time": "2026-01-13T14:56:52.020865528Z",
+          "duration_seconds": 0.051126419
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:56:52.020908364Z",
+          "end_time": "2026-01-13T14:56:52.468745806Z",
+          "duration_seconds": 0.447837413
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:56:52.468755366Z",
+          "end_time": "2026-01-13T14:56:52.476433855Z",
+          "duration_seconds": 0.00767849
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 0.00012350082397460938,
+        "step2_select_topk": 0.0014536380767822266,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0016045570373535156
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 19.42653489112854
       }
     },
     {
@@ -7604,6 +8612,42 @@
         "num_r": 28,
         "num_s": 6,
         "num_mappings": 28
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:56:53.334576715Z",
+          "end_time": "2026-01-13T14:56:53.350759866Z",
+          "duration_seconds": 0.016183152
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:56:53.350772828Z",
+          "end_time": "2026-01-13T14:57:02.947368948Z",
+          "duration_seconds": 9.596596128
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:57:02.947374671Z",
+          "end_time": "2026-01-13T14:57:02.948786876Z",
+          "duration_seconds": 0.001412206
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:57:02.948798152Z",
+          "end_time": "2026-01-13T14:57:03.355050519Z",
+          "duration_seconds": 0.406252356
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:57:03.35506716Z",
+          "end_time": "2026-01-13T14:57:03.355287615Z",
+          "duration_seconds": 0.000220455
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 6.4373016357421875e-06,
+        "step2_select_topk": 4.839897155761719e-05,
+        "step3_format_output": 0.0,
+        "total_duration": 7.939338684082031e-05
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -7616,6 +8660,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:57:04.287704172Z",
+          "end_time": "2026-01-13T14:57:04.300980338Z",
+          "duration_seconds": 0.013276166
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:57:04.300992246Z",
+          "end_time": "2026-01-13T14:57:15.8617382Z",
+          "duration_seconds": 11.560745982
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:57:15.861754596Z",
+          "end_time": "2026-01-13T14:57:15.867128839Z",
+          "duration_seconds": 0.005374243
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:57:15.867149686Z",
+          "end_time": "2026-01-13T14:57:16.415463631Z",
+          "duration_seconds": 0.548313912
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:57:16.41547403Z",
+          "end_time": "2026-01-13T14:57:16.418594491Z",
+          "duration_seconds": 0.003120462
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.384185791015625e-07,
+        "step2_select_topk": 0.00029015541076660156,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0003151893615722656
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -7637,6 +8717,42 @@
         "num_r": 2,
         "num_s": 1,
         "num_mappings": 2
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:57:17.378555858Z",
+          "end_time": "2026-01-13T14:57:17.399913655Z",
+          "duration_seconds": 0.021357791
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:57:17.39992337Z",
+          "end_time": "2026-01-13T14:57:27.993687299Z",
+          "duration_seconds": 10.593763933
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:57:27.993692329Z",
+          "end_time": "2026-01-13T14:57:28.098200897Z",
+          "duration_seconds": 0.10450861
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:57:28.098243362Z",
+          "end_time": "2026-01-13T14:57:28.496261596Z",
+          "duration_seconds": 0.398018192
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:57:28.496274014Z",
+          "end_time": "2026-01-13T14:57:28.497422564Z",
+          "duration_seconds": 0.001148549
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.430511474609375e-06,
+        "step2_select_topk": 0.00031828880310058594,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0003459453582763672
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 1.9311025142669678
       }
     },
     {
@@ -7770,6 +8886,42 @@
         "num_r": 30,
         "num_s": 16,
         "num_mappings": 30
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:57:29.219070887Z",
+          "end_time": "2026-01-13T14:57:29.230637328Z",
+          "duration_seconds": 0.011566441
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:57:29.230645203Z",
+          "end_time": "2026-01-13T14:57:39.975187434Z",
+          "duration_seconds": 10.744542232
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:57:39.975319954Z",
+          "end_time": "2026-01-13T14:57:39.977639881Z",
+          "duration_seconds": 0.002319935
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:57:39.977978954Z",
+          "end_time": "2026-01-13T14:57:40.436665675Z",
+          "duration_seconds": 0.458686714
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:57:40.436678456Z",
+          "end_time": "2026-01-13T14:57:40.440833474Z",
+          "duration_seconds": 0.004155019
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.2172927856445312e-05,
+        "step2_select_topk": 9.72747802734375e-05,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00017380714416503906
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 24.533958673477173
       }
     },
     {
@@ -7823,6 +8975,42 @@
         "num_r": 10,
         "num_s": 7,
         "num_mappings": 10
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:57:41.593367889Z",
+          "end_time": "2026-01-13T14:57:41.62005185Z",
+          "duration_seconds": 0.026683961
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:57:41.620063324Z",
+          "end_time": "2026-01-13T14:57:51.399920137Z",
+          "duration_seconds": 9.779856867
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:57:51.400030435Z",
+          "end_time": "2026-01-13T14:57:51.486575091Z",
+          "duration_seconds": 0.086544646
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:57:51.486607701Z",
+          "end_time": "2026-01-13T14:57:51.961095217Z",
+          "duration_seconds": 0.474487476
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:57:51.961108032Z",
+          "end_time": "2026-01-13T14:57:51.962984761Z",
+          "duration_seconds": 0.001876735
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.6226043701171875e-06,
+        "step2_select_topk": 0.0003924369812011719,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00041866302490234375
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 1.3017640113830566
       }
     },
     {
@@ -7880,6 +9068,42 @@
         "num_r": 11,
         "num_s": 8,
         "num_mappings": 11
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:57:52.697280291Z",
+          "end_time": "2026-01-13T14:57:52.70886754Z",
+          "duration_seconds": 0.011587248
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:57:52.708879328Z",
+          "end_time": "2026-01-13T14:58:06.602229083Z",
+          "duration_seconds": 13.893349798
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:58:06.60224078Z",
+          "end_time": "2026-01-13T14:58:06.704536434Z",
+          "duration_seconds": 0.102295632
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:58:06.704671496Z",
+          "end_time": "2026-01-13T14:58:07.340394247Z",
+          "duration_seconds": 0.635722722
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:58:07.340405983Z",
+          "end_time": "2026-01-13T14:58:07.343906998Z",
+          "duration_seconds": 0.003501015
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 4.0531158447265625e-06,
+        "step2_select_topk": 0.0005040168762207031,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0005319118499755859
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 3.025783061981201
       }
     },
     {
@@ -7892,6 +9116,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:58:08.383447689Z",
+          "end_time": "2026-01-13T14:58:08.409537572Z",
+          "duration_seconds": 0.026089883
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:58:08.409713051Z",
+          "end_time": "2026-01-13T14:58:18.31736832Z",
+          "duration_seconds": 9.907655266
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:58:18.317373965Z",
+          "end_time": "2026-01-13T14:58:18.318659768Z",
+          "duration_seconds": 0.001285804
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:58:18.318666993Z",
+          "end_time": "2026-01-13T14:58:18.706949119Z",
+          "duration_seconds": 0.38828212
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:58:18.706966114Z",
+          "end_time": "2026-01-13T14:58:18.707165325Z",
+          "duration_seconds": 0.000199211
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.384185791015625e-07,
+        "step2_select_topk": 0.00020456314086914062,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00023818016052246094
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -7925,6 +9185,42 @@
         "num_r": 5,
         "num_s": 4,
         "num_mappings": 5
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:58:19.415828216Z",
+          "end_time": "2026-01-13T14:58:19.427462026Z",
+          "duration_seconds": 0.01163381
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:58:19.427474332Z",
+          "end_time": "2026-01-13T14:58:30.584880711Z",
+          "duration_seconds": 11.157406386
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:58:30.584884578Z",
+          "end_time": "2026-01-13T14:58:30.593942125Z",
+          "duration_seconds": 0.009057545
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:58:30.593954272Z",
+          "end_time": "2026-01-13T14:58:31.149086671Z",
+          "duration_seconds": 0.555132401
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:58:31.149108604Z",
+          "end_time": "2026-01-13T14:58:31.150193637Z",
+          "duration_seconds": 0.001085032
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.9073486328125e-06,
+        "step2_select_topk": 0.0003044605255126953,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0003292560577392578
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -8130,6 +9426,42 @@
         "num_r": 48,
         "num_s": 16,
         "num_mappings": 48
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:58:32.126237104Z",
+          "end_time": "2026-01-13T14:58:32.149127129Z",
+          "duration_seconds": 0.022890023
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:58:32.149395895Z",
+          "end_time": "2026-01-13T14:58:42.277683798Z",
+          "duration_seconds": 10.128287928
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:58:42.277694234Z",
+          "end_time": "2026-01-13T14:58:42.428309848Z",
+          "duration_seconds": 0.150615664
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:58:42.428341096Z",
+          "end_time": "2026-01-13T14:58:42.848385596Z",
+          "duration_seconds": 0.420044469
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:58:42.848395766Z",
+          "end_time": "2026-01-13T14:58:42.853904419Z",
+          "duration_seconds": 0.005508654
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.9788742065429688e-05,
+        "step2_select_topk": 0.0008692741394042969,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0009152889251708984
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 12.55945611000061
       }
     },
     {
@@ -8319,6 +9651,42 @@
         "num_r": 44,
         "num_s": 14,
         "num_mappings": 44
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:58:43.583380581Z",
+          "end_time": "2026-01-13T14:58:43.599305807Z",
+          "duration_seconds": 0.015925223
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:58:43.599317662Z",
+          "end_time": "2026-01-13T14:58:55.144787518Z",
+          "duration_seconds": 11.545469863
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:58:55.144795241Z",
+          "end_time": "2026-01-13T14:58:55.213353396Z",
+          "duration_seconds": 0.068558197
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:58:55.213539865Z",
+          "end_time": "2026-01-13T14:58:55.743914917Z",
+          "duration_seconds": 0.530375039
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:58:55.743932187Z",
+          "end_time": "2026-01-13T14:58:55.748923615Z",
+          "duration_seconds": 0.004991428
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 1.3113021850585938e-05,
+        "step2_select_topk": 0.0005462169647216797,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0005841255187988281
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 3.8973567485809326
       }
     },
     {
@@ -9428,6 +10796,42 @@
         "num_r": 274,
         "num_s": 43,
         "num_mappings": 274
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:58:56.620558609Z",
+          "end_time": "2026-01-13T14:58:56.642035358Z",
+          "duration_seconds": 0.021476723
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:58:56.642226933Z",
+          "end_time": "2026-01-13T14:59:08.25278524Z",
+          "duration_seconds": 11.610558307
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:59:08.252788447Z",
+          "end_time": "2026-01-13T14:59:08.440730768Z",
+          "duration_seconds": 0.187942324
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:59:08.440745042Z",
+          "end_time": "2026-01-13T14:59:08.857965762Z",
+          "duration_seconds": 0.417220725
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:59:08.857981992Z",
+          "end_time": "2026-01-13T14:59:08.945646799Z",
+          "duration_seconds": 0.087664801
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 0.0007941722869873047,
+        "step2_select_topk": 0.0012772083282470703,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0020961761474609375
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 103.74867939949036
       }
     },
     {
@@ -9481,6 +10885,42 @@
         "num_r": 10,
         "num_s": 5,
         "num_mappings": 10
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:59:09.679029436Z",
+          "end_time": "2026-01-13T14:59:09.692568779Z",
+          "duration_seconds": 0.013539342
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:59:09.692575919Z",
+          "end_time": "2026-01-13T14:59:21.147625746Z",
+          "duration_seconds": 11.455049834
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:59:21.147630298Z",
+          "end_time": "2026-01-13T14:59:21.156726268Z",
+          "duration_seconds": 0.009095979
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:59:21.156880331Z",
+          "end_time": "2026-01-13T14:59:21.862630124Z",
+          "duration_seconds": 0.70574979
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:59:21.862642311Z",
+          "end_time": "2026-01-13T14:59:21.862933218Z",
+          "duration_seconds": 0.000290908
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.86102294921875e-06,
+        "step2_select_topk": 1.1205673217773438e-05,
+        "step3_format_output": 0.0,
+        "total_duration": 3.886222839355469e-05
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.8338949680328369
       }
     },
     {
@@ -9493,6 +10933,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:59:22.820986138Z",
+          "end_time": "2026-01-13T14:59:22.846035665Z",
+          "duration_seconds": 0.025049531
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:59:22.84605177Z",
+          "end_time": "2026-01-13T14:59:33.010364787Z",
+          "duration_seconds": 10.164313049
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:59:33.010373555Z",
+          "end_time": "2026-01-13T14:59:33.06863631Z",
+          "duration_seconds": 0.058262745
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:59:33.068652744Z",
+          "end_time": "2026-01-13T14:59:33.501657984Z",
+          "duration_seconds": 0.433005234
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:59:33.501669692Z",
+          "end_time": "2026-01-13T14:59:33.502209885Z",
+          "duration_seconds": 0.000540193
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 7.152557373046875e-07,
+        "step2_select_topk": 0.00014066696166992188,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00016379356384277344
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -9530,6 +11006,42 @@
         "num_r": 6,
         "num_s": 6,
         "num_mappings": 6
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:59:34.299518308Z",
+          "end_time": "2026-01-13T14:59:34.313362055Z",
+          "duration_seconds": 0.013843742
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:59:34.313371757Z",
+          "end_time": "2026-01-13T14:59:45.024372614Z",
+          "duration_seconds": 10.711000856
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:59:45.024376426Z",
+          "end_time": "2026-01-13T14:59:45.026076998Z",
+          "duration_seconds": 0.001700578
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:59:45.026084117Z",
+          "end_time": "2026-01-13T14:59:45.561427161Z",
+          "duration_seconds": 0.535343042
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:59:45.561441921Z",
+          "end_time": "2026-01-13T14:59:45.562998422Z",
+          "duration_seconds": 0.001556501
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.1457672119140625e-06,
+        "step2_select_topk": 0.0003800392150878906,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0004093647003173828
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -9627,6 +11139,42 @@
         "num_r": 21,
         "num_s": 14,
         "num_mappings": 21
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:59:46.440404261Z",
+          "end_time": "2026-01-13T14:59:46.464750593Z",
+          "duration_seconds": 0.024346326
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:59:46.464761527Z",
+          "end_time": "2026-01-13T14:59:58.773059742Z",
+          "duration_seconds": 12.308298224
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T14:59:58.773066321Z",
+          "end_time": "2026-01-13T14:59:58.849690305Z",
+          "duration_seconds": 0.076623999
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T14:59:58.849715648Z",
+          "end_time": "2026-01-13T14:59:59.252442793Z",
+          "duration_seconds": 0.402727131
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T14:59:59.252455821Z",
+          "end_time": "2026-01-13T14:59:59.255615371Z",
+          "duration_seconds": 0.003159551
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 4.5299530029296875e-06,
+        "step2_select_topk": 0.00014352798461914062,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00016999244689941406
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -9639,6 +11187,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T14:59:59.974694016Z",
+          "end_time": "2026-01-13T14:59:59.989899987Z",
+          "duration_seconds": 0.015205969
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T14:59:59.989909426Z",
+          "end_time": "2026-01-13T15:00:11.614312897Z",
+          "duration_seconds": 11.624403525
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T15:00:11.614320206Z",
+          "end_time": "2026-01-13T15:00:11.641697958Z",
+          "duration_seconds": 0.027377748
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T15:00:11.641724027Z",
+          "end_time": "2026-01-13T15:00:12.332053208Z",
+          "duration_seconds": 0.690329158
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T15:00:12.332067471Z",
+          "end_time": "2026-01-13T15:00:12.333762853Z",
+          "duration_seconds": 0.00169539
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.384185791015625e-07,
+        "step2_select_topk": 8.58306884765625e-05,
+        "step3_format_output": 0.0,
+        "total_duration": 0.00010991096496582031
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -9651,6 +11235,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T15:00:13.357031865Z",
+          "end_time": "2026-01-13T15:00:13.376101584Z",
+          "duration_seconds": 0.019069713
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T15:00:13.376109508Z",
+          "end_time": "2026-01-13T15:00:23.125322911Z",
+          "duration_seconds": 9.749213407
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T15:00:23.125326807Z",
+          "end_time": "2026-01-13T15:00:23.127756435Z",
+          "duration_seconds": 0.002429632
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T15:00:23.127763766Z",
+          "end_time": "2026-01-13T15:00:23.535434954Z",
+          "duration_seconds": 0.407671183
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T15:00:23.535449396Z",
+          "end_time": "2026-01-13T15:00:23.537083126Z",
+          "duration_seconds": 0.001633729
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 2.384185791015625e-07,
+        "step2_select_topk": 0.0003116130828857422,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0003352165222167969
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -9663,6 +11283,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T15:00:24.316654784Z",
+          "end_time": "2026-01-13T15:00:24.328366133Z",
+          "duration_seconds": 0.011711349
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T15:00:24.328461115Z",
+          "end_time": "2026-01-13T15:00:35.789413214Z",
+          "duration_seconds": 11.460952141
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T15:00:35.789425111Z",
+          "end_time": "2026-01-13T15:00:35.867765732Z",
+          "duration_seconds": 0.07834066
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T15:00:35.867803506Z",
+          "end_time": "2026-01-13T15:00:36.389536869Z",
+          "duration_seconds": 0.521733325
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T15:00:36.38954668Z",
+          "end_time": "2026-01-13T15:00:36.400317374Z",
+          "duration_seconds": 0.010770694
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 7.152557373046875e-07,
+        "step2_select_topk": 0.0021975040435791016,
+        "step3_format_output": 0.0,
+        "total_duration": 0.002227306365966797
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -9675,6 +11331,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T15:00:37.248668938Z",
+          "end_time": "2026-01-13T15:00:37.272011693Z",
+          "duration_seconds": 0.023342752
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T15:00:37.27202273Z",
+          "end_time": "2026-01-13T15:00:46.828717982Z",
+          "duration_seconds": 9.556695259
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T15:00:46.828720946Z",
+          "end_time": "2026-01-13T15:00:46.829170861Z",
+          "duration_seconds": 0.000449916
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T15:00:46.829179058Z",
+          "end_time": "2026-01-13T15:00:47.206477557Z",
+          "duration_seconds": 0.377298495
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T15:00:47.206489529Z",
+          "end_time": "2026-01-13T15:00:47.206921092Z",
+          "duration_seconds": 0.000431563
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 7.152557373046875e-07,
+        "step2_select_topk": 0.0003426074981689453,
+        "step3_format_output": 0.0,
+        "total_duration": 0.0003657341003417969
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     },
     {
@@ -9712,6 +11404,42 @@
         "num_r": 6,
         "num_s": 4,
         "num_mappings": 6
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T15:00:47.946849306Z",
+          "end_time": "2026-01-13T15:00:47.95806631Z",
+          "duration_seconds": 0.011217001
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T15:00:47.958079513Z",
+          "end_time": "2026-01-13T15:00:58.943678968Z",
+          "duration_seconds": 10.985599463
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T15:00:58.943837129Z",
+          "end_time": "2026-01-13T15:00:58.97376106Z",
+          "duration_seconds": 0.029923969
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T15:00:58.973989238Z",
+          "end_time": "2026-01-13T15:00:59.588138165Z",
+          "duration_seconds": 0.61414884
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T15:00:59.588150965Z",
+          "end_time": "2026-01-13T15:00:59.588852118Z",
+          "duration_seconds": 0.000701156
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 4.291534423828125e-06,
+        "step2_select_topk": 1.2159347534179688e-05,
+        "step3_format_output": 0.0,
+        "total_duration": 4.1484832763671875e-05
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 2.043379783630371
       }
     },
     {
@@ -9724,6 +11452,42 @@
         "num_r": 0,
         "num_s": 0,
         "num_mappings": 0
+      },
+      "go_service_timings": {
+        "duckdb_connection": {
+          "start_time": "2026-01-13T15:01:00.688126812Z",
+          "end_time": "2026-01-13T15:01:00.716339768Z",
+          "duration_seconds": 0.028212957
+        },
+        "load_and_create_bitmaps": {
+          "start_time": "2026-01-13T15:01:00.71635436Z",
+          "end_time": "2026-01-13T15:01:10.74592585Z",
+          "duration_seconds": 10.029571534
+        },
+        "filter_bitmaps_to_relevant_tables": {
+          "start_time": "2026-01-13T15:01:10.745937144Z",
+          "end_time": "2026-01-13T15:01:10.846229371Z",
+          "duration_seconds": 0.100292282
+        },
+        "get_total_table_count": {
+          "start_time": "2026-01-13T15:01:10.846264011Z",
+          "end_time": "2026-01-13T15:01:11.234918944Z",
+          "duration_seconds": 0.388654902
+        },
+        "calculate_pmi_scores": {
+          "start_time": "2026-01-13T15:01:11.234933529Z",
+          "end_time": "2026-01-13T15:01:11.237938931Z",
+          "duration_seconds": 0.003005402
+        }
+      },
+      "python_service_timings": {
+        "step1_group_by_r": 9.5367431640625e-07,
+        "step2_select_topk": 0.0018401145935058594,
+        "step3_format_output": 0.0,
+        "total_duration": 0.001882791519165039
+      },
+      "ai_timings": {
+        "ai_total_duration_seconds": 0.0
       }
     }
   ]

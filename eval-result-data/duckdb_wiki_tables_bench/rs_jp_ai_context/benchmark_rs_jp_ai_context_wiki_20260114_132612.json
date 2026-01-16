@@ -1,17 +1,17 @@
 {
   "algorithm": "rs_jp",
-  "start_time": "2026-01-13T14:44:26.222851",
+  "start_time": "2026-01-13T14:43:39.260237",
   "database": "duckdb",
   "total_cases": 49,
   "successful_cases": 47,
   "failed_cases": 2,
-  "total_duration_seconds": 1843.1775795131678,
-  "average_duration_seconds": 39.216544244961014,
+  "total_duration_seconds": 1921.063679099655,
+  "average_duration_seconds": 40.87369529999266,
   "results": [
     {
       "case_number": 1,
       "success": true,
-      "duration_seconds": 55.783401565322876,
+      "duration_seconds": 60.628796839660644,
       "error": null,
       "output": {
         "mappings": [
@@ -361,7 +361,7 @@
           },
           {
             "r_val": "turkey",
-            "s_val": "europe"
+            "s_val": "asia"
           },
           {
             "r_val": "turkmenistan",
@@ -449,7 +449,7 @@
           },
           {
             "r_val": "georgia",
-            "s_val": "north america"
+            "s_val": "europe"
           },
           {
             "r_val": "germany",
@@ -593,7 +593,7 @@
           },
           {
             "r_val": "costa rica",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "cuba",
@@ -609,7 +609,7 @@
           },
           {
             "r_val": "el salvador",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "grenada",
@@ -617,7 +617,7 @@
           },
           {
             "r_val": "guatemala",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "haiti",
@@ -637,7 +637,7 @@
           },
           {
             "r_val": "nicaragua",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "panama",
@@ -774,45 +774,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:26.224974267Z",
-          "end_time": "2026-01-13T14:44:26.235390311Z",
-          "duration_seconds": 0.010416043
+          "start_time": "2026-01-13T14:43:39.2624676Z",
+          "end_time": "2026-01-13T14:43:39.271233252Z",
+          "duration_seconds": 0.008765652
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:26.23540404Z",
-          "end_time": "2026-01-13T14:44:27.328020543Z",
-          "duration_seconds": 1.092616499
+          "start_time": "2026-01-13T14:43:39.271246346Z",
+          "end_time": "2026-01-13T14:43:40.313117039Z",
+          "duration_seconds": 1.041870693
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:27.328023308Z",
-          "end_time": "2026-01-13T14:44:27.412298915Z",
-          "duration_seconds": 0.08427561
+          "start_time": "2026-01-13T14:43:40.313119821Z",
+          "end_time": "2026-01-13T14:43:40.40852608Z",
+          "duration_seconds": 0.09540628
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:27.412313074Z",
-          "end_time": "2026-01-13T14:44:27.484009817Z",
-          "duration_seconds": 0.071696749
+          "start_time": "2026-01-13T14:43:40.408545031Z",
+          "end_time": "2026-01-13T14:43:40.467021204Z",
+          "duration_seconds": 0.058476165
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:27.484022317Z",
-          "end_time": "2026-01-13T14:44:27.488939996Z",
-          "duration_seconds": 0.004917678
+          "start_time": "2026-01-13T14:43:40.467032002Z",
+          "end_time": "2026-01-13T14:43:40.473356318Z",
+          "duration_seconds": 0.006324315
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.649162292480469e-05,
-        "step2_select_topk": 0.00019979476928710938,
+        "step1_group_by_r": 8.606910705566406e-05,
+        "step2_select_topk": 0.00024390220642089844,
         "step3_format_output": 0.0,
-        "total_duration": 0.00027871131896972656
+        "total_duration": 0.0003590583801269531
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 54.473766565322876
+        "ai_total_duration_seconds": 59.364277839660645
       }
     },
     {
       "case_number": 2,
       "success": true,
-      "duration_seconds": 0.518124,
+      "duration_seconds": 0.629373,
       "error": null,
       "output": {
         "mappings": [
@@ -879,36 +879,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:27.534423164Z",
-          "end_time": "2026-01-13T14:44:27.542537575Z",
-          "duration_seconds": 0.008114414
+          "start_time": "2026-01-13T14:43:40.526719525Z",
+          "end_time": "2026-01-13T14:43:40.534842219Z",
+          "duration_seconds": 0.008122695
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:27.542547596Z",
-          "end_time": "2026-01-13T14:44:27.945457585Z",
-          "duration_seconds": 0.402909995
+          "start_time": "2026-01-13T14:43:40.534851877Z",
+          "end_time": "2026-01-13T14:43:41.051044095Z",
+          "duration_seconds": 0.516192215
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:27.945460457Z",
-          "end_time": "2026-01-13T14:44:27.945674119Z",
-          "duration_seconds": 0.000213662
+          "start_time": "2026-01-13T14:43:41.051046361Z",
+          "end_time": "2026-01-13T14:43:41.05132971Z",
+          "duration_seconds": 0.000283354
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:27.94567864Z",
-          "end_time": "2026-01-13T14:44:28.006372003Z",
-          "duration_seconds": 0.060693362
+          "start_time": "2026-01-13T14:43:41.051338503Z",
+          "end_time": "2026-01-13T14:43:41.1105598Z",
+          "duration_seconds": 0.05922129
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:28.006383299Z",
-          "end_time": "2026-01-13T14:44:28.006489517Z",
-          "duration_seconds": 0.000106218
+          "start_time": "2026-01-13T14:43:41.110570156Z",
+          "end_time": "2026-01-13T14:43:41.110719734Z",
+          "duration_seconds": 0.000149578
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 3.337860107421875e-06,
-        "step2_select_topk": 8.273124694824219e-05,
+        "step2_select_topk": 8.058547973632812e-05,
         "step3_format_output": 0.0,
-        "total_duration": 0.00011157989501953125
+        "total_duration": 0.00011038780212402344
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -917,7 +917,7 @@
     {
       "case_number": 3,
       "success": true,
-      "duration_seconds": 51.52654907974243,
+      "duration_seconds": 49.45560795066834,
       "error": null,
       "output": {
         "mappings": [
@@ -927,7 +927,7 @@
           },
           {
             "r_val": "ag",
-            "s_val": "silver"
+            "s_val": "chromium"
           },
           {
             "r_val": "al",
@@ -955,7 +955,7 @@
           },
           {
             "r_val": "b",
-            "s_val": "lithium"
+            "s_val": "boron"
           },
           {
             "r_val": "ba",
@@ -1103,7 +1103,7 @@
           },
           {
             "r_val": "i",
-            "s_val": "iridium"
+            "s_val": "iodine"
           },
           {
             "r_val": "in",
@@ -1163,7 +1163,7 @@
           },
           {
             "r_val": "na",
-            "s_val": "lithium"
+            "s_val": "sodium"
           },
           {
             "r_val": "nb",
@@ -1183,7 +1183,7 @@
           },
           {
             "r_val": "no",
-            "s_val": "gold"
+            "s_val": "nobelium"
           },
           {
             "r_val": "np",
@@ -1195,7 +1195,7 @@
           },
           {
             "r_val": "os",
-            "s_val": "chromium"
+            "s_val": "osmium"
           },
           {
             "r_val": "p",
@@ -1219,7 +1219,7 @@
           },
           {
             "r_val": "po",
-            "s_val": "potassium"
+            "s_val": "polonium"
           },
           {
             "r_val": "pr",
@@ -1243,7 +1243,7 @@
           },
           {
             "r_val": "re",
-            "s_val": "mercury"
+            "s_val": "rhenium"
           },
           {
             "r_val": "rf",
@@ -1267,7 +1267,7 @@
           },
           {
             "r_val": "s",
-            "s_val": "caesium"
+            "s_val": "helium"
           },
           {
             "r_val": "sb",
@@ -1367,7 +1367,7 @@
           },
           {
             "r_val": "v",
-            "s_val": "lead"
+            "s_val": "vanadium"
           },
           {
             "r_val": "w",
@@ -1379,7 +1379,7 @@
           },
           {
             "r_val": "y",
-            "s_val": "silver"
+            "s_val": "yttrium"
           },
           {
             "r_val": "yb",
@@ -1395,50 +1395,50 @@
           }
         ],
         "num_r": 118,
-        "num_s": 107,
+        "num_s": 115,
         "num_mappings": 118
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:28.053756065Z",
-          "end_time": "2026-01-13T14:44:28.060618878Z",
-          "duration_seconds": 0.006862813
+          "start_time": "2026-01-13T14:43:41.15730961Z",
+          "end_time": "2026-01-13T14:43:41.165088056Z",
+          "duration_seconds": 0.007778446
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:28.060633129Z",
-          "end_time": "2026-01-13T14:44:28.823884549Z",
-          "duration_seconds": 0.763251415
+          "start_time": "2026-01-13T14:43:41.165099686Z",
+          "end_time": "2026-01-13T14:43:42.129026794Z",
+          "duration_seconds": 0.963927109
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:28.823888216Z",
-          "end_time": "2026-01-13T14:44:28.862732809Z",
-          "duration_seconds": 0.038844599
+          "start_time": "2026-01-13T14:43:42.12902954Z",
+          "end_time": "2026-01-13T14:43:42.170346155Z",
+          "duration_seconds": 0.041316622
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:28.862747306Z",
-          "end_time": "2026-01-13T14:44:28.922932998Z",
-          "duration_seconds": 0.060185693
+          "start_time": "2026-01-13T14:43:42.170363958Z",
+          "end_time": "2026-01-13T14:43:42.237358862Z",
+          "duration_seconds": 0.066994904
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:28.922944823Z",
-          "end_time": "2026-01-13T14:44:28.939339059Z",
-          "duration_seconds": 0.016394233
+          "start_time": "2026-01-13T14:43:42.237373019Z",
+          "end_time": "2026-01-13T14:43:42.253674602Z",
+          "duration_seconds": 0.016301577
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.5299530029296875e-05,
-        "step2_select_topk": 0.001798391342163086,
+        "step1_group_by_r": 4.673004150390625e-05,
+        "step2_select_topk": 0.0016841888427734375,
         "step3_format_output": 0.0,
-        "total_duration": 0.0018687248229980469
+        "total_duration": 0.0017535686492919922
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 50.58920907974243
+        "ai_total_duration_seconds": 48.315377950668335
       }
     },
     {
       "case_number": 4,
       "success": true,
-      "duration_seconds": 0.552552,
+      "duration_seconds": 0.658121,
       "error": null,
       "output": {
         "mappings": [
@@ -1473,36 +1473,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:28.992895583Z",
-          "end_time": "2026-01-13T14:44:28.999977309Z",
-          "duration_seconds": 0.007081725
+          "start_time": "2026-01-13T14:43:42.299464533Z",
+          "end_time": "2026-01-13T14:43:42.307403848Z",
+          "duration_seconds": 0.007939316
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:28.999987089Z",
-          "end_time": "2026-01-13T14:44:29.439968243Z",
-          "duration_seconds": 0.439981151
+          "start_time": "2026-01-13T14:43:42.307413017Z",
+          "end_time": "2026-01-13T14:43:42.857838302Z",
+          "duration_seconds": 0.550425293
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:29.439970902Z",
-          "end_time": "2026-01-13T14:44:29.440286395Z",
-          "duration_seconds": 0.000315499
+          "start_time": "2026-01-13T14:43:42.857841774Z",
+          "end_time": "2026-01-13T14:43:42.858155645Z",
+          "duration_seconds": 0.000313871
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:29.440292477Z",
-          "end_time": "2026-01-13T14:44:29.501035057Z",
-          "duration_seconds": 0.060742579
+          "start_time": "2026-01-13T14:43:42.858161286Z",
+          "end_time": "2026-01-13T14:43:42.917233258Z",
+          "duration_seconds": 0.059071966
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:29.501046782Z",
-          "end_time": "2026-01-13T14:44:29.501341678Z",
-          "duration_seconds": 0.000294896
+          "start_time": "2026-01-13T14:43:42.917246376Z",
+          "end_time": "2026-01-13T14:43:42.917437909Z",
+          "duration_seconds": 0.000191535
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 1.9073486328125e-06,
-        "step2_select_topk": 0.0009512901306152344,
+        "step2_select_topk": 0.0010952949523925781,
         "step3_format_output": 0.0,
-        "total_duration": 0.0009763240814208984
+        "total_duration": 0.0011212825775146484
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -1511,7 +1511,7 @@
     {
       "case_number": 5,
       "success": true,
-      "duration_seconds": 39.89616736894226,
+      "duration_seconds": 43.77914277664185,
       "error": null,
       "output": {
         "mappings": [
@@ -1589,7 +1589,7 @@
           },
           {
             "r_val": "augusta",
-            "s_val": "georgia"
+            "s_val": "maine"
           },
           {
             "r_val": "annapolis",
@@ -1621,7 +1621,7 @@
           },
           {
             "r_val": "lincoln",
-            "s_val": "illinois"
+            "s_val": "nebraska"
           },
           {
             "r_val": "carson city",
@@ -1717,50 +1717,50 @@
           }
         ],
         "num_r": 50,
-        "num_s": 45,
+        "num_s": 46,
         "num_mappings": 50
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:29.547334987Z",
-          "end_time": "2026-01-13T14:44:29.555076785Z",
-          "duration_seconds": 0.007741798
+          "start_time": "2026-01-13T14:43:42.959406129Z",
+          "end_time": "2026-01-13T14:43:42.967837352Z",
+          "duration_seconds": 0.008431224
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:29.555084505Z",
-          "end_time": "2026-01-13T14:44:30.162786266Z",
-          "duration_seconds": 0.60770176
+          "start_time": "2026-01-13T14:43:42.967845668Z",
+          "end_time": "2026-01-13T14:43:43.56119754Z",
+          "duration_seconds": 0.593351873
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:30.162788737Z",
-          "end_time": "2026-01-13T14:44:30.209324661Z",
-          "duration_seconds": 0.046535932
+          "start_time": "2026-01-13T14:43:43.561201313Z",
+          "end_time": "2026-01-13T14:43:43.610027093Z",
+          "duration_seconds": 0.048825787
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:30.209340791Z",
-          "end_time": "2026-01-13T14:44:30.267840941Z",
-          "duration_seconds": 0.05850015
+          "start_time": "2026-01-13T14:43:43.610043176Z",
+          "end_time": "2026-01-13T14:43:43.670777482Z",
+          "duration_seconds": 0.060734305
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:30.267855733Z",
-          "end_time": "2026-01-13T14:44:30.280441222Z",
-          "duration_seconds": 0.012585481
+          "start_time": "2026-01-13T14:43:43.670793616Z",
+          "end_time": "2026-01-13T14:43:43.683423499Z",
+          "duration_seconds": 0.012629877
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.00010275840759277344,
-        "step2_select_topk": 6.937980651855469e-05,
+        "step1_group_by_r": 5.984306335449219e-05,
+        "step2_select_topk": 7.271766662597656e-05,
         "step3_format_output": 0.0,
-        "total_duration": 0.00019812583923339844
+        "total_duration": 0.0001571178436279297
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 39.11881136894226
+        "ai_total_duration_seconds": 43.013107776641846
       }
     },
     {
       "case_number": 6,
       "success": true,
-      "duration_seconds": 37.176459782989504,
+      "duration_seconds": 32.73673133924866,
       "error": null,
       "output": {
         "mappings": [
@@ -1846,7 +1846,7 @@
           },
           {
             "r_val": "gerald ford",
-            "s_val": "ohio"
+            "s_val": "nebraska"
           },
           {
             "r_val": "benjamin harrison",
@@ -1878,7 +1878,7 @@
           },
           {
             "r_val": "william mckinley",
-            "s_val": "new york"
+            "s_val": "ohio"
           },
           {
             "r_val": "theodore roosevelt",
@@ -1886,50 +1886,50 @@
           }
         ],
         "num_r": 30,
-        "num_s": 15,
+        "num_s": 16,
         "num_mappings": 30
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:30.327368403Z",
-          "end_time": "2026-01-13T14:44:30.335261964Z",
-          "duration_seconds": 0.007893559
+          "start_time": "2026-01-13T14:43:43.728149584Z",
+          "end_time": "2026-01-13T14:43:43.736334183Z",
+          "duration_seconds": 0.00818462
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:30.33527124Z",
-          "end_time": "2026-01-13T14:44:30.865300945Z",
-          "duration_seconds": 0.530029711
+          "start_time": "2026-01-13T14:43:43.736342911Z",
+          "end_time": "2026-01-13T14:43:44.320013835Z",
+          "duration_seconds": 0.583670923
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:30.865304746Z",
-          "end_time": "2026-01-13T14:44:30.875701668Z",
-          "duration_seconds": 0.010396923
+          "start_time": "2026-01-13T14:43:44.32001619Z",
+          "end_time": "2026-01-13T14:43:44.330479964Z",
+          "duration_seconds": 0.010463783
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:30.875715196Z",
-          "end_time": "2026-01-13T14:44:30.943836996Z",
-          "duration_seconds": 0.068121801
+          "start_time": "2026-01-13T14:43:44.330494513Z",
+          "end_time": "2026-01-13T14:43:44.413937206Z",
+          "duration_seconds": 0.083442689
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:30.943848648Z",
-          "end_time": "2026-01-13T14:44:30.945395998Z",
-          "duration_seconds": 0.001547343
+          "start_time": "2026-01-13T14:43:44.413947108Z",
+          "end_time": "2026-01-13T14:43:44.415162289Z",
+          "duration_seconds": 0.001215182
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.86102294921875e-05,
-        "step2_select_topk": 0.00017762184143066406,
+        "step1_group_by_r": 4.7206878662109375e-05,
+        "step2_select_topk": 0.00038433074951171875,
         "step3_format_output": 0.0,
-        "total_duration": 0.0002295970916748047
+        "total_duration": 0.0004763603210449219
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 36.5129017829895
+        "ai_total_duration_seconds": 32.00874733924866
       }
     },
     {
       "case_number": 7,
       "success": true,
-      "duration_seconds": 53.16951160110474,
+      "duration_seconds": 53.851123153656005,
       "error": null,
       "output": {
         "mappings": [
@@ -2140,51 +2140,51 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:30.9939366Z",
-          "end_time": "2026-01-13T14:44:31.001726986Z",
-          "duration_seconds": 0.007790386
+          "start_time": "2026-01-13T14:43:44.459006604Z",
+          "end_time": "2026-01-13T14:43:44.466990145Z",
+          "duration_seconds": 0.007983536
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:31.001735076Z",
-          "end_time": "2026-01-13T14:44:31.611794603Z",
-          "duration_seconds": 0.610059531
+          "start_time": "2026-01-13T14:43:44.467001562Z",
+          "end_time": "2026-01-13T14:43:45.036077357Z",
+          "duration_seconds": 0.569075802
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:31.611796646Z",
-          "end_time": "2026-01-13T14:44:31.644788427Z",
-          "duration_seconds": 0.032991785
+          "start_time": "2026-01-13T14:43:45.036080948Z",
+          "end_time": "2026-01-13T14:43:45.08688343Z",
+          "duration_seconds": 0.050802479
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:31.644809857Z",
-          "end_time": "2026-01-13T14:44:31.705127172Z",
-          "duration_seconds": 0.060317309
+          "start_time": "2026-01-13T14:43:45.086895387Z",
+          "end_time": "2026-01-13T14:43:45.155770283Z",
+          "duration_seconds": 0.068874902
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:31.705137763Z",
-          "end_time": "2026-01-13T14:44:31.712606817Z",
-          "duration_seconds": 0.007469053
+          "start_time": "2026-01-13T14:43:45.155789336Z",
+          "end_time": "2026-01-13T14:43:45.169419862Z",
+          "duration_seconds": 0.013630525
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.0517578125e-05,
-        "step2_select_topk": 5.626678466796875e-05,
+        "step1_group_by_r": 3.504753112792969e-05,
+        "step2_select_topk": 6.341934204101562e-05,
         "step3_format_output": 0.0,
-        "total_duration": 0.00010943412780761719
+        "total_duration": 0.0001323223114013672
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 52.404621601104736
+        "ai_total_duration_seconds": 53.099130153656006
       }
     },
     {
       "case_number": 8,
       "success": true,
-      "duration_seconds": 2.6281101575164794,
+      "duration_seconds": 3.2018826356048584,
       "error": null,
       "output": {
         "mappings": [
           {
             "r_val": "water",
-            "s_val": "hi"
+            "s_val": "no"
           },
           {
             "r_val": "carbon monoxide",
@@ -2289,45 +2289,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:31.762685526Z",
-          "end_time": "2026-01-13T14:44:31.770595775Z",
-          "duration_seconds": 0.007910249
+          "start_time": "2026-01-13T14:43:45.214829263Z",
+          "end_time": "2026-01-13T14:43:45.222567295Z",
+          "duration_seconds": 0.007738035
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:31.770604388Z",
-          "end_time": "2026-01-13T14:44:32.314265885Z",
-          "duration_seconds": 0.543661493
+          "start_time": "2026-01-13T14:43:45.22257973Z",
+          "end_time": "2026-01-13T14:43:45.889778196Z",
+          "duration_seconds": 0.667198467
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:32.314268735Z",
-          "end_time": "2026-01-13T14:44:32.319515123Z",
-          "duration_seconds": 0.005246391
+          "start_time": "2026-01-13T14:43:45.889780718Z",
+          "end_time": "2026-01-13T14:43:45.894920105Z",
+          "duration_seconds": 0.005139392
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:32.319520842Z",
-          "end_time": "2026-01-13T14:44:32.391303352Z",
-          "duration_seconds": 0.071782515
+          "start_time": "2026-01-13T14:43:45.894925644Z",
+          "end_time": "2026-01-13T14:43:45.968804672Z",
+          "duration_seconds": 0.073879027
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:32.391316094Z",
-          "end_time": "2026-01-13T14:44:32.396334497Z",
-          "duration_seconds": 0.0050184
+          "start_time": "2026-01-13T14:43:45.968814803Z",
+          "end_time": "2026-01-13T14:43:45.973114658Z",
+          "duration_seconds": 0.004299854
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 5.9604644775390625e-06,
-        "step2_select_topk": 0.0016446113586425781,
+        "step1_group_by_r": 7.152557373046875e-06,
+        "step2_select_topk": 0.0016345977783203125,
         "step3_format_output": 0.0,
-        "total_duration": 0.0016827583312988281
+        "total_duration": 0.0016636848449707031
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 1.9441821575164795
+        "ai_total_duration_seconds": 2.3995206356048584
       }
     },
     {
       "case_number": 9,
       "success": true,
-      "duration_seconds": 105.69521373373414,
+      "duration_seconds": 118.77536851803589,
       "error": null,
       "output": {
         "mappings": [
@@ -2377,7 +2377,7 @@
           },
           {
             "r_val": "george washington university",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "michigan state university",
@@ -3313,7 +3313,7 @@
           },
           {
             "r_val": "california university of pennsylvania",
-            "s_val": "pennsylvania"
+            "s_val": "california"
           },
           {
             "r_val": "ohio northern university",
@@ -3789,7 +3789,7 @@
           },
           {
             "r_val": "wheaton college",
-            "s_val": "massachusetts"
+            "s_val": "illinois"
           },
           {
             "r_val": "oral roberts university",
@@ -3917,7 +3917,7 @@
           },
           {
             "r_val": "grace bible college",
-            "s_val": "wyoming"
+            "s_val": "michigan"
           },
           {
             "r_val": "lancaster bible college",
@@ -3969,7 +3969,7 @@
           },
           {
             "r_val": "life university",
-            "s_val": "georgia"
+            "s_val": "california"
           },
           {
             "r_val": "brandeis university",
@@ -4621,7 +4621,7 @@
           },
           {
             "r_val": "lincoln university",
-            "s_val": "missouri"
+            "s_val": "pennsylvania"
           },
           {
             "r_val": "spring arbor university",
@@ -4729,7 +4729,7 @@
           },
           {
             "r_val": "howard university",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "carlow university",
@@ -4765,7 +4765,7 @@
           },
           {
             "r_val": "augustana college",
-            "s_val": "illinois"
+            "s_val": "south dakota"
           },
           {
             "r_val": "hiram college",
@@ -5253,7 +5253,7 @@
           },
           {
             "r_val": "columbia college",
-            "s_val": "illinois"
+            "s_val": "south carolina"
           },
           {
             "r_val": "peru state college",
@@ -5345,7 +5345,7 @@
           },
           {
             "r_val": "trinity college",
-            "s_val": "massachusetts"
+            "s_val": "connecticut"
           },
           {
             "r_val": "george fox university",
@@ -5561,7 +5561,7 @@
           },
           {
             "r_val": "american university",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "hofstra university",
@@ -5925,7 +5925,7 @@
           },
           {
             "r_val": "gonzaga university",
-            "s_val": "nevada"
+            "s_val": "washington"
           },
           {
             "r_val": "governors state university",
@@ -6361,7 +6361,7 @@
           },
           {
             "r_val": "gallaudet university",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "west virginia university",
@@ -6513,50 +6513,50 @@
           }
         ],
         "num_r": 1045,
-        "num_s": 51,
+        "num_s": 50,
         "num_mappings": 1045
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:32.451290938Z",
-          "end_time": "2026-01-13T14:44:32.463131245Z",
-          "duration_seconds": 0.011840301
+          "start_time": "2026-01-13T14:43:46.021468367Z",
+          "end_time": "2026-01-13T14:43:46.029467404Z",
+          "duration_seconds": 0.007999041
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:32.463150148Z",
-          "end_time": "2026-01-13T14:44:33.070659513Z",
-          "duration_seconds": 0.607509368
+          "start_time": "2026-01-13T14:43:46.029480746Z",
+          "end_time": "2026-01-13T14:43:46.647547957Z",
+          "duration_seconds": 0.618067218
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:33.070663799Z",
-          "end_time": "2026-01-13T14:44:33.160964525Z",
-          "duration_seconds": 0.090300722
+          "start_time": "2026-01-13T14:43:46.647553017Z",
+          "end_time": "2026-01-13T14:43:46.735367663Z",
+          "duration_seconds": 0.087814654
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:33.160975869Z",
-          "end_time": "2026-01-13T14:44:33.221641962Z",
-          "duration_seconds": 0.060666096
+          "start_time": "2026-01-13T14:43:46.735382795Z",
+          "end_time": "2026-01-13T14:43:46.795846775Z",
+          "duration_seconds": 0.060463975
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:33.221652681Z",
-          "end_time": "2026-01-13T14:44:33.249265235Z",
-          "duration_seconds": 0.027612554
+          "start_time": "2026-01-13T14:43:46.795857254Z",
+          "end_time": "2026-01-13T14:43:46.822413995Z",
+          "duration_seconds": 0.026556741
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0002186298370361328,
-        "step2_select_topk": 0.0031883716583251953,
+        "step1_group_by_r": 0.00022292137145996094,
+        "step2_select_topk": 0.0031516551971435547,
         "step3_format_output": 0.0,
-        "total_duration": 0.0034351348876953125
+        "total_duration": 0.0034041404724121094
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 104.84232473373413
+        "ai_total_duration_seconds": 117.92805051803589
       }
     },
     {
       "case_number": 10,
       "success": true,
-      "duration_seconds": 180.79498275073243,
+      "duration_seconds": 191.07786685507202,
       "error": null,
       "output": {
         "mappings": [
@@ -6602,7 +6602,7 @@
           },
           {
             "r_val": "argentina",
-            "s_val": "montevideo"
+            "s_val": "buenos aires"
           },
           {
             "r_val": "seychelles",
@@ -6618,7 +6618,7 @@
           },
           {
             "r_val": "bahrain",
-            "s_val": "kuwait city"
+            "s_val": "manama"
           },
           {
             "r_val": "namibia",
@@ -6634,7 +6634,7 @@
           },
           {
             "r_val": "georgia",
-            "s_val": "tbilisi"
+            "s_val": "yerevan"
           },
           {
             "r_val": "saint kitts and nevis",
@@ -6662,7 +6662,7 @@
           },
           {
             "r_val": "malawi",
-            "s_val": "harare"
+            "s_val": "lilongwe"
           },
           {
             "r_val": "andorra",
@@ -6678,7 +6678,7 @@
           },
           {
             "r_val": "bulgaria",
-            "s_val": "nicosia"
+            "s_val": "sofia"
           },
           {
             "r_val": "jordan",
@@ -6706,7 +6706,7 @@
           },
           {
             "r_val": "djibouti",
-            "s_val": "cairo"
+            "s_val": "djibouti"
           },
           {
             "r_val": "lebanon",
@@ -6722,7 +6722,7 @@
           },
           {
             "r_val": "czech republic",
-            "s_val": "bratislava"
+            "s_val": "prague"
           },
           {
             "r_val": "mauritania",
@@ -6738,11 +6738,11 @@
           },
           {
             "r_val": "san marino",
-            "s_val": "luxembourg"
+            "s_val": "san marino"
           },
           {
             "r_val": "australia",
-            "s_val": "victoria"
+            "s_val": "canberra"
           },
           {
             "r_val": "tajikistan",
@@ -6750,11 +6750,11 @@
           },
           {
             "r_val": "cameroon",
-            "s_val": "libreville"
+            "s_val": "yaounde"
           },
           {
             "r_val": "cyprus",
-            "s_val": "san marino"
+            "s_val": "nicosia"
           },
           {
             "r_val": "malaysia",
@@ -6778,11 +6778,11 @@
           },
           {
             "r_val": "luxembourg",
-            "s_val": "monaco"
+            "s_val": "luxembourg"
           },
           {
             "r_val": "brazil",
-            "s_val": "montevideo"
+            "s_val": "brasilia"
           },
           {
             "r_val": "algeria",
@@ -6834,7 +6834,7 @@
           },
           {
             "r_val": "afghanistan",
-            "s_val": "colombo"
+            "s_val": "kabul"
           },
           {
             "r_val": "burundi",
@@ -6842,7 +6842,7 @@
           },
           {
             "r_val": "singapore",
-            "s_val": "kuala lumpur"
+            "s_val": "singapore"
           },
           {
             "r_val": "federated states of micronesia",
@@ -6850,7 +6850,7 @@
           },
           {
             "r_val": "vatican city",
-            "s_val": "rome"
+            "s_val": "vatican city"
           },
           {
             "r_val": "russia",
@@ -6902,7 +6902,7 @@
           },
           {
             "r_val": "benin",
-            "s_val": "dakar"
+            "s_val": "djibouti"
           },
           {
             "r_val": "angola",
@@ -6914,11 +6914,11 @@
           },
           {
             "r_val": "sudan",
-            "s_val": "djibouti"
+            "s_val": "khartoum"
           },
           {
             "r_val": "portugal",
-            "s_val": "bissau"
+            "s_val": "lisbon"
           },
           {
             "r_val": "grenada",
@@ -6942,7 +6942,7 @@
           },
           {
             "r_val": "iran",
-            "s_val": "tashkent"
+            "s_val": "tehran"
           },
           {
             "r_val": "morocco",
@@ -6954,7 +6954,7 @@
           },
           {
             "r_val": "guyana",
-            "s_val": "georgetown"
+            "s_val": "paramaribo"
           },
           {
             "r_val": "iraq",
@@ -6962,7 +6962,7 @@
           },
           {
             "r_val": "chile",
-            "s_val": "san salvador"
+            "s_val": "santiago"
           },
           {
             "r_val": "nepal",
@@ -6974,7 +6974,7 @@
           },
           {
             "r_val": "tanzania",
-            "s_val": "djibouti"
+            "s_val": "dar es salaam"
           },
           {
             "r_val": "ukraine",
@@ -6986,7 +6986,7 @@
           },
           {
             "r_val": "india",
-            "s_val": "dhaka"
+            "s_val": "new delhi"
           },
           {
             "r_val": "canada",
@@ -6994,11 +6994,11 @@
           },
           {
             "r_val": "maldives",
-            "s_val": "singapore"
+            "s_val": "colombo"
           },
           {
             "r_val": "turkey",
-            "s_val": "zagreb"
+            "s_val": "ankara"
           },
           {
             "r_val": "belgium",
@@ -7018,7 +7018,7 @@
           },
           {
             "r_val": "trinidad and tobago",
-            "s_val": "male"
+            "s_val": "bridgetown"
           },
           {
             "r_val": "central african republic",
@@ -7090,7 +7090,7 @@
           },
           {
             "r_val": "kuwait",
-            "s_val": "kuwait city"
+            "s_val": "manama"
           },
           {
             "r_val": "nigeria",
@@ -7122,7 +7122,7 @@
           },
           {
             "r_val": "spain",
-            "s_val": "andorra la vella"
+            "s_val": "madrid"
           },
           {
             "r_val": "liberia",
@@ -7186,7 +7186,7 @@
           },
           {
             "r_val": "belarus",
-            "s_val": "kiev"
+            "s_val": "minsk"
           },
           {
             "r_val": "mauritius",
@@ -7210,7 +7210,7 @@
           },
           {
             "r_val": "ethiopia",
-            "s_val": "djibouti"
+            "s_val": "addis ababa"
           },
           {
             "r_val": "egypt",
@@ -7230,7 +7230,7 @@
           },
           {
             "r_val": "saudi arabia",
-            "s_val": "doha"
+            "s_val": "riyadh"
           },
           {
             "r_val": "cape verde",
@@ -7254,7 +7254,7 @@
           },
           {
             "r_val": "slovakia",
-            "s_val": "zagreb"
+            "s_val": "bratislava"
           },
           {
             "r_val": "france",
@@ -7270,7 +7270,7 @@
           },
           {
             "r_val": "niger",
-            "s_val": "abuja"
+            "s_val": "niamey"
           },
           {
             "r_val": "rwanda",
@@ -7278,7 +7278,7 @@
           },
           {
             "r_val": "burma",
-            "s_val": "hanoi"
+            "s_val": "rangoon"
           },
           {
             "r_val": "bangladesh",
@@ -7326,50 +7326,50 @@
           }
         ],
         "num_r": 191,
-        "num_s": 157,
+        "num_s": 173,
         "num_mappings": 191
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:33.310970836Z",
-          "end_time": "2026-01-13T14:44:33.319132087Z",
-          "duration_seconds": 0.008161251
+          "start_time": "2026-01-13T14:43:46.875838467Z",
+          "end_time": "2026-01-13T14:43:46.884238493Z",
+          "duration_seconds": 0.008400026
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:33.31914231Z",
-          "end_time": "2026-01-13T14:44:34.48133262Z",
-          "duration_seconds": 1.162190312
+          "start_time": "2026-01-13T14:43:46.884247063Z",
+          "end_time": "2026-01-13T14:43:48.02328953Z",
+          "duration_seconds": 1.139042461
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:34.481336003Z",
-          "end_time": "2026-01-13T14:44:34.886897586Z",
-          "duration_seconds": 0.405561585
+          "start_time": "2026-01-13T14:43:48.023293104Z",
+          "end_time": "2026-01-13T14:43:48.418010141Z",
+          "duration_seconds": 0.394717041
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:34.886909919Z",
-          "end_time": "2026-01-13T14:44:34.961555452Z",
-          "duration_seconds": 0.07464554
+          "start_time": "2026-01-13T14:43:48.418022532Z",
+          "end_time": "2026-01-13T14:43:48.478458878Z",
+          "duration_seconds": 0.060436349
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:34.96156829Z",
-          "end_time": "2026-01-13T14:44:35.19797687Z",
-          "duration_seconds": 0.236408572
+          "start_time": "2026-01-13T14:43:48.478469771Z",
+          "end_time": "2026-01-13T14:43:48.709295442Z",
+          "duration_seconds": 0.230825668
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0002601146697998047,
-        "step2_select_topk": 0.0003113746643066406,
+        "step1_group_by_r": 0.0002543926239013672,
+        "step2_select_topk": 0.0002903938293457031,
         "step3_format_output": 0.0,
-        "total_duration": 0.0006160736083984375
+        "total_duration": 0.0005714893341064453
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 178.85905075073242
+        "ai_total_duration_seconds": 189.20136785507202
       }
     },
     {
       "case_number": 11,
       "success": true,
-      "duration_seconds": 5.669303977874756,
+      "duration_seconds": 5.495447605407715,
       "error": null,
       "output": {
         "mappings": [
@@ -7407,7 +7407,7 @@
           },
           {
             "r_val": "ruby",
-            "s_val": "july"
+            "s_val": "june"
           },
           {
             "r_val": "topaz",
@@ -7419,50 +7419,50 @@
           }
         ],
         "num_r": 11,
-        "num_s": 10,
+        "num_s": 9,
         "num_mappings": 11
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:35.256901953Z",
-          "end_time": "2026-01-13T14:44:35.264642168Z",
-          "duration_seconds": 0.007740212
+          "start_time": "2026-01-13T14:43:48.762293799Z",
+          "end_time": "2026-01-13T14:43:48.770426827Z",
+          "duration_seconds": 0.008133024
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:35.26465094Z",
-          "end_time": "2026-01-13T14:44:35.793406093Z",
-          "duration_seconds": 0.528755159
+          "start_time": "2026-01-13T14:43:48.770434689Z",
+          "end_time": "2026-01-13T14:43:49.311287599Z",
+          "duration_seconds": 0.540852914
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:35.793409254Z",
-          "end_time": "2026-01-13T14:44:35.794936585Z",
-          "duration_seconds": 0.001527333
+          "start_time": "2026-01-13T14:43:49.311289757Z",
+          "end_time": "2026-01-13T14:43:49.31262665Z",
+          "duration_seconds": 0.001336895
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:35.794942489Z",
-          "end_time": "2026-01-13T14:44:35.854012097Z",
-          "duration_seconds": 0.059069608
+          "start_time": "2026-01-13T14:43:49.312635574Z",
+          "end_time": "2026-01-13T14:43:49.371461185Z",
+          "duration_seconds": 0.058825609
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:35.854026624Z",
-          "end_time": "2026-01-13T14:44:35.854155955Z",
-          "duration_seconds": 0.000129332
+          "start_time": "2026-01-13T14:43:49.371470266Z",
+          "end_time": "2026-01-13T14:43:49.371554401Z",
+          "duration_seconds": 8.4135e-05
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.5762786865234375e-06,
-        "step2_select_topk": 9.393692016601562e-05,
+        "step1_group_by_r": 3.337860107421875e-06,
+        "step2_select_topk": 8.821487426757812e-05,
         "step3_format_output": 0.0,
-        "total_duration": 0.00012159347534179688
+        "total_duration": 0.00011491775512695312
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 5.020699977874756
+        "ai_total_duration_seconds": 4.843634605407715
       }
     },
     {
       "case_number": 12,
       "success": true,
-      "duration_seconds": 328.5570122008667,
+      "duration_seconds": 374.0429919374847,
       "error": null,
       "output": {
         "mappings": [
@@ -7556,7 +7556,7 @@
           },
           {
             "r_val": "virginia wesleyan college",
-            "s_val": "virginia beach"
+            "s_val": "norfolk"
           },
           {
             "r_val": "indiana university of pennsylvania",
@@ -7600,7 +7600,7 @@
           },
           {
             "r_val": "university of utah",
-            "s_val": "logan"
+            "s_val": "salt lake city"
           },
           {
             "r_val": "academy of art university",
@@ -7664,7 +7664,7 @@
           },
           {
             "r_val": "fort lewis college",
-            "s_val": "washington"
+            "s_val": "durango"
           },
           {
             "r_val": "university of rhode island",
@@ -7708,7 +7708,7 @@
           },
           {
             "r_val": "biola university",
-            "s_val": "california"
+            "s_val": "la mirada"
           },
           {
             "r_val": "meredith college",
@@ -7772,7 +7772,7 @@
           },
           {
             "r_val": "dickinson college",
-            "s_val": "centennial"
+            "s_val": "carlisle"
           },
           {
             "r_val": "ashland university",
@@ -7808,7 +7808,7 @@
           },
           {
             "r_val": "manhattan college",
-            "s_val": "new york"
+            "s_val": "bronx"
           },
           {
             "r_val": "ohio wesleyan university",
@@ -7912,7 +7912,7 @@
           },
           {
             "r_val": "westminster college",
-            "s_val": "salt lake city"
+            "s_val": "new wilmington"
           },
           {
             "r_val": "hamilton college",
@@ -7956,7 +7956,7 @@
           },
           {
             "r_val": "indiana state university",
-            "s_val": "indiana"
+            "s_val": "terre haute"
           },
           {
             "r_val": "marian university",
@@ -8000,7 +8000,7 @@
           },
           {
             "r_val": "clarkson university",
-            "s_val": "new york"
+            "s_val": "potsdam"
           },
           {
             "r_val": "malone university",
@@ -8032,7 +8032,7 @@
           },
           {
             "r_val": "loyola marymount university",
-            "s_val": "california"
+            "s_val": "los angeles"
           },
           {
             "r_val": "massachusetts college of art and design",
@@ -8072,7 +8072,7 @@
           },
           {
             "r_val": "western kentucky university",
-            "s_val": "bowling green"
+            "s_val": "henderson"
           },
           {
             "r_val": "bellevue college",
@@ -8136,7 +8136,7 @@
           },
           {
             "r_val": "quinnipiac university",
-            "s_val": "hamden"
+            "s_val": "new haven"
           },
           {
             "r_val": "barton college",
@@ -8156,7 +8156,7 @@
           },
           {
             "r_val": "pine manor college",
-            "s_val": "chestnut hill"
+            "s_val": "brookline"
           },
           {
             "r_val": "shenandoah university",
@@ -8168,7 +8168,7 @@
           },
           {
             "r_val": "william jessup university",
-            "s_val": "california"
+            "s_val": "rocklin"
           },
           {
             "r_val": "trinity lutheran college",
@@ -8232,7 +8232,7 @@
           },
           {
             "r_val": "wilmington university",
-            "s_val": "delaware"
+            "s_val": "new castle"
           },
           {
             "r_val": "simpson college",
@@ -8344,7 +8344,7 @@
           },
           {
             "r_val": "pepperdine university",
-            "s_val": "california"
+            "s_val": "malibu"
           },
           {
             "r_val": "langston university",
@@ -8360,7 +8360,7 @@
           },
           {
             "r_val": "university of southern indiana",
-            "s_val": "indiana"
+            "s_val": "evansville"
           },
           {
             "r_val": "ferrum college",
@@ -8472,7 +8472,7 @@
           },
           {
             "r_val": "northwestern college",
-            "s_val": "watertown"
+            "s_val": "sioux falls"
           },
           {
             "r_val": "philander smith college",
@@ -8592,7 +8592,7 @@
           },
           {
             "r_val": "hilbert college",
-            "s_val": "new york"
+            "s_val": "erie"
           },
           {
             "r_val": "southern connecticut state university",
@@ -8604,7 +8604,7 @@
           },
           {
             "r_val": "la sierra university",
-            "s_val": "california"
+            "s_val": "riverside"
           },
           {
             "r_val": "babson college",
@@ -8636,7 +8636,7 @@
           },
           {
             "r_val": "niagara university",
-            "s_val": "niagara university"
+            "s_val": "lewiston"
           },
           {
             "r_val": "university of the incarnate word",
@@ -8672,7 +8672,7 @@
           },
           {
             "r_val": "armstrong atlantic state university",
-            "s_val": "state university"
+            "s_val": "savannah"
           },
           {
             "r_val": "oakland city university",
@@ -8700,7 +8700,7 @@
           },
           {
             "r_val": "university of arkansas for medical sciences",
-            "s_val": "little rock"
+            "s_val": "fayetteville"
           },
           {
             "r_val": "santa fe university of art and design",
@@ -8756,7 +8756,7 @@
           },
           {
             "r_val": "washington college",
-            "s_val": "centennial"
+            "s_val": "chestertown"
           },
           {
             "r_val": "hawaii pacific university",
@@ -8772,7 +8772,7 @@
           },
           {
             "r_val": "carlos albizu university",
-            "s_val": "san juan"
+            "s_val": "miami"
           },
           {
             "r_val": "johnson university",
@@ -8792,7 +8792,7 @@
           },
           {
             "r_val": "dakota state university",
-            "s_val": "madison"
+            "s_val": "hastings"
           },
           {
             "r_val": "murray state university",
@@ -8812,7 +8812,7 @@
           },
           {
             "r_val": "butler university",
-            "s_val": "indiana"
+            "s_val": "indianapolis"
           },
           {
             "r_val": "pfeiffer university",
@@ -9112,7 +9112,7 @@
           },
           {
             "r_val": "medaille college",
-            "s_val": "new york"
+            "s_val": "buffalo"
           },
           {
             "r_val": "rochester college",
@@ -9220,7 +9220,7 @@
           },
           {
             "r_val": "life university",
-            "s_val": "california"
+            "s_val": "kutztown"
           },
           {
             "r_val": "brandeis university",
@@ -9244,7 +9244,7 @@
           },
           {
             "r_val": "southwestern college",
-            "s_val": "winfield"
+            "s_val": "chula vista"
           },
           {
             "r_val": "cedarville university",
@@ -9320,7 +9320,7 @@
           },
           {
             "r_val": "stanford university",
-            "s_val": "stanford"
+            "s_val": "california"
           },
           {
             "r_val": "utah state university",
@@ -9332,11 +9332,11 @@
           },
           {
             "r_val": "concordia college",
-            "s_val": "new york"
+            "s_val": "moorhead"
           },
           {
             "r_val": "university of southern california",
-            "s_val": "california"
+            "s_val": "los angeles"
           },
           {
             "r_val": "greensboro college",
@@ -9416,7 +9416,7 @@
           },
           {
             "r_val": "california institute of technology",
-            "s_val": "california"
+            "s_val": "pasadena"
           },
           {
             "r_val": "san diego christian college",
@@ -9444,7 +9444,7 @@
           },
           {
             "r_val": "daemen college",
-            "s_val": "erie"
+            "s_val": "amherst"
           },
           {
             "r_val": "appalachian state university",
@@ -9472,7 +9472,7 @@
           },
           {
             "r_val": "elon university",
-            "s_val": "elon"
+            "s_val": "greensboro"
           },
           {
             "r_val": "university of iowa",
@@ -9492,7 +9492,7 @@
           },
           {
             "r_val": "villanova university",
-            "s_val": "villanova"
+            "s_val": "philadelphia"
           },
           {
             "r_val": "assumption college",
@@ -9512,11 +9512,11 @@
           },
           {
             "r_val": "occidental college",
-            "s_val": "california"
+            "s_val": "los angeles"
           },
           {
             "r_val": "washington state university",
-            "s_val": "washington"
+            "s_val": "pullman"
           },
           {
             "r_val": "corban university",
@@ -9700,7 +9700,7 @@
           },
           {
             "r_val": "herzing university",
-            "s_val": "minneapolis"
+            "s_val": "madison"
           },
           {
             "r_val": "concordia university wisconsin",
@@ -9708,7 +9708,7 @@
           },
           {
             "r_val": "dominican university of california",
-            "s_val": "california"
+            "s_val": "san rafael"
           },
           {
             "r_val": "milwaukee school of engineering",
@@ -9828,7 +9828,7 @@
           },
           {
             "r_val": "morningside college",
-            "s_val": "central"
+            "s_val": "sioux city"
           },
           {
             "r_val": "oakwood university",
@@ -9948,7 +9948,7 @@
           },
           {
             "r_val": "university of puget sound",
-            "s_val": "washington"
+            "s_val": "tacoma"
           },
           {
             "r_val": "seattle pacific university",
@@ -10012,7 +10012,7 @@
           },
           {
             "r_val": "whitworth university",
-            "s_val": "washington"
+            "s_val": "spokane"
           },
           {
             "r_val": "east carolina university",
@@ -10128,7 +10128,7 @@
           },
           {
             "r_val": "central washington university",
-            "s_val": "washington"
+            "s_val": "ellensburg"
           },
           {
             "r_val": "ursinus college",
@@ -10176,7 +10176,7 @@
           },
           {
             "r_val": "hartwick college",
-            "s_val": "new york"
+            "s_val": "oneonta"
           },
           {
             "r_val": "point loma nazarene university",
@@ -10252,7 +10252,7 @@
           },
           {
             "r_val": "skidmore college",
-            "s_val": "new york"
+            "s_val": "saratoga springs"
           },
           {
             "r_val": "adrian college",
@@ -10304,7 +10304,7 @@
           },
           {
             "r_val": "wagner college",
-            "s_val": "new york"
+            "s_val": "staten island"
           },
           {
             "r_val": "elmhurst college",
@@ -10316,7 +10316,7 @@
           },
           {
             "r_val": "university of central oklahoma",
-            "s_val": "edmond"
+            "s_val": "oklahoma city"
           },
           {
             "r_val": "nebraska wesleyan university",
@@ -10544,7 +10544,7 @@
           },
           {
             "r_val": "cameron university",
-            "s_val": "lawton"
+            "s_val": "wichita falls"
           },
           {
             "r_val": "northwestern oklahoma state university",
@@ -10612,7 +10612,7 @@
           },
           {
             "r_val": "notre dame de namur university",
-            "s_val": "belmont"
+            "s_val": "california"
           },
           {
             "r_val": "minot state university",
@@ -10684,7 +10684,7 @@
           },
           {
             "r_val": "trinity college",
-            "s_val": "cambridge"
+            "s_val": "hartford"
           },
           {
             "r_val": "george fox university",
@@ -10712,7 +10712,7 @@
           },
           {
             "r_val": "bethany college",
-            "s_val": "bethany"
+            "s_val": "lindsborg"
           },
           {
             "r_val": "southwestern christian college",
@@ -10756,7 +10756,7 @@
           },
           {
             "r_val": "westmont college",
-            "s_val": "california"
+            "s_val": "santa barbara"
           },
           {
             "r_val": "troy university",
@@ -10816,7 +10816,7 @@
           },
           {
             "r_val": "lewis university",
-            "s_val": "romeoville"
+            "s_val": "joliet"
           },
           {
             "r_val": "elizabethtown college",
@@ -10928,7 +10928,7 @@
           },
           {
             "r_val": "hofstra university",
-            "s_val": "new york"
+            "s_val": "hempstead"
           },
           {
             "r_val": "hollins university",
@@ -10976,7 +10976,7 @@
           },
           {
             "r_val": "simpson university",
-            "s_val": "california"
+            "s_val": "redding"
           },
           {
             "r_val": "lesley university",
@@ -11064,7 +11064,7 @@
           },
           {
             "r_val": "georgia southwestern state university",
-            "s_val": "state university"
+            "s_val": "americus"
           },
           {
             "r_val": "covenant college",
@@ -11096,7 +11096,7 @@
           },
           {
             "r_val": "southern polytechnic state university",
-            "s_val": "state university"
+            "s_val": "marietta"
           },
           {
             "r_val": "amherst college",
@@ -11136,7 +11136,7 @@
           },
           {
             "r_val": "trine university",
-            "s_val": "indiana"
+            "s_val": "angola"
           },
           {
             "r_val": "lubbock christian university",
@@ -11216,7 +11216,7 @@
           },
           {
             "r_val": "columbus state university",
-            "s_val": "state university"
+            "s_val": "columbus"
           },
           {
             "r_val": "united states naval academy",
@@ -11360,7 +11360,7 @@
           },
           {
             "r_val": "the citadel",
-            "s_val": "stanford"
+            "s_val": "charleston"
           },
           {
             "r_val": "bard college",
@@ -11368,7 +11368,7 @@
           },
           {
             "r_val": "humboldt state university",
-            "s_val": "california"
+            "s_val": "arcata"
           },
           {
             "r_val": "arizona christian university",
@@ -11520,7 +11520,7 @@
           },
           {
             "r_val": "pacific lutheran university",
-            "s_val": "washington"
+            "s_val": "tacoma"
           },
           {
             "r_val": "canisius college",
@@ -11576,7 +11576,7 @@
           },
           {
             "r_val": "central michigan university",
-            "s_val": "midland"
+            "s_val": "mount pleasant"
           },
           {
             "r_val": "tufts university",
@@ -11680,7 +11680,7 @@
           },
           {
             "r_val": "john carroll university",
-            "s_val": "university heights"
+            "s_val": "cleveland"
           },
           {
             "r_val": "american international college",
@@ -11704,7 +11704,7 @@
           },
           {
             "r_val": "iona college",
-            "s_val": "new york"
+            "s_val": "new rochelle"
           },
           {
             "r_val": "central baptist college",
@@ -11728,7 +11728,7 @@
           },
           {
             "r_val": "molloy college",
-            "s_val": "new york"
+            "s_val": "rockville centre"
           },
           {
             "r_val": "philadelphia university",
@@ -11860,7 +11860,7 @@
           },
           {
             "r_val": "union college",
-            "s_val": "new york"
+            "s_val": "schenectady"
           },
           {
             "r_val": "western connecticut state university",
@@ -11892,7 +11892,7 @@
           },
           {
             "r_val": "western washington university",
-            "s_val": "washington"
+            "s_val": "bellingham"
           },
           {
             "r_val": "austin college",
@@ -11960,50 +11960,50 @@
           }
         ],
         "num_r": 1123,
-        "num_s": 673,
+        "num_s": 695,
         "num_mappings": 1123
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:35.916815274Z",
-          "end_time": "2026-01-13T14:44:35.92588514Z",
-          "duration_seconds": 0.009069866
+          "start_time": "2026-01-13T14:43:49.425499511Z",
+          "end_time": "2026-01-13T14:43:49.43364637Z",
+          "duration_seconds": 0.008146854
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:35.925898692Z",
-          "end_time": "2026-01-13T14:44:36.672110343Z",
-          "duration_seconds": 0.746211653
+          "start_time": "2026-01-13T14:43:49.433661047Z",
+          "end_time": "2026-01-13T14:43:50.147447095Z",
+          "duration_seconds": 0.713786048
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:36.67211362Z",
-          "end_time": "2026-01-13T14:44:37.213038907Z",
-          "duration_seconds": 0.540925295
+          "start_time": "2026-01-13T14:43:50.14744985Z",
+          "end_time": "2026-01-13T14:43:50.693127216Z",
+          "duration_seconds": 0.545677369
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:37.213057183Z",
-          "end_time": "2026-01-13T14:44:37.28436867Z",
-          "duration_seconds": 0.071311484
+          "start_time": "2026-01-13T14:43:50.693140636Z",
+          "end_time": "2026-01-13T14:43:50.769559808Z",
+          "duration_seconds": 0.076419174
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:37.284380988Z",
-          "end_time": "2026-01-13T14:44:37.652463715Z",
-          "duration_seconds": 0.368082728
+          "start_time": "2026-01-13T14:43:50.769570655Z",
+          "end_time": "2026-01-13T14:43:51.076335833Z",
+          "duration_seconds": 0.306765178
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.00029540061950683594,
-        "step2_select_topk": 0.0025331974029541016,
+        "step1_group_by_r": 0.00031948089599609375,
+        "step2_select_topk": 0.0025396347045898438,
         "step3_format_output": 0.0,
-        "total_duration": 0.0028536319732666016
+        "total_duration": 0.0029211044311523438
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 326.7714262008667
+        "ai_total_duration_seconds": 372.34465193748474
       }
     },
     {
       "case_number": 14,
       "success": true,
-      "duration_seconds": 269.0395726839447,
+      "duration_seconds": 265.70553765730284,
       "error": null,
       "output": {
         "mappings": [
@@ -12025,7 +12025,7 @@
           },
           {
             "r_val": "syria",
-            "s_val": "no"
+            "s_val": "sy"
           },
           {
             "r_val": "bahamas",
@@ -12041,7 +12041,7 @@
           },
           {
             "r_val": "mali",
-            "s_val": "tz"
+            "s_val": "ml"
           },
           {
             "r_val": "marshall islands",
@@ -12053,7 +12053,7 @@
           },
           {
             "r_val": "laos",
-            "s_val": "no"
+            "s_val": "la"
           },
           {
             "r_val": "argentina",
@@ -12061,7 +12061,7 @@
           },
           {
             "r_val": "falkland islands",
-            "s_val": "na"
+            "s_val": "fk"
           },
           {
             "r_val": "seychelles",
@@ -12081,7 +12081,7 @@
           },
           {
             "r_val": "saint barthelemy",
-            "s_val": "na"
+            "s_val": "no"
           },
           {
             "r_val": "namibia",
@@ -12089,7 +12089,7 @@
           },
           {
             "r_val": "comoros",
-            "s_val": "na"
+            "s_val": "km"
           },
           {
             "r_val": "faroe islands",
@@ -12097,7 +12097,7 @@
           },
           {
             "r_val": "finland",
-            "s_val": "no"
+            "s_val": "fi"
           },
           {
             "r_val": "netherlands antilles",
@@ -12105,7 +12105,7 @@
           },
           {
             "r_val": "georgia",
-            "s_val": "ga"
+            "s_val": "ge"
           },
           {
             "r_val": "saint kitts and nevis",
@@ -12113,15 +12113,15 @@
           },
           {
             "r_val": "yemen",
-            "s_val": "no"
+            "s_val": "ye"
           },
           {
             "r_val": "eritrea",
-            "s_val": "np"
+            "s_val": "er"
           },
           {
             "r_val": "puerto rico",
-            "s_val": "vi"
+            "s_val": "pr"
           },
           {
             "r_val": "aruba",
@@ -12133,7 +12133,7 @@
           },
           {
             "r_val": "ivory coast",
-            "s_val": "cf"
+            "s_val": "ci"
           },
           {
             "r_val": "libya",
@@ -12149,11 +12149,11 @@
           },
           {
             "r_val": "malawi",
-            "s_val": "na"
+            "s_val": "mw"
           },
           {
             "r_val": "andorra",
-            "s_val": "na"
+            "s_val": "ad"
           },
           {
             "r_val": "liechtenstein",
@@ -12173,7 +12173,7 @@
           },
           {
             "r_val": "jordan",
-            "s_val": "jo"
+            "s_val": "pn"
           },
           {
             "r_val": "tunisia",
@@ -12189,7 +12189,7 @@
           },
           {
             "r_val": "kenya",
-            "s_val": "no"
+            "s_val": "ke"
           },
           {
             "r_val": "french polynesia",
@@ -12221,23 +12221,23 @@
           },
           {
             "r_val": "mauritania",
-            "s_val": "ne"
+            "s_val": "mr"
           },
           {
             "r_val": "saint lucia",
-            "s_val": "st"
+            "s_val": "lc"
           },
           {
             "r_val": "mayotte",
-            "s_val": "mf"
+            "s_val": "yt"
           },
           {
             "r_val": "israel",
-            "s_val": "is"
+            "s_val": "il"
           },
           {
             "r_val": "san marino",
-            "s_val": "si"
+            "s_val": "sm"
           },
           {
             "r_val": "australia",
@@ -12249,11 +12249,11 @@
           },
           {
             "r_val": "cameroon",
-            "s_val": "no"
+            "s_val": "cm"
           },
           {
             "r_val": "gibraltar",
-            "s_val": "gl"
+            "s_val": "gi"
           },
           {
             "r_val": "cyprus",
@@ -12269,15 +12269,15 @@
           },
           {
             "r_val": "iceland",
-            "s_val": "no"
+            "s_val": "is"
           },
           {
             "r_val": "oman",
-            "s_val": "no"
+            "s_val": "om"
           },
           {
             "r_val": "armenia",
-            "s_val": "na"
+            "s_val": "am"
           },
           {
             "r_val": "gabon",
@@ -12285,7 +12285,7 @@
           },
           {
             "r_val": "luxembourg",
-            "s_val": "ws"
+            "s_val": "lu"
           },
           {
             "r_val": "brazil",
@@ -12313,7 +12313,7 @@
           },
           {
             "r_val": "antigua and barbuda",
-            "s_val": "na"
+            "s_val": "ag"
           },
           {
             "r_val": "colombia",
@@ -12353,11 +12353,11 @@
           },
           {
             "r_val": "afghanistan",
-            "s_val": "na"
+            "s_val": "af"
           },
           {
             "r_val": "burundi",
-            "s_val": "ru"
+            "s_val": "bi"
           },
           {
             "r_val": "singapore",
@@ -12385,7 +12385,7 @@
           },
           {
             "r_val": "saint pierre and miquelon",
-            "s_val": "na"
+            "s_val": "pm"
           },
           {
             "r_val": "kyrgyzstan",
@@ -12393,7 +12393,7 @@
           },
           {
             "r_val": "bhutan",
-            "s_val": "nr"
+            "s_val": "bt"
           },
           {
             "r_val": "romania",
@@ -12405,7 +12405,7 @@
           },
           {
             "r_val": "philippines",
-            "s_val": "sg"
+            "s_val": "ph"
           },
           {
             "r_val": "uzbekistan",
@@ -12425,15 +12425,15 @@
           },
           {
             "r_val": "montenegro",
-            "s_val": "si"
+            "s_val": "me"
           },
           {
             "r_val": "dominica",
-            "s_val": "do"
+            "s_val": "dm"
           },
           {
             "r_val": "indonesia",
-            "s_val": "nr"
+            "s_val": "id"
           },
           {
             "r_val": "benin",
@@ -12457,11 +12457,11 @@
           },
           {
             "r_val": "grenada",
-            "s_val": "gn"
+            "s_val": "gd"
           },
           {
             "r_val": "north korea",
-            "s_val": "no"
+            "s_val": "kp"
           },
           {
             "r_val": "cayman islands",
@@ -12469,7 +12469,7 @@
           },
           {
             "r_val": "greece",
-            "s_val": "na"
+            "s_val": "gr"
           },
           {
             "r_val": "latvia",
@@ -12501,7 +12501,7 @@
           },
           {
             "r_val": "chile",
-            "s_val": "ci"
+            "s_val": "cl"
           },
           {
             "r_val": "nepal",
@@ -12509,7 +12509,7 @@
           },
           {
             "r_val": "isle of man",
-            "s_val": "gb"
+            "s_val": "im"
           },
           {
             "r_val": "tanzania",
@@ -12521,15 +12521,15 @@
           },
           {
             "r_val": "ghana",
-            "s_val": "au"
+            "s_val": "gh"
           },
           {
             "r_val": "anguilla",
-            "s_val": "na"
+            "s_val": "ai"
           },
           {
             "r_val": "india",
-            "s_val": "im"
+            "s_val": "in"
           },
           {
             "r_val": "canada",
@@ -12541,7 +12541,7 @@
           },
           {
             "r_val": "turkey",
-            "s_val": "no"
+            "s_val": "tr"
           },
           {
             "r_val": "belgium",
@@ -12577,7 +12577,7 @@
           },
           {
             "r_val": "peru",
-            "s_val": "no"
+            "s_val": "pe"
           },
           {
             "r_val": "turkmenistan",
@@ -12589,7 +12589,7 @@
           },
           {
             "r_val": "fiji",
-            "s_val": "vi"
+            "s_val": "fj"
           },
           {
             "r_val": "tokelau",
@@ -12601,15 +12601,15 @@
           },
           {
             "r_val": "guinea",
-            "s_val": "gu"
+            "s_val": "gn"
           },
           {
             "r_val": "united states",
-            "s_val": "pg"
+            "s_val": "sg"
           },
           {
             "r_val": "chad",
-            "s_val": "no"
+            "s_val": "td"
           },
           {
             "r_val": "somalia",
@@ -12617,7 +12617,7 @@
           },
           {
             "r_val": "sao tome and principe",
-            "s_val": "na"
+            "s_val": "st"
           },
           {
             "r_val": "pitcairn islands",
@@ -12633,7 +12633,7 @@
           },
           {
             "r_val": "kiribati",
-            "s_val": "na"
+            "s_val": "ki"
           },
           {
             "r_val": "costa rica",
@@ -12669,7 +12669,7 @@
           },
           {
             "r_val": "united kingdom",
-            "s_val": "cd"
+            "s_val": "gb"
           },
           {
             "r_val": "switzerland",
@@ -12677,7 +12677,7 @@
           },
           {
             "r_val": "samoa",
-            "s_val": "na"
+            "s_val": "ws"
           },
           {
             "r_val": "spain",
@@ -12689,7 +12689,7 @@
           },
           {
             "r_val": "venezuela",
-            "s_val": "sa"
+            "s_val": "ve"
           },
           {
             "r_val": "burkina faso",
@@ -12697,7 +12697,7 @@
           },
           {
             "r_val": "swaziland",
-            "s_val": "na"
+            "s_val": "sz"
           },
           {
             "r_val": "palau",
@@ -12713,11 +12713,11 @@
           },
           {
             "r_val": "niue",
-            "s_val": "ni"
+            "s_val": "nu"
           },
           {
             "r_val": "austria",
-            "s_val": "au"
+            "s_val": "at"
           },
           {
             "r_val": "south korea",
@@ -12729,11 +12729,11 @@
           },
           {
             "r_val": "el salvador",
-            "s_val": "es"
+            "s_val": "sv"
           },
           {
             "r_val": "monaco",
-            "s_val": "na"
+            "s_val": "mc"
           },
           {
             "r_val": "guam",
@@ -12761,7 +12761,7 @@
           },
           {
             "r_val": "belarus",
-            "s_val": "no"
+            "s_val": "by"
           },
           {
             "r_val": "mauritius",
@@ -12777,7 +12777,7 @@
           },
           {
             "r_val": "senegal",
-            "s_val": "no"
+            "s_val": "sn"
           },
           {
             "r_val": "macedonia",
@@ -12793,11 +12793,11 @@
           },
           {
             "r_val": "egypt",
-            "s_val": "et"
+            "s_val": "eg"
           },
           {
             "r_val": "macau",
-            "s_val": "mo"
+            "s_val": "mc"
           },
           {
             "r_val": "sierra leone",
@@ -12805,7 +12805,7 @@
           },
           {
             "r_val": "bolivia",
-            "s_val": "bo"
+            "s_val": "bl"
           },
           {
             "r_val": "malta",
@@ -12813,7 +12813,7 @@
           },
           {
             "r_val": "saudi arabia",
-            "s_val": "ar"
+            "s_val": "sa"
           },
           {
             "r_val": "cape verde",
@@ -12821,7 +12821,7 @@
           },
           {
             "r_val": "pakistan",
-            "s_val": "im"
+            "s_val": "pk"
           },
           {
             "r_val": "gambia",
@@ -12901,7 +12901,7 @@
           },
           {
             "r_val": "uganda",
-            "s_val": "au"
+            "s_val": "ug"
           },
           {
             "r_val": "micronesia",
@@ -12917,54 +12917,54 @@
           },
           {
             "r_val": "saint helena",
-            "s_val": "na"
+            "s_val": "sh"
           }
         ],
         "num_r": 228,
-        "num_s": 162,
+        "num_s": 214,
         "num_mappings": 228
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:37.7170266Z",
-          "end_time": "2026-01-13T14:44:37.72501859Z",
-          "duration_seconds": 0.007991991
+          "start_time": "2026-01-13T14:43:51.137227802Z",
+          "end_time": "2026-01-13T14:43:51.145053427Z",
+          "duration_seconds": 0.007825625
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:37.725029124Z",
-          "end_time": "2026-01-13T14:44:38.992803061Z",
-          "duration_seconds": 1.267773937
+          "start_time": "2026-01-13T14:43:51.145069886Z",
+          "end_time": "2026-01-13T14:43:52.457194516Z",
+          "duration_seconds": 1.31212463
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:38.992805662Z",
-          "end_time": "2026-01-13T14:44:39.375504042Z",
-          "duration_seconds": 0.382698384
+          "start_time": "2026-01-13T14:43:52.45719784Z",
+          "end_time": "2026-01-13T14:43:52.843032351Z",
+          "duration_seconds": 0.38583452
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:39.375516948Z",
-          "end_time": "2026-01-13T14:44:39.43374039Z",
-          "duration_seconds": 0.058223442
+          "start_time": "2026-01-13T14:43:52.843049305Z",
+          "end_time": "2026-01-13T14:43:52.901277846Z",
+          "duration_seconds": 0.058228541
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:39.433751097Z",
-          "end_time": "2026-01-13T14:44:39.524302253Z",
-          "duration_seconds": 0.090551156
+          "start_time": "2026-01-13T14:43:52.901300982Z",
+          "end_time": "2026-01-13T14:43:52.991113386Z",
+          "duration_seconds": 0.089812401
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.00040912628173828125,
-        "step2_select_topk": 0.0004570484161376953,
+        "step1_group_by_r": 0.0003998279571533203,
+        "step2_select_topk": 0.0004317760467529297,
         "step3_format_output": 0.0,
-        "total_duration": 0.0008938312530517578
+        "total_duration": 0.0008597373962402344
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 267.1828076839447
+        "ai_total_duration_seconds": 263.80641865730286
       }
     },
     {
       "case_number": 15,
       "success": true,
-      "duration_seconds": 155.79991199198915,
+      "duration_seconds": 158.0085943381653,
       "error": null,
       "output": {
         "mappings": [
@@ -13010,7 +13010,7 @@
           },
           {
             "r_val": "panama",
-            "s_val": "usa"
+            "s_val": "pan"
           },
           {
             "r_val": "laos",
@@ -13018,7 +13018,7 @@
           },
           {
             "r_val": "argentina",
-            "s_val": "sur"
+            "s_val": "arg"
           },
           {
             "r_val": "falkland islands",
@@ -13038,7 +13038,7 @@
           },
           {
             "r_val": "bahrain",
-            "s_val": "bhr"
+            "s_val": "brn"
           },
           {
             "r_val": "namibia",
@@ -13050,11 +13050,11 @@
           },
           {
             "r_val": "faroe islands",
-            "s_val": "fra"
+            "s_val": "fro"
           },
           {
             "r_val": "finland",
-            "s_val": "tur"
+            "s_val": "fin"
           },
           {
             "r_val": "netherlands antilles",
@@ -13062,7 +13062,7 @@
           },
           {
             "r_val": "georgia",
-            "s_val": "usa"
+            "s_val": "geo"
           },
           {
             "r_val": "saint kitts and nevis",
@@ -13078,7 +13078,7 @@
           },
           {
             "r_val": "puerto rico",
-            "s_val": "usa"
+            "s_val": "pri"
           },
           {
             "r_val": "aruba",
@@ -13098,7 +13098,7 @@
           },
           {
             "r_val": "sweden",
-            "s_val": "est"
+            "s_val": "swe"
           },
           {
             "r_val": "malawi",
@@ -13110,11 +13110,11 @@
           },
           {
             "r_val": "liechtenstein",
-            "s_val": "lux"
+            "s_val": "lie"
           },
           {
             "r_val": "poland",
-            "s_val": "usa"
+            "s_val": "pol"
           },
           {
             "r_val": "bulgaria",
@@ -13122,7 +13122,7 @@
           },
           {
             "r_val": "jordan",
-            "s_val": "jpn"
+            "s_val": "jor"
           },
           {
             "r_val": "tunisia",
@@ -13162,7 +13162,7 @@
           },
           {
             "r_val": "cuba",
-            "s_val": "usa"
+            "s_val": "cub"
           },
           {
             "r_val": "czech republic",
@@ -13206,7 +13206,7 @@
           },
           {
             "r_val": "cyprus",
-            "s_val": "cyp"
+            "s_val": "lca"
           },
           {
             "r_val": "northern mariana islands",
@@ -13218,7 +13218,7 @@
           },
           {
             "r_val": "iceland",
-            "s_val": "grl"
+            "s_val": "is"
           },
           {
             "r_val": "oman",
@@ -13234,11 +13234,11 @@
           },
           {
             "r_val": "luxembourg",
-            "s_val": "lux"
+            "s_val": "lie"
           },
           {
             "r_val": "brazil",
-            "s_val": "usa"
+            "s_val": "bra"
           },
           {
             "r_val": "turks and caicos islands",
@@ -13322,11 +13322,11 @@
           },
           {
             "r_val": "russia",
-            "s_val": "chn"
+            "s_val": "rus"
           },
           {
             "r_val": "netherlands",
-            "s_val": "bel"
+            "s_val": "nld"
           },
           {
             "r_val": "china",
@@ -13414,7 +13414,7 @@
           },
           {
             "r_val": "cayman islands",
-            "s_val": "jam"
+            "s_val": "cym"
           },
           {
             "r_val": "greece",
@@ -13442,7 +13442,7 @@
           },
           {
             "r_val": "guyana",
-            "s_val": "geo"
+            "s_val": "guy"
           },
           {
             "r_val": "iraq",
@@ -13466,7 +13466,7 @@
           },
           {
             "r_val": "ukraine",
-            "s_val": "nru"
+            "s_val": "ukr"
           },
           {
             "r_val": "ghana",
@@ -13478,7 +13478,7 @@
           },
           {
             "r_val": "india",
-            "s_val": "blr"
+            "s_val": "ind"
           },
           {
             "r_val": "canada",
@@ -13510,7 +13510,7 @@
           },
           {
             "r_val": "bermuda",
-            "s_val": "jam"
+            "s_val": "bmu"
           },
           {
             "r_val": "central african republic",
@@ -13522,11 +13522,11 @@
           },
           {
             "r_val": "jamaica",
-            "s_val": "dom"
+            "s_val": "jam"
           },
           {
             "r_val": "peru",
-            "s_val": "usa"
+            "s_val": "per"
           },
           {
             "r_val": "turkmenistan",
@@ -13546,7 +13546,7 @@
           },
           {
             "r_val": "hong kong",
-            "s_val": "chn"
+            "s_val": "hkg"
           },
           {
             "r_val": "guinea",
@@ -13622,7 +13622,7 @@
           },
           {
             "r_val": "switzerland",
-            "s_val": "usa"
+            "s_val": "che"
           },
           {
             "r_val": "samoa",
@@ -13630,7 +13630,7 @@
           },
           {
             "r_val": "spain",
-            "s_val": "msr"
+            "s_val": "esp"
           },
           {
             "r_val": "liberia",
@@ -13686,7 +13686,7 @@
           },
           {
             "r_val": "guam",
-            "s_val": "usa"
+            "s_val": "gum"
           },
           {
             "r_val": "lesotho",
@@ -13706,15 +13706,15 @@
           },
           {
             "r_val": "japan",
-            "s_val": "hnd"
+            "s_val": "jpn"
           },
           {
             "r_val": "belarus",
-            "s_val": "rus"
+            "s_val": "blr"
           },
           {
             "r_val": "mauritius",
-            "s_val": "mar"
+            "s_val": "mus"
           },
           {
             "r_val": "albania",
@@ -13738,7 +13738,7 @@
           },
           {
             "r_val": "ethiopia",
-            "s_val": "per"
+            "s_val": "eth"
           },
           {
             "r_val": "egypt",
@@ -13746,7 +13746,7 @@
           },
           {
             "r_val": "macau",
-            "s_val": "chn"
+            "s_val": "cpv"
           },
           {
             "r_val": "sierra leone",
@@ -13770,7 +13770,7 @@
           },
           {
             "r_val": "pakistan",
-            "s_val": "geo"
+            "s_val": "pak"
           },
           {
             "r_val": "gambia",
@@ -13818,7 +13818,7 @@
           },
           {
             "r_val": "barbados",
-            "s_val": "jam"
+            "s_val": "brb"
           },
           {
             "r_val": "nicaragua",
@@ -13826,7 +13826,7 @@
           },
           {
             "r_val": "norway",
-            "s_val": "usa"
+            "s_val": "nor"
           },
           {
             "r_val": "botswana",
@@ -13842,7 +13842,7 @@
           },
           {
             "r_val": "dominican republic",
-            "s_val": "usa"
+            "s_val": "dom"
           },
           {
             "r_val": "mexico",
@@ -13866,50 +13866,50 @@
           }
         ],
         "num_r": 224,
-        "num_s": 193,
+        "num_s": 217,
         "num_mappings": 224
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:39.592436092Z",
-          "end_time": "2026-01-13T14:44:39.600429504Z",
-          "duration_seconds": 0.007993407
+          "start_time": "2026-01-13T14:43:53.054315418Z",
+          "end_time": "2026-01-13T14:43:53.062604908Z",
+          "duration_seconds": 0.008289483
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:39.600443842Z",
-          "end_time": "2026-01-13T14:44:40.84166739Z",
-          "duration_seconds": 1.2412235520000001
+          "start_time": "2026-01-13T14:43:53.062616499Z",
+          "end_time": "2026-01-13T14:43:54.353867133Z",
+          "duration_seconds": 1.291250628
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:40.841670587Z",
-          "end_time": "2026-01-13T14:44:41.101537816Z",
-          "duration_seconds": 0.259867233
+          "start_time": "2026-01-13T14:43:54.353870193Z",
+          "end_time": "2026-01-13T14:43:54.627260678Z",
+          "duration_seconds": 0.273390499
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:41.101551966Z",
-          "end_time": "2026-01-13T14:44:41.167168927Z",
-          "duration_seconds": 0.065616968
+          "start_time": "2026-01-13T14:43:54.627273549Z",
+          "end_time": "2026-01-13T14:43:54.689163567Z",
+          "duration_seconds": 0.061890024
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:41.167184661Z",
-          "end_time": "2026-01-13T14:44:41.207589694Z",
-          "duration_seconds": 0.04040503
+          "start_time": "2026-01-13T14:43:54.689183573Z",
+          "end_time": "2026-01-13T14:43:54.726870376Z",
+          "duration_seconds": 0.037686797
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.00011610984802246094,
-        "step2_select_topk": 0.0003333091735839844,
+        "step1_group_by_r": 8.988380432128906e-05,
+        "step2_select_topk": 0.00028061866760253906,
         "step3_format_output": 0.0,
-        "total_duration": 0.00048232078552246094
+        "total_duration": 0.00039696693420410156
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 154.13464999198914
+        "ai_total_duration_seconds": 156.29055833816528
       }
     },
     {
       "case_number": 16,
       "success": true,
-      "duration_seconds": 3.6778056859588624,
+      "duration_seconds": 5.090904696792602,
       "error": null,
       "output": {
         "mappings": [
@@ -13956,45 +13956,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:41.276717226Z",
-          "end_time": "2026-01-13T14:44:41.284840263Z",
-          "duration_seconds": 0.008123037
+          "start_time": "2026-01-13T14:43:54.791651391Z",
+          "end_time": "2026-01-13T14:43:54.799674716Z",
+          "duration_seconds": 0.008023324
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:41.284847334Z",
-          "end_time": "2026-01-13T14:44:41.89702338Z",
-          "duration_seconds": 0.612176043
+          "start_time": "2026-01-13T14:43:54.799681733Z",
+          "end_time": "2026-01-13T14:43:55.486600908Z",
+          "duration_seconds": 0.686919185
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:41.897026125Z",
-          "end_time": "2026-01-13T14:44:41.913000297Z",
-          "duration_seconds": 0.015974174
+          "start_time": "2026-01-13T14:43:55.486604432Z",
+          "end_time": "2026-01-13T14:43:55.504590881Z",
+          "duration_seconds": 0.017986453
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:41.913012784Z",
-          "end_time": "2026-01-13T14:44:41.973693853Z",
-          "duration_seconds": 0.060681073
+          "start_time": "2026-01-13T14:43:55.504602378Z",
+          "end_time": "2026-01-13T14:43:55.562253227Z",
+          "duration_seconds": 0.057650851
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:41.973705138Z",
-          "end_time": "2026-01-13T14:44:41.973872346Z",
-          "duration_seconds": 0.000167207
+          "start_time": "2026-01-13T14:43:55.562265057Z",
+          "end_time": "2026-01-13T14:43:55.562444299Z",
+          "duration_seconds": 0.00017924
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.0994415283203125e-06,
-        "step2_select_topk": 3.0517578125e-05,
+        "step1_group_by_r": 4.5299530029296875e-06,
+        "step2_select_topk": 0.00010204315185546875,
         "step3_format_output": 0.0,
-        "total_duration": 6.341934204101562e-05
+        "total_duration": 0.00014972686767578125
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 2.9348456859588623
+        "ai_total_duration_seconds": 4.2729856967926025
       }
     },
     {
       "case_number": 17,
       "success": true,
-      "duration_seconds": 0.567537,
+      "duration_seconds": 0.566181,
       "error": null,
       "output": {
         "mappings": [
@@ -14045,36 +14045,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:42.039287057Z",
-          "end_time": "2026-01-13T14:44:42.047188049Z",
-          "duration_seconds": 0.007900993
+          "start_time": "2026-01-13T14:43:55.631416536Z",
+          "end_time": "2026-01-13T14:43:55.639366148Z",
+          "duration_seconds": 0.007949614
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:42.047195165Z",
-          "end_time": "2026-01-13T14:44:42.494681245Z",
-          "duration_seconds": 0.447486086
+          "start_time": "2026-01-13T14:43:55.639373531Z",
+          "end_time": "2026-01-13T14:43:56.087293443Z",
+          "duration_seconds": 0.447919912
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:42.494684546Z",
-          "end_time": "2026-01-13T14:44:42.495715805Z",
-          "duration_seconds": 0.001031261
+          "start_time": "2026-01-13T14:43:56.087295983Z",
+          "end_time": "2026-01-13T14:43:56.087894272Z",
+          "duration_seconds": 0.00059829
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:42.495720521Z",
-          "end_time": "2026-01-13T14:44:42.557587492Z",
-          "duration_seconds": 0.061866971
+          "start_time": "2026-01-13T14:43:56.087896971Z",
+          "end_time": "2026-01-13T14:43:56.150771095Z",
+          "duration_seconds": 0.06287413
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:42.557603365Z",
-          "end_time": "2026-01-13T14:44:42.557689903Z",
-          "duration_seconds": 8.6538e-05
+          "start_time": "2026-01-13T14:43:56.150781727Z",
+          "end_time": "2026-01-13T14:43:56.150846562Z",
+          "duration_seconds": 6.4835e-05
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.86102294921875e-06,
-        "step2_select_topk": 8.344650268554688e-06,
+        "step1_group_by_r": 2.1457672119140625e-06,
+        "step2_select_topk": 8.821487426757812e-06,
         "step3_format_output": 0.0,
-        "total_duration": 4.100799560546875e-05
+        "total_duration": 3.361701965332031e-05
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -14083,7 +14083,7 @@
     {
       "case_number": 18,
       "success": false,
-      "duration_seconds": 0.606299,
+      "duration_seconds": 0.641395,
       "error": null,
       "output": {
         "mappings": [],
@@ -14093,36 +14093,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:42.628550913Z",
-          "end_time": "2026-01-13T14:44:42.636252921Z",
-          "duration_seconds": 0.007702008
+          "start_time": "2026-01-13T14:43:56.217578746Z",
+          "end_time": "2026-01-13T14:43:56.225751433Z",
+          "duration_seconds": 0.008172687
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:42.636260678Z",
-          "end_time": "2026-01-13T14:44:43.12770341Z",
-          "duration_seconds": 0.491442732
+          "start_time": "2026-01-13T14:43:56.225761224Z",
+          "end_time": "2026-01-13T14:43:56.737985436Z",
+          "duration_seconds": 0.512224214
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:43.127705152Z",
-          "end_time": "2026-01-13T14:44:43.127880503Z",
-          "duration_seconds": 0.000175353
+          "start_time": "2026-01-13T14:43:56.737988662Z",
+          "end_time": "2026-01-13T14:43:56.73821422Z",
+          "duration_seconds": 0.000225558
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:43.127883477Z",
-          "end_time": "2026-01-13T14:44:43.186764486Z",
-          "duration_seconds": 0.058881012
+          "start_time": "2026-01-13T14:43:56.738220326Z",
+          "end_time": "2026-01-13T14:43:56.806040911Z",
+          "duration_seconds": 0.067820585
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:43.186775706Z",
-          "end_time": "2026-01-13T14:44:43.186821107Z",
-          "duration_seconds": 4.5402e-05
+          "start_time": "2026-01-13T14:43:56.806054251Z",
+          "end_time": "2026-01-13T14:43:56.806125216Z",
+          "duration_seconds": 7.0964e-05
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 2.384185791015625e-07,
-        "step2_select_topk": 0.0001850128173828125,
+        "step2_select_topk": 0.00015044212341308594,
         "step3_format_output": 0.0,
-        "total_duration": 0.00020956993103027344
+        "total_duration": 0.00017452239990234375
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -14131,7 +14131,7 @@
     {
       "case_number": 19,
       "success": true,
-      "duration_seconds": 0.572312,
+      "duration_seconds": 0.685748,
       "error": null,
       "output": {
         "mappings": [
@@ -14146,36 +14146,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:43.254496852Z",
-          "end_time": "2026-01-13T14:44:43.262505564Z",
-          "duration_seconds": 0.008008711
+          "start_time": "2026-01-13T14:43:56.879213698Z",
+          "end_time": "2026-01-13T14:43:56.887391074Z",
+          "duration_seconds": 0.008177372
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:43.262514518Z",
-          "end_time": "2026-01-13T14:44:43.718860365Z",
-          "duration_seconds": 0.456345848
+          "start_time": "2026-01-13T14:43:56.887399969Z",
+          "end_time": "2026-01-13T14:43:57.452284406Z",
+          "duration_seconds": 0.564884441
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:43.718862479Z",
-          "end_time": "2026-01-13T14:44:43.719361894Z",
-          "duration_seconds": 0.00049942
+          "start_time": "2026-01-13T14:43:57.452286838Z",
+          "end_time": "2026-01-13T14:43:57.452809673Z",
+          "duration_seconds": 0.000522837
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:43.719367493Z",
-          "end_time": "2026-01-13T14:44:43.77771221Z",
-          "duration_seconds": 0.058344712
+          "start_time": "2026-01-13T14:43:57.452815376Z",
+          "end_time": "2026-01-13T14:43:57.513730606Z",
+          "duration_seconds": 0.060915226
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:43.777724584Z",
-          "end_time": "2026-01-13T14:44:43.778694136Z",
-          "duration_seconds": 0.000969553
+          "start_time": "2026-01-13T14:43:57.513740826Z",
+          "end_time": "2026-01-13T14:43:57.514778472Z",
+          "duration_seconds": 0.001037646
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 7.152557373046875e-07,
-        "step2_select_topk": 0.0009162425994873047,
+        "step1_group_by_r": 9.5367431640625e-07,
+        "step2_select_topk": 0.0009157657623291016,
         "step3_format_output": 0.0,
-        "total_duration": 0.0009388923645019531
+        "total_duration": 0.0009379386901855469
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -14184,7 +14184,7 @@
     {
       "case_number": 20,
       "success": true,
-      "duration_seconds": 0.623938,
+      "duration_seconds": 0.739851,
       "error": null,
       "output": {
         "mappings": [
@@ -14375,36 +14375,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:43.852981037Z",
-          "end_time": "2026-01-13T14:44:43.861544979Z",
-          "duration_seconds": 0.008563947
+          "start_time": "2026-01-13T14:43:57.588958331Z",
+          "end_time": "2026-01-13T14:43:57.597004586Z",
+          "duration_seconds": 0.008046253
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:43.86155888Z",
-          "end_time": "2026-01-13T14:44:44.364427716Z",
-          "duration_seconds": 0.50286883
+          "start_time": "2026-01-13T14:43:57.597014646Z",
+          "end_time": "2026-01-13T14:43:58.220067218Z",
+          "duration_seconds": 0.623052568
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:44.364430377Z",
-          "end_time": "2026-01-13T14:44:44.369342506Z",
-          "duration_seconds": 0.004912137
+          "start_time": "2026-01-13T14:43:58.220070016Z",
+          "end_time": "2026-01-13T14:43:58.225440747Z",
+          "duration_seconds": 0.005370734
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:44.369354091Z",
-          "end_time": "2026-01-13T14:44:44.428147323Z",
-          "duration_seconds": 0.058793232
+          "start_time": "2026-01-13T14:43:58.22544906Z",
+          "end_time": "2026-01-13T14:43:58.28336929Z",
+          "duration_seconds": 0.057920233
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:44.428160444Z",
-          "end_time": "2026-01-13T14:44:44.429471171Z",
-          "duration_seconds": 0.001310724
+          "start_time": "2026-01-13T14:43:58.283384661Z",
+          "end_time": "2026-01-13T14:43:58.286376723Z",
+          "duration_seconds": 0.002992063
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.1205673217773438e-05,
-        "step2_select_topk": 0.0006883144378662109,
+        "step1_group_by_r": 9.775161743164062e-06,
+        "step2_select_topk": 0.0005609989166259766,
         "step3_format_output": 0.0,
-        "total_duration": 0.0007228851318359375
+        "total_duration": 0.0005934238433837891
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -14413,7 +14413,7 @@
     {
       "case_number": 21,
       "success": true,
-      "duration_seconds": 25.69789835520935,
+      "duration_seconds": 24.034471163391114,
       "error": null,
       "output": {
         "mappings": [
@@ -14443,11 +14443,11 @@
           },
           {
             "r_val": "life is beautiful",
-            "s_val": "2010"
+            "s_val": "1998"
           },
           {
             "r_val": "the godfather",
-            "s_val": "1993"
+            "s_val": "1972"
           },
           {
             "r_val": "raiders of the lost ark",
@@ -14459,7 +14459,7 @@
           },
           {
             "r_val": "fight club",
-            "s_val": "2001"
+            "s_val": "1999"
           },
           {
             "r_val": "once upon a time in the west",
@@ -14475,15 +14475,15 @@
           },
           {
             "r_val": "the usual suspects",
-            "s_val": "1991"
+            "s_val": "1995"
           },
           {
             "r_val": "psycho",
-            "s_val": "1998"
+            "s_val": "1960"
           },
           {
             "r_val": "the matrix",
-            "s_val": "2002"
+            "s_val": "1999"
           },
           {
             "r_val": "se7en",
@@ -14508,45 +14508,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:44.496624886Z",
-          "end_time": "2026-01-13T14:44:44.504555107Z",
-          "duration_seconds": 0.00793022
+          "start_time": "2026-01-13T14:43:58.348915557Z",
+          "end_time": "2026-01-13T14:43:58.357018021Z",
+          "duration_seconds": 0.00810246
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:44.504565016Z",
-          "end_time": "2026-01-13T14:44:45.396393421Z",
-          "duration_seconds": 0.891828408
+          "start_time": "2026-01-13T14:43:58.357026039Z",
+          "end_time": "2026-01-13T14:43:59.30627238Z",
+          "duration_seconds": 0.949246345
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:45.396396717Z",
-          "end_time": "2026-01-13T14:44:45.460949158Z",
-          "duration_seconds": 0.064552444
+          "start_time": "2026-01-13T14:43:59.306278366Z",
+          "end_time": "2026-01-13T14:43:59.3731587Z",
+          "duration_seconds": 0.066880338
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:45.460960878Z",
-          "end_time": "2026-01-13T14:44:45.523660171Z",
-          "duration_seconds": 0.062699294
+          "start_time": "2026-01-13T14:43:59.37317161Z",
+          "end_time": "2026-01-13T14:43:59.435074774Z",
+          "duration_seconds": 0.061903164
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:45.52367119Z",
-          "end_time": "2026-01-13T14:44:45.525754213Z",
-          "duration_seconds": 0.00208302
+          "start_time": "2026-01-13T14:43:59.435099242Z",
+          "end_time": "2026-01-13T14:43:59.436841526Z",
+          "duration_seconds": 0.001742285
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.7404556274414062e-05,
-        "step2_select_topk": 0.0001513957977294922,
+        "step1_group_by_r": 9.775161743164062e-06,
+        "step2_select_topk": 0.00014853477478027344,
         "step3_format_output": 0.0,
-        "total_duration": 0.00019216537475585938
+        "total_duration": 0.00018167495727539062
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 24.62196135520935
+        "ai_total_duration_seconds": 22.900647163391113
       }
     },
     {
       "case_number": 22,
       "success": true,
-      "duration_seconds": 1.5596395879211427,
+      "duration_seconds": 1.619371334335327,
       "error": null,
       "output": {
         "mappings": [
@@ -14584,7 +14584,7 @@
           },
           {
             "r_val": "vertigo",
-            "s_val": "universal studios"
+            "s_val": "paramount pictures"
           },
           {
             "r_val": "the odd couple",
@@ -14697,45 +14697,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:45.592918701Z",
-          "end_time": "2026-01-13T14:44:45.600961325Z",
-          "duration_seconds": 0.008042618
+          "start_time": "2026-01-13T14:43:59.502871913Z",
+          "end_time": "2026-01-13T14:43:59.510642572Z",
+          "duration_seconds": 0.007770655
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:45.600969797Z",
-          "end_time": "2026-01-13T14:44:46.03625843Z",
-          "duration_seconds": 0.435288629
+          "start_time": "2026-01-13T14:43:59.510650684Z",
+          "end_time": "2026-01-13T14:44:00.032723964Z",
+          "duration_seconds": 0.522073287
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:46.036260907Z",
-          "end_time": "2026-01-13T14:44:46.037090151Z",
-          "duration_seconds": 0.00082925
+          "start_time": "2026-01-13T14:44:00.032727208Z",
+          "end_time": "2026-01-13T14:44:00.033734606Z",
+          "duration_seconds": 0.0010074
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:46.03709662Z",
-          "end_time": "2026-01-13T14:44:46.095236543Z",
-          "duration_seconds": 0.058139917
+          "start_time": "2026-01-13T14:44:00.033743525Z",
+          "end_time": "2026-01-13T14:44:00.099970971Z",
+          "duration_seconds": 0.066227444
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:46.095249329Z",
-          "end_time": "2026-01-13T14:44:46.095449469Z",
-          "duration_seconds": 0.00020014
+          "start_time": "2026-01-13T14:44:00.099983861Z",
+          "end_time": "2026-01-13T14:44:00.10030185Z",
+          "duration_seconds": 0.000317988
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 6.67572021484375e-06,
-        "step2_select_topk": 0.0003788471221923828,
+        "step1_group_by_r": 6.9141387939453125e-06,
+        "step2_select_topk": 0.0004544258117675781,
         "step3_format_output": 0.0,
-        "total_duration": 0.0004100799560546875
+        "total_duration": 0.0004863739013671875
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 1.0120205879211426
+        "ai_total_duration_seconds": 0.9729993343353271
       }
     },
     {
       "case_number": 23,
       "success": true,
-      "duration_seconds": 13.837339061401368,
+      "duration_seconds": 14.392025565567018,
       "error": null,
       "output": {
         "mappings": [
@@ -14781,7 +14781,7 @@
           },
           {
             "r_val": "argentina",
-            "s_val": "cordoba"
+            "s_val": "peso"
           },
           {
             "r_val": "tanzania",
@@ -14821,7 +14821,7 @@
           },
           {
             "r_val": "germany",
-            "s_val": "krone"
+            "s_val": "euro"
           },
           {
             "r_val": "guinea",
@@ -14865,11 +14865,11 @@
           },
           {
             "r_val": "switzerland",
-            "s_val": "krone"
+            "s_val": "franc"
           },
           {
             "r_val": "spain",
-            "s_val": "cordoba"
+            "s_val": "euro"
           },
           {
             "r_val": "brunei",
@@ -15025,50 +15025,50 @@
           }
         ],
         "num_r": 71,
-        "num_s": 37,
+        "num_s": 36,
         "num_mappings": 71
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:46.160775075Z",
-          "end_time": "2026-01-13T14:44:46.168456743Z",
-          "duration_seconds": 0.007681669
+          "start_time": "2026-01-13T14:44:00.169627507Z",
+          "end_time": "2026-01-13T14:44:00.177400653Z",
+          "duration_seconds": 0.007773147
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:46.168464464Z",
-          "end_time": "2026-01-13T14:44:46.988490601Z",
-          "duration_seconds": 0.820026141
+          "start_time": "2026-01-13T14:44:00.177407829Z",
+          "end_time": "2026-01-13T14:44:01.078042231Z",
+          "duration_seconds": 0.900634401
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:46.988493757Z",
-          "end_time": "2026-01-13T14:44:47.027273444Z",
-          "duration_seconds": 0.038779687
+          "start_time": "2026-01-13T14:44:01.078045095Z",
+          "end_time": "2026-01-13T14:44:01.117790846Z",
+          "duration_seconds": 0.039745754
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:47.027284725Z",
-          "end_time": "2026-01-13T14:44:47.086915374Z",
-          "duration_seconds": 0.059630652
+          "start_time": "2026-01-13T14:44:01.117803819Z",
+          "end_time": "2026-01-13T14:44:01.183235509Z",
+          "duration_seconds": 0.065431697
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:47.086926863Z",
-          "end_time": "2026-01-13T14:44:47.088393906Z",
-          "duration_seconds": 0.001467044
+          "start_time": "2026-01-13T14:44:01.183252276Z",
+          "end_time": "2026-01-13T14:44:01.185097163Z",
+          "duration_seconds": 0.001844887
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.6689300537109375e-05,
-        "step2_select_topk": 0.00038909912109375,
+        "step1_group_by_r": 1.52587890625e-05,
+        "step2_select_topk": 0.00046706199645996094,
         "step3_format_output": 0.0,
-        "total_duration": 0.0004291534423828125
+        "total_duration": 0.0005083084106445312
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 12.862791061401367
+        "ai_total_duration_seconds": 13.334335565567017
       }
     },
     {
       "case_number": 24,
       "success": true,
-      "duration_seconds": 113.31551715394592,
+      "duration_seconds": 103.35453367500305,
       "error": null,
       "output": {
         "mappings": [
@@ -15098,7 +15098,7 @@
           },
           {
             "r_val": "zulu",
-            "s_val": "uk"
+            "s_val": "zu"
           },
           {
             "r_val": "shona",
@@ -15110,7 +15110,7 @@
           },
           {
             "r_val": "turkish",
-            "s_val": "tk"
+            "s_val": "tr"
           },
           {
             "r_val": "ukrainian",
@@ -15154,7 +15154,7 @@
           },
           {
             "r_val": "yiddish",
-            "s_val": "no"
+            "s_val": "so"
           },
           {
             "r_val": "macedonian",
@@ -15162,7 +15162,7 @@
           },
           {
             "r_val": "breton",
-            "s_val": "no"
+            "s_val": "br"
           },
           {
             "r_val": "japanese",
@@ -15182,7 +15182,7 @@
           },
           {
             "r_val": "icelandic",
-            "s_val": "no"
+            "s_val": "is"
           },
           {
             "r_val": "tatar",
@@ -15190,11 +15190,11 @@
           },
           {
             "r_val": "fiji",
-            "s_val": "vi"
+            "s_val": "fj"
           },
           {
             "r_val": "tibetan",
-            "s_val": "no"
+            "s_val": "bo"
           },
           {
             "r_val": "uzbek",
@@ -15294,11 +15294,11 @@
           },
           {
             "r_val": "galician",
-            "s_val": "es"
+            "s_val": "gl"
           },
           {
             "r_val": "somali",
-            "s_val": "sa"
+            "s_val": "so"
           },
           {
             "r_val": "dutch",
@@ -15430,7 +15430,7 @@
           },
           {
             "r_val": "nauru",
-            "s_val": "no"
+            "s_val": "na"
           },
           {
             "r_val": "kashmiri",
@@ -15438,7 +15438,7 @@
           },
           {
             "r_val": "oriya",
-            "s_val": "na"
+            "s_val": "or"
           },
           {
             "r_val": "italian",
@@ -15446,7 +15446,7 @@
           },
           {
             "r_val": "corsican",
-            "s_val": "no"
+            "s_val": "co"
           },
           {
             "r_val": "tsonga",
@@ -15550,50 +15550,50 @@
           }
         ],
         "num_r": 119,
-        "num_s": 105,
+        "num_s": 114,
         "num_mappings": 119
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:47.155888786Z",
-          "end_time": "2026-01-13T14:44:47.162997321Z",
-          "duration_seconds": 0.007108534
+          "start_time": "2026-01-13T14:44:01.248292821Z",
+          "end_time": "2026-01-13T14:44:01.256235821Z",
+          "duration_seconds": 0.007943001
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:47.163005589Z",
-          "end_time": "2026-01-13T14:44:47.763050153Z",
-          "duration_seconds": 0.600044566
+          "start_time": "2026-01-13T14:44:01.256243142Z",
+          "end_time": "2026-01-13T14:44:01.890531936Z",
+          "duration_seconds": 0.634288798
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:47.763053422Z",
-          "end_time": "2026-01-13T14:44:47.80071218Z",
-          "duration_seconds": 0.037658759
+          "start_time": "2026-01-13T14:44:01.89053476Z",
+          "end_time": "2026-01-13T14:44:01.92757604Z",
+          "duration_seconds": 0.037041289
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:47.800724516Z",
-          "end_time": "2026-01-13T14:44:47.859267558Z",
-          "duration_seconds": 0.058543045
+          "start_time": "2026-01-13T14:44:01.927590978Z",
+          "end_time": "2026-01-13T14:44:01.987285552Z",
+          "duration_seconds": 0.059694568
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:47.859282833Z",
-          "end_time": "2026-01-13T14:44:47.869144158Z",
-          "duration_seconds": 0.00986132
+          "start_time": "2026-01-13T14:44:01.987295318Z",
+          "end_time": "2026-01-13T14:44:01.994512502Z",
+          "duration_seconds": 0.007217184
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 6.127357482910156e-05,
-        "step2_select_topk": 0.000244140625,
+        "step1_group_by_r": 5.91278076171875e-05,
+        "step2_select_topk": 0.0002646446228027344,
         "step3_format_output": 0.0,
-        "total_duration": 0.00033211708068847656
+        "total_duration": 0.0003516674041748047
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 112.55562615394592
+        "ai_total_duration_seconds": 102.56485867500305
       }
     },
     {
       "case_number": 25,
       "success": true,
-      "duration_seconds": 1.571483980331421,
+      "duration_seconds": 1.9394219221496583,
       "error": null,
       "output": {
         "mappings": [
@@ -15764,45 +15764,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:47.937422514Z",
-          "end_time": "2026-01-13T14:44:47.946721828Z",
-          "duration_seconds": 0.009299308
+          "start_time": "2026-01-13T14:44:02.061043763Z",
+          "end_time": "2026-01-13T14:44:02.06881271Z",
+          "duration_seconds": 0.007768948
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:47.946730452Z",
-          "end_time": "2026-01-13T14:44:48.400481185Z",
-          "duration_seconds": 0.453750733
+          "start_time": "2026-01-13T14:44:02.06882133Z",
+          "end_time": "2026-01-13T14:44:02.546343023Z",
+          "duration_seconds": 0.477521693
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:48.400484399Z",
-          "end_time": "2026-01-13T14:44:48.406181422Z",
-          "duration_seconds": 0.005697025
+          "start_time": "2026-01-13T14:44:02.546345825Z",
+          "end_time": "2026-01-13T14:44:02.55203471Z",
+          "duration_seconds": 0.005688901
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:48.406187949Z",
-          "end_time": "2026-01-13T14:44:48.466785576Z",
-          "duration_seconds": 0.060597628
+          "start_time": "2026-01-13T14:44:02.552041651Z",
+          "end_time": "2026-01-13T14:44:02.619426772Z",
+          "duration_seconds": 0.067385119
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:48.466797149Z",
-          "end_time": "2026-01-13T14:44:48.469785978Z",
-          "duration_seconds": 0.002988832
+          "start_time": "2026-01-13T14:44:02.619437069Z",
+          "end_time": "2026-01-13T14:44:02.622395127Z",
+          "duration_seconds": 0.002958058
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 9.298324584960938e-06,
-        "step2_select_topk": 0.00013589859008789062,
+        "step1_group_by_r": 8.58306884765625e-06,
+        "step2_select_topk": 0.00013494491577148438,
         "step3_format_output": 0.0,
-        "total_duration": 0.00016760826110839844
+        "total_duration": 0.0001678466796875
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 0.9916989803314209
+        "ai_total_duration_seconds": 1.3341069221496582
       }
     },
     {
       "case_number": 26,
       "success": true,
-      "duration_seconds": 0.59159,
+      "duration_seconds": 0.623315,
       "error": null,
       "output": {
         "mappings": [
@@ -15965,36 +15965,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:48.538558457Z",
-          "end_time": "2026-01-13T14:44:48.546512975Z",
-          "duration_seconds": 0.00795451
+          "start_time": "2026-01-13T14:44:02.687959053Z",
+          "end_time": "2026-01-13T14:44:02.696074518Z",
+          "duration_seconds": 0.008115459
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:48.546523099Z",
-          "end_time": "2026-01-13T14:44:49.019352243Z",
-          "duration_seconds": 0.472829144
+          "start_time": "2026-01-13T14:44:02.696084065Z",
+          "end_time": "2026-01-13T14:44:03.196083961Z",
+          "duration_seconds": 0.499999902
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:49.01935448Z",
-          "end_time": "2026-01-13T14:44:49.022237995Z",
-          "duration_seconds": 0.002883518
+          "start_time": "2026-01-13T14:44:03.196087292Z",
+          "end_time": "2026-01-13T14:44:03.199254492Z",
+          "duration_seconds": 0.003167196
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:49.022242325Z",
-          "end_time": "2026-01-13T14:44:49.080214004Z",
-          "duration_seconds": 0.057971683
+          "start_time": "2026-01-13T14:44:03.199259606Z",
+          "end_time": "2026-01-13T14:44:03.263692524Z",
+          "duration_seconds": 0.064432924
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:49.080226252Z",
-          "end_time": "2026-01-13T14:44:49.08273918Z",
-          "duration_seconds": 0.002512926
+          "start_time": "2026-01-13T14:44:03.263706438Z",
+          "end_time": "2026-01-13T14:44:03.267641757Z",
+          "duration_seconds": 0.003935319
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 7.62939453125e-06,
-        "step2_select_topk": 0.00015282630920410156,
+        "step1_group_by_r": 7.152557373046875e-06,
+        "step2_select_topk": 0.0001552104949951172,
         "step3_format_output": 0.0,
-        "total_duration": 0.00018286705017089844
+        "total_duration": 0.00018453598022460938
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -16003,7 +16003,7 @@
     {
       "case_number": 27,
       "success": true,
-      "duration_seconds": 0.571185,
+      "duration_seconds": 0.596978,
       "error": null,
       "output": {
         "mappings": [
@@ -16022,36 +16022,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:49.15178524Z",
-          "end_time": "2026-01-13T14:44:49.159891175Z",
-          "duration_seconds": 0.008105935
+          "start_time": "2026-01-13T14:44:03.333567463Z",
+          "end_time": "2026-01-13T14:44:03.341392853Z",
+          "duration_seconds": 0.00782539
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:49.159897826Z",
-          "end_time": "2026-01-13T14:44:49.613482222Z",
-          "duration_seconds": 0.453584402
+          "start_time": "2026-01-13T14:44:03.341400934Z",
+          "end_time": "2026-01-13T14:44:03.820341537Z",
+          "duration_seconds": 0.478940609
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:49.613485257Z",
-          "end_time": "2026-01-13T14:44:49.613694557Z",
-          "duration_seconds": 0.000209302
+          "start_time": "2026-01-13T14:44:03.820345373Z",
+          "end_time": "2026-01-13T14:44:03.820558849Z",
+          "duration_seconds": 0.000213476
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:49.613701405Z",
-          "end_time": "2026-01-13T14:44:49.673255433Z",
-          "duration_seconds": 0.059554027
+          "start_time": "2026-01-13T14:44:03.820566592Z",
+          "end_time": "2026-01-13T14:44:03.885340887Z",
+          "duration_seconds": 0.064774293
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:49.673277346Z",
-          "end_time": "2026-01-13T14:44:49.673331639Z",
-          "duration_seconds": 5.4295e-05
+          "start_time": "2026-01-13T14:44:03.885351187Z",
+          "end_time": "2026-01-13T14:44:03.885389665Z",
+          "duration_seconds": 3.8476e-05
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.1920928955078125e-06,
-        "step2_select_topk": 0.00011563301086425781,
+        "step1_group_by_r": 9.5367431640625e-07,
+        "step2_select_topk": 0.00011682510375976562,
         "step3_format_output": 0.0,
-        "total_duration": 0.0001399517059326172
+        "total_duration": 0.000141143798828125
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -16060,7 +16060,7 @@
     {
       "case_number": 28,
       "success": true,
-      "duration_seconds": 12.228428120941162,
+      "duration_seconds": 12.299892946853637,
       "error": null,
       "output": {
         "mappings": [
@@ -16106,7 +16106,7 @@
           },
           {
             "r_val": "whitney houston",
-            "s_val": "barbra streisand"
+            "s_val": "whitney houston"
           },
           {
             "r_val": "hysteria",
@@ -16166,7 +16166,7 @@
           },
           {
             "r_val": "greatest hits",
-            "s_val": "bon jovi"
+            "s_val": "queen"
           },
           {
             "r_val": "guilty",
@@ -16178,7 +16178,7 @@
           },
           {
             "r_val": "21",
-            "s_val": "various artists"
+            "s_val": "adele"
           },
           {
             "r_val": "unplugged",
@@ -16186,50 +16186,50 @@
           }
         ],
         "num_r": 30,
-        "num_s": 25,
+        "num_s": 26,
         "num_mappings": 30
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:49.744767447Z",
-          "end_time": "2026-01-13T14:44:49.752730451Z",
-          "duration_seconds": 0.007963005
+          "start_time": "2026-01-13T14:44:03.952320315Z",
+          "end_time": "2026-01-13T14:44:03.960125808Z",
+          "duration_seconds": 0.007805496
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:49.752738448Z",
-          "end_time": "2026-01-13T14:44:50.325486992Z",
-          "duration_seconds": 0.572748544
+          "start_time": "2026-01-13T14:44:03.96013605Z",
+          "end_time": "2026-01-13T14:44:04.571059938Z",
+          "duration_seconds": 0.610923888
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:50.325490004Z",
-          "end_time": "2026-01-13T14:44:50.360813725Z",
-          "duration_seconds": 0.035323724
+          "start_time": "2026-01-13T14:44:04.571062974Z",
+          "end_time": "2026-01-13T14:44:04.608841484Z",
+          "duration_seconds": 0.037778524
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:50.36082504Z",
-          "end_time": "2026-01-13T14:44:50.420001994Z",
-          "duration_seconds": 0.05917696
+          "start_time": "2026-01-13T14:44:04.608853834Z",
+          "end_time": "2026-01-13T14:44:04.670101766Z",
+          "duration_seconds": 0.061247931
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:50.420016784Z",
-          "end_time": "2026-01-13T14:44:50.423392405Z",
-          "duration_seconds": 0.00337562
+          "start_time": "2026-01-13T14:44:04.670112443Z",
+          "end_time": "2026-01-13T14:44:04.672281029Z",
+          "duration_seconds": 0.002168589
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.1920928955078125e-05,
-        "step2_select_topk": 0.00016188621520996094,
+        "step1_group_by_r": 1.0728836059570312e-05,
+        "step2_select_topk": 0.00014257431030273438,
         "step3_format_output": 0.0,
-        "total_duration": 0.00019788742065429688
+        "total_duration": 0.0001761913299560547
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 11.501634120941162
+        "ai_total_duration_seconds": 11.535002946853638
       }
     },
     {
       "case_number": 29,
       "success": true,
-      "duration_seconds": 40.64635420401001,
+      "duration_seconds": 40.70940503697204,
       "error": null,
       "output": {
         "mappings": [
@@ -16263,7 +16263,7 @@
           },
           {
             "r_val": "george washington university",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "university of miami",
@@ -16315,7 +16315,7 @@
           },
           {
             "r_val": "american university",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "hofstra university",
@@ -16463,7 +16463,7 @@
           },
           {
             "r_val": "howard university",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "liberty university",
@@ -16491,7 +16491,7 @@
           },
           {
             "r_val": "gonzaga university",
-            "s_val": "nevada"
+            "s_val": "washington"
           },
           {
             "r_val": "university of louisville",
@@ -16631,7 +16631,7 @@
           },
           {
             "r_val": "district of columbia",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "oklahoma city university",
@@ -16823,50 +16823,50 @@
           }
         ],
         "num_r": 147,
-        "num_s": 47,
+        "num_s": 46,
         "num_mappings": 147
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:50.493647378Z",
-          "end_time": "2026-01-13T14:44:50.501458268Z",
-          "duration_seconds": 0.00781089
+          "start_time": "2026-01-13T14:44:04.739255762Z",
+          "end_time": "2026-01-13T14:44:04.747703523Z",
+          "duration_seconds": 0.008447761
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:50.501468024Z",
-          "end_time": "2026-01-13T14:44:51.086391776Z",
-          "duration_seconds": 0.584923752
+          "start_time": "2026-01-13T14:44:04.747752946Z",
+          "end_time": "2026-01-13T14:44:05.347625603Z",
+          "duration_seconds": 0.599872662
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:51.086394431Z",
-          "end_time": "2026-01-13T14:44:51.122730212Z",
-          "duration_seconds": 0.036335784
+          "start_time": "2026-01-13T14:44:05.347629394Z",
+          "end_time": "2026-01-13T14:44:05.387005266Z",
+          "duration_seconds": 0.039375869
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:51.122746406Z",
-          "end_time": "2026-01-13T14:44:51.181583152Z",
-          "duration_seconds": 0.058836742
+          "start_time": "2026-01-13T14:44:05.38701824Z",
+          "end_time": "2026-01-13T14:44:05.451203512Z",
+          "duration_seconds": 0.064185275
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:51.181596583Z",
-          "end_time": "2026-01-13T14:44:51.191309365Z",
-          "duration_seconds": 0.009712781
+          "start_time": "2026-01-13T14:44:05.451216423Z",
+          "end_time": "2026-01-13T14:44:05.463711092Z",
+          "duration_seconds": 0.012494666
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.600120544433594e-05,
-        "step2_select_topk": 0.0005972385406494141,
+        "step1_group_by_r": 4.1961669921875e-05,
+        "step2_select_topk": 0.0008540153503417969,
         "step3_format_output": 0.0,
-        "total_duration": 0.0006582736968994141
+        "total_duration": 0.0009243488311767578
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 39.90008020401001
+        "ai_total_duration_seconds": 39.940582036972046
       }
     },
     {
       "case_number": 30,
       "success": true,
-      "duration_seconds": 2.007638138244629,
+      "duration_seconds": 1.6741826126556396,
       "error": null,
       "output": {
         "mappings": [
@@ -16993,45 +16993,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:51.263929659Z",
-          "end_time": "2026-01-13T14:44:51.271833172Z",
-          "duration_seconds": 0.007903518
+          "start_time": "2026-01-13T14:44:05.531218367Z",
+          "end_time": "2026-01-13T14:44:05.539272907Z",
+          "duration_seconds": 0.008054534
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:51.271840821Z",
-          "end_time": "2026-01-13T14:44:51.724479933Z",
-          "duration_seconds": 0.452639114
+          "start_time": "2026-01-13T14:44:05.539281512Z",
+          "end_time": "2026-01-13T14:44:06.042374646Z",
+          "duration_seconds": 0.503093142
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:51.724483149Z",
-          "end_time": "2026-01-13T14:44:51.726419565Z",
-          "duration_seconds": 0.001936409
+          "start_time": "2026-01-13T14:44:06.042377958Z",
+          "end_time": "2026-01-13T14:44:06.044169112Z",
+          "duration_seconds": 0.001791156
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:51.726424739Z",
-          "end_time": "2026-01-13T14:44:51.788105509Z",
-          "duration_seconds": 0.061680777
+          "start_time": "2026-01-13T14:44:06.044176651Z",
+          "end_time": "2026-01-13T14:44:06.108844273Z",
+          "duration_seconds": 0.064667622
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:51.788121149Z",
-          "end_time": "2026-01-13T14:44:51.788368528Z",
-          "duration_seconds": 0.000247378
+          "start_time": "2026-01-13T14:44:06.108854297Z",
+          "end_time": "2026-01-13T14:44:06.10901779Z",
+          "duration_seconds": 0.000163493
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 6.67572021484375e-06,
-        "step2_select_topk": 3.600120544433594e-05,
+        "step1_group_by_r": 6.198883056640625e-06,
+        "step2_select_topk": 4.076957702636719e-05,
         "step3_format_output": 0.0,
-        "total_duration": 7.128715515136719e-05
+        "total_duration": 6.914138793945312e-05
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 1.433915138244629
+        "ai_total_duration_seconds": 1.0529096126556396
       }
     },
     {
       "case_number": 31,
       "success": true,
-      "duration_seconds": 11.748668714431762,
+      "duration_seconds": 13.032603265075684,
       "error": null,
       "output": {
         "mappings": [
@@ -17154,45 +17154,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:51.860593178Z",
-          "end_time": "2026-01-13T14:44:51.868346292Z",
-          "duration_seconds": 0.007753114
+          "start_time": "2026-01-13T14:44:06.176527122Z",
+          "end_time": "2026-01-13T14:44:06.184541758Z",
+          "duration_seconds": 0.008014636
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:51.868354074Z",
-          "end_time": "2026-01-13T14:44:52.319957609Z",
-          "duration_seconds": 0.451603537
+          "start_time": "2026-01-13T14:44:06.184550493Z",
+          "end_time": "2026-01-13T14:44:06.682813423Z",
+          "duration_seconds": 0.498262934
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:52.319960509Z",
-          "end_time": "2026-01-13T14:44:52.323086847Z",
-          "duration_seconds": 0.003126341
+          "start_time": "2026-01-13T14:44:06.682815905Z",
+          "end_time": "2026-01-13T14:44:06.685924907Z",
+          "duration_seconds": 0.003109004
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:52.32309478Z",
-          "end_time": "2026-01-13T14:44:52.382060013Z",
-          "duration_seconds": 0.05896523
+          "start_time": "2026-01-13T14:44:06.68593447Z",
+          "end_time": "2026-01-13T14:44:06.748838559Z",
+          "duration_seconds": 0.062904081
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:52.382072681Z",
-          "end_time": "2026-01-13T14:44:52.382633046Z",
-          "duration_seconds": 0.000560362
+          "start_time": "2026-01-13T14:44:06.748848554Z",
+          "end_time": "2026-01-13T14:44:06.749416964Z",
+          "duration_seconds": 0.00056841
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 6.9141387939453125e-06,
-        "step2_select_topk": 4.982948303222656e-05,
+        "step1_group_by_r": 7.3909759521484375e-06,
+        "step2_select_topk": 5.53131103515625e-05,
         "step3_format_output": 0.0,
-        "total_duration": 8.082389831542969e-05
+        "total_duration": 8.511543273925781e-05
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 11.179564714431763
+        "ai_total_duration_seconds": 12.413573265075684
       }
     },
     {
       "case_number": 32,
       "success": true,
-      "duration_seconds": 37.987084305862425,
+      "duration_seconds": 34.9043650004425,
       "error": null,
       "output": {
         "mappings": [
@@ -17327,45 +17327,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:52.452649277Z",
-          "end_time": "2026-01-13T14:44:52.460695974Z",
-          "duration_seconds": 0.0080467
+          "start_time": "2026-01-13T14:44:06.818719056Z",
+          "end_time": "2026-01-13T14:44:06.82648342Z",
+          "duration_seconds": 0.007764364
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:52.460703444Z",
-          "end_time": "2026-01-13T14:44:52.995453165Z",
-          "duration_seconds": 0.53474972
+          "start_time": "2026-01-13T14:44:06.826491105Z",
+          "end_time": "2026-01-13T14:44:07.408202828Z",
+          "duration_seconds": 0.581711723
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:52.995456064Z",
-          "end_time": "2026-01-13T14:44:53.019750044Z",
-          "duration_seconds": 0.024293984
+          "start_time": "2026-01-13T14:44:07.408205722Z",
+          "end_time": "2026-01-13T14:44:07.434006528Z",
+          "duration_seconds": 0.025800815
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:53.019770504Z",
-          "end_time": "2026-01-13T14:44:53.079563565Z",
-          "duration_seconds": 0.05979306
+          "start_time": "2026-01-13T14:44:07.434023829Z",
+          "end_time": "2026-01-13T14:44:07.497667468Z",
+          "duration_seconds": 0.063643639
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:53.0795765Z",
-          "end_time": "2026-01-13T14:44:53.085753131Z",
-          "duration_seconds": 0.006176626
+          "start_time": "2026-01-13T14:44:07.497682117Z",
+          "end_time": "2026-01-13T14:44:07.506597296Z",
+          "duration_seconds": 0.008915176
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 5.626678466796875e-05,
-        "step2_select_topk": 7.05718994140625e-05,
+        "step1_group_by_r": 5.459785461425781e-05,
+        "step2_select_topk": 6.794929504394531e-05,
         "step3_format_output": 0.0,
-        "total_duration": 0.00015211105346679688
+        "total_duration": 0.00015020370483398438
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 37.30640530586243
+        "ai_total_duration_seconds": 34.172086000442505
       }
     },
     {
       "case_number": 33,
       "success": true,
-      "duration_seconds": 36.882629190139774,
+      "duration_seconds": 39.71523191191101,
       "error": null,
       "output": {
         "mappings": [
@@ -17379,11 +17379,11 @@
           },
           {
             "r_val": "minnesota vikings",
-            "s_val": "centurylink field"
+            "s_val": "lambeau field"
           },
           {
             "r_val": "oakland raiders",
-            "s_val": "arrowhead stadium"
+            "s_val": "sports authority field at mile high"
           },
           {
             "r_val": "philadelphia eagles",
@@ -17431,7 +17431,7 @@
           },
           {
             "r_val": "baltimore ravens",
-            "s_val": "gillette stadium"
+            "s_val": "heinz field"
           },
           {
             "r_val": "dallas cowboys",
@@ -17500,45 +17500,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:53.156801525Z",
-          "end_time": "2026-01-13T14:44:53.164581601Z",
-          "duration_seconds": 0.007780076
+          "start_time": "2026-01-13T14:44:07.574568599Z",
+          "end_time": "2026-01-13T14:44:07.582268117Z",
+          "duration_seconds": 0.007699521
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:53.164589495Z",
-          "end_time": "2026-01-13T14:44:53.63281591Z",
-          "duration_seconds": 0.468226418
+          "start_time": "2026-01-13T14:44:07.582276489Z",
+          "end_time": "2026-01-13T14:44:08.080193582Z",
+          "duration_seconds": 0.497917093
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:53.63281847Z",
-          "end_time": "2026-01-13T14:44:53.641823306Z",
-          "duration_seconds": 0.009004839
+          "start_time": "2026-01-13T14:44:08.080196224Z",
+          "end_time": "2026-01-13T14:44:08.08912059Z",
+          "duration_seconds": 0.00892437
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:53.641839179Z",
-          "end_time": "2026-01-13T14:44:53.699358277Z",
-          "duration_seconds": 0.057519094
+          "start_time": "2026-01-13T14:44:08.08915758Z",
+          "end_time": "2026-01-13T14:44:08.153968382Z",
+          "duration_seconds": 0.064810801
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:53.699371059Z",
-          "end_time": "2026-01-13T14:44:53.703400763Z",
-          "duration_seconds": 0.004029704
+          "start_time": "2026-01-13T14:44:08.153992136Z",
+          "end_time": "2026-01-13T14:44:08.158048531Z",
+          "duration_seconds": 0.004056391
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 8.082389831542969e-05,
-        "step2_select_topk": 8.153915405273438e-05,
+        "step1_group_by_r": 7.486343383789062e-05,
+        "step2_select_topk": 7.605552673339844e-05,
         "step3_format_output": 0.0,
-        "total_duration": 0.00019049644470214844
+        "total_duration": 0.00017786026000976562
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 36.28732419013977
+        "ai_total_duration_seconds": 39.08676791191101
       }
     },
     {
       "case_number": 34,
       "success": true,
-      "duration_seconds": 12.606545738433837,
+      "duration_seconds": 11.085156360534668,
       "error": null,
       "output": {
         "mappings": [
@@ -17556,7 +17556,7 @@
           },
           {
             "r_val": "psa",
-            "s_val": "italy"
+            "s_val": "france"
           },
           {
             "r_val": "chery",
@@ -17673,45 +17673,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:53.775957969Z",
-          "end_time": "2026-01-13T14:44:53.783790126Z",
-          "duration_seconds": 0.007832156
+          "start_time": "2026-01-13T14:44:08.22841656Z",
+          "end_time": "2026-01-13T14:44:08.236149248Z",
+          "duration_seconds": 0.007732692
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:53.783798805Z",
-          "end_time": "2026-01-13T14:44:54.525174803Z",
-          "duration_seconds": 0.741375993
+          "start_time": "2026-01-13T14:44:08.236157084Z",
+          "end_time": "2026-01-13T14:44:08.98249171Z",
+          "duration_seconds": 0.74633463
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:54.52517809Z",
-          "end_time": "2026-01-13T14:44:54.543899621Z",
-          "duration_seconds": 0.018721534
+          "start_time": "2026-01-13T14:44:08.98249544Z",
+          "end_time": "2026-01-13T14:44:09.016623414Z",
+          "duration_seconds": 0.034127978
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:54.54391189Z",
-          "end_time": "2026-01-13T14:44:54.601563653Z",
-          "duration_seconds": 0.057651763
+          "start_time": "2026-01-13T14:44:09.016637535Z",
+          "end_time": "2026-01-13T14:44:09.090949021Z",
+          "duration_seconds": 0.07431149
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:54.60157439Z",
-          "end_time": "2026-01-13T14:44:54.602044669Z",
-          "duration_seconds": 0.000470282
+          "start_time": "2026-01-13T14:44:09.090959368Z",
+          "end_time": "2026-01-13T14:44:09.09143006Z",
+          "duration_seconds": 0.000470691
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 8.821487426757812e-06,
-        "step2_select_topk": 0.0002224445343017578,
+        "step1_group_by_r": 1.0251998901367188e-05,
+        "step2_select_topk": 0.00026488304138183594,
         "step3_format_output": 0.0,
-        "total_duration": 0.00025463104248046875
+        "total_duration": 0.00030350685119628906
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 11.732496738433838
+        "ai_total_duration_seconds": 10.177302360534668
       }
     },
     {
       "case_number": 35,
       "success": true,
-      "duration_seconds": 5.4428938143920895,
+      "duration_seconds": 5.133124215789795,
       "error": null,
       "output": {
         "mappings": [
@@ -17826,45 +17826,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:54.674131579Z",
-          "end_time": "2026-01-13T14:44:54.681824158Z",
-          "duration_seconds": 0.007692579
+          "start_time": "2026-01-13T14:44:09.163334678Z",
+          "end_time": "2026-01-13T14:44:09.17129665Z",
+          "duration_seconds": 0.007961974
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:54.681833076Z",
-          "end_time": "2026-01-13T14:44:55.442553039Z",
-          "duration_seconds": 0.760719963
+          "start_time": "2026-01-13T14:44:09.171305735Z",
+          "end_time": "2026-01-13T14:44:09.946667323Z",
+          "duration_seconds": 0.775361591
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:55.442557284Z",
-          "end_time": "2026-01-13T14:44:55.473541711Z",
-          "duration_seconds": 0.030984434
+          "start_time": "2026-01-13T14:44:09.94667075Z",
+          "end_time": "2026-01-13T14:44:09.988932252Z",
+          "duration_seconds": 0.042261499
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:55.473557774Z",
-          "end_time": "2026-01-13T14:44:55.543275188Z",
-          "duration_seconds": 0.06971741
+          "start_time": "2026-01-13T14:44:09.988943078Z",
+          "end_time": "2026-01-13T14:44:10.051483762Z",
+          "duration_seconds": 0.062540687
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:55.543285555Z",
-          "end_time": "2026-01-13T14:44:55.544036935Z",
-          "duration_seconds": 0.000751379
+          "start_time": "2026-01-13T14:44:10.051495296Z",
+          "end_time": "2026-01-13T14:44:10.052054335Z",
+          "duration_seconds": 0.000559039
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 6.198883056640625e-06,
-        "step2_select_topk": 0.0003552436828613281,
+        "step2_select_topk": 0.0003693103790283203,
         "step3_format_output": 0.0,
-        "total_duration": 0.0003833770751953125
+        "total_duration": 0.00039958953857421875
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 4.52194881439209
+        "ai_total_duration_seconds": 4.199878215789795
       }
     },
     {
       "case_number": 36,
       "success": true,
-      "duration_seconds": 0.735289,
+      "duration_seconds": 0.753518,
       "error": null,
       "output": {
         "mappings": [
@@ -17899,36 +17899,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:55.619246323Z",
-          "end_time": "2026-01-13T14:44:55.627839592Z",
-          "duration_seconds": 0.008593269
+          "start_time": "2026-01-13T14:44:10.121584708Z",
+          "end_time": "2026-01-13T14:44:10.129444825Z",
+          "duration_seconds": 0.007860118
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:55.627847849Z",
-          "end_time": "2026-01-13T14:44:56.231436474Z",
-          "duration_seconds": 0.603588623
+          "start_time": "2026-01-13T14:44:10.129452474Z",
+          "end_time": "2026-01-13T14:44:10.754675122Z",
+          "duration_seconds": 0.625222647
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:56.231438841Z",
-          "end_time": "2026-01-13T14:44:56.24402102Z",
-          "duration_seconds": 0.012582175
+          "start_time": "2026-01-13T14:44:10.754677611Z",
+          "end_time": "2026-01-13T14:44:10.77032817Z",
+          "duration_seconds": 0.015650562
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:56.244030318Z",
-          "end_time": "2026-01-13T14:44:56.304804122Z",
-          "duration_seconds": 0.060773811
+          "start_time": "2026-01-13T14:44:10.770341429Z",
+          "end_time": "2026-01-13T14:44:10.830425641Z",
+          "duration_seconds": 0.060084208
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:56.304817459Z",
-          "end_time": "2026-01-13T14:44:56.304901903Z",
-          "duration_seconds": 8.4445e-05
+          "start_time": "2026-01-13T14:44:10.830435734Z",
+          "end_time": "2026-01-13T14:44:10.830493927Z",
+          "duration_seconds": 5.8193e-05
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 1.9073486328125e-06,
-        "step2_select_topk": 0.0001614093780517578,
+        "step2_select_topk": 0.00015401840209960938,
         "step3_format_output": 0.0,
-        "total_duration": 0.000186920166015625
+        "total_duration": 0.00018596649169921875
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -17937,7 +17937,7 @@
     {
       "case_number": 37,
       "success": true,
-      "duration_seconds": 0.580586,
+      "duration_seconds": 0.584923,
       "error": null,
       "output": {
         "mappings": [
@@ -17968,36 +17968,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:56.379347549Z",
-          "end_time": "2026-01-13T14:44:56.393033802Z",
-          "duration_seconds": 0.013686253
+          "start_time": "2026-01-13T14:44:10.900421671Z",
+          "end_time": "2026-01-13T14:44:10.908153149Z",
+          "duration_seconds": 0.007731478
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:56.393051589Z",
-          "end_time": "2026-01-13T14:44:56.848593953Z",
-          "duration_seconds": 0.455542364
+          "start_time": "2026-01-13T14:44:10.908161931Z",
+          "end_time": "2026-01-13T14:44:11.374385533Z",
+          "duration_seconds": 0.466223604
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:56.848597208Z",
-          "end_time": "2026-01-13T14:44:56.84884998Z",
-          "duration_seconds": 0.000252768
+          "start_time": "2026-01-13T14:44:11.374388822Z",
+          "end_time": "2026-01-13T14:44:11.374706807Z",
+          "duration_seconds": 0.000317979
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:56.848855506Z",
-          "end_time": "2026-01-13T14:44:56.910722234Z",
-          "duration_seconds": 0.061866725
+          "start_time": "2026-01-13T14:44:11.374711337Z",
+          "end_time": "2026-01-13T14:44:11.4401261Z",
+          "duration_seconds": 0.065414763
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:56.910739002Z",
-          "end_time": "2026-01-13T14:44:56.910825057Z",
-          "duration_seconds": 8.6055e-05
+          "start_time": "2026-01-13T14:44:11.440136835Z",
+          "end_time": "2026-01-13T14:44:11.44021575Z",
+          "duration_seconds": 7.8915e-05
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.6689300537109375e-06,
-        "step2_select_topk": 0.0003001689910888672,
+        "step1_group_by_r": 1.430511474609375e-06,
+        "step2_select_topk": 0.00015425682067871094,
         "step3_format_output": 0.0,
-        "total_duration": 0.0003237724304199219
+        "total_duration": 0.0001785755157470703
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -18006,7 +18006,7 @@
     {
       "case_number": 38,
       "success": true,
-      "duration_seconds": 19.688646070724488,
+      "duration_seconds": 18.66472287536621,
       "error": null,
       "output": {
         "mappings": [
@@ -18280,7 +18280,7 @@
           },
           {
             "r_val": "total",
-            "s_val": "netherlands"
+            "s_val": "japan"
           },
           {
             "r_val": "metlife",
@@ -18309,45 +18309,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:56.986672734Z",
-          "end_time": "2026-01-13T14:44:56.994484682Z",
-          "duration_seconds": 0.007811947
+          "start_time": "2026-01-13T14:44:11.510297815Z",
+          "end_time": "2026-01-13T14:44:11.51807113Z",
+          "duration_seconds": 0.00777331
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:56.994494101Z",
-          "end_time": "2026-01-13T14:44:57.854920912Z",
-          "duration_seconds": 0.860426811
+          "start_time": "2026-01-13T14:44:11.51808022Z",
+          "end_time": "2026-01-13T14:44:12.365233167Z",
+          "duration_seconds": 0.847152949
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:57.854924271Z",
-          "end_time": "2026-01-13T14:44:57.90340811Z",
-          "duration_seconds": 0.048483843
+          "start_time": "2026-01-13T14:44:12.365236046Z",
+          "end_time": "2026-01-13T14:44:12.43161447Z",
+          "duration_seconds": 0.066378437
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:57.903418338Z",
-          "end_time": "2026-01-13T14:44:57.963953023Z",
-          "duration_seconds": 0.06053469
+          "start_time": "2026-01-13T14:44:12.431630263Z",
+          "end_time": "2026-01-13T14:44:12.499734377Z",
+          "duration_seconds": 0.06810412
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:57.963961348Z",
-          "end_time": "2026-01-13T14:44:57.966695329Z",
-          "duration_seconds": 0.002733983
+          "start_time": "2026-01-13T14:44:12.499747723Z",
+          "end_time": "2026-01-13T14:44:12.503959987Z",
+          "duration_seconds": 0.004212264
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.002716064453125e-05,
-        "step2_select_topk": 0.00033211708068847656,
+        "step1_group_by_r": 2.1696090698242188e-05,
+        "step2_select_topk": 0.0004086494445800781,
         "step3_format_output": 0.0,
-        "total_duration": 0.00037670135498046875
+        "total_duration": 0.00045609474182128906
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 18.660340070724487
+        "ai_total_duration_seconds": 17.62483787536621
       }
     },
     {
       "case_number": 39,
       "success": true,
-      "duration_seconds": 5.065257628784179,
+      "duration_seconds": 7.202561963699341,
       "error": null,
       "output": {
         "mappings": [
@@ -18549,7 +18549,7 @@
           },
           {
             "r_val": "the chinese university of hong kong",
-            "s_val": "china"
+            "s_val": "hong kong"
           },
           {
             "r_val": "university of oxford",
@@ -18562,45 +18562,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:58.039473633Z",
-          "end_time": "2026-01-13T14:44:58.047529448Z",
-          "duration_seconds": 0.008055815
+          "start_time": "2026-01-13T14:44:12.575222289Z",
+          "end_time": "2026-01-13T14:44:12.583092Z",
+          "duration_seconds": 0.007869709
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:58.047542605Z",
-          "end_time": "2026-01-13T14:44:58.682026814Z",
-          "duration_seconds": 0.634484208
+          "start_time": "2026-01-13T14:44:12.583105648Z",
+          "end_time": "2026-01-13T14:44:13.270320703Z",
+          "duration_seconds": 0.687215054
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:58.682029706Z",
-          "end_time": "2026-01-13T14:44:58.711297561Z",
-          "duration_seconds": 0.029267853
+          "start_time": "2026-01-13T14:44:13.270323222Z",
+          "end_time": "2026-01-13T14:44:13.296144012Z",
+          "duration_seconds": 0.025820792
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:58.711309621Z",
-          "end_time": "2026-01-13T14:44:58.77778941Z",
-          "duration_seconds": 0.066479792
+          "start_time": "2026-01-13T14:44:13.296160225Z",
+          "end_time": "2026-01-13T14:44:13.380687423Z",
+          "duration_seconds": 0.084527194
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:58.777799399Z",
-          "end_time": "2026-01-13T14:44:58.778922903Z",
-          "duration_seconds": 0.001123501
+          "start_time": "2026-01-13T14:44:13.38069752Z",
+          "end_time": "2026-01-13T14:44:13.381817805Z",
+          "duration_seconds": 0.001120285
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.1444091796875e-05,
-        "step2_select_topk": 0.0004892349243164062,
+        "step1_group_by_r": 1.8835067749023438e-05,
+        "step2_select_topk": 0.0005249977111816406,
         "step3_format_output": 0.0,
-        "total_duration": 0.0005254745483398438
+        "total_duration": 0.0005738735198974609
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 4.27827262878418
+        "ai_total_duration_seconds": 6.351763963699341
       }
     },
     {
       "case_number": 40,
       "success": true,
-      "duration_seconds": 172.47496560380554,
+      "duration_seconds": 185.06330773078918,
       "error": null,
       "output": {
         "mappings": [
@@ -18618,7 +18618,7 @@
           },
           {
             "r_val": "carrollton",
-            "s_val": "texas"
+            "s_val": "georgia"
           },
           {
             "r_val": "murfreesboro",
@@ -18666,15 +18666,15 @@
           },
           {
             "r_val": "arlington",
-            "s_val": "district of columbia"
+            "s_val": "virginia"
           },
           {
             "r_val": "mesa",
-            "s_val": "colorado"
+            "s_val": "arizona"
           },
           {
             "r_val": "providence",
-            "s_val": "connecticut"
+            "s_val": "rhode island"
           },
           {
             "r_val": "seattle",
@@ -18702,7 +18702,7 @@
           },
           {
             "r_val": "carlsbad",
-            "s_val": "new mexico"
+            "s_val": "california"
           },
           {
             "r_val": "fresno",
@@ -18862,7 +18862,7 @@
           },
           {
             "r_val": "henderson",
-            "s_val": "kentucky"
+            "s_val": "nevada"
           },
           {
             "r_val": "greensboro",
@@ -18898,7 +18898,7 @@
           },
           {
             "r_val": "jackson",
-            "s_val": "tennessee"
+            "s_val": "mississippi"
           },
           {
             "r_val": "oakland",
@@ -18934,7 +18934,7 @@
           },
           {
             "r_val": "alexandria",
-            "s_val": "minnesota"
+            "s_val": "virginia"
           },
           {
             "r_val": "wilmington",
@@ -19162,11 +19162,11 @@
           },
           {
             "r_val": "orange",
-            "s_val": "florida"
+            "s_val": "california"
           },
           {
             "r_val": "glendale",
-            "s_val": "california"
+            "s_val": "arizona"
           },
           {
             "r_val": "inglewood",
@@ -19182,7 +19182,7 @@
           },
           {
             "r_val": "lincoln",
-            "s_val": "illinois"
+            "s_val": "nebraska"
           },
           {
             "r_val": "palmdale",
@@ -19202,7 +19202,7 @@
           },
           {
             "r_val": "kansas city",
-            "s_val": "missouri"
+            "s_val": "kansas"
           },
           {
             "r_val": "san bernardino",
@@ -19386,7 +19386,7 @@
           },
           {
             "r_val": "mobile",
-            "s_val": "arizona"
+            "s_val": "alabama"
           },
           {
             "r_val": "north charleston",
@@ -19414,7 +19414,7 @@
           },
           {
             "r_val": "garland",
-            "s_val": "arkansas"
+            "s_val": "texas"
           },
           {
             "r_val": "irving",
@@ -19446,7 +19446,7 @@
           },
           {
             "r_val": "westminster",
-            "s_val": "california"
+            "s_val": "colorado"
           },
           {
             "r_val": "north las vegas",
@@ -19586,7 +19586,7 @@
           },
           {
             "r_val": "ontario",
-            "s_val": "california"
+            "s_val": "rhode island"
           },
           {
             "r_val": "madison",
@@ -19718,50 +19718,50 @@
           }
         ],
         "num_r": 278,
-        "num_s": 43,
+        "num_s": 44,
         "num_mappings": 278
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:58.851223491Z",
-          "end_time": "2026-01-13T14:44:58.859233793Z",
-          "duration_seconds": 0.008010297
+          "start_time": "2026-01-13T14:44:13.451412513Z",
+          "end_time": "2026-01-13T14:44:13.459499968Z",
+          "duration_seconds": 0.008087456
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:58.859244028Z",
-          "end_time": "2026-01-13T14:44:59.537656383Z",
-          "duration_seconds": 0.678412361
+          "start_time": "2026-01-13T14:44:13.459508438Z",
+          "end_time": "2026-01-13T14:44:14.204310004Z",
+          "duration_seconds": 0.744801572
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:44:59.537659852Z",
-          "end_time": "2026-01-13T14:44:59.697098119Z",
-          "duration_seconds": 0.159438268
+          "start_time": "2026-01-13T14:44:14.204313614Z",
+          "end_time": "2026-01-13T14:44:14.379400758Z",
+          "duration_seconds": 0.175087145
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:44:59.697114892Z",
-          "end_time": "2026-01-13T14:44:59.755384863Z",
-          "duration_seconds": 0.058269966
+          "start_time": "2026-01-13T14:44:14.379416953Z",
+          "end_time": "2026-01-13T14:44:14.445326398Z",
+          "duration_seconds": 0.065909445
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:44:59.755403565Z",
-          "end_time": "2026-01-13T14:44:59.835838851Z",
-          "duration_seconds": 0.080435284
+          "start_time": "2026-01-13T14:44:14.445339677Z",
+          "end_time": "2026-01-13T14:44:14.535325374Z",
+          "duration_seconds": 0.089985691
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0001919269561767578,
-        "step2_select_topk": 0.0005033016204833984,
+        "step1_group_by_r": 0.00019741058349609375,
+        "step2_select_topk": 0.0004963874816894531,
         "step3_format_output": 0.0,
-        "total_duration": 0.0007226467132568359
+        "total_duration": 0.0007283687591552734
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 171.43931460380554
+        "ai_total_duration_seconds": 183.93143773078918
       }
     },
     {
       "case_number": 41,
       "success": true,
-      "duration_seconds": 7.48004009980774,
+      "duration_seconds": 9.23696643963623,
       "error": null,
       "output": {
         "mappings": [
@@ -19812,45 +19812,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:44:59.914382223Z",
-          "end_time": "2026-01-13T14:44:59.922113293Z",
-          "duration_seconds": 0.00773107
+          "start_time": "2026-01-13T14:44:14.61132647Z",
+          "end_time": "2026-01-13T14:44:14.619787244Z",
+          "duration_seconds": 0.008460774
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:44:59.922120863Z",
-          "end_time": "2026-01-13T14:45:00.392649215Z",
-          "duration_seconds": 0.470528356
+          "start_time": "2026-01-13T14:44:14.619795144Z",
+          "end_time": "2026-01-13T14:44:15.141491195Z",
+          "duration_seconds": 0.521696051
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:00.392652278Z",
-          "end_time": "2026-01-13T14:45:00.394563209Z",
-          "duration_seconds": 0.001910934
+          "start_time": "2026-01-13T14:44:15.141494856Z",
+          "end_time": "2026-01-13T14:44:15.143948585Z",
+          "duration_seconds": 0.002453732
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:00.394570853Z",
-          "end_time": "2026-01-13T14:45:00.453194559Z",
-          "duration_seconds": 0.058623706
+          "start_time": "2026-01-13T14:44:15.143957238Z",
+          "end_time": "2026-01-13T14:44:15.217114367Z",
+          "duration_seconds": 0.073157133
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:00.453208421Z",
-          "end_time": "2026-01-13T14:45:00.453957549Z",
-          "duration_seconds": 0.000749139
+          "start_time": "2026-01-13T14:44:15.217123421Z",
+          "end_time": "2026-01-13T14:44:15.217625205Z",
+          "duration_seconds": 0.000501784
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.291534423828125e-06,
-        "step2_select_topk": 1.239776611328125e-05,
+        "step1_group_by_r": 4.5299530029296875e-06,
+        "step2_select_topk": 1.3828277587890625e-05,
         "step3_format_output": 0.0,
-        "total_duration": 4.744529724121094e-05
+        "total_duration": 4.482269287109375e-05
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 6.892419099807739
+        "ai_total_duration_seconds": 8.57978343963623
       }
     },
     {
       "case_number": 42,
       "success": true,
-      "duration_seconds": 2.37325721333313,
+      "duration_seconds": 1.7797608450317384,
       "error": null,
       "output": {
         "mappings": [
@@ -19868,7 +19868,7 @@
           },
           {
             "r_val": "sikkim",
-            "s_val": "noble orchid"
+            "s_val": "rhododendron"
           },
           {
             "r_val": "bangladesh",
@@ -19892,56 +19892,56 @@
           }
         ],
         "num_r": 9,
-        "num_s": 7,
+        "num_s": 6,
         "num_mappings": 9
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:45:00.529647807Z",
-          "end_time": "2026-01-13T14:45:00.537502903Z",
-          "duration_seconds": 0.007855096
+          "start_time": "2026-01-13T14:44:15.297841143Z",
+          "end_time": "2026-01-13T14:44:15.307589802Z",
+          "duration_seconds": 0.009748653
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:45:00.537511939Z",
-          "end_time": "2026-01-13T14:45:01.05592123Z",
-          "duration_seconds": 0.518409296
+          "start_time": "2026-01-13T14:44:15.307601883Z",
+          "end_time": "2026-01-13T14:44:15.892972311Z",
+          "duration_seconds": 0.585370428
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:01.055924992Z",
-          "end_time": "2026-01-13T14:45:01.061188816Z",
-          "duration_seconds": 0.005263819
+          "start_time": "2026-01-13T14:44:15.892975174Z",
+          "end_time": "2026-01-13T14:44:15.899169858Z",
+          "duration_seconds": 0.006194688
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:01.061198599Z",
-          "end_time": "2026-01-13T14:45:01.142784552Z",
-          "duration_seconds": 0.081585954
+          "start_time": "2026-01-13T14:44:15.899182219Z",
+          "end_time": "2026-01-13T14:44:15.963616592Z",
+          "duration_seconds": 0.06443437
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:01.142798262Z",
-          "end_time": "2026-01-13T14:45:01.142871524Z",
-          "duration_seconds": 7.3264e-05
+          "start_time": "2026-01-13T14:44:15.963631922Z",
+          "end_time": "2026-01-13T14:44:15.963708819Z",
+          "duration_seconds": 7.6898e-05
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.384185791015625e-06,
-        "step2_select_topk": 6.747245788574219e-05,
+        "step1_group_by_r": 2.86102294921875e-06,
+        "step2_select_topk": 7.104873657226562e-05,
         "step3_format_output": 0.0,
-        "total_duration": 9.298324584960938e-05
+        "total_duration": 9.799003601074219e-05
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 1.7132542133331299
+        "ai_total_duration_seconds": 1.0624208450317383
       }
     },
     {
       "case_number": 43,
       "success": true,
-      "duration_seconds": 7.129815795059204,
+      "duration_seconds": 9.11431335546875,
       "error": null,
       "output": {
         "mappings": [
           {
             "r_val": "martin van buren",
-            "s_val": "andrew jackson"
+            "s_val": "martin van buren"
           },
           {
             "r_val": "john adams",
@@ -19953,7 +19953,7 @@
           },
           {
             "r_val": "thomas jefferson",
-            "s_val": "james madison"
+            "s_val": "john adams"
           },
           {
             "r_val": "andrew johnson",
@@ -19981,7 +19981,7 @@
           },
           {
             "r_val": "calvin coolidge",
-            "s_val": "herbert hoover"
+            "s_val": "calvin coolidge"
           },
           {
             "r_val": "theodore roosevelt",
@@ -19993,50 +19993,50 @@
           }
         ],
         "num_r": 13,
-        "num_s": 10,
+        "num_s": 11,
         "num_mappings": 13
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:45:01.217302716Z",
-          "end_time": "2026-01-13T14:45:01.225155392Z",
-          "duration_seconds": 0.007852671
+          "start_time": "2026-01-13T14:44:16.045017911Z",
+          "end_time": "2026-01-13T14:44:16.054030728Z",
+          "duration_seconds": 0.009012816
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:45:01.225165312Z",
-          "end_time": "2026-01-13T14:45:01.670775078Z",
-          "duration_seconds": 0.445609765
+          "start_time": "2026-01-13T14:44:16.054041751Z",
+          "end_time": "2026-01-13T14:44:16.564507638Z",
+          "duration_seconds": 0.51046589
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:01.670777529Z",
-          "end_time": "2026-01-13T14:45:01.672539431Z",
-          "duration_seconds": 0.001761908
+          "start_time": "2026-01-13T14:44:16.564510829Z",
+          "end_time": "2026-01-13T14:44:16.56652016Z",
+          "duration_seconds": 0.002009338
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:01.672545976Z",
-          "end_time": "2026-01-13T14:45:01.732020031Z",
-          "duration_seconds": 0.059474052
+          "start_time": "2026-01-13T14:44:16.566530577Z",
+          "end_time": "2026-01-13T14:44:16.634015391Z",
+          "duration_seconds": 0.067484815
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:01.732030491Z",
-          "end_time": "2026-01-13T14:45:01.733327637Z",
-          "duration_seconds": 0.001297151
+          "start_time": "2026-01-13T14:44:16.634040773Z",
+          "end_time": "2026-01-13T14:44:16.63605445Z",
+          "duration_seconds": 0.002013676
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.5299530029296875e-06,
-        "step2_select_topk": 0.0003719329833984375,
+        "step1_group_by_r": 5.245208740234375e-06,
+        "step2_select_topk": 0.00032448768615722656,
         "step3_format_output": 0.0,
-        "total_duration": 0.0004048347473144531
+        "total_duration": 0.00037741661071777344
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 6.566070795059204
+        "ai_total_duration_seconds": 8.47283935546875
       }
     },
     {
       "case_number": 44,
       "success": true,
-      "duration_seconds": 0.59121,
+      "duration_seconds": 0.649721,
       "error": null,
       "output": {
         "mappings": [
@@ -20143,36 +20143,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:45:01.809124274Z",
-          "end_time": "2026-01-13T14:45:01.816864755Z",
-          "duration_seconds": 0.00774048
+          "start_time": "2026-01-13T14:44:16.715043012Z",
+          "end_time": "2026-01-13T14:44:16.722830857Z",
+          "duration_seconds": 0.007787844
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:45:01.81687156Z",
-          "end_time": "2026-01-13T14:45:02.286402301Z",
-          "duration_seconds": 0.469530743
+          "start_time": "2026-01-13T14:44:16.722839339Z",
+          "end_time": "2026-01-13T14:44:17.246470239Z",
+          "duration_seconds": 0.523630906
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:02.286405421Z",
-          "end_time": "2026-01-13T14:45:02.289006726Z",
-          "duration_seconds": 0.002601309
+          "start_time": "2026-01-13T14:44:17.246474387Z",
+          "end_time": "2026-01-13T14:44:17.248914677Z",
+          "duration_seconds": 0.00244029
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:02.289016087Z",
-          "end_time": "2026-01-13T14:45:02.350740219Z",
-          "duration_seconds": 0.061724129
+          "start_time": "2026-01-13T14:44:17.248922731Z",
+          "end_time": "2026-01-13T14:44:17.314320762Z",
+          "duration_seconds": 0.06539803
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:02.3507506Z",
-          "end_time": "2026-01-13T14:45:02.350910692Z",
-          "duration_seconds": 0.000160093
+          "start_time": "2026-01-13T14:44:17.314331638Z",
+          "end_time": "2026-01-13T14:44:17.314491724Z",
+          "duration_seconds": 0.000160083
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 5.7220458984375e-06,
-        "step2_select_topk": 0.00011730194091796875,
+        "step2_select_topk": 0.00012063980102539062,
         "step3_format_output": 0.0,
-        "total_duration": 0.00015616416931152344
+        "total_duration": 0.0001494884490966797
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -20181,7 +20181,7 @@
     {
       "case_number": 45,
       "success": true,
-      "duration_seconds": 0.741424,
+      "duration_seconds": 0.772064,
       "error": null,
       "output": {
         "mappings": [
@@ -20216,36 +20216,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:45:02.431878928Z",
-          "end_time": "2026-01-13T14:45:02.439836253Z",
-          "duration_seconds": 0.007957327
+          "start_time": "2026-01-13T14:44:17.393150282Z",
+          "end_time": "2026-01-13T14:44:17.402870104Z",
+          "duration_seconds": 0.009719817
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:45:02.439845085Z",
-          "end_time": "2026-01-13T14:45:03.025640341Z",
-          "duration_seconds": 0.585795259
+          "start_time": "2026-01-13T14:44:17.402878392Z",
+          "end_time": "2026-01-13T14:44:18.040897994Z",
+          "duration_seconds": 0.638019602
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:03.025645572Z",
-          "end_time": "2026-01-13T14:45:03.042588481Z",
-          "duration_seconds": 0.016942912
+          "start_time": "2026-01-13T14:44:18.040900298Z",
+          "end_time": "2026-01-13T14:44:18.059205057Z",
+          "duration_seconds": 0.018304759
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:03.042603692Z",
-          "end_time": "2026-01-13T14:45:03.117375135Z",
-          "duration_seconds": 0.074771449
+          "start_time": "2026-01-13T14:44:18.059214809Z",
+          "end_time": "2026-01-13T14:44:18.118743388Z",
+          "duration_seconds": 0.059528581
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:03.117404351Z",
-          "end_time": "2026-01-13T14:45:03.117491678Z",
-          "duration_seconds": 8.7327e-05
+          "start_time": "2026-01-13T14:44:18.118754714Z",
+          "end_time": "2026-01-13T14:44:18.118846134Z",
+          "duration_seconds": 9.142e-05
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.9073486328125e-06,
-        "step2_select_topk": 3.790855407714844e-05,
+        "step1_group_by_r": 1.6689300537109375e-06,
+        "step2_select_topk": 3.552436828613281e-05,
         "step3_format_output": 0.0,
-        "total_duration": 6.389617919921875e-05
+        "total_duration": 6.127357482910156e-05
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -20254,7 +20254,7 @@
     {
       "case_number": 46,
       "success": true,
-      "duration_seconds": 2.6872300381164553,
+      "duration_seconds": 3.119497935195923,
       "error": null,
       "output": {
         "mappings": [
@@ -20305,45 +20305,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:45:03.201026441Z",
-          "end_time": "2026-01-13T14:45:03.208943647Z",
-          "duration_seconds": 0.007917206
+          "start_time": "2026-01-13T14:44:18.194332881Z",
+          "end_time": "2026-01-13T14:44:18.202247715Z",
+          "duration_seconds": 0.007914834
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:45:03.208950799Z",
-          "end_time": "2026-01-13T14:45:03.662120398Z",
-          "duration_seconds": 0.453169594
+          "start_time": "2026-01-13T14:44:18.202254711Z",
+          "end_time": "2026-01-13T14:44:18.710493086Z",
+          "duration_seconds": 0.508238382
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:03.662122961Z",
-          "end_time": "2026-01-13T14:45:03.662930618Z",
-          "duration_seconds": 0.000807666
+          "start_time": "2026-01-13T14:44:18.710496394Z",
+          "end_time": "2026-01-13T14:44:18.711459959Z",
+          "duration_seconds": 0.000963565
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:03.662937601Z",
-          "end_time": "2026-01-13T14:45:03.7258072Z",
-          "duration_seconds": 0.062869599
+          "start_time": "2026-01-13T14:44:18.711469098Z",
+          "end_time": "2026-01-13T14:44:18.777004402Z",
+          "duration_seconds": 0.065535302
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:03.725823748Z",
-          "end_time": "2026-01-13T14:45:03.726186123Z",
-          "duration_seconds": 0.000362373
+          "start_time": "2026-01-13T14:44:18.777017876Z",
+          "end_time": "2026-01-13T14:44:18.77737924Z",
+          "duration_seconds": 0.000361364
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 2.86102294921875e-06,
-        "step2_select_topk": 0.0002415180206298828,
+        "step2_select_topk": 0.00023102760314941406,
         "step3_format_output": 0.0,
-        "total_duration": 0.0002665519714355469
+        "total_duration": 0.0002560615539550781
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 2.104382038116455
+        "ai_total_duration_seconds": 2.485801935195923
       }
     },
     {
       "case_number": 47,
       "success": false,
-      "duration_seconds": 0.581816,
+      "duration_seconds": 0.656531,
       "error": null,
       "output": {
         "mappings": [],
@@ -20353,36 +20353,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:45:03.811849934Z",
-          "end_time": "2026-01-13T14:45:03.81960284Z",
-          "duration_seconds": 0.007752905
+          "start_time": "2026-01-13T14:44:18.861309863Z",
+          "end_time": "2026-01-13T14:44:18.869414002Z",
+          "duration_seconds": 0.00810414
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:45:03.819613889Z",
-          "end_time": "2026-01-13T14:45:04.280867246Z",
-          "duration_seconds": 0.461253364
+          "start_time": "2026-01-13T14:44:18.869425108Z",
+          "end_time": "2026-01-13T14:44:19.38971298Z",
+          "duration_seconds": 0.520287879
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:04.280870765Z",
-          "end_time": "2026-01-13T14:45:04.282666133Z",
-          "duration_seconds": 0.001795368
+          "start_time": "2026-01-13T14:44:19.389716556Z",
+          "end_time": "2026-01-13T14:44:19.391889125Z",
+          "duration_seconds": 0.00217257
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:04.282671853Z",
-          "end_time": "2026-01-13T14:45:04.341912634Z",
-          "duration_seconds": 0.059240774
+          "start_time": "2026-01-13T14:44:19.391899777Z",
+          "end_time": "2026-01-13T14:44:19.465780843Z",
+          "duration_seconds": 0.073881066
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:04.3419235Z",
-          "end_time": "2026-01-13T14:45:04.3424833Z",
-          "duration_seconds": 0.0005598
+          "start_time": "2026-01-13T14:44:19.465792709Z",
+          "end_time": "2026-01-13T14:44:19.466725867Z",
+          "duration_seconds": 0.000933152
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.76837158203125e-07,
-        "step2_select_topk": 0.0022783279418945312,
+        "step1_group_by_r": 2.384185791015625e-07,
+        "step2_select_topk": 0.0022041797637939453,
         "step3_format_output": 0.0,
-        "total_duration": 0.002308368682861328
+        "total_duration": 0.002235889434814453
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -20391,7 +20391,7 @@
     {
       "case_number": 48,
       "success": true,
-      "duration_seconds": 0.562165,
+      "duration_seconds": 0.6476,
       "error": null,
       "output": {
         "mappings": [
@@ -20514,36 +20514,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:45:04.423448407Z",
-          "end_time": "2026-01-13T14:45:04.431146684Z",
-          "duration_seconds": 0.007698278
+          "start_time": "2026-01-13T14:44:19.545388474Z",
+          "end_time": "2026-01-13T14:44:19.55313484Z",
+          "duration_seconds": 0.007746365
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:45:04.431155588Z",
-          "end_time": "2026-01-13T14:45:04.875956541Z",
-          "duration_seconds": 0.444800953
+          "start_time": "2026-01-13T14:44:19.55314353Z",
+          "end_time": "2026-01-13T14:44:20.075527809Z",
+          "duration_seconds": 0.52238428
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:04.875958529Z",
-          "end_time": "2026-01-13T14:45:04.876140399Z",
-          "duration_seconds": 0.000181876
+          "start_time": "2026-01-13T14:44:20.075530137Z",
+          "end_time": "2026-01-13T14:44:20.075740255Z",
+          "duration_seconds": 0.000210125
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:04.876146064Z",
-          "end_time": "2026-01-13T14:45:04.935743148Z",
-          "duration_seconds": 0.059597083
+          "start_time": "2026-01-13T14:44:20.075746827Z",
+          "end_time": "2026-01-13T14:44:20.140774674Z",
+          "duration_seconds": 0.065027842
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:04.935759795Z",
-          "end_time": "2026-01-13T14:45:04.935929608Z",
-          "duration_seconds": 0.000169807
+          "start_time": "2026-01-13T14:44:20.140787692Z",
+          "end_time": "2026-01-13T14:44:20.140918253Z",
+          "duration_seconds": 0.000130559
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 5.4836273193359375e-06,
-        "step2_select_topk": 0.0001270771026611328,
+        "step1_group_by_r": 5.9604644775390625e-06,
+        "step2_select_topk": 0.0001373291015625,
         "step3_format_output": 0.0,
-        "total_duration": 0.00015664100646972656
+        "total_duration": 0.0001671314239501953
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -20552,7 +20552,7 @@
     {
       "case_number": 49,
       "success": true,
-      "duration_seconds": 1.4289202595825197,
+      "duration_seconds": 1.5479915459136961,
       "error": null,
       "output": {
         "mappings": [
@@ -20566,7 +20566,7 @@
           },
           {
             "r_val": "moon",
-            "s_val": "earth"
+            "s_val": "saturn"
           },
           {
             "r_val": "io",
@@ -20582,50 +20582,50 @@
           }
         ],
         "num_r": 6,
-        "num_s": 4,
+        "num_s": 3,
         "num_mappings": 6
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:45:05.01375621Z",
-          "end_time": "2026-01-13T14:45:05.021560926Z",
-          "duration_seconds": 0.007804718
+          "start_time": "2026-01-13T14:44:20.222794362Z",
+          "end_time": "2026-01-13T14:44:20.230865179Z",
+          "duration_seconds": 0.008070817
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:45:05.021568688Z",
-          "end_time": "2026-01-13T14:45:05.465002597Z",
-          "duration_seconds": 0.443433911
+          "start_time": "2026-01-13T14:44:20.230875005Z",
+          "end_time": "2026-01-13T14:44:20.747584847Z",
+          "duration_seconds": 0.516709842
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:05.465005876Z",
-          "end_time": "2026-01-13T14:45:05.465245806Z",
-          "duration_seconds": 0.00023993
+          "start_time": "2026-01-13T14:44:20.747588182Z",
+          "end_time": "2026-01-13T14:44:20.747877505Z",
+          "duration_seconds": 0.000289322
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:05.465249982Z",
-          "end_time": "2026-01-13T14:45:05.523321398Z",
-          "duration_seconds": 0.05807141
+          "start_time": "2026-01-13T14:44:20.747883036Z",
+          "end_time": "2026-01-13T14:44:20.812902355Z",
+          "duration_seconds": 0.065019315
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:05.523332717Z",
-          "end_time": "2026-01-13T14:45:05.523388515Z",
-          "duration_seconds": 5.5799e-05
+          "start_time": "2026-01-13T14:44:20.812913647Z",
+          "end_time": "2026-01-13T14:44:20.812975626Z",
+          "duration_seconds": 6.1979e-05
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.9073486328125e-06,
-        "step2_select_topk": 7.3909759521484375e-06,
+        "step1_group_by_r": 2.1457672119140625e-06,
+        "step2_select_topk": 8.821487426757812e-06,
         "step3_format_output": 0.0,
-        "total_duration": 3.266334533691406e-05
+        "total_duration": 3.409385681152344e-05
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 0.8710832595825195
+        "ai_total_duration_seconds": 0.9100935459136963
       }
     },
     {
       "case_number": 50,
       "success": true,
-      "duration_seconds": 11.507296857971191,
+      "duration_seconds": 10.38545609413147,
       "error": null,
       "output": {
         "mappings": [
@@ -20639,11 +20639,11 @@
           },
           {
             "r_val": "matt leinart",
-            "s_val": "ucla"
+            "s_val": "southern california"
           },
           {
             "r_val": "earl campbell",
-            "s_val": "texas"
+            "s_val": "auburn"
           },
           {
             "r_val": "steve owens",
@@ -20675,7 +20675,7 @@
           },
           {
             "r_val": "george rogers",
-            "s_val": "auburn"
+            "s_val": "south carolina"
           },
           {
             "r_val": "leon hart",
@@ -20875,7 +20875,7 @@
           },
           {
             "r_val": "jim plunkett",
-            "s_val": "notre dame"
+            "s_val": "stanford"
           },
           {
             "r_val": "mark ingram",
@@ -20927,44 +20927,44 @@
           }
         ],
         "num_r": 74,
-        "num_s": 34,
+        "num_s": 36,
         "num_mappings": 74
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T14:45:05.59977001Z",
-          "end_time": "2026-01-13T14:45:05.60759223Z",
-          "duration_seconds": 0.007822213
+          "start_time": "2026-01-13T14:44:20.889139655Z",
+          "end_time": "2026-01-13T14:44:20.897880345Z",
+          "duration_seconds": 0.008740691
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T14:45:05.607601506Z",
-          "end_time": "2026-01-13T14:45:06.119622735Z",
-          "duration_seconds": 0.512021235
+          "start_time": "2026-01-13T14:44:20.897890605Z",
+          "end_time": "2026-01-13T14:44:21.454560248Z",
+          "duration_seconds": 0.556669648
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T14:45:06.119626292Z",
-          "end_time": "2026-01-13T14:45:06.129956012Z",
-          "duration_seconds": 0.01032972
+          "start_time": "2026-01-13T14:44:21.454564142Z",
+          "end_time": "2026-01-13T14:44:21.468616983Z",
+          "duration_seconds": 0.014052842
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T14:45:06.129971771Z",
-          "end_time": "2026-01-13T14:45:06.211396402Z",
-          "duration_seconds": 0.081424631
+          "start_time": "2026-01-13T14:44:21.468642969Z",
+          "end_time": "2026-01-13T14:44:21.545589802Z",
+          "duration_seconds": 0.076946835
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T14:45:06.211409138Z",
-          "end_time": "2026-01-13T14:45:06.21279863Z",
-          "duration_seconds": 0.001389491
+          "start_time": "2026-01-13T14:44:21.545617808Z",
+          "end_time": "2026-01-13T14:44:21.548623999Z",
+          "duration_seconds": 0.003006191
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.5497207641601562e-05,
-        "step2_select_topk": 6.127357482910156e-05,
+        "step1_group_by_r": 1.6927719116210938e-05,
+        "step2_select_topk": 6.29425048828125e-05,
         "step3_format_output": 0.0,
-        "total_duration": 0.0001125335693359375
+        "total_duration": 0.00010347366333007812
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 10.844452857971191
+        "ai_total_duration_seconds": 9.66934609413147
       }
     }
   ]

@@ -1,17 +1,17 @@
 {
   "algorithm": "rs_jp",
-  "start_time": "2026-01-13T15:14:58.670983",
+  "start_time": "2026-01-13T14:50:03.047497",
   "database": "duckdb",
   "total_cases": 49,
   "successful_cases": 38,
   "failed_cases": 11,
-  "total_duration_seconds": 1812.102821728882,
-  "average_duration_seconds": 47.686916361286364,
+  "total_duration_seconds": 1779.9366807567449,
+  "average_duration_seconds": 46.84043896728276,
   "results": [
     {
       "case_number": 1,
       "success": true,
-      "duration_seconds": 67.15881099075318,
+      "duration_seconds": 63.28859483479309,
       "error": null,
       "output": {
         "mappings": [
@@ -361,7 +361,7 @@
           },
           {
             "r_val": "turkey",
-            "s_val": "asia"
+            "s_val": "europe"
           },
           {
             "r_val": "turkmenistan",
@@ -449,7 +449,7 @@
           },
           {
             "r_val": "georgia",
-            "s_val": "north america"
+            "s_val": "asia"
           },
           {
             "r_val": "germany",
@@ -593,7 +593,7 @@
           },
           {
             "r_val": "costa rica",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "cuba",
@@ -605,7 +605,7 @@
           },
           {
             "r_val": "dominican republic",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "el salvador",
@@ -617,7 +617,7 @@
           },
           {
             "r_val": "guatemala",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "haiti",
@@ -625,7 +625,7 @@
           },
           {
             "r_val": "honduras",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "jamaica",
@@ -633,11 +633,11 @@
           },
           {
             "r_val": "mexico",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "nicaragua",
-            "s_val": "south america"
+            "s_val": "north america"
           },
           {
             "r_val": "panama",
@@ -653,11 +653,11 @@
           },
           {
             "r_val": "saint vincent and the grenadines",
-            "s_val": "north america"
+            "s_val": "south america"
           },
           {
             "r_val": "trinidad and tobago",
-            "s_val": "north america"
+            "s_val": "south america"
           },
           {
             "r_val": "united states",
@@ -774,45 +774,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:01:23.338801158Z",
-          "end_time": "2026-01-13T15:01:23.356885785Z",
-          "duration_seconds": 0.018084629
+          "start_time": "2026-01-13T14:50:03.049735402Z",
+          "end_time": "2026-01-13T14:50:03.064213398Z",
+          "duration_seconds": 0.014477995
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:01:23.357004983Z",
-          "end_time": "2026-01-13T15:01:40.26512296Z",
-          "duration_seconds": 16.908118011
+          "start_time": "2026-01-13T14:50:03.064228577Z",
+          "end_time": "2026-01-13T14:50:12.052643492Z",
+          "duration_seconds": 8.988414915
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:01:40.265149168Z",
-          "end_time": "2026-01-13T15:01:40.971322003Z",
-          "duration_seconds": 0.706172842
+          "start_time": "2026-01-13T14:50:12.052647826Z",
+          "end_time": "2026-01-13T14:50:12.079655888Z",
+          "duration_seconds": 0.027008067
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:01:40.971943295Z",
-          "end_time": "2026-01-13T15:01:42.251102879Z",
-          "duration_seconds": 1.279159537
+          "start_time": "2026-01-13T14:50:12.079668448Z",
+          "end_time": "2026-01-13T14:50:12.466480549Z",
+          "duration_seconds": 0.386812105
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:01:42.251113633Z",
-          "end_time": "2026-01-13T15:01:42.430006951Z",
-          "duration_seconds": 0.178893374
+          "start_time": "2026-01-13T14:50:12.466492024Z",
+          "end_time": "2026-01-13T14:50:12.472278132Z",
+          "duration_seconds": 0.005786109
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0005807876586914062,
-        "step2_select_topk": 0.0008494853973388672,
+        "step1_group_by_r": 0.00014281272888183594,
+        "step2_select_topk": 0.00019788742065429688,
         "step3_format_output": 0.0,
-        "total_duration": 0.002736330032348633
+        "total_duration": 0.00040435791015625
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 45.888370990753174
+        "ai_total_duration_seconds": 53.12758183479309
       }
     },
     {
       "case_number": 2,
       "success": true,
-      "duration_seconds": 63.622022,
+      "duration_seconds": 11.640271,
       "error": null,
       "output": {
         "mappings": [
@@ -835,36 +835,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:01:44.729104499Z",
-          "end_time": "2026-01-13T15:01:44.799223754Z",
-          "duration_seconds": 0.070119218
+          "start_time": "2026-01-13T14:50:13.234699295Z",
+          "end_time": "2026-01-13T14:50:13.245231241Z",
+          "duration_seconds": 0.010531944
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:01:44.799333482Z",
-          "end_time": "2026-01-13T15:02:46.90042311Z",
-          "duration_seconds": 62.101089628
+          "start_time": "2026-01-13T14:50:13.245243394Z",
+          "end_time": "2026-01-13T14:50:23.754536183Z",
+          "duration_seconds": 10.509292793
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:02:46.900426464Z",
-          "end_time": "2026-01-13T15:02:46.900859073Z",
-          "duration_seconds": 0.000432614
+          "start_time": "2026-01-13T14:50:23.754539584Z",
+          "end_time": "2026-01-13T14:50:23.755004802Z",
+          "duration_seconds": 0.000465218
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:02:46.900865632Z",
-          "end_time": "2026-01-13T15:02:47.366961781Z",
-          "duration_seconds": 0.466096145
+          "start_time": "2026-01-13T14:50:23.755009021Z",
+          "end_time": "2026-01-13T14:50:24.150339257Z",
+          "duration_seconds": 0.395330239
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:02:47.366973927Z",
-          "end_time": "2026-01-13T15:02:47.367334486Z",
-          "duration_seconds": 0.000360562
+          "start_time": "2026-01-13T14:50:24.150350042Z",
+          "end_time": "2026-01-13T14:50:24.150450816Z",
+          "duration_seconds": 0.000100774
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.430511474609375e-06,
-        "step2_select_topk": 0.00021147727966308594,
+        "step1_group_by_r": 1.6689300537109375e-06,
+        "step2_select_topk": 0.000263214111328125,
         "step3_format_output": 0.0,
-        "total_duration": 0.00024390220642089844
+        "total_duration": 0.0002913475036621094
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -873,7 +873,7 @@
     {
       "case_number": 3,
       "success": true,
-      "duration_seconds": 95.9129757134552,
+      "duration_seconds": 91.98134476623535,
       "error": null,
       "output": {
         "mappings": [
@@ -903,7 +903,7 @@
           },
           {
             "r_val": "at",
-            "s_val": "silver"
+            "s_val": "aluminium"
           },
           {
             "r_val": "au",
@@ -919,7 +919,7 @@
           },
           {
             "r_val": "be",
-            "s_val": "iron"
+            "s_val": "beryllium"
           },
           {
             "r_val": "bh",
@@ -947,7 +947,7 @@
           },
           {
             "r_val": "cd",
-            "s_val": "cadmium"
+            "s_val": "lead"
           },
           {
             "r_val": "ce",
@@ -963,7 +963,7 @@
           },
           {
             "r_val": "cm",
-            "s_val": "curium"
+            "s_val": "lead"
           },
           {
             "r_val": "co",
@@ -995,11 +995,11 @@
           },
           {
             "r_val": "er",
-            "s_val": "erbium"
+            "s_val": "tin"
           },
           {
             "r_val": "es",
-            "s_val": "einsteinium"
+            "s_val": "bismuth"
           },
           {
             "r_val": "eu",
@@ -1059,7 +1059,7 @@
           },
           {
             "r_val": "i",
-            "s_val": "carbon"
+            "s_val": "iodine"
           },
           {
             "r_val": "in",
@@ -1095,7 +1095,7 @@
           },
           {
             "r_val": "md",
-            "s_val": "mendelevium"
+            "s_val": "silver"
           },
           {
             "r_val": "mg",
@@ -1115,11 +1115,11 @@
           },
           {
             "r_val": "n",
-            "s_val": "carbon"
+            "s_val": "radon"
           },
           {
             "r_val": "na",
-            "s_val": "potassium"
+            "s_val": "sodium"
           },
           {
             "r_val": "nb",
@@ -1139,11 +1139,11 @@
           },
           {
             "r_val": "no",
-            "s_val": "mercury"
+            "s_val": "nobelium"
           },
           {
             "r_val": "np",
-            "s_val": "neptunium"
+            "s_val": "mercury"
           },
           {
             "r_val": "o",
@@ -1199,7 +1199,7 @@
           },
           {
             "r_val": "re",
-            "s_val": "nitrogen"
+            "s_val": "rhenium"
           },
           {
             "r_val": "rf",
@@ -1227,7 +1227,7 @@
           },
           {
             "r_val": "sb",
-            "s_val": "gold"
+            "s_val": "antimony"
           },
           {
             "r_val": "sc",
@@ -1323,50 +1323,50 @@
           }
         ],
         "num_r": 111,
-        "num_s": 99,
+        "num_s": 98,
         "num_mappings": 111
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:02:48.275803576Z",
-          "end_time": "2026-01-13T15:02:48.298596455Z",
-          "duration_seconds": 0.022792872
+          "start_time": "2026-01-13T14:50:24.865916862Z",
+          "end_time": "2026-01-13T14:50:24.880558316Z",
+          "duration_seconds": 0.014641448
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:02:48.298615011Z",
-          "end_time": "2026-01-13T15:03:15.324482595Z",
-          "duration_seconds": 27.025867584
+          "start_time": "2026-01-13T14:50:24.880571811Z",
+          "end_time": "2026-01-13T14:50:40.502669312Z",
+          "duration_seconds": 15.622097502
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:03:15.324570616Z",
-          "end_time": "2026-01-13T15:03:15.407298109Z",
-          "duration_seconds": 0.082727497
+          "start_time": "2026-01-13T14:50:40.502672126Z",
+          "end_time": "2026-01-13T14:50:40.620941931Z",
+          "duration_seconds": 0.118269821
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:03:15.407318417Z",
-          "end_time": "2026-01-13T15:03:15.895682934Z",
-          "duration_seconds": 0.488364517
+          "start_time": "2026-01-13T14:50:40.6209635Z",
+          "end_time": "2026-01-13T14:50:41.137174871Z",
+          "duration_seconds": 0.516211367
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:03:15.895700793Z",
-          "end_time": "2026-01-13T15:03:15.908198614Z",
-          "duration_seconds": 0.012497817
+          "start_time": "2026-01-13T14:50:41.137184715Z",
+          "end_time": "2026-01-13T14:50:41.153028165Z",
+          "duration_seconds": 0.015843447
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0002903938293457031,
-        "step2_select_topk": 0.0002701282501220703,
+        "step1_group_by_r": 0.00017833709716796875,
+        "step2_select_topk": 0.00027632713317871094,
         "step3_format_output": 0.0,
-        "total_duration": 0.0005848407745361328
+        "total_duration": 0.0004975795745849609
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 66.7997887134552
+        "ai_total_duration_seconds": 74.27861976623535
       }
     },
     {
       "case_number": 4,
       "success": true,
-      "duration_seconds": 9.714969,
+      "duration_seconds": 8.812481,
       "error": null,
       "output": {
         "mappings": [
@@ -1389,36 +1389,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:03:17.397715341Z",
-          "end_time": "2026-01-13T15:03:17.431230451Z",
-          "duration_seconds": 0.033515143
+          "start_time": "2026-01-13T14:50:42.578931208Z",
+          "end_time": "2026-01-13T14:50:42.601566588Z",
+          "duration_seconds": 0.022635374
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:03:17.431282096Z",
-          "end_time": "2026-01-13T15:03:25.981084509Z",
-          "duration_seconds": 8.549802387
+          "start_time": "2026-01-13T14:50:42.601578387Z",
+          "end_time": "2026-01-13T14:50:50.363666088Z",
+          "duration_seconds": 7.762087702
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:03:25.981088118Z",
-          "end_time": "2026-01-13T15:03:25.9824399Z",
-          "duration_seconds": 0.001351778
+          "start_time": "2026-01-13T14:50:50.363668658Z",
+          "end_time": "2026-01-13T14:50:50.364307271Z",
+          "duration_seconds": 0.00063862
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:03:25.982444913Z",
-          "end_time": "2026-01-13T15:03:26.362190302Z",
-          "duration_seconds": 0.379745396
+          "start_time": "2026-01-13T14:50:50.364313758Z",
+          "end_time": "2026-01-13T14:50:50.744477303Z",
+          "duration_seconds": 0.380163538
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:03:26.362204127Z",
-          "end_time": "2026-01-13T15:03:26.362467148Z",
-          "duration_seconds": 0.00026302
+          "start_time": "2026-01-13T14:50:50.744488799Z",
+          "end_time": "2026-01-13T14:50:50.744717462Z",
+          "duration_seconds": 0.000228665
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.1457672119140625e-06,
-        "step2_select_topk": 0.00180816650390625,
+        "step1_group_by_r": 1.9073486328125e-06,
+        "step2_select_topk": 0.0009789466857910156,
         "step3_format_output": 0.0,
-        "total_duration": 0.0018572807312011719
+        "total_duration": 0.001004934310913086
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -1427,7 +1427,7 @@
     {
       "case_number": 5,
       "success": true,
-      "duration_seconds": 42.657903985961916,
+      "duration_seconds": 43.64835333216858,
       "error": null,
       "output": {
         "mappings": [
@@ -1481,7 +1481,7 @@
           },
           {
             "r_val": "springfield",
-            "s_val": "massachusetts"
+            "s_val": "illinois"
           },
           {
             "r_val": "indianapolis",
@@ -1505,7 +1505,7 @@
           },
           {
             "r_val": "augusta",
-            "s_val": "georgia"
+            "s_val": "maine"
           },
           {
             "r_val": "annapolis",
@@ -1541,7 +1541,7 @@
           },
           {
             "r_val": "concord",
-            "s_val": "new hampshire"
+            "s_val": "north carolina"
           },
           {
             "r_val": "trenton",
@@ -1629,56 +1629,56 @@
           }
         ],
         "num_r": 49,
-        "num_s": 45,
+        "num_s": 46,
         "num_mappings": 49
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:03:27.109333021Z",
-          "end_time": "2026-01-13T15:03:27.125364094Z",
-          "duration_seconds": 0.016031074
+          "start_time": "2026-01-13T14:50:51.385499917Z",
+          "end_time": "2026-01-13T14:50:51.403518396Z",
+          "duration_seconds": 0.018018482
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:03:27.12537374Z",
-          "end_time": "2026-01-13T15:03:38.291652693Z",
-          "duration_seconds": 11.166278972
+          "start_time": "2026-01-13T14:50:51.403528676Z",
+          "end_time": "2026-01-13T14:51:00.324388553Z",
+          "duration_seconds": 8.920859878
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:03:38.291659341Z",
-          "end_time": "2026-01-13T15:03:38.470059407Z",
-          "duration_seconds": 0.178400062
+          "start_time": "2026-01-13T14:51:00.324391514Z",
+          "end_time": "2026-01-13T14:51:00.360765494Z",
+          "duration_seconds": 0.036373993
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:03:38.470238147Z",
-          "end_time": "2026-01-13T15:03:39.239591187Z",
-          "duration_seconds": 0.769353015
+          "start_time": "2026-01-13T14:51:00.36078131Z",
+          "end_time": "2026-01-13T14:51:00.778993788Z",
+          "duration_seconds": 0.418212469
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:03:39.239605554Z",
-          "end_time": "2026-01-13T15:03:39.263937689Z",
-          "duration_seconds": 0.024332138
+          "start_time": "2026-01-13T14:51:00.779006357Z",
+          "end_time": "2026-01-13T14:51:00.782089612Z",
+          "duration_seconds": 0.003083256
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.3126602172851562e-05,
-        "step2_select_topk": 6.175041198730469e-05,
+        "step1_group_by_r": 0.00010538101196289062,
+        "step2_select_topk": 7.891654968261719e-05,
         "step3_format_output": 0.0,
-        "total_duration": 0.00011610984802246094
+        "total_duration": 0.00021409988403320312
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 29.509469985961914
+        "ai_total_duration_seconds": 33.52099633216858
       }
     },
     {
       "case_number": 6,
       "success": true,
-      "duration_seconds": 13.760152052627564,
+      "duration_seconds": 14.054350171478271,
       "error": null,
       "output": {
         "mappings": [
           {
             "r_val": "richard nixon",
-            "s_val": "nebraska"
+            "s_val": "arkansas"
           },
           {
             "r_val": "barack obama",
@@ -1691,45 +1691,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:03:40.259862048Z",
-          "end_time": "2026-01-13T15:03:40.277902695Z",
-          "duration_seconds": 0.018040647
+          "start_time": "2026-01-13T14:51:01.515162824Z",
+          "end_time": "2026-01-13T14:51:01.525785226Z",
+          "duration_seconds": 0.010622401
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:03:40.277950811Z",
-          "end_time": "2026-01-13T15:03:50.280449305Z",
-          "duration_seconds": 10.002498501
+          "start_time": "2026-01-13T14:51:01.525794345Z",
+          "end_time": "2026-01-13T14:51:12.454352514Z",
+          "duration_seconds": 10.928558179
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:03:50.280453099Z",
-          "end_time": "2026-01-13T15:03:50.285661573Z",
-          "duration_seconds": 0.005208539
+          "start_time": "2026-01-13T14:51:12.45435661Z",
+          "end_time": "2026-01-13T14:51:12.471753214Z",
+          "duration_seconds": 0.017396608
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:03:50.285697315Z",
-          "end_time": "2026-01-13T15:03:50.712306796Z",
-          "duration_seconds": 0.426609437
+          "start_time": "2026-01-13T14:51:12.471768523Z",
+          "end_time": "2026-01-13T14:51:13.066401017Z",
+          "duration_seconds": 0.594632484
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:03:50.712318175Z",
-          "end_time": "2026-01-13T15:03:50.712675349Z",
-          "duration_seconds": 0.000357175
+          "start_time": "2026-01-13T14:51:13.066415676Z",
+          "end_time": "2026-01-13T14:51:13.06680857Z",
+          "duration_seconds": 0.000392891
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.0994415283203125e-06,
-        "step2_select_topk": 0.0005018711090087891,
+        "step1_group_by_r": 3.337860107421875e-06,
+        "step2_select_topk": 0.0003914833068847656,
         "step3_format_output": 0.0,
-        "total_duration": 0.0005295276641845703
+        "total_duration": 0.0004220008850097656
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 2.6226160526275635
+        "ai_total_duration_seconds": 1.5456671714782715
       }
     },
     {
       "case_number": 7,
       "success": true,
-      "duration_seconds": 63.38124247973633,
+      "duration_seconds": 69.52716553057861,
       "error": null,
       "output": {
         "mappings": [
@@ -1747,7 +1747,7 @@
           },
           {
             "r_val": "utah",
-            "s_val": "az"
+            "s_val": "ut"
           },
           {
             "r_val": "arizona",
@@ -1815,7 +1815,7 @@
           },
           {
             "r_val": "idaho",
-            "s_val": "in"
+            "s_val": "id"
           },
           {
             "r_val": "oregon",
@@ -1843,7 +1843,7 @@
           },
           {
             "r_val": "arkansas",
-            "s_val": "ak"
+            "s_val": "ar"
           },
           {
             "r_val": "south carolina",
@@ -1875,7 +1875,7 @@
           },
           {
             "r_val": "alaska",
-            "s_val": "al"
+            "s_val": "ak"
           },
           {
             "r_val": "north dakota",
@@ -1935,50 +1935,50 @@
           }
         ],
         "num_r": 50,
-        "num_s": 47,
+        "num_s": 50,
         "num_mappings": 50
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:03:51.398366619Z",
-          "end_time": "2026-01-13T15:03:51.409470953Z",
-          "duration_seconds": 0.011104337
+          "start_time": "2026-01-13T14:51:14.03277658Z",
+          "end_time": "2026-01-13T14:51:14.049840446Z",
+          "duration_seconds": 0.017063866
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:03:51.409480953Z",
-          "end_time": "2026-01-13T15:04:06.30442171Z",
-          "duration_seconds": 14.894940759
+          "start_time": "2026-01-13T14:51:14.049856191Z",
+          "end_time": "2026-01-13T14:51:33.925568402Z",
+          "duration_seconds": 19.875712202
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:04:06.304491872Z",
-          "end_time": "2026-01-13T15:04:06.432559322Z",
-          "duration_seconds": 0.128067453
+          "start_time": "2026-01-13T14:51:33.925573485Z",
+          "end_time": "2026-01-13T14:51:34.232989643Z",
+          "duration_seconds": 0.307416174
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:04:06.432803129Z",
-          "end_time": "2026-01-13T15:04:07.028800362Z",
-          "duration_seconds": 0.595997229
+          "start_time": "2026-01-13T14:51:34.233114569Z",
+          "end_time": "2026-01-13T14:51:34.712813866Z",
+          "duration_seconds": 0.479699253
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:04:07.028811675Z",
-          "end_time": "2026-01-13T15:04:07.084603645Z",
-          "duration_seconds": 0.05579197
+          "start_time": "2026-01-13T14:51:34.712824241Z",
+          "end_time": "2026-01-13T14:51:34.776507085Z",
+          "duration_seconds": 0.063682848
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.62396240234375e-05,
-        "step2_select_topk": 0.0007052421569824219,
+        "step1_group_by_r": 3.933906555175781e-05,
+        "step2_select_topk": 0.0004544258117675781,
         "step3_format_output": 0.0,
-        "total_duration": 0.0007717609405517578
+        "total_duration": 0.0005238056182861328
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 46.65871047973633
+        "ai_total_duration_seconds": 47.89954853057861
       }
     },
     {
       "case_number": 8,
       "success": true,
-      "duration_seconds": 17.829932635513305,
+      "duration_seconds": 22.659758856155396,
       "error": null,
       "output": {
         "mappings": [
@@ -2041,45 +2041,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:04:08.130670203Z",
-          "end_time": "2026-01-13T15:04:08.149280242Z",
-          "duration_seconds": 0.018610037
+          "start_time": "2026-01-13T14:51:35.662869199Z",
+          "end_time": "2026-01-13T14:51:35.673924371Z",
+          "duration_seconds": 0.011055172
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:04:08.149313272Z",
-          "end_time": "2026-01-13T15:04:19.085090829Z",
-          "duration_seconds": 10.935777556
+          "start_time": "2026-01-13T14:51:35.673963413Z",
+          "end_time": "2026-01-13T14:51:50.372122471Z",
+          "duration_seconds": 14.698159062
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:04:19.085094039Z",
-          "end_time": "2026-01-13T15:04:19.101628063Z",
-          "duration_seconds": 0.016534031
+          "start_time": "2026-01-13T14:51:50.372125168Z",
+          "end_time": "2026-01-13T14:51:50.39518815Z",
+          "duration_seconds": 0.023062993
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:04:19.101643719Z",
-          "end_time": "2026-01-13T15:04:19.485922573Z",
-          "duration_seconds": 0.384278849
+          "start_time": "2026-01-13T14:51:50.395327898Z",
+          "end_time": "2026-01-13T14:51:50.905050408Z",
+          "duration_seconds": 0.509722507
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:04:19.485938287Z",
-          "end_time": "2026-01-13T15:04:19.491275528Z",
-          "duration_seconds": 0.005337242
+          "start_time": "2026-01-13T14:51:50.905059173Z",
+          "end_time": "2026-01-13T14:51:50.911960578Z",
+          "duration_seconds": 0.006901419
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.291534423828125e-06,
-        "step2_select_topk": 0.0018372535705566406,
+        "step1_group_by_r": 7.3909759521484375e-06,
+        "step2_select_topk": 0.004197835922241211,
         "step3_format_output": 0.0,
-        "total_duration": 0.0018651485443115234
+        "total_duration": 0.004248380661010742
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 5.754541635513306
+        "ai_total_duration_seconds": 6.5601818561553955
       }
     },
     {
       "case_number": 9,
       "success": true,
-      "duration_seconds": 33.39170374205017,
+      "duration_seconds": 33.71621541122437,
       "error": null,
       "output": {
         "mappings": [
@@ -2097,7 +2097,7 @@
           },
           {
             "r_val": "george washington university",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "michigan state university",
@@ -2849,50 +2849,50 @@
           }
         ],
         "num_r": 191,
-        "num_s": 39,
+        "num_s": 40,
         "num_mappings": 191
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:04:20.214530246Z",
-          "end_time": "2026-01-13T15:04:20.227174126Z",
-          "duration_seconds": 0.012643879
+          "start_time": "2026-01-13T14:51:51.768815031Z",
+          "end_time": "2026-01-13T14:51:51.782268106Z",
+          "duration_seconds": 0.013453077
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:04:20.227187026Z",
-          "end_time": "2026-01-13T15:04:31.639615081Z",
-          "duration_seconds": 11.412428067
+          "start_time": "2026-01-13T14:51:51.782285011Z",
+          "end_time": "2026-01-13T14:52:03.893206588Z",
+          "duration_seconds": 12.110921584
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:04:31.639626076Z",
-          "end_time": "2026-01-13T15:04:31.772631992Z",
-          "duration_seconds": 0.133005946
+          "start_time": "2026-01-13T14:52:03.893210548Z",
+          "end_time": "2026-01-13T14:52:03.976224663Z",
+          "duration_seconds": 0.083014135
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:04:31.772674773Z",
-          "end_time": "2026-01-13T15:04:32.48461879Z",
-          "duration_seconds": 0.711943965
+          "start_time": "2026-01-13T14:52:03.976346035Z",
+          "end_time": "2026-01-13T14:52:04.515146626Z",
+          "duration_seconds": 0.538800576
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:04:32.48463421Z",
-          "end_time": "2026-01-13T15:04:32.57122348Z",
-          "duration_seconds": 0.086589299
+          "start_time": "2026-01-13T14:52:04.515155677Z",
+          "end_time": "2026-01-13T14:52:04.528813904Z",
+          "duration_seconds": 0.013658228
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0002505779266357422,
-        "step2_select_topk": 0.011016368865966797,
+        "step1_group_by_r": 0.00013518333435058594,
+        "step2_select_topk": 0.010512590408325195,
         "step3_format_output": 0.0,
-        "total_duration": 0.011295080184936523
+        "total_duration": 0.010672569274902344
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 20.07635474205017
+        "ai_total_duration_seconds": 19.952550411224365
       }
     },
     {
       "case_number": 10,
       "success": true,
-      "duration_seconds": 109.02538131916809,
+      "duration_seconds": 120.9193075152893,
       "error": null,
       "output": {
         "mappings": [
@@ -3058,7 +3058,7 @@
           },
           {
             "r_val": "czech republic",
-            "s_val": "luxembourg"
+            "s_val": "prague"
           },
           {
             "r_val": "mauritania",
@@ -3078,7 +3078,7 @@
           },
           {
             "r_val": "australia",
-            "s_val": "victoria"
+            "s_val": "canberra"
           },
           {
             "r_val": "tajikistan",
@@ -3174,7 +3174,7 @@
           },
           {
             "r_val": "vatican city",
-            "s_val": "rome"
+            "s_val": "vatican city"
           },
           {
             "r_val": "russia",
@@ -3358,7 +3358,7 @@
           },
           {
             "r_val": "germany",
-            "s_val": "vienna"
+            "s_val": "berlin"
           },
           {
             "r_val": "fiji",
@@ -3374,7 +3374,7 @@
           },
           {
             "r_val": "somalia",
-            "s_val": "djibouti"
+            "s_val": "mogadishu"
           },
           {
             "r_val": "sao tome and principe",
@@ -3426,7 +3426,7 @@
           },
           {
             "r_val": "switzerland",
-            "s_val": "luxembourg"
+            "s_val": "bern"
           },
           {
             "r_val": "samoa",
@@ -3486,7 +3486,7 @@
           },
           {
             "r_val": "japan",
-            "s_val": "beijing"
+            "s_val": "tokyo"
           },
           {
             "r_val": "belarus",
@@ -3542,7 +3542,7 @@
           },
           {
             "r_val": "pakistan",
-            "s_val": "new delhi"
+            "s_val": "islamabad"
           },
           {
             "r_val": "ireland",
@@ -3562,7 +3562,7 @@
           },
           {
             "r_val": "lithuania",
-            "s_val": "luxembourg"
+            "s_val": "vilnius"
           },
           {
             "r_val": "bosnia and herzegovina",
@@ -3622,50 +3622,50 @@
           }
         ],
         "num_r": 181,
-        "num_s": 163,
+        "num_s": 172,
         "num_mappings": 181
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:04:33.524802387Z",
-          "end_time": "2026-01-13T15:04:33.55198084Z",
-          "duration_seconds": 0.027178454
+          "start_time": "2026-01-13T14:52:05.534062813Z",
+          "end_time": "2026-01-13T14:52:05.548510965Z",
+          "duration_seconds": 0.014448152
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:04:33.552119044Z",
-          "end_time": "2026-01-13T15:04:44.388747925Z",
-          "duration_seconds": 10.836628877999999
+          "start_time": "2026-01-13T14:52:05.548524208Z",
+          "end_time": "2026-01-13T14:52:17.954013457Z",
+          "duration_seconds": 12.40548928
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:04:44.388751129Z",
-          "end_time": "2026-01-13T15:04:45.134367105Z",
-          "duration_seconds": 0.745615979
+          "start_time": "2026-01-13T14:52:17.954023122Z",
+          "end_time": "2026-01-13T14:52:18.728102644Z",
+          "duration_seconds": 0.774079503
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:04:45.134381008Z",
-          "end_time": "2026-01-13T15:04:45.525500144Z",
-          "duration_seconds": 0.391119139
+          "start_time": "2026-01-13T14:52:18.728119115Z",
+          "end_time": "2026-01-13T14:52:19.123775375Z",
+          "duration_seconds": 0.395656255
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:04:45.525510617Z",
-          "end_time": "2026-01-13T15:04:45.900557771Z",
-          "duration_seconds": 0.375047157
+          "start_time": "2026-01-13T14:52:19.123787383Z",
+          "end_time": "2026-01-13T14:52:19.28771747Z",
+          "duration_seconds": 0.163930088
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0002143383026123047,
-        "step2_select_topk": 0.0006513595581054688,
+        "step1_group_by_r": 6.29425048828125e-05,
+        "step2_select_topk": 0.0009627342224121094,
         "step3_format_output": 0.0,
-        "total_duration": 0.0008921623229980469
+        "total_duration": 0.0010535717010498047
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 95.91835331916809
+        "ai_total_duration_seconds": 106.4068055152893
       }
     },
     {
       "case_number": 11,
       "success": true,
-      "duration_seconds": 13.412701891235352,
+      "duration_seconds": 16.879649712768554,
       "error": null,
       "output": {
         "mappings": [
@@ -3688,45 +3688,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:04:46.635725221Z",
-          "end_time": "2026-01-13T15:04:46.648507573Z",
-          "duration_seconds": 0.012782353
+          "start_time": "2026-01-13T14:52:20.048854159Z",
+          "end_time": "2026-01-13T14:52:20.062384772Z",
+          "duration_seconds": 0.013530612
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:04:46.6485177Z",
-          "end_time": "2026-01-13T15:04:57.791387624Z",
-          "duration_seconds": 11.14286993
+          "start_time": "2026-01-13T14:52:20.062393682Z",
+          "end_time": "2026-01-13T14:52:34.639736266Z",
+          "duration_seconds": 14.577342599
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:04:57.791392056Z",
-          "end_time": "2026-01-13T15:04:57.794915087Z",
-          "duration_seconds": 0.003523035
+          "start_time": "2026-01-13T14:52:34.63974463Z",
+          "end_time": "2026-01-13T14:52:34.683579422Z",
+          "duration_seconds": 0.043834779
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:04:57.794925301Z",
-          "end_time": "2026-01-13T15:04:58.227464155Z",
-          "duration_seconds": 0.432538846
+          "start_time": "2026-01-13T14:52:34.683679443Z",
+          "end_time": "2026-01-13T14:52:35.181816251Z",
+          "duration_seconds": 0.498136804
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:04:58.227474207Z",
-          "end_time": "2026-01-13T15:04:58.227587442Z",
-          "duration_seconds": 0.000113239
+          "start_time": "2026-01-13T14:52:35.181828258Z",
+          "end_time": "2026-01-13T14:52:35.181911374Z",
+          "duration_seconds": 8.3117e-05
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.6689300537109375e-06,
-        "step2_select_topk": 0.00015211105346679688,
+        "step1_group_by_r": 1.9073486328125e-06,
+        "step2_select_topk": 0.00015497207641601562,
         "step3_format_output": 0.0,
-        "total_duration": 0.0003001689910888672
+        "total_duration": 0.00018310546875
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 1.0149478912353516
+        "ai_total_duration_seconds": 0.8921337127685547
       }
     },
     {
       "case_number": 12,
       "success": true,
-      "duration_seconds": 68.17601155682374,
+      "duration_seconds": 78.73200563264466,
       "error": null,
       "output": {
         "mappings": [
@@ -3752,7 +3752,7 @@
           },
           {
             "r_val": "fort lewis college",
-            "s_val": "hammond"
+            "s_val": "tyler"
           },
           {
             "r_val": "wells college",
@@ -3880,7 +3880,7 @@
           },
           {
             "r_val": "university of rochester",
-            "s_val": "rochester"
+            "s_val": "new york"
           },
           {
             "r_val": "james madison university",
@@ -3936,7 +3936,7 @@
           },
           {
             "r_val": "cumberland university",
-            "s_val": "caldwell"
+            "s_val": "logan"
           },
           {
             "r_val": "colgate university",
@@ -3956,7 +3956,7 @@
           },
           {
             "r_val": "stanford university",
-            "s_val": "stanford"
+            "s_val": "california"
           },
           {
             "r_val": "university of southern california",
@@ -3980,7 +3980,7 @@
           },
           {
             "r_val": "appalachian state university",
-            "s_val": "austin"
+            "s_val": "california"
           },
           {
             "r_val": "seton hall university",
@@ -3988,7 +3988,7 @@
           },
           {
             "r_val": "university of iowa",
-            "s_val": "johnson"
+            "s_val": "washington"
           },
           {
             "r_val": "washington state university",
@@ -4024,7 +4024,7 @@
           },
           {
             "r_val": "warren wilson college",
-            "s_val": "anderson"
+            "s_val": "adrian"
           },
           {
             "r_val": "harvey mudd college",
@@ -4120,7 +4120,7 @@
           },
           {
             "r_val": "colorado mesa university",
-            "s_val": "seward"
+            "s_val": "montgomery"
           },
           {
             "r_val": "university of north dakota",
@@ -4144,7 +4144,7 @@
           },
           {
             "r_val": "brevard college",
-            "s_val": "cypress"
+            "s_val": "tyler"
           },
           {
             "r_val": "southern new hampshire university",
@@ -4220,11 +4220,11 @@
           },
           {
             "r_val": "colorado school of mines",
-            "s_val": "kent"
+            "s_val": "austin"
           },
           {
             "r_val": "lindenwood university",
-            "s_val": "johnson"
+            "s_val": "austin"
           },
           {
             "r_val": "pacific lutheran university",
@@ -4252,7 +4252,7 @@
           },
           {
             "r_val": "virginia commonwealth university",
-            "s_val": "tyler"
+            "s_val": "troy"
           },
           {
             "r_val": "philadelphia university",
@@ -4260,7 +4260,7 @@
           },
           {
             "r_val": "west virginia university",
-            "s_val": "kyle"
+            "s_val": "california"
           },
           {
             "r_val": "university of wyoming",
@@ -4284,50 +4284,50 @@
           }
         ],
         "num_r": 138,
-        "num_s": 69,
+        "num_s": 65,
         "num_mappings": 138
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:04:59.049419592Z",
-          "end_time": "2026-01-13T15:04:59.06807225Z",
-          "duration_seconds": 0.018652658
+          "start_time": "2026-01-13T14:52:36.047518461Z",
+          "end_time": "2026-01-13T14:52:36.061107762Z",
+          "duration_seconds": 0.013589301
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:04:59.068091875Z",
-          "end_time": "2026-01-13T15:05:13.766537014Z",
-          "duration_seconds": 14.698445144
+          "start_time": "2026-01-13T14:52:36.061123944Z",
+          "end_time": "2026-01-13T14:52:51.106432489Z",
+          "duration_seconds": 15.045308547
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:05:13.76654125Z",
-          "end_time": "2026-01-13T15:05:14.682358076Z",
-          "duration_seconds": 0.915816829
+          "start_time": "2026-01-13T14:52:51.106436263Z",
+          "end_time": "2026-01-13T14:52:52.068167196Z",
+          "duration_seconds": 0.961730953
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:05:14.682372906Z",
-          "end_time": "2026-01-13T15:05:15.060576483Z",
-          "duration_seconds": 0.378203577
+          "start_time": "2026-01-13T14:52:52.068189821Z",
+          "end_time": "2026-01-13T14:52:52.514535563Z",
+          "duration_seconds": 0.446345729
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:05:15.060589726Z",
-          "end_time": "2026-01-13T15:05:15.378335474Z",
-          "duration_seconds": 0.317745742
+          "start_time": "2026-01-13T14:52:52.514546985Z",
+          "end_time": "2026-01-13T14:52:52.813318298Z",
+          "duration_seconds": 0.298771316
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.1484832763671875e-05,
-        "step2_select_topk": 0.03149008750915527,
+        "step1_group_by_r": 4.172325134277344e-05,
+        "step2_select_topk": 0.011924028396606445,
         "step3_format_output": 0.0,
-        "total_duration": 0.03155946731567383
+        "total_duration": 0.011992931365966797
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 50.54352855682373
+        "ai_total_duration_seconds": 61.07644963264465
       }
     },
     {
       "case_number": 14,
       "success": true,
-      "duration_seconds": 259.5256400225983,
+      "duration_seconds": 258.6345198004303,
       "error": null,
       "output": {
         "mappings": [
@@ -4345,11 +4345,11 @@
           },
           {
             "r_val": "paraguay",
-            "s_val": "pa"
+            "s_val": "py"
           },
           {
             "r_val": "syria",
-            "s_val": "ar"
+            "s_val": "sy"
           },
           {
             "r_val": "bahamas",
@@ -4357,7 +4357,7 @@
           },
           {
             "r_val": "solomon islands",
-            "s_val": "no"
+            "s_val": "sb"
           },
           {
             "r_val": "montserrat",
@@ -4365,7 +4365,7 @@
           },
           {
             "r_val": "mali",
-            "s_val": "af"
+            "s_val": "ml"
           },
           {
             "r_val": "marshall islands",
@@ -4381,15 +4381,15 @@
           },
           {
             "r_val": "argentina",
-            "s_val": "es"
+            "s_val": "ar"
           },
           {
             "r_val": "falkland islands",
-            "s_val": "sa"
+            "s_val": "fk"
           },
           {
             "r_val": "seychelles",
-            "s_val": "sy"
+            "s_val": "sc"
           },
           {
             "r_val": "belize",
@@ -4409,11 +4409,11 @@
           },
           {
             "r_val": "namibia",
-            "s_val": "ng"
+            "s_val": "na"
           },
           {
             "r_val": "comoros",
-            "s_val": "fr"
+            "s_val": "km"
           },
           {
             "r_val": "faroe islands",
@@ -4425,11 +4425,11 @@
           },
           {
             "r_val": "netherlands antilles",
-            "s_val": "nl"
+            "s_val": "an"
           },
           {
             "r_val": "georgia",
-            "s_val": "ga"
+            "s_val": "ge"
           },
           {
             "r_val": "saint kitts and nevis",
@@ -4437,7 +4437,7 @@
           },
           {
             "r_val": "yemen",
-            "s_val": "ar"
+            "s_val": "ye"
           },
           {
             "r_val": "eritrea",
@@ -4449,7 +4449,7 @@
           },
           {
             "r_val": "aruba",
-            "s_val": "au"
+            "s_val": "aw"
           },
           {
             "r_val": "madagascar",
@@ -4469,7 +4469,7 @@
           },
           {
             "r_val": "sweden",
-            "s_val": "sv"
+            "s_val": "se"
           },
           {
             "r_val": "malawi",
@@ -4477,7 +4477,7 @@
           },
           {
             "r_val": "andorra",
-            "s_val": "an"
+            "s_val": "ad"
           },
           {
             "r_val": "liechtenstein",
@@ -4489,7 +4489,7 @@
           },
           {
             "r_val": "svalbard",
-            "s_val": "sv"
+            "s_val": "sj"
           },
           {
             "r_val": "bulgaria",
@@ -4529,7 +4529,7 @@
           },
           {
             "r_val": "lebanon",
-            "s_val": "no"
+            "s_val": "lb"
           },
           {
             "r_val": "azerbaijan",
@@ -4537,11 +4537,11 @@
           },
           {
             "r_val": "cuba",
-            "s_val": "lr"
+            "s_val": "cu"
           },
           {
             "r_val": "czech republic",
-            "s_val": "cu"
+            "s_val": "cz"
           },
           {
             "r_val": "mauritania",
@@ -4549,11 +4549,11 @@
           },
           {
             "r_val": "saint lucia",
-            "s_val": "st"
+            "s_val": "lc"
           },
           {
             "r_val": "mayotte",
-            "s_val": "fr"
+            "s_val": "yt"
           },
           {
             "r_val": "israel",
@@ -4573,7 +4573,7 @@
           },
           {
             "r_val": "cameroon",
-            "s_val": "fr"
+            "s_val": "cm"
           },
           {
             "r_val": "gibraltar",
@@ -4589,23 +4589,23 @@
           },
           {
             "r_val": "malaysia",
-            "s_val": "in"
+            "s_val": "my"
           },
           {
             "r_val": "iceland",
-            "s_val": "no"
+            "s_val": "is"
           },
           {
             "r_val": "oman",
-            "s_val": "no"
+            "s_val": "om"
           },
           {
             "r_val": "armenia",
-            "s_val": "as"
+            "s_val": "am"
           },
           {
             "r_val": "gabon",
-            "s_val": "af"
+            "s_val": "ga"
           },
           {
             "r_val": "luxembourg",
@@ -4633,7 +4633,7 @@
           },
           {
             "r_val": "republic of the congo",
-            "s_val": "cf"
+            "s_val": "cg"
           },
           {
             "r_val": "antigua and barbuda",
@@ -4645,7 +4645,7 @@
           },
           {
             "r_val": "ecuador",
-            "s_val": "sa"
+            "s_val": "ec"
           },
           {
             "r_val": "moldova",
@@ -4677,11 +4677,11 @@
           },
           {
             "r_val": "afghanistan",
-            "s_val": "as"
+            "s_val": "af"
           },
           {
             "r_val": "burundi",
-            "s_val": "af"
+            "s_val": "bi"
           },
           {
             "r_val": "singapore",
@@ -4753,11 +4753,11 @@
           },
           {
             "r_val": "dominica",
-            "s_val": "do"
+            "s_val": "dm"
           },
           {
             "r_val": "indonesia",
-            "s_val": "io"
+            "s_val": "id"
           },
           {
             "r_val": "benin",
@@ -4785,7 +4785,7 @@
           },
           {
             "r_val": "north korea",
-            "s_val": "kn"
+            "s_val": "kp"
           },
           {
             "r_val": "cayman islands",
@@ -4809,7 +4809,7 @@
           },
           {
             "r_val": "morocco",
-            "s_val": "mo"
+            "s_val": "ma"
           },
           {
             "r_val": "guatemala",
@@ -4817,7 +4817,7 @@
           },
           {
             "r_val": "guyana",
-            "s_val": "sa"
+            "s_val": "gy"
           },
           {
             "r_val": "iraq",
@@ -4825,7 +4825,7 @@
           },
           {
             "r_val": "chile",
-            "s_val": "sa"
+            "s_val": "cl"
           },
           {
             "r_val": "nepal",
@@ -4833,7 +4833,7 @@
           },
           {
             "r_val": "isle of man",
-            "s_val": "gb"
+            "s_val": "im"
           },
           {
             "r_val": "tanzania",
@@ -4853,7 +4853,7 @@
           },
           {
             "r_val": "india",
-            "s_val": "at"
+            "s_val": "in"
           },
           {
             "r_val": "canada",
@@ -4865,11 +4865,11 @@
           },
           {
             "r_val": "turkey",
-            "s_val": "no"
+            "s_val": "tr"
           },
           {
             "r_val": "belgium",
-            "s_val": "nl"
+            "s_val": "be"
           },
           {
             "r_val": "taiwan",
@@ -4901,7 +4901,7 @@
           },
           {
             "r_val": "peru",
-            "s_val": "sa"
+            "s_val": "pe"
           },
           {
             "r_val": "turkmenistan",
@@ -4921,11 +4921,11 @@
           },
           {
             "r_val": "hong kong",
-            "s_val": "as"
+            "s_val": "hk"
           },
           {
             "r_val": "guinea",
-            "s_val": "fr"
+            "s_val": "gn"
           },
           {
             "r_val": "united states",
@@ -4941,7 +4941,7 @@
           },
           {
             "r_val": "sao tome and principe",
-            "s_val": "pt"
+            "s_val": "st"
           },
           {
             "r_val": "pitcairn islands",
@@ -4965,7 +4965,7 @@
           },
           {
             "r_val": "vietnam",
-            "s_val": "vi"
+            "s_val": "vn"
           },
           {
             "r_val": "kuwait",
@@ -4973,7 +4973,7 @@
           },
           {
             "r_val": "nigeria",
-            "s_val": "ni"
+            "s_val": "ng"
           },
           {
             "r_val": "croatia",
@@ -5041,11 +5041,11 @@
           },
           {
             "r_val": "austria",
-            "s_val": "au"
+            "s_val": "at"
           },
           {
             "r_val": "south korea",
-            "s_val": "sk"
+            "s_val": "kr"
           },
           {
             "r_val": "mozambique",
@@ -5053,7 +5053,7 @@
           },
           {
             "r_val": "el salvador",
-            "s_val": "es"
+            "s_val": "sv"
           },
           {
             "r_val": "monaco",
@@ -5081,7 +5081,7 @@
           },
           {
             "r_val": "japan",
-            "s_val": "no"
+            "s_val": "jp"
           },
           {
             "r_val": "belarus",
@@ -5121,7 +5121,7 @@
           },
           {
             "r_val": "macau",
-            "s_val": "cn"
+            "s_val": "mo"
           },
           {
             "r_val": "sierra leone",
@@ -5129,7 +5129,7 @@
           },
           {
             "r_val": "bolivia",
-            "s_val": "sa"
+            "s_val": "bo"
           },
           {
             "r_val": "malta",
@@ -5221,7 +5221,7 @@
           },
           {
             "r_val": "mexico",
-            "s_val": "es"
+            "s_val": "mx"
           },
           {
             "r_val": "uganda",
@@ -5229,7 +5229,7 @@
           },
           {
             "r_val": "micronesia",
-            "s_val": "mp"
+            "s_val": "fm"
           },
           {
             "r_val": "suriname",
@@ -5245,50 +5245,50 @@
           }
         ],
         "num_r": 228,
-        "num_s": 177,
+        "num_s": 215,
         "num_mappings": 228
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:05:16.683724296Z",
-          "end_time": "2026-01-13T15:05:16.726087216Z",
-          "duration_seconds": 0.04236292
+          "start_time": "2026-01-13T14:52:53.703896362Z",
+          "end_time": "2026-01-13T14:52:53.722482586Z",
+          "duration_seconds": 0.018586223
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:05:16.726109578Z",
-          "end_time": "2026-01-13T15:05:37.826578034Z",
-          "duration_seconds": 21.100468449
+          "start_time": "2026-01-13T14:52:53.722495499Z",
+          "end_time": "2026-01-13T14:53:10.566860209Z",
+          "duration_seconds": 16.844364727
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:05:37.826581353Z",
-          "end_time": "2026-01-13T15:05:40.833547324Z",
-          "duration_seconds": 3.006965974
+          "start_time": "2026-01-13T14:53:10.566868478Z",
+          "end_time": "2026-01-13T14:53:13.597489364Z",
+          "duration_seconds": 3.030620867
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:05:40.833569019Z",
-          "end_time": "2026-01-13T15:05:41.404878649Z",
-          "duration_seconds": 0.571309626
+          "start_time": "2026-01-13T14:53:13.597504927Z",
+          "end_time": "2026-01-13T14:53:14.046227752Z",
+          "duration_seconds": 0.448722825
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:05:41.404890811Z",
-          "end_time": "2026-01-13T15:05:42.684490287Z",
-          "duration_seconds": 1.279599479
+          "start_time": "2026-01-13T14:53:14.046239171Z",
+          "end_time": "2026-01-13T14:53:15.353562758Z",
+          "duration_seconds": 1.307323593
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.000316619873046875,
-        "step2_select_topk": 0.0004799365997314453,
+        "step1_group_by_r": 0.00038433074951171875,
+        "step2_select_topk": 0.0003924369812011719,
         "step3_format_output": 0.0,
-        "total_duration": 0.0008237361907958984
+        "total_duration": 0.0008044242858886719
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 232.14762902259827
+        "ai_total_duration_seconds": 236.0454638004303
       }
     },
     {
       "case_number": 15,
       "success": true,
-      "duration_seconds": 167.25741985650635,
+      "duration_seconds": 180.25403118348694,
       "error": null,
       "output": {
         "mappings": [
@@ -5306,7 +5306,7 @@
           },
           {
             "r_val": "paraguay",
-            "s_val": "pry"
+            "s_val": "pri"
           },
           {
             "r_val": "syria",
@@ -5326,7 +5326,7 @@
           },
           {
             "r_val": "mali",
-            "s_val": "usa"
+            "s_val": "mne"
           },
           {
             "r_val": "marshall islands",
@@ -5342,7 +5342,7 @@
           },
           {
             "r_val": "argentina",
-            "s_val": "arm"
+            "s_val": "and"
           },
           {
             "r_val": "falkland islands",
@@ -5382,7 +5382,7 @@
           },
           {
             "r_val": "finland",
-            "s_val": "ltu"
+            "s_val": "fin"
           },
           {
             "r_val": "netherlands antilles",
@@ -5390,7 +5390,7 @@
           },
           {
             "r_val": "georgia",
-            "s_val": "usa"
+            "s_val": "geo"
           },
           {
             "r_val": "saint kitts and nevis",
@@ -5406,7 +5406,7 @@
           },
           {
             "r_val": "puerto rico",
-            "s_val": "usa"
+            "s_val": "pri"
           },
           {
             "r_val": "aruba",
@@ -5442,7 +5442,7 @@
           },
           {
             "r_val": "liechtenstein",
-            "s_val": "lie"
+            "s_val": "mhl"
           },
           {
             "r_val": "poland",
@@ -5470,7 +5470,7 @@
           },
           {
             "r_val": "kenya",
-            "s_val": "usa"
+            "s_val": "ken"
           },
           {
             "r_val": "french polynesia",
@@ -5494,7 +5494,7 @@
           },
           {
             "r_val": "cuba",
-            "s_val": "che"
+            "s_val": "cub"
           },
           {
             "r_val": "czech republic",
@@ -5582,7 +5582,7 @@
           },
           {
             "r_val": "jersey",
-            "s_val": "jey"
+            "s_val": "lso"
           },
           {
             "r_val": "slovenia",
@@ -5598,11 +5598,11 @@
           },
           {
             "r_val": "colombia",
-            "s_val": "chl"
+            "s_val": "col"
           },
           {
             "r_val": "ecuador",
-            "s_val": "usa"
+            "s_val": "ecu"
           },
           {
             "r_val": "moldova",
@@ -5698,7 +5698,7 @@
           },
           {
             "r_val": "zimbabwe",
-            "s_val": "are"
+            "s_val": "zwe"
           },
           {
             "r_val": "british indian ocean territory",
@@ -5714,7 +5714,7 @@
           },
           {
             "r_val": "indonesia",
-            "s_val": "ind"
+            "s_val": "idn"
           },
           {
             "r_val": "benin",
@@ -5722,7 +5722,7 @@
           },
           {
             "r_val": "angola",
-            "s_val": "and"
+            "s_val": "ago"
           },
           {
             "r_val": "sudan",
@@ -5770,7 +5770,7 @@
           },
           {
             "r_val": "guatemala",
-            "s_val": "geo"
+            "s_val": "gtm"
           },
           {
             "r_val": "guyana",
@@ -5782,7 +5782,7 @@
           },
           {
             "r_val": "chile",
-            "s_val": "per"
+            "s_val": "chl"
           },
           {
             "r_val": "nepal",
@@ -5810,11 +5810,11 @@
           },
           {
             "r_val": "india",
-            "s_val": "are"
+            "s_val": "ind"
           },
           {
             "r_val": "canada",
-            "s_val": "nor"
+            "s_val": "can"
           },
           {
             "r_val": "maldives",
@@ -5854,7 +5854,7 @@
           },
           {
             "r_val": "jamaica",
-            "s_val": "lva"
+            "s_val": "jam"
           },
           {
             "r_val": "peru",
@@ -5890,7 +5890,7 @@
           },
           {
             "r_val": "chad",
-            "s_val": "cmr"
+            "s_val": "tcd"
           },
           {
             "r_val": "somalia",
@@ -5906,7 +5906,7 @@
           },
           {
             "r_val": "thailand",
-            "s_val": "usa"
+            "s_val": "tha"
           },
           {
             "r_val": "equatorial guinea",
@@ -5954,7 +5954,7 @@
           },
           {
             "r_val": "switzerland",
-            "s_val": "eth"
+            "s_val": "che"
           },
           {
             "r_val": "samoa",
@@ -5986,7 +5986,7 @@
           },
           {
             "r_val": "estonia",
-            "s_val": "ukr"
+            "s_val": "est"
           },
           {
             "r_val": "wallis and futuna",
@@ -6010,7 +6010,7 @@
           },
           {
             "r_val": "el salvador",
-            "s_val": "hnd"
+            "s_val": "slv"
           },
           {
             "r_val": "monaco",
@@ -6018,7 +6018,7 @@
           },
           {
             "r_val": "guam",
-            "s_val": "usa"
+            "s_val": "gum"
           },
           {
             "r_val": "lesotho",
@@ -6026,7 +6026,7 @@
           },
           {
             "r_val": "tonga",
-            "s_val": "uga"
+            "s_val": "ton"
           },
           {
             "r_val": "western sahara",
@@ -6038,7 +6038,7 @@
           },
           {
             "r_val": "japan",
-            "s_val": "usa"
+            "s_val": "jpn"
           },
           {
             "r_val": "belarus",
@@ -6070,7 +6070,7 @@
           },
           {
             "r_val": "ethiopia",
-            "s_val": "usa"
+            "s_val": "eth"
           },
           {
             "r_val": "us virgin islands",
@@ -6078,7 +6078,7 @@
           },
           {
             "r_val": "egypt",
-            "s_val": "usa"
+            "s_val": "egy"
           },
           {
             "r_val": "macau",
@@ -6106,7 +6106,7 @@
           },
           {
             "r_val": "pakistan",
-            "s_val": "is"
+            "s_val": "pak"
           },
           {
             "r_val": "gambia",
@@ -6154,7 +6154,7 @@
           },
           {
             "r_val": "barbados",
-            "s_val": "bel"
+            "s_val": "brb"
           },
           {
             "r_val": "nicaragua",
@@ -6182,7 +6182,7 @@
           },
           {
             "r_val": "mexico",
-            "s_val": "gtm"
+            "s_val": "mex"
           },
           {
             "r_val": "uganda",
@@ -6206,50 +6206,50 @@
           }
         ],
         "num_r": 228,
-        "num_s": 201,
+        "num_s": 220,
         "num_mappings": 228
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:05:44.068388932Z",
-          "end_time": "2026-01-13T15:05:44.098724403Z",
-          "duration_seconds": 0.030335474
+          "start_time": "2026-01-13T14:53:16.301246128Z",
+          "end_time": "2026-01-13T14:53:16.315083301Z",
+          "duration_seconds": 0.013837176
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:05:44.098737975Z",
-          "end_time": "2026-01-13T15:05:53.042362925Z",
-          "duration_seconds": 8.943624946
+          "start_time": "2026-01-13T14:53:16.31509581Z",
+          "end_time": "2026-01-13T14:53:25.835009718Z",
+          "duration_seconds": 9.519913908
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:05:53.042367034Z",
-          "end_time": "2026-01-13T15:05:53.567470142Z",
-          "duration_seconds": 0.525103113
+          "start_time": "2026-01-13T14:53:25.835015109Z",
+          "end_time": "2026-01-13T14:53:26.561529376Z",
+          "duration_seconds": 0.726514281
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:05:53.567485109Z",
-          "end_time": "2026-01-13T15:05:53.965183586Z",
-          "duration_seconds": 0.39769848
+          "start_time": "2026-01-13T14:53:26.56154371Z",
+          "end_time": "2026-01-13T14:53:27.055076524Z",
+          "duration_seconds": 0.493532814
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:05:53.965196661Z",
-          "end_time": "2026-01-13T15:05:54.408297367Z",
-          "duration_seconds": 0.443100701
+          "start_time": "2026-01-13T14:53:27.055098475Z",
+          "end_time": "2026-01-13T14:53:27.600764329Z",
+          "duration_seconds": 0.545665851
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.00041222572326660156,
-        "step2_select_topk": 0.0004048347473144531,
+        "step1_group_by_r": 8.368492126464844e-05,
+        "step2_select_topk": 0.00033736228942871094,
         "step3_format_output": 0.0,
-        "total_duration": 0.00084686279296875
+        "total_duration": 0.0004513263702392578
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 156.05603885650635
+        "ai_total_duration_seconds": 167.43447518348694
       }
     },
     {
       "case_number": 16,
       "success": true,
-      "duration_seconds": 11.430691783569335,
+      "duration_seconds": 16.250298283828734,
       "error": null,
       "output": {
         "mappings": [
@@ -6280,45 +6280,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:05:55.280459338Z",
-          "end_time": "2026-01-13T15:05:55.292511699Z",
-          "duration_seconds": 0.012052361
+          "start_time": "2026-01-13T14:53:29.132267817Z",
+          "end_time": "2026-01-13T14:53:29.153666578Z",
+          "duration_seconds": 0.021398762
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:05:55.292522971Z",
-          "end_time": "2026-01-13T15:06:04.550880272Z",
-          "duration_seconds": 9.258357305
+          "start_time": "2026-01-13T14:53:29.153677624Z",
+          "end_time": "2026-01-13T14:53:42.955849921Z",
+          "duration_seconds": 13.802172327
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:06:04.550883927Z",
-          "end_time": "2026-01-13T15:06:04.569477871Z",
-          "duration_seconds": 0.018593944
+          "start_time": "2026-01-13T14:53:42.955858581Z",
+          "end_time": "2026-01-13T14:53:42.974835467Z",
+          "duration_seconds": 0.018976899
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:06:04.569764709Z",
-          "end_time": "2026-01-13T15:06:04.959000816Z",
-          "duration_seconds": 0.389236103
+          "start_time": "2026-01-13T14:53:42.974864637Z",
+          "end_time": "2026-01-13T14:53:43.445749495Z",
+          "duration_seconds": 0.47088481
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:06:04.959011512Z",
-          "end_time": "2026-01-13T15:06:04.959496381Z",
-          "duration_seconds": 0.000484869
+          "start_time": "2026-01-13T14:53:43.445765955Z",
+          "end_time": "2026-01-13T14:53:43.447809421Z",
+          "duration_seconds": 0.002043467
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 2.1457672119140625e-06,
-        "step2_select_topk": 7.128715515136719e-05,
+        "step2_select_topk": 0.0001723766326904297,
         "step3_format_output": 0.0,
-        "total_duration": 9.560585021972656e-05
+        "total_duration": 0.00020051002502441406
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 1.004018783569336
+        "ai_total_duration_seconds": 1.2064592838287354
       }
     },
     {
       "case_number": 17,
       "success": true,
-      "duration_seconds": 15.478002,
+      "duration_seconds": 17.208965,
       "error": null,
       "output": {
         "mappings": [
@@ -6333,36 +6333,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:06:05.719612897Z",
-          "end_time": "2026-01-13T15:06:05.738662322Z",
-          "duration_seconds": 0.019049425
+          "start_time": "2026-01-13T14:53:44.188916138Z",
+          "end_time": "2026-01-13T14:53:44.206925194Z",
+          "duration_seconds": 0.01800906
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:06:05.73867116Z",
-          "end_time": "2026-01-13T15:06:19.821454441Z",
-          "duration_seconds": 14.082783286
+          "start_time": "2026-01-13T14:53:44.206936664Z",
+          "end_time": "2026-01-13T14:54:00.141370383Z",
+          "duration_seconds": 15.934433718
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:06:19.821457967Z",
-          "end_time": "2026-01-13T15:06:19.83623793Z",
-          "duration_seconds": 0.014779979
+          "start_time": "2026-01-13T14:54:00.141374062Z",
+          "end_time": "2026-01-13T14:54:00.145686694Z",
+          "duration_seconds": 0.004312636
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:06:19.836257999Z",
-          "end_time": "2026-01-13T15:06:20.330152741Z",
-          "duration_seconds": 0.493894726
+          "start_time": "2026-01-13T14:54:00.145695728Z",
+          "end_time": "2026-01-13T14:54:00.609042667Z",
+          "duration_seconds": 0.463346938
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:06:20.33016435Z",
-          "end_time": "2026-01-13T15:06:20.330570276Z",
-          "duration_seconds": 0.000405927
+          "start_time": "2026-01-13T14:54:00.609057604Z",
+          "end_time": "2026-01-13T14:54:00.609302402Z",
+          "duration_seconds": 0.000244798
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 9.5367431640625e-07,
-        "step2_select_topk": 9.703636169433594e-05,
+        "step1_group_by_r": 1.430511474609375e-06,
+        "step2_select_topk": 0.00012254714965820312,
         "step3_format_output": 0.0,
-        "total_duration": 0.0001232624053955078
+        "total_duration": 0.00014972686767578125
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -6371,7 +6371,7 @@
     {
       "case_number": 18,
       "success": false,
-      "duration_seconds": 11.420011,
+      "duration_seconds": 12.526628,
       "error": null,
       "output": {
         "mappings": [],
@@ -6381,36 +6381,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:06:21.206364718Z",
-          "end_time": "2026-01-13T15:06:21.2215029Z",
-          "duration_seconds": 0.015138181
+          "start_time": "2026-01-13T14:54:01.406599444Z",
+          "end_time": "2026-01-13T14:54:01.419907056Z",
+          "duration_seconds": 0.013307617
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:06:21.221579004Z",
-          "end_time": "2026-01-13T15:06:31.453805594Z",
-          "duration_seconds": 10.232226596
+          "start_time": "2026-01-13T14:54:01.419926719Z",
+          "end_time": "2026-01-13T14:54:12.444648413Z",
+          "duration_seconds": 11.024721715
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:06:31.453810637Z",
-          "end_time": "2026-01-13T15:06:31.458998669Z",
-          "duration_seconds": 0.005188046
+          "start_time": "2026-01-13T14:54:12.444786417Z",
+          "end_time": "2026-01-13T14:54:12.452745115Z",
+          "duration_seconds": 0.007958663
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:06:31.459011313Z",
-          "end_time": "2026-01-13T15:06:31.886223977Z",
-          "duration_seconds": 0.427212645
+          "start_time": "2026-01-13T14:54:12.452754131Z",
+          "end_time": "2026-01-13T14:54:12.991626436Z",
+          "duration_seconds": 0.538872302
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:06:31.886234995Z",
-          "end_time": "2026-01-13T15:06:31.886661702Z",
-          "duration_seconds": 0.000426708
+          "start_time": "2026-01-13T14:54:12.991638063Z",
+          "end_time": "2026-01-13T14:54:12.992112891Z",
+          "duration_seconds": 0.000474828
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 4.76837158203125e-07,
-        "step2_select_topk": 0.0005545616149902344,
+        "step2_select_topk": 0.0001609325408935547,
         "step3_format_output": 0.0,
-        "total_duration": 0.0005855560302734375
+        "total_duration": 0.00018739700317382812
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -6419,7 +6419,7 @@
     {
       "case_number": 19,
       "success": true,
-      "duration_seconds": 12.108422,
+      "duration_seconds": 12.278174,
       "error": null,
       "output": {
         "mappings": [
@@ -6458,36 +6458,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:06:32.640024057Z",
-          "end_time": "2026-01-13T15:06:32.655163211Z",
-          "duration_seconds": 0.015139155
+          "start_time": "2026-01-13T14:54:13.955805364Z",
+          "end_time": "2026-01-13T14:54:13.988502396Z",
+          "duration_seconds": 0.032697031
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:06:32.655262793Z",
-          "end_time": "2026-01-13T15:06:43.132288717Z",
-          "duration_seconds": 10.477025928
+          "start_time": "2026-01-13T14:54:13.988612533Z",
+          "end_time": "2026-01-13T14:54:25.043437365Z",
+          "duration_seconds": 11.054824853
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:06:43.132292254Z",
-          "end_time": "2026-01-13T15:06:43.141637431Z",
-          "duration_seconds": 0.009345173
+          "start_time": "2026-01-13T14:54:25.04345039Z",
+          "end_time": "2026-01-13T14:54:25.05018515Z",
+          "duration_seconds": 0.006734737
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:06:43.141642557Z",
-          "end_time": "2026-01-13T15:06:43.742259833Z",
-          "duration_seconds": 0.600617276
+          "start_time": "2026-01-13T14:54:25.050195633Z",
+          "end_time": "2026-01-13T14:54:25.490652366Z",
+          "duration_seconds": 0.44045672
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:06:43.742271106Z",
-          "end_time": "2026-01-13T15:06:43.76701699Z",
-          "duration_seconds": 0.024745883
+          "start_time": "2026-01-13T14:54:25.490663171Z",
+          "end_time": "2026-01-13T14:54:25.5030755Z",
+          "duration_seconds": 0.01241234
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.1457672119140625e-06,
-        "step2_select_topk": 0.0008857250213623047,
+        "step1_group_by_r": 2.6226043701171875e-06,
+        "step2_select_topk": 0.0009579658508300781,
         "step3_format_output": 0.0,
-        "total_duration": 0.0009157657623291016
+        "total_duration": 0.0009851455688476562
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -6496,7 +6496,7 @@
     {
       "case_number": 20,
       "success": true,
-      "duration_seconds": 20.418019003707887,
+      "duration_seconds": 24.13493119963074,
       "error": null,
       "output": {
         "mappings": [
@@ -6811,45 +6811,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:06:44.759964482Z",
-          "end_time": "2026-01-13T15:06:44.773901709Z",
-          "duration_seconds": 0.013937227
+          "start_time": "2026-01-13T14:54:26.236031622Z",
+          "end_time": "2026-01-13T14:54:26.249922544Z",
+          "duration_seconds": 0.013890924
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:06:44.773917024Z",
-          "end_time": "2026-01-13T15:07:01.407728519Z",
-          "duration_seconds": 16.633811495
+          "start_time": "2026-01-13T14:54:26.249937942Z",
+          "end_time": "2026-01-13T14:54:45.210312873Z",
+          "duration_seconds": 18.960374928
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:07:01.40782103Z",
-          "end_time": "2026-01-13T15:07:01.562143316Z",
-          "duration_seconds": 0.154322293
+          "start_time": "2026-01-13T14:54:45.210319009Z",
+          "end_time": "2026-01-13T14:54:45.254566873Z",
+          "duration_seconds": 0.044247861
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:07:01.562158051Z",
-          "end_time": "2026-01-13T15:07:01.996893612Z",
-          "duration_seconds": 0.43473556
+          "start_time": "2026-01-13T14:54:45.254672653Z",
+          "end_time": "2026-01-13T14:54:45.840684661Z",
+          "duration_seconds": 0.586012011
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:07:01.996905616Z",
-          "end_time": "2026-01-13T15:07:02.02493901Z",
-          "duration_seconds": 0.028033394
+          "start_time": "2026-01-13T14:54:45.840696443Z",
+          "end_time": "2026-01-13T14:54:45.854806715Z",
+          "duration_seconds": 0.014110275
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.2172927856445312e-05,
-        "step2_select_topk": 0.0005116462707519531,
+        "step1_group_by_r": 1.71661376953125e-05,
+        "step2_select_topk": 0.0003178119659423828,
         "step3_format_output": 0.0,
-        "total_duration": 0.0005600452423095703
+        "total_duration": 0.00035953521728515625
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 2.3482120037078857
+        "ai_total_duration_seconds": 3.2438971996307373
       }
     },
     {
       "case_number": 21,
       "success": true,
-      "duration_seconds": 31.325011082641602,
+      "duration_seconds": 30.930889882217407,
       "error": null,
       "output": {
         "mappings": [
@@ -6911,11 +6911,11 @@
           },
           {
             "r_val": "the usual suspects",
-            "s_val": "1990"
+            "s_val": "1995"
           },
           {
             "r_val": "psycho",
-            "s_val": "1968"
+            "s_val": "1960"
           },
           {
             "r_val": "the matrix",
@@ -6939,50 +6939,50 @@
           }
         ],
         "num_r": 21,
-        "num_s": 16,
+        "num_s": 17,
         "num_mappings": 21
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:07:02.842448181Z",
-          "end_time": "2026-01-13T15:07:02.856665589Z",
-          "duration_seconds": 0.014217408
+          "start_time": "2026-01-13T14:54:47.134986496Z",
+          "end_time": "2026-01-13T14:54:47.154201622Z",
+          "duration_seconds": 0.019215123
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:07:02.85667414Z",
-          "end_time": "2026-01-13T15:07:18.267933579Z",
-          "duration_seconds": 15.411259452
+          "start_time": "2026-01-13T14:54:47.154211269Z",
+          "end_time": "2026-01-13T14:55:01.568180168Z",
+          "duration_seconds": 14.413968898
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:07:18.267938341Z",
-          "end_time": "2026-01-13T15:07:18.327666866Z",
-          "duration_seconds": 0.059728522
+          "start_time": "2026-01-13T14:55:01.568676823Z",
+          "end_time": "2026-01-13T14:55:01.718738928Z",
+          "duration_seconds": 0.150062144
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:07:18.327680897Z",
-          "end_time": "2026-01-13T15:07:18.779222076Z",
-          "duration_seconds": 0.451541178
+          "start_time": "2026-01-13T14:55:01.719021101Z",
+          "end_time": "2026-01-13T14:55:02.306013578Z",
+          "duration_seconds": 0.586992453
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:07:18.779240082Z",
-          "end_time": "2026-01-13T15:07:18.783831671Z",
-          "duration_seconds": 0.004591589
+          "start_time": "2026-01-13T14:55:02.306025276Z",
+          "end_time": "2026-01-13T14:55:02.31080152Z",
+          "duration_seconds": 0.004776243
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 7.62939453125e-06,
-        "step2_select_topk": 0.00040030479431152344,
+        "step1_group_by_r": 6.67572021484375e-06,
+        "step2_select_topk": 0.00024700164794921875,
         "step3_format_output": 0.0,
-        "total_duration": 0.0004336833953857422
+        "total_duration": 0.00027871131896972656
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 14.591669082641602
+        "ai_total_duration_seconds": 14.867328882217407
       }
     },
     {
       "case_number": 22,
       "success": true,
-      "duration_seconds": 11.971301,
+      "duration_seconds": 11.122266,
       "error": null,
       "output": {
         "mappings": [
@@ -7041,36 +7041,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:07:19.585638852Z",
-          "end_time": "2026-01-13T15:07:19.597776075Z",
-          "duration_seconds": 0.012137228
+          "start_time": "2026-01-13T14:55:03.210304106Z",
+          "end_time": "2026-01-13T14:55:03.222485216Z",
+          "duration_seconds": 0.01218111
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:07:19.597784984Z",
-          "end_time": "2026-01-13T15:07:30.155833859Z",
-          "duration_seconds": 10.558048903
+          "start_time": "2026-01-13T14:55:03.222494047Z",
+          "end_time": "2026-01-13T14:55:13.149355462Z",
+          "duration_seconds": 9.926861425
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:07:30.156024351Z",
-          "end_time": "2026-01-13T15:07:30.184806915Z",
-          "duration_seconds": 0.02878255
+          "start_time": "2026-01-13T14:55:13.149359134Z",
+          "end_time": "2026-01-13T14:55:13.152199333Z",
+          "duration_seconds": 0.002840195
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:07:30.18503614Z",
-          "end_time": "2026-01-13T15:07:30.593760856Z",
-          "duration_seconds": 0.408724662
+          "start_time": "2026-01-13T14:55:13.152205505Z",
+          "end_time": "2026-01-13T14:55:13.551506169Z",
+          "duration_seconds": 0.399300665
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:07:30.593770422Z",
-          "end_time": "2026-01-13T15:07:30.598548779Z",
-          "duration_seconds": 0.004778357
+          "start_time": "2026-01-13T14:55:13.551516885Z",
+          "end_time": "2026-01-13T14:55:13.552144994Z",
+          "duration_seconds": 0.000628107
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.0994415283203125e-06,
-        "step2_select_topk": 0.0006492137908935547,
+        "step1_group_by_r": 4.0531158447265625e-06,
+        "step2_select_topk": 0.0013628005981445312,
         "step3_format_output": 0.0,
-        "total_duration": 0.0006763935089111328
+        "total_duration": 0.0013971328735351562
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -7079,7 +7079,7 @@
     {
       "case_number": 23,
       "success": true,
-      "duration_seconds": 21.280314733947755,
+      "duration_seconds": 25.014042024627685,
       "error": null,
       "output": {
         "mappings": [
@@ -7105,7 +7105,7 @@
           },
           {
             "r_val": "argentina",
-            "s_val": "cordoba"
+            "s_val": "peso"
           },
           {
             "r_val": "maldives",
@@ -7149,7 +7149,7 @@
           },
           {
             "r_val": "spain",
-            "s_val": "cordoba"
+            "s_val": "euro"
           },
           {
             "r_val": "venezuela",
@@ -7262,45 +7262,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:07:31.573128089Z",
-          "end_time": "2026-01-13T15:07:31.594060558Z",
-          "duration_seconds": 0.020932456
+          "start_time": "2026-01-13T14:55:14.343813545Z",
+          "end_time": "2026-01-13T14:55:14.359880002Z",
+          "duration_seconds": 0.016066458
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:07:31.594080503Z",
-          "end_time": "2026-01-13T15:07:43.484340815Z",
-          "duration_seconds": 11.890260336
+          "start_time": "2026-01-13T14:55:14.359888956Z",
+          "end_time": "2026-01-13T14:55:28.07573877Z",
+          "duration_seconds": 13.71584983
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:07:43.48434742Z",
-          "end_time": "2026-01-13T15:07:43.63911816Z",
-          "duration_seconds": 0.154770754
+          "start_time": "2026-01-13T14:55:28.075885069Z",
+          "end_time": "2026-01-13T14:55:28.311578262Z",
+          "duration_seconds": 0.235693228
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:07:43.639141393Z",
-          "end_time": "2026-01-13T15:07:44.091746568Z",
-          "duration_seconds": 0.452605167
+          "start_time": "2026-01-13T14:55:28.311766251Z",
+          "end_time": "2026-01-13T14:55:28.95649612Z",
+          "duration_seconds": 0.644729834
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:07:44.091758078Z",
-          "end_time": "2026-01-13T15:07:44.101233788Z",
-          "duration_seconds": 0.009475709
+          "start_time": "2026-01-13T14:55:28.956507771Z",
+          "end_time": "2026-01-13T14:55:28.964625849Z",
+          "duration_seconds": 0.008118079
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.1205673217773438e-05,
-        "step2_select_topk": 0.0006287097930908203,
+        "step1_group_by_r": 1.1444091796875e-05,
+        "step2_select_topk": 0.0007154941558837891,
         "step3_format_output": 0.0,
-        "total_duration": 0.0006630420684814453
+        "total_duration": 0.0009021759033203125
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 7.878525733947754
+        "ai_total_duration_seconds": 9.389976024627686
       }
     },
     {
       "case_number": 24,
       "success": true,
-      "duration_seconds": 103.11299116918946,
+      "duration_seconds": 110.86883586747742,
       "error": null,
       "output": {
         "mappings": [
@@ -7310,7 +7310,7 @@
           },
           {
             "r_val": "hebrew",
-            "s_val": "no"
+            "s_val": "in"
           },
           {
             "r_val": "bashkir",
@@ -7354,7 +7354,7 @@
           },
           {
             "r_val": "catalan",
-            "s_val": "es"
+            "s_val": "ca"
           },
           {
             "r_val": "malay",
@@ -7386,11 +7386,11 @@
           },
           {
             "r_val": "afar",
-            "s_val": "af"
+            "s_val": "aa"
           },
           {
             "r_val": "yiddish",
-            "s_val": "is"
+            "s_val": "in"
           },
           {
             "r_val": "macedonian",
@@ -7422,7 +7422,7 @@
           },
           {
             "r_val": "tatar",
-            "s_val": "ru"
+            "s_val": "tt"
           },
           {
             "r_val": "singhalese",
@@ -7430,7 +7430,7 @@
           },
           {
             "r_val": "fiji",
-            "s_val": "oc"
+            "s_val": "fj"
           },
           {
             "r_val": "tibetan",
@@ -7458,7 +7458,7 @@
           },
           {
             "r_val": "bihari",
-            "s_val": "no"
+            "s_val": "bh"
           },
           {
             "r_val": "french",
@@ -7514,7 +7514,7 @@
           },
           {
             "r_val": "korean",
-            "s_val": "no"
+            "s_val": "ko"
           },
           {
             "r_val": "assamese",
@@ -7550,7 +7550,7 @@
           },
           {
             "r_val": "sanskrit",
-            "s_val": "as"
+            "s_val": "sa"
           },
           {
             "r_val": "slovak",
@@ -7578,7 +7578,7 @@
           },
           {
             "r_val": "samoan",
-            "s_val": "sa"
+            "s_val": "sm"
           },
           {
             "r_val": "kinyarwanda",
@@ -7606,7 +7606,7 @@
           },
           {
             "r_val": "thai",
-            "s_val": "da"
+            "s_val": "th"
           },
           {
             "r_val": "norwegian",
@@ -7638,7 +7638,7 @@
           },
           {
             "r_val": "irish",
-            "s_val": "eu"
+            "s_val": "ga"
           },
           {
             "r_val": "guarani",
@@ -7662,7 +7662,7 @@
           },
           {
             "r_val": "latin",
-            "s_val": "en"
+            "s_val": "la"
           },
           {
             "r_val": "bislama",
@@ -7682,7 +7682,7 @@
           },
           {
             "r_val": "oriya",
-            "s_val": "no"
+            "s_val": "or"
           },
           {
             "r_val": "italian",
@@ -7794,50 +7794,50 @@
           }
         ],
         "num_r": 122,
-        "num_s": 103,
+        "num_s": 114,
         "num_mappings": 122
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:07:44.983563142Z",
-          "end_time": "2026-01-13T15:07:45.002170483Z",
-          "duration_seconds": 0.018607347
+          "start_time": "2026-01-13T14:55:29.979122172Z",
+          "end_time": "2026-01-13T14:55:29.990252123Z",
+          "duration_seconds": 0.011129952
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:07:45.002194792Z",
-          "end_time": "2026-01-13T15:08:00.276423003Z",
-          "duration_seconds": 15.274228211
+          "start_time": "2026-01-13T14:55:29.990260293Z",
+          "end_time": "2026-01-13T14:55:46.74035133Z",
+          "duration_seconds": 16.750091041
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:08:00.276427634Z",
-          "end_time": "2026-01-13T15:08:00.668483084Z",
-          "duration_seconds": 0.392055454
+          "start_time": "2026-01-13T14:55:46.740484224Z",
+          "end_time": "2026-01-13T14:55:47.341898525Z",
+          "duration_seconds": 0.601414311
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:08:00.668502835Z",
-          "end_time": "2026-01-13T15:08:01.190249835Z",
-          "duration_seconds": 0.521746999
+          "start_time": "2026-01-13T14:55:47.341912343Z",
+          "end_time": "2026-01-13T14:55:47.871908568Z",
+          "duration_seconds": 0.529996229
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:08:01.190261454Z",
-          "end_time": "2026-01-13T15:08:01.446307634Z",
-          "duration_seconds": 0.256046192
+          "start_time": "2026-01-13T14:55:47.871917894Z",
+          "end_time": "2026-01-13T14:55:48.089843012Z",
+          "duration_seconds": 0.217925118
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 7.534027099609375e-05,
-        "step2_select_topk": 0.0018172264099121094,
+        "step1_group_by_r": 7.176399230957031e-05,
+        "step2_select_topk": 0.0011067390441894531,
         "step3_format_output": 0.0,
-        "total_duration": 0.0019223690032958984
+        "total_duration": 0.0012049674987792969
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 85.65556716918945
+        "ai_total_duration_seconds": 91.77570986747742
       }
     },
     {
       "case_number": 25,
       "success": true,
-      "duration_seconds": 10.54596,
+      "duration_seconds": 12.537431,
       "error": null,
       "output": {
         "mappings": [
@@ -7904,36 +7904,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:08:02.452114003Z",
-          "end_time": "2026-01-13T15:08:02.471753881Z",
-          "duration_seconds": 0.019639878
+          "start_time": "2026-01-13T14:55:49.087148617Z",
+          "end_time": "2026-01-13T14:55:49.103866185Z",
+          "duration_seconds": 0.01671757
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:08:02.47176133Z",
-          "end_time": "2026-01-13T15:08:11.79827973Z",
-          "duration_seconds": 9.326518409
+          "start_time": "2026-01-13T14:55:49.103886775Z",
+          "end_time": "2026-01-13T14:56:00.202383298Z",
+          "duration_seconds": 11.098496529
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:08:11.798286467Z",
-          "end_time": "2026-01-13T15:08:11.826083165Z",
-          "duration_seconds": 0.027796711
+          "start_time": "2026-01-13T14:56:00.202528516Z",
+          "end_time": "2026-01-13T14:56:00.233686918Z",
+          "duration_seconds": 0.03115841
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:08:11.82610359Z",
-          "end_time": "2026-01-13T15:08:12.258436076Z",
-          "duration_seconds": 0.432332481
+          "start_time": "2026-01-13T14:56:00.233708206Z",
+          "end_time": "2026-01-13T14:56:00.69888522Z",
+          "duration_seconds": 0.465177012
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:08:12.258454251Z",
-          "end_time": "2026-01-13T15:08:12.263017349Z",
-          "duration_seconds": 0.004563093
+          "start_time": "2026-01-13T14:56:00.698896538Z",
+          "end_time": "2026-01-13T14:56:00.703243128Z",
+          "duration_seconds": 0.004346591
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.5762786865234375e-06,
-        "step2_select_topk": 0.0003643035888671875,
+        "step1_group_by_r": 3.814697265625e-06,
+        "step2_select_topk": 0.00047469139099121094,
         "step3_format_output": 0.0,
-        "total_duration": 0.0003936290740966797
+        "total_duration": 0.0005016326904296875
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -7942,7 +7942,7 @@
     {
       "case_number": 26,
       "success": false,
-      "duration_seconds": 12.928422,
+      "duration_seconds": 11.769645,
       "error": null,
       "output": {
         "mappings": [],
@@ -7952,36 +7952,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:08:13.014747724Z",
-          "end_time": "2026-01-13T15:08:13.028460916Z",
-          "duration_seconds": 0.013713189
+          "start_time": "2026-01-13T14:56:01.634828998Z",
+          "end_time": "2026-01-13T14:56:01.65152821Z",
+          "duration_seconds": 0.016699206
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:08:13.028477465Z",
-          "end_time": "2026-01-13T15:08:24.45464539Z",
-          "duration_seconds": 11.426167933
+          "start_time": "2026-01-13T14:56:01.651535827Z",
+          "end_time": "2026-01-13T14:56:12.227402823Z",
+          "duration_seconds": 10.575866997
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:08:24.454730413Z",
-          "end_time": "2026-01-13T15:08:24.457745363Z",
-          "duration_seconds": 0.00301496
+          "start_time": "2026-01-13T14:56:12.227406704Z",
+          "end_time": "2026-01-13T14:56:12.228014407Z",
+          "duration_seconds": 0.000607703
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:08:24.457917833Z",
-          "end_time": "2026-01-13T15:08:24.971065683Z",
-          "duration_seconds": 0.513147839
+          "start_time": "2026-01-13T14:56:12.228018486Z",
+          "end_time": "2026-01-13T14:56:12.650826834Z",
+          "duration_seconds": 0.422808347
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:08:24.971081408Z",
-          "end_time": "2026-01-13T15:08:24.972936719Z",
-          "duration_seconds": 0.00185531
+          "start_time": "2026-01-13T14:56:12.650838377Z",
+          "end_time": "2026-01-13T14:56:12.651287716Z",
+          "duration_seconds": 0.000449339
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 2.384185791015625e-07,
-        "step2_select_topk": 0.0006031990051269531,
+        "step2_select_topk": 0.0004608631134033203,
         "step3_format_output": 0.0,
-        "total_duration": 0.0006303787231445312
+        "total_duration": 0.0005676746368408203
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -7990,7 +7990,7 @@
     {
       "case_number": 27,
       "success": false,
-      "duration_seconds": 11.839471,
+      "duration_seconds": 12.983779,
       "error": null,
       "output": {
         "mappings": [],
@@ -8000,36 +8000,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:08:25.954906574Z",
-          "end_time": "2026-01-13T15:08:25.968361117Z",
-          "duration_seconds": 0.013454547
+          "start_time": "2026-01-13T14:56:13.426174149Z",
+          "end_time": "2026-01-13T14:56:13.443323365Z",
+          "duration_seconds": 0.017149216
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:08:25.96837038Z",
-          "end_time": "2026-01-13T15:08:36.616722864Z",
-          "duration_seconds": 10.648352498
+          "start_time": "2026-01-13T14:56:13.443331349Z",
+          "end_time": "2026-01-13T14:56:24.681253215Z",
+          "duration_seconds": 11.237921901
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:08:36.616727957Z",
-          "end_time": "2026-01-13T15:08:36.618685288Z",
-          "duration_seconds": 0.00195733
+          "start_time": "2026-01-13T14:56:24.681349972Z",
+          "end_time": "2026-01-13T14:56:24.683730577Z",
+          "duration_seconds": 0.002380601
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:08:36.618695163Z",
-          "end_time": "2026-01-13T15:08:37.049301256Z",
-          "duration_seconds": 0.430606079
+          "start_time": "2026-01-13T14:56:24.683916296Z",
+          "end_time": "2026-01-13T14:56:25.330681902Z",
+          "duration_seconds": 0.646765583
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:08:37.049312701Z",
-          "end_time": "2026-01-13T15:08:37.049769396Z",
-          "duration_seconds": 0.000456695
+          "start_time": "2026-01-13T14:56:25.330694008Z",
+          "end_time": "2026-01-13T14:56:25.335740574Z",
+          "duration_seconds": 0.005046573
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.384185791015625e-07,
-        "step2_select_topk": 0.0001742839813232422,
+        "step1_group_by_r": 4.76837158203125e-07,
+        "step2_select_topk": 0.00036787986755371094,
         "step3_format_output": 0.0,
-        "total_duration": 0.00028061866760253906
+        "total_duration": 0.0005991458892822266
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -8038,7 +8038,7 @@
     {
       "case_number": 28,
       "success": true,
-      "duration_seconds": 18.450323340225218,
+      "duration_seconds": 17.173918762191775,
       "error": null,
       "output": {
         "mappings": [
@@ -8132,11 +8132,11 @@
           },
           {
             "r_val": "21",
-            "s_val": "boston"
+            "s_val": "adele"
           },
           {
             "r_val": "unplugged",
-            "s_val": "eric clapton"
+            "s_val": "nirvana"
           }
         ],
         "num_r": 24,
@@ -8145,45 +8145,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:08:37.809483064Z",
-          "end_time": "2026-01-13T15:08:37.824568924Z",
-          "duration_seconds": 0.01508586
+          "start_time": "2026-01-13T14:56:26.417471855Z",
+          "end_time": "2026-01-13T14:56:26.434694203Z",
+          "duration_seconds": 0.017222352
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:08:37.824598147Z",
-          "end_time": "2026-01-13T15:08:51.539315353Z",
-          "duration_seconds": 13.714717255
+          "start_time": "2026-01-13T14:56:26.434706811Z",
+          "end_time": "2026-01-13T14:56:38.8964261Z",
+          "duration_seconds": 12.461719332
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:08:51.539327865Z",
-          "end_time": "2026-01-13T15:08:51.874395231Z",
-          "duration_seconds": 0.335067337
+          "start_time": "2026-01-13T14:56:38.896437435Z",
+          "end_time": "2026-01-13T14:56:39.22196294Z",
+          "duration_seconds": 0.325525468
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:08:51.874407266Z",
-          "end_time": "2026-01-13T15:08:52.476527995Z",
-          "duration_seconds": 0.602120729
+          "start_time": "2026-01-13T14:56:39.221976154Z",
+          "end_time": "2026-01-13T14:56:39.605597237Z",
+          "duration_seconds": 0.383621084
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:08:52.476540985Z",
-          "end_time": "2026-01-13T15:08:52.485291799Z",
-          "duration_seconds": 0.008750813
+          "start_time": "2026-01-13T14:56:39.605608436Z",
+          "end_time": "2026-01-13T14:56:39.618126827Z",
+          "duration_seconds": 0.012518394
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0002455711364746094,
-        "step2_select_topk": 0.0006527900695800781,
+        "step1_group_by_r": 1.1920928955078125e-05,
+        "step2_select_topk": 0.00028896331787109375,
         "step3_format_output": 0.0,
-        "total_duration": 0.00092315673828125
+        "total_duration": 0.00040602684020996094
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 2.8572733402252197
+        "ai_total_duration_seconds": 3.2686097621917725
       }
     },
     {
       "case_number": 29,
       "success": true,
-      "duration_seconds": 28.489846250930785,
+      "duration_seconds": 32.25117358912659,
       "error": null,
       "output": {
         "mappings": [
@@ -8205,7 +8205,7 @@
           },
           {
             "r_val": "george washington university",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "university of miami",
@@ -8373,7 +8373,7 @@
           },
           {
             "r_val": "district of columbia",
-            "s_val": "washington"
+            "s_val": "district of columbia"
           },
           {
             "r_val": "stanford university",
@@ -8437,7 +8437,7 @@
           },
           {
             "r_val": "university of maryland",
-            "s_val": "washington"
+            "s_val": "virginia"
           },
           {
             "r_val": "boston college",
@@ -8449,50 +8449,50 @@
           }
         ],
         "num_r": 65,
-        "num_s": 24,
+        "num_s": 26,
         "num_mappings": 65
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:08:53.419298717Z",
-          "end_time": "2026-01-13T15:08:53.442122547Z",
-          "duration_seconds": 0.022823821
+          "start_time": "2026-01-13T14:56:40.330801085Z",
+          "end_time": "2026-01-13T14:56:40.344375718Z",
+          "duration_seconds": 0.013574632
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:08:53.442132966Z",
-          "end_time": "2026-01-13T15:09:03.529775839Z",
-          "duration_seconds": 10.087642872
+          "start_time": "2026-01-13T14:56:40.344392132Z",
+          "end_time": "2026-01-13T14:56:51.969735466Z",
+          "duration_seconds": 11.625343337
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:09:03.529778897Z",
-          "end_time": "2026-01-13T15:09:03.551113481Z",
-          "duration_seconds": 0.021334589
+          "start_time": "2026-01-13T14:56:51.969739144Z",
+          "end_time": "2026-01-13T14:56:52.020865528Z",
+          "duration_seconds": 0.051126419
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:09:03.551127525Z",
-          "end_time": "2026-01-13T15:09:03.947246527Z",
-          "duration_seconds": 0.396119006
+          "start_time": "2026-01-13T14:56:52.020908364Z",
+          "end_time": "2026-01-13T14:56:52.468745806Z",
+          "duration_seconds": 0.447837413
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:09:03.947256548Z",
-          "end_time": "2026-01-13T15:09:03.953204392Z",
-          "duration_seconds": 0.005947844
+          "start_time": "2026-01-13T14:56:52.468755366Z",
+          "end_time": "2026-01-13T14:56:52.476433855Z",
+          "duration_seconds": 0.00767849
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0001609325408935547,
-        "step2_select_topk": 0.0013573169708251953,
+        "step1_group_by_r": 0.00012350082397460938,
+        "step2_select_topk": 0.0014536380767822266,
         "step3_format_output": 0.0,
-        "total_duration": 0.001542806625366211
+        "total_duration": 0.0016045570373535156
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 17.194005250930786
+        "ai_total_duration_seconds": 19.262056589126587
       }
     },
     {
       "case_number": 30,
       "success": true,
-      "duration_seconds": 13.221502,
+      "duration_seconds": 10.939213,
       "error": null,
       "output": {
         "mappings": [
@@ -8615,36 +8615,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:09:04.726776062Z",
-          "end_time": "2026-01-13T15:09:04.73848554Z",
-          "duration_seconds": 0.011709471
+          "start_time": "2026-01-13T14:56:53.334576715Z",
+          "end_time": "2026-01-13T14:56:53.350759866Z",
+          "duration_seconds": 0.016183152
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:09:04.738496057Z",
-          "end_time": "2026-01-13T15:09:16.354935466Z",
-          "duration_seconds": 11.616439413
+          "start_time": "2026-01-13T14:56:53.350772828Z",
+          "end_time": "2026-01-13T14:57:02.947368948Z",
+          "duration_seconds": 9.596596128
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:09:16.355127014Z",
-          "end_time": "2026-01-13T15:09:16.368595518Z",
-          "duration_seconds": 0.013468525
+          "start_time": "2026-01-13T14:57:02.947374671Z",
+          "end_time": "2026-01-13T14:57:02.948786876Z",
+          "duration_seconds": 0.001412206
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:09:16.368739198Z",
-          "end_time": "2026-01-13T15:09:16.991781458Z",
-          "duration_seconds": 0.623042243
+          "start_time": "2026-01-13T14:57:02.948798152Z",
+          "end_time": "2026-01-13T14:57:03.355050519Z",
+          "duration_seconds": 0.406252356
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:09:16.991792822Z",
-          "end_time": "2026-01-13T15:09:16.993443786Z",
-          "duration_seconds": 0.001650965
+          "start_time": "2026-01-13T14:57:03.35506716Z",
+          "end_time": "2026-01-13T14:57:03.355287615Z",
+          "duration_seconds": 0.000220455
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 6.4373016357421875e-06,
-        "step2_select_topk": 5.4836273193359375e-05,
+        "step2_select_topk": 4.839897155761719e-05,
         "step3_format_output": 0.0,
-        "total_duration": 8.988380432128906e-05
+        "total_duration": 7.939338684082031e-05
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -8653,7 +8653,7 @@
     {
       "case_number": 31,
       "success": false,
-      "duration_seconds": 11.510167,
+      "duration_seconds": 13.077305,
       "error": null,
       "output": {
         "mappings": [],
@@ -8663,36 +8663,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:09:17.9595976Z",
-          "end_time": "2026-01-13T15:09:17.980318572Z",
-          "duration_seconds": 0.020720972
+          "start_time": "2026-01-13T14:57:04.287704172Z",
+          "end_time": "2026-01-13T14:57:04.300980338Z",
+          "duration_seconds": 0.013276166
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:09:17.980445841Z",
-          "end_time": "2026-01-13T15:09:28.217588776Z",
-          "duration_seconds": 10.237142968
+          "start_time": "2026-01-13T14:57:04.300992246Z",
+          "end_time": "2026-01-13T14:57:15.8617382Z",
+          "duration_seconds": 11.560745982
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:09:28.217602225Z",
-          "end_time": "2026-01-13T15:09:28.220819296Z",
-          "duration_seconds": 0.003217042
+          "start_time": "2026-01-13T14:57:15.861754596Z",
+          "end_time": "2026-01-13T14:57:15.867128839Z",
+          "duration_seconds": 0.005374243
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:09:28.220833295Z",
-          "end_time": "2026-01-13T15:09:28.655788737Z",
-          "duration_seconds": 0.43495542
+          "start_time": "2026-01-13T14:57:15.867149686Z",
+          "end_time": "2026-01-13T14:57:16.415463631Z",
+          "duration_seconds": 0.548313912
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:09:28.655799412Z",
-          "end_time": "2026-01-13T15:09:28.657485338Z",
-          "duration_seconds": 0.001685926
+          "start_time": "2026-01-13T14:57:16.41547403Z",
+          "end_time": "2026-01-13T14:57:16.418594491Z",
+          "duration_seconds": 0.003120462
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.76837158203125e-07,
-        "step2_select_topk": 0.00029730796813964844,
+        "step1_group_by_r": 2.384185791015625e-07,
+        "step2_select_topk": 0.00029015541076660156,
         "step3_format_output": 0.0,
-        "total_duration": 0.0003235340118408203
+        "total_duration": 0.0003151893615722656
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -8701,7 +8701,7 @@
     {
       "case_number": 32,
       "success": true,
-      "duration_seconds": 15.193277390365601,
+      "duration_seconds": 13.650861443313598,
       "error": null,
       "output": {
         "mappings": [
@@ -8720,51 +8720,51 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:09:29.484776527Z",
-          "end_time": "2026-01-13T15:09:29.499101351Z",
-          "duration_seconds": 0.014324827
+          "start_time": "2026-01-13T14:57:17.378555858Z",
+          "end_time": "2026-01-13T14:57:17.399913655Z",
+          "duration_seconds": 0.021357791
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:09:29.499112627Z",
-          "end_time": "2026-01-13T15:09:41.414856537Z",
-          "duration_seconds": 11.915743911
+          "start_time": "2026-01-13T14:57:17.39992337Z",
+          "end_time": "2026-01-13T14:57:27.993687299Z",
+          "duration_seconds": 10.593763933
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:09:41.414860845Z",
-          "end_time": "2026-01-13T15:09:41.542911914Z",
-          "duration_seconds": 0.128051087
+          "start_time": "2026-01-13T14:57:27.993692329Z",
+          "end_time": "2026-01-13T14:57:28.098200897Z",
+          "duration_seconds": 0.10450861
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:09:41.543142101Z",
-          "end_time": "2026-01-13T15:09:42.137533402Z",
-          "duration_seconds": 0.594391297
+          "start_time": "2026-01-13T14:57:28.098243362Z",
+          "end_time": "2026-01-13T14:57:28.496261596Z",
+          "duration_seconds": 0.398018192
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:09:42.137544272Z",
-          "end_time": "2026-01-13T15:09:42.138840297Z",
-          "duration_seconds": 0.001296025
+          "start_time": "2026-01-13T14:57:28.496274014Z",
+          "end_time": "2026-01-13T14:57:28.497422564Z",
+          "duration_seconds": 0.001148549
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.6689300537109375e-06,
-        "step2_select_topk": 0.00030303001403808594,
+        "step1_group_by_r": 1.430511474609375e-06,
+        "step2_select_topk": 0.00031828880310058594,
         "step3_format_output": 0.0,
-        "total_duration": 0.0003294944763183594
+        "total_duration": 0.0003459453582763672
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 1.6063973903656006
+        "ai_total_duration_seconds": 1.8223774433135986
       }
     },
     {
       "case_number": 33,
       "success": true,
-      "duration_seconds": 33.31968038265991,
+      "duration_seconds": 37.570829121688845,
       "error": null,
       "output": {
         "mappings": [
           {
             "r_val": "san francisco 49ers",
-            "s_val": "centurylink field"
+            "s_val": "university of phoenix stadium"
           },
           {
             "r_val": "houston texans",
@@ -8772,7 +8772,7 @@
           },
           {
             "r_val": "minnesota vikings",
-            "s_val": "heinz field"
+            "s_val": "soldier field"
           },
           {
             "r_val": "oakland raiders",
@@ -8824,7 +8824,7 @@
           },
           {
             "r_val": "dallas cowboys",
-            "s_val": "university of phoenix stadium"
+            "s_val": "sports authority field at mile high"
           },
           {
             "r_val": "green bay packers",
@@ -8889,45 +8889,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:09:43.086402384Z",
-          "end_time": "2026-01-13T15:09:43.101889408Z",
-          "duration_seconds": 0.015487025
+          "start_time": "2026-01-13T14:57:29.219070887Z",
+          "end_time": "2026-01-13T14:57:29.230637328Z",
+          "duration_seconds": 0.011566441
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:09:43.101897295Z",
-          "end_time": "2026-01-13T15:09:52.79531776Z",
-          "duration_seconds": 9.693420475
+          "start_time": "2026-01-13T14:57:29.230645203Z",
+          "end_time": "2026-01-13T14:57:39.975187434Z",
+          "duration_seconds": 10.744542232
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:09:52.795323103Z",
-          "end_time": "2026-01-13T15:09:52.796221912Z",
-          "duration_seconds": 0.000898805
+          "start_time": "2026-01-13T14:57:39.975319954Z",
+          "end_time": "2026-01-13T14:57:39.977639881Z",
+          "duration_seconds": 0.002319935
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:09:52.796228121Z",
-          "end_time": "2026-01-13T15:09:53.224075511Z",
-          "duration_seconds": 0.427847389
+          "start_time": "2026-01-13T14:57:39.977978954Z",
+          "end_time": "2026-01-13T14:57:40.436665675Z",
+          "duration_seconds": 0.458686714
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:09:53.224086705Z",
-          "end_time": "2026-01-13T15:09:53.224572952Z",
-          "duration_seconds": 0.000486248
+          "start_time": "2026-01-13T14:57:40.436678456Z",
+          "end_time": "2026-01-13T14:57:40.440833474Z",
+          "duration_seconds": 0.004155019
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.0967254638671875e-05,
-        "step2_select_topk": 5.316734313964844e-05,
+        "step1_group_by_r": 2.2172927856445312e-05,
+        "step2_select_topk": 9.72747802734375e-05,
         "step3_format_output": 0.0,
-        "total_duration": 8.940696716308594e-05
+        "total_duration": 0.00017380714416503906
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 22.484727382659912
+        "ai_total_duration_seconds": 25.214275121688843
       }
     },
     {
       "case_number": 34,
       "success": true,
-      "duration_seconds": 13.200264196258544,
+      "duration_seconds": 12.238295308868409,
       "error": null,
       "output": {
         "mappings": [
@@ -8978,45 +8978,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:09:53.931456484Z",
-          "end_time": "2026-01-13T15:09:53.94515312Z",
-          "duration_seconds": 0.013696641
+          "start_time": "2026-01-13T14:57:41.593367889Z",
+          "end_time": "2026-01-13T14:57:41.62005185Z",
+          "duration_seconds": 0.026683961
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:09:53.945162548Z",
-          "end_time": "2026-01-13T15:10:04.899645704Z",
-          "duration_seconds": 10.95448315
+          "start_time": "2026-01-13T14:57:41.620063324Z",
+          "end_time": "2026-01-13T14:57:51.399920137Z",
+          "duration_seconds": 9.779856867
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:10:04.899649926Z",
-          "end_time": "2026-01-13T15:10:04.968692064Z",
-          "duration_seconds": 0.069042141
+          "start_time": "2026-01-13T14:57:51.400030435Z",
+          "end_time": "2026-01-13T14:57:51.486575091Z",
+          "duration_seconds": 0.086544646
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:10:04.968704356Z",
-          "end_time": "2026-01-13T15:10:05.389052942Z",
-          "duration_seconds": 0.420348585
+          "start_time": "2026-01-13T14:57:51.486607701Z",
+          "end_time": "2026-01-13T14:57:51.961095217Z",
+          "duration_seconds": 0.474487476
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:10:05.389068984Z",
-          "end_time": "2026-01-13T15:10:05.390708972Z",
-          "duration_seconds": 0.001639992
+          "start_time": "2026-01-13T14:57:51.961108032Z",
+          "end_time": "2026-01-13T14:57:51.962984761Z",
+          "duration_seconds": 0.001876735
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.86102294921875e-06,
-        "step2_select_topk": 0.00039458274841308594,
+        "step1_group_by_r": 2.6226043701171875e-06,
+        "step2_select_topk": 0.0003924369812011719,
         "step3_format_output": 0.0,
-        "total_duration": 0.0004277229309082031
+        "total_duration": 0.00041866302490234375
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 0.9949831962585449
+        "ai_total_duration_seconds": 1.1472783088684082
       }
     },
     {
       "case_number": 35,
       "success": true,
-      "duration_seconds": 14.111253622665405,
+      "duration_seconds": 18.604721909103393,
       "error": null,
       "output": {
         "mappings": [
@@ -9071,45 +9071,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:10:06.152449101Z",
-          "end_time": "2026-01-13T15:10:06.16971994Z",
-          "duration_seconds": 0.017270842
+          "start_time": "2026-01-13T14:57:52.697280291Z",
+          "end_time": "2026-01-13T14:57:52.70886754Z",
+          "duration_seconds": 0.011587248
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:10:06.169813462Z",
-          "end_time": "2026-01-13T15:10:16.432591537Z",
-          "duration_seconds": 10.262778108
+          "start_time": "2026-01-13T14:57:52.708879328Z",
+          "end_time": "2026-01-13T14:58:06.602229083Z",
+          "duration_seconds": 13.893349798
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:10:16.432602788Z",
-          "end_time": "2026-01-13T15:10:16.554148247Z",
-          "duration_seconds": 0.121545471
+          "start_time": "2026-01-13T14:58:06.60224078Z",
+          "end_time": "2026-01-13T14:58:06.704536434Z",
+          "duration_seconds": 0.102295632
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:10:16.554189125Z",
-          "end_time": "2026-01-13T15:10:16.965351329Z",
-          "duration_seconds": 0.411162173
+          "start_time": "2026-01-13T14:58:06.704671496Z",
+          "end_time": "2026-01-13T14:58:07.340394247Z",
+          "duration_seconds": 0.635722722
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:10:16.96536227Z",
-          "end_time": "2026-01-13T15:10:16.969821562Z",
-          "duration_seconds": 0.004459292
+          "start_time": "2026-01-13T14:58:07.340405983Z",
+          "end_time": "2026-01-13T14:58:07.343906998Z",
+          "duration_seconds": 0.003501015
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.337860107421875e-06,
-        "step2_select_topk": 0.0004975795745849609,
+        "step1_group_by_r": 4.0531158447265625e-06,
+        "step2_select_topk": 0.0005040168762207031,
         "step3_format_output": 0.0,
-        "total_duration": 0.0005247592926025391
+        "total_duration": 0.0005319118499755859
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 2.5862386226654053
+        "ai_total_duration_seconds": 2.9324119091033936
       }
     },
     {
       "case_number": 36,
       "success": false,
-      "duration_seconds": 12.156054,
+      "duration_seconds": 11.014913,
       "error": null,
       "output": {
         "mappings": [],
@@ -9119,36 +9119,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:10:17.693997594Z",
-          "end_time": "2026-01-13T15:10:17.716768799Z",
-          "duration_seconds": 0.022771207
+          "start_time": "2026-01-13T14:58:08.383447689Z",
+          "end_time": "2026-01-13T14:58:08.409537572Z",
+          "duration_seconds": 0.026089883
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:10:17.716781788Z",
-          "end_time": "2026-01-13T15:10:28.378724146Z",
-          "duration_seconds": 10.661942365
+          "start_time": "2026-01-13T14:58:08.409713051Z",
+          "end_time": "2026-01-13T14:58:18.31736832Z",
+          "duration_seconds": 9.907655266
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:10:28.378729204Z",
-          "end_time": "2026-01-13T15:10:28.387360169Z",
-          "duration_seconds": 0.008630972
+          "start_time": "2026-01-13T14:58:18.317373965Z",
+          "end_time": "2026-01-13T14:58:18.318659768Z",
+          "duration_seconds": 0.001285804
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:10:28.387375074Z",
-          "end_time": "2026-01-13T15:10:28.912750399Z",
-          "duration_seconds": 0.525375313
+          "start_time": "2026-01-13T14:58:18.318666993Z",
+          "end_time": "2026-01-13T14:58:18.706949119Z",
+          "duration_seconds": 0.38828212
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:10:28.91276172Z",
-          "end_time": "2026-01-13T15:10:28.913285525Z",
-          "duration_seconds": 0.000523805
+          "start_time": "2026-01-13T14:58:18.706966114Z",
+          "end_time": "2026-01-13T14:58:18.707165325Z",
+          "duration_seconds": 0.000199211
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 7.152557373046875e-07,
-        "step2_select_topk": 0.00024008750915527344,
+        "step1_group_by_r": 2.384185791015625e-07,
+        "step2_select_topk": 0.00020456314086914062,
         "step3_format_output": 0.0,
-        "total_duration": 0.0002624988555908203
+        "total_duration": 0.00023818016052246094
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -9157,7 +9157,7 @@
     {
       "case_number": 37,
       "success": true,
-      "duration_seconds": 13.74809,
+      "duration_seconds": 12.693514,
       "error": null,
       "output": {
         "mappings": [
@@ -9188,36 +9188,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:10:29.862514839Z",
-          "end_time": "2026-01-13T15:10:29.878968635Z",
-          "duration_seconds": 0.016453796
+          "start_time": "2026-01-13T14:58:19.415828216Z",
+          "end_time": "2026-01-13T14:58:19.427462026Z",
+          "duration_seconds": 0.01163381
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:10:29.878979789Z",
-          "end_time": "2026-01-13T15:10:42.416628412Z",
-          "duration_seconds": 12.537648629
+          "start_time": "2026-01-13T14:58:19.427474332Z",
+          "end_time": "2026-01-13T14:58:30.584880711Z",
+          "duration_seconds": 11.157406386
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:10:42.416632854Z",
-          "end_time": "2026-01-13T15:10:42.423747417Z",
-          "duration_seconds": 0.007114555
+          "start_time": "2026-01-13T14:58:30.584884578Z",
+          "end_time": "2026-01-13T14:58:30.593942125Z",
+          "duration_seconds": 0.009057545
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:10:42.423753731Z",
-          "end_time": "2026-01-13T15:10:42.831063095Z",
-          "duration_seconds": 0.407309365
+          "start_time": "2026-01-13T14:58:30.593954272Z",
+          "end_time": "2026-01-13T14:58:31.149086671Z",
+          "duration_seconds": 0.555132401
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:10:42.831166436Z",
-          "end_time": "2026-01-13T15:10:42.832394756Z",
-          "duration_seconds": 0.001228321
+          "start_time": "2026-01-13T14:58:31.149108604Z",
+          "end_time": "2026-01-13T14:58:31.150193637Z",
+          "duration_seconds": 0.001085032
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.6689300537109375e-06,
-        "step2_select_topk": 0.00016236305236816406,
+        "step1_group_by_r": 1.9073486328125e-06,
+        "step2_select_topk": 0.0003044605255126953,
         "step3_format_output": 0.0,
-        "total_duration": 0.00018835067749023438
+        "total_duration": 0.0003292560577392578
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -9226,7 +9226,7 @@
     {
       "case_number": 38,
       "success": true,
-      "duration_seconds": 23.64158229122925,
+      "duration_seconds": 22.38558607095337,
       "error": null,
       "output": {
         "mappings": [
@@ -9316,7 +9316,7 @@
           },
           {
             "r_val": "pepsico",
-            "s_val": "canada"
+            "s_val": "switzerland"
           },
           {
             "r_val": "bank of china",
@@ -9429,45 +9429,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:10:43.625596576Z",
-          "end_time": "2026-01-13T15:10:43.646296637Z",
-          "duration_seconds": 0.020700054
+          "start_time": "2026-01-13T14:58:32.126237104Z",
+          "end_time": "2026-01-13T14:58:32.149127129Z",
+          "duration_seconds": 0.022890023
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:10:43.646472214Z",
-          "end_time": "2026-01-13T15:10:54.808766335Z",
-          "duration_seconds": 11.162294165
+          "start_time": "2026-01-13T14:58:32.149395895Z",
+          "end_time": "2026-01-13T14:58:42.277683798Z",
+          "duration_seconds": 10.128287928
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:10:54.808885546Z",
-          "end_time": "2026-01-13T15:10:54.967611484Z",
-          "duration_seconds": 0.158725958
+          "start_time": "2026-01-13T14:58:42.277694234Z",
+          "end_time": "2026-01-13T14:58:42.428309848Z",
+          "duration_seconds": 0.150615664
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:10:54.967780376Z",
-          "end_time": "2026-01-13T15:10:55.351019462Z",
-          "duration_seconds": 0.383239045
+          "start_time": "2026-01-13T14:58:42.428341096Z",
+          "end_time": "2026-01-13T14:58:42.848385596Z",
+          "duration_seconds": 0.420044469
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:10:55.351028666Z",
-          "end_time": "2026-01-13T15:10:55.356540873Z",
-          "duration_seconds": 0.005512208
+          "start_time": "2026-01-13T14:58:42.848395766Z",
+          "end_time": "2026-01-13T14:58:42.853904419Z",
+          "duration_seconds": 0.005508654
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.52587890625e-05,
-        "step2_select_topk": 0.0008904933929443359,
+        "step1_group_by_r": 1.9788742065429688e-05,
+        "step2_select_topk": 0.0008692741394042969,
         "step3_format_output": 0.0,
-        "total_duration": 0.0009286403656005859
+        "total_duration": 0.0009152889251708984
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 11.209449291229248
+        "ai_total_duration_seconds": 10.93685007095337
       }
     },
     {
       "case_number": 39,
       "success": true,
-      "duration_seconds": 14.0921155761261,
+      "duration_seconds": 17.10661610284424,
       "error": null,
       "output": {
         "mappings": [
@@ -9654,45 +9654,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:10:56.079853308Z",
-          "end_time": "2026-01-13T15:10:56.094657802Z",
-          "duration_seconds": 0.014804479
+          "start_time": "2026-01-13T14:58:43.583380581Z",
+          "end_time": "2026-01-13T14:58:43.599305807Z",
+          "duration_seconds": 0.015925223
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:10:56.0946741Z",
-          "end_time": "2026-01-13T15:11:05.741749316Z",
-          "duration_seconds": 9.647075216
+          "start_time": "2026-01-13T14:58:43.599317662Z",
+          "end_time": "2026-01-13T14:58:55.144787518Z",
+          "duration_seconds": 11.545469863
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:11:05.741752849Z",
-          "end_time": "2026-01-13T15:11:05.75403491Z",
-          "duration_seconds": 0.012282065
+          "start_time": "2026-01-13T14:58:55.144795241Z",
+          "end_time": "2026-01-13T14:58:55.213353396Z",
+          "duration_seconds": 0.068558197
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:11:05.754047954Z",
-          "end_time": "2026-01-13T15:11:06.176874392Z",
-          "duration_seconds": 0.422826434
+          "start_time": "2026-01-13T14:58:55.213539865Z",
+          "end_time": "2026-01-13T14:58:55.743914917Z",
+          "duration_seconds": 0.530375039
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:11:06.176888784Z",
-          "end_time": "2026-01-13T15:11:06.177658894Z",
-          "duration_seconds": 0.000770111
+          "start_time": "2026-01-13T14:58:55.743932187Z",
+          "end_time": "2026-01-13T14:58:55.748923615Z",
+          "duration_seconds": 0.004991428
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.0967254638671875e-05,
-        "step2_select_topk": 0.0005409717559814453,
+        "step1_group_by_r": 1.3113021850585938e-05,
+        "step2_select_topk": 0.0005462169647216797,
         "step3_format_output": 0.0,
-        "total_duration": 0.0005745887756347656
+        "total_duration": 0.0005841255187988281
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 3.2375385761260986
+        "ai_total_duration_seconds": 4.088910102844238
       }
     },
     {
       "case_number": 40,
       "success": true,
-      "duration_seconds": 108.45210484588623,
+      "duration_seconds": 123.36233740504456,
       "error": null,
       "output": {
         "mappings": [
@@ -9790,7 +9790,7 @@
           },
           {
             "r_val": "hollywood",
-            "s_val": "maryland"
+            "s_val": "florida"
           },
           {
             "r_val": "carlsbad",
@@ -9910,7 +9910,7 @@
           },
           {
             "r_val": "independence",
-            "s_val": "missouri"
+            "s_val": "minnesota"
           },
           {
             "r_val": "santa clarita",
@@ -9946,7 +9946,7 @@
           },
           {
             "r_val": "springfield",
-            "s_val": "massachusetts"
+            "s_val": "missouri"
           },
           {
             "r_val": "philadelphia",
@@ -9990,7 +9990,7 @@
           },
           {
             "r_val": "jackson",
-            "s_val": "tennessee"
+            "s_val": "mississippi"
           },
           {
             "r_val": "oakland",
@@ -10134,7 +10134,7 @@
           },
           {
             "r_val": "warren",
-            "s_val": "new jersey"
+            "s_val": "ohio"
           },
           {
             "r_val": "thousand oaks",
@@ -10174,7 +10174,7 @@
           },
           {
             "r_val": "fayetteville",
-            "s_val": "arkansas"
+            "s_val": "north carolina"
           },
           {
             "r_val": "kent",
@@ -10250,11 +10250,11 @@
           },
           {
             "r_val": "orange",
-            "s_val": "new mexico"
+            "s_val": "colorado"
           },
           {
             "r_val": "glendale",
-            "s_val": "california"
+            "s_val": "arizona"
           },
           {
             "r_val": "inglewood",
@@ -10290,7 +10290,7 @@
           },
           {
             "r_val": "kansas city",
-            "s_val": "missouri"
+            "s_val": "kansas"
           },
           {
             "r_val": "san bernardino",
@@ -10386,7 +10386,7 @@
           },
           {
             "r_val": "gilbert",
-            "s_val": "colorado"
+            "s_val": "arizona"
           },
           {
             "r_val": "west covina",
@@ -10530,7 +10530,7 @@
           },
           {
             "r_val": "westminster",
-            "s_val": "california"
+            "s_val": "colorado"
           },
           {
             "r_val": "north las vegas",
@@ -10570,7 +10570,7 @@
           },
           {
             "r_val": "tyler",
-            "s_val": "california"
+            "s_val": "texas"
           },
           {
             "r_val": "lexington",
@@ -10730,7 +10730,7 @@
           },
           {
             "r_val": "concord",
-            "s_val": "new hampshire"
+            "s_val": "north carolina"
           },
           {
             "r_val": "frisco",
@@ -10758,7 +10758,7 @@
           },
           {
             "r_val": "manchester",
-            "s_val": "pennsylvania"
+            "s_val": "new hampshire"
           },
           {
             "r_val": "los angeles",
@@ -10794,50 +10794,50 @@
           }
         ],
         "num_r": 274,
-        "num_s": 43,
+        "num_s": 44,
         "num_mappings": 274
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:11:06.941018773Z",
-          "end_time": "2026-01-13T15:11:06.960304416Z",
-          "duration_seconds": 0.019285637
+          "start_time": "2026-01-13T14:58:56.620558609Z",
+          "end_time": "2026-01-13T14:58:56.642035358Z",
+          "duration_seconds": 0.021476723
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:11:06.960526746Z",
-          "end_time": "2026-01-13T15:11:21.12233886Z",
-          "duration_seconds": 14.161812114
+          "start_time": "2026-01-13T14:58:56.642226933Z",
+          "end_time": "2026-01-13T14:59:08.25278524Z",
+          "duration_seconds": 11.610558307
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:11:21.122467906Z",
-          "end_time": "2026-01-13T15:11:21.313887719Z",
-          "duration_seconds": 0.191419813
+          "start_time": "2026-01-13T14:59:08.252788447Z",
+          "end_time": "2026-01-13T14:59:08.440730768Z",
+          "duration_seconds": 0.187942324
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:11:21.314123627Z",
-          "end_time": "2026-01-13T15:11:21.753300385Z",
-          "duration_seconds": 0.439176758
+          "start_time": "2026-01-13T14:59:08.440745042Z",
+          "end_time": "2026-01-13T14:59:08.857965762Z",
+          "duration_seconds": 0.417220725
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:11:21.753310457Z",
-          "end_time": "2026-01-13T15:11:21.845334274Z",
-          "duration_seconds": 0.092023823
+          "start_time": "2026-01-13T14:59:08.857981992Z",
+          "end_time": "2026-01-13T14:59:08.945646799Z",
+          "duration_seconds": 0.087664801
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.0008313655853271484,
-        "step2_select_topk": 0.0013575553894042969,
+        "step1_group_by_r": 0.0007941722869873047,
+        "step2_select_topk": 0.0012772083282470703,
         "step3_format_output": 0.0,
-        "total_duration": 0.0022161006927490234
+        "total_duration": 0.0020961761474609375
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 92.55097484588623
+        "ai_total_duration_seconds": 110.31490540504456
       }
     },
     {
       "case_number": 41,
       "success": true,
-      "duration_seconds": 11.97814497744751,
+      "duration_seconds": 14.09002338923645,
       "error": null,
       "output": {
         "mappings": [
@@ -10888,45 +10888,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:11:22.858125798Z",
-          "end_time": "2026-01-13T15:11:22.872413704Z",
-          "duration_seconds": 0.014287907
+          "start_time": "2026-01-13T14:59:09.679029436Z",
+          "end_time": "2026-01-13T14:59:09.692568779Z",
+          "duration_seconds": 0.013539342
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:11:22.872421041Z",
-          "end_time": "2026-01-13T15:11:32.840915982Z",
-          "duration_seconds": 9.968494941
+          "start_time": "2026-01-13T14:59:09.692575919Z",
+          "end_time": "2026-01-13T14:59:21.147625746Z",
+          "duration_seconds": 11.455049834
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:11:32.840918996Z",
-          "end_time": "2026-01-13T15:11:32.843580811Z",
-          "duration_seconds": 0.00266182
+          "start_time": "2026-01-13T14:59:21.147630298Z",
+          "end_time": "2026-01-13T14:59:21.156726268Z",
+          "duration_seconds": 0.009095979
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:11:32.843589307Z",
-          "end_time": "2026-01-13T15:11:33.274496944Z",
-          "duration_seconds": 0.430907636
+          "start_time": "2026-01-13T14:59:21.156880331Z",
+          "end_time": "2026-01-13T14:59:21.862630124Z",
+          "duration_seconds": 0.70574979
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:11:33.274510741Z",
-          "end_time": "2026-01-13T15:11:33.274935727Z",
-          "duration_seconds": 0.000424986
+          "start_time": "2026-01-13T14:59:21.862642311Z",
+          "end_time": "2026-01-13T14:59:21.862933218Z",
+          "duration_seconds": 0.000290908
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 3.0994415283203125e-06,
-        "step2_select_topk": 1.2636184692382812e-05,
+        "step1_group_by_r": 2.86102294921875e-06,
+        "step2_select_topk": 1.1205673217773438e-05,
         "step3_format_output": 0.0,
-        "total_duration": 4.649162292480469e-05
+        "total_duration": 3.886222839355469e-05
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 0.8232979774475098
+        "ai_total_duration_seconds": 0.9641563892364502
       }
     },
     {
       "case_number": 42,
       "success": false,
-      "duration_seconds": 13.812093,
+      "duration_seconds": 11.461739,
       "error": null,
       "output": {
         "mappings": [],
@@ -10936,36 +10936,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:11:34.027811737Z",
-          "end_time": "2026-01-13T15:11:34.051145584Z",
-          "duration_seconds": 0.023333847
+          "start_time": "2026-01-13T14:59:22.820986138Z",
+          "end_time": "2026-01-13T14:59:22.846035665Z",
+          "duration_seconds": 0.025049531
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:11:34.051157063Z",
-          "end_time": "2026-01-13T15:11:46.057758925Z",
-          "duration_seconds": 12.006601903
+          "start_time": "2026-01-13T14:59:22.84605177Z",
+          "end_time": "2026-01-13T14:59:33.010364787Z",
+          "duration_seconds": 10.164313049
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:11:46.057846542Z",
-          "end_time": "2026-01-13T15:11:46.127349493Z",
-          "duration_seconds": 0.06950298
+          "start_time": "2026-01-13T14:59:33.010373555Z",
+          "end_time": "2026-01-13T14:59:33.06863631Z",
+          "duration_seconds": 0.058262745
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:11:46.127499958Z",
-          "end_time": "2026-01-13T15:11:46.898574768Z",
-          "duration_seconds": 0.771074762
+          "start_time": "2026-01-13T14:59:33.068652744Z",
+          "end_time": "2026-01-13T14:59:33.501657984Z",
+          "duration_seconds": 0.433005234
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:11:46.898585961Z",
-          "end_time": "2026-01-13T15:11:46.899205162Z",
-          "duration_seconds": 0.000619203
+          "start_time": "2026-01-13T14:59:33.501669692Z",
+          "end_time": "2026-01-13T14:59:33.502209885Z",
+          "duration_seconds": 0.000540193
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.384185791015625e-07,
-        "step2_select_topk": 0.00022721290588378906,
+        "step1_group_by_r": 7.152557373046875e-07,
+        "step2_select_topk": 0.00014066696166992188,
         "step3_format_output": 0.0,
-        "total_duration": 0.0002493858337402344
+        "total_duration": 0.00016379356384277344
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -10974,7 +10974,7 @@
     {
       "case_number": 43,
       "success": true,
-      "duration_seconds": 11.219602,
+      "duration_seconds": 12.124971,
       "error": null,
       "output": {
         "mappings": [
@@ -11009,36 +11009,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:11:47.861877884Z",
-          "end_time": "2026-01-13T15:11:47.880881126Z",
-          "duration_seconds": 0.019003239
+          "start_time": "2026-01-13T14:59:34.299518308Z",
+          "end_time": "2026-01-13T14:59:34.313362055Z",
+          "duration_seconds": 0.013843742
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:11:47.881044581Z",
-          "end_time": "2026-01-13T15:11:57.827532253Z",
-          "duration_seconds": 9.946487684000001
+          "start_time": "2026-01-13T14:59:34.313371757Z",
+          "end_time": "2026-01-13T14:59:45.024372614Z",
+          "duration_seconds": 10.711000856
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:11:57.827536876Z",
-          "end_time": "2026-01-13T15:11:57.829377434Z",
-          "duration_seconds": 0.001840561
+          "start_time": "2026-01-13T14:59:45.024376426Z",
+          "end_time": "2026-01-13T14:59:45.026076998Z",
+          "duration_seconds": 0.001700578
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:11:57.829386537Z",
-          "end_time": "2026-01-13T15:11:58.257984511Z",
-          "duration_seconds": 0.428597966
+          "start_time": "2026-01-13T14:59:45.026084117Z",
+          "end_time": "2026-01-13T14:59:45.561427161Z",
+          "duration_seconds": 0.535343042
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:11:58.257997601Z",
-          "end_time": "2026-01-13T15:11:58.259264808Z",
-          "duration_seconds": 0.001267207
+          "start_time": "2026-01-13T14:59:45.561441921Z",
+          "end_time": "2026-01-13T14:59:45.562998422Z",
+          "duration_seconds": 0.001556501
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 1.9073486328125e-06,
-        "step2_select_topk": 0.0003838539123535156,
+        "step1_group_by_r": 2.1457672119140625e-06,
+        "step2_select_topk": 0.0003800392150878906,
         "step3_format_output": 0.0,
-        "total_duration": 0.0004172325134277344
+        "total_duration": 0.0004093647003173828
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -11047,7 +11047,7 @@
     {
       "case_number": 44,
       "success": true,
-      "duration_seconds": 21.732723,
+      "duration_seconds": 13.520498,
       "error": null,
       "output": {
         "mappings": [
@@ -11142,36 +11142,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:11:59.093357516Z",
-          "end_time": "2026-01-13T15:11:59.109588623Z",
-          "duration_seconds": 0.016231105
+          "start_time": "2026-01-13T14:59:46.440404261Z",
+          "end_time": "2026-01-13T14:59:46.464750593Z",
+          "duration_seconds": 0.024346326
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:11:59.109598219Z",
-          "end_time": "2026-01-13T15:12:15.787211145Z",
-          "duration_seconds": 16.67761298
+          "start_time": "2026-01-13T14:59:46.464761527Z",
+          "end_time": "2026-01-13T14:59:58.773059742Z",
+          "duration_seconds": 12.308298224
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:12:15.787395801Z",
-          "end_time": "2026-01-13T15:12:16.615358254Z",
-          "duration_seconds": 0.827962498
+          "start_time": "2026-01-13T14:59:58.773066321Z",
+          "end_time": "2026-01-13T14:59:58.849690305Z",
+          "duration_seconds": 0.076623999
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:12:16.61599859Z",
-          "end_time": "2026-01-13T15:12:17.705478402Z",
-          "duration_seconds": 1.089479755
+          "start_time": "2026-01-13T14:59:58.849715648Z",
+          "end_time": "2026-01-13T14:59:59.252442793Z",
+          "duration_seconds": 0.402727131
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:12:17.705489468Z",
-          "end_time": "2026-01-13T15:12:17.965595401Z",
-          "duration_seconds": 0.260105973
+          "start_time": "2026-01-13T14:59:59.252455821Z",
+          "end_time": "2026-01-13T14:59:59.255615371Z",
+          "duration_seconds": 0.003159551
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 0.00013208389282226562,
-        "step2_select_topk": 0.0003249645233154297,
+        "step1_group_by_r": 4.5299530029296875e-06,
+        "step2_select_topk": 0.00014352798461914062,
         "step3_format_output": 0.0,
-        "total_duration": 0.0004811286926269531
+        "total_duration": 0.00016999244689941406
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -11180,7 +11180,7 @@
     {
       "case_number": 45,
       "success": false,
-      "duration_seconds": 38.738371,
+      "duration_seconds": 13.351712,
       "error": null,
       "output": {
         "mappings": [],
@@ -11190,36 +11190,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:12:20.850073028Z",
-          "end_time": "2026-01-13T15:12:20.895716244Z",
-          "duration_seconds": 0.04564322
+          "start_time": "2026-01-13T14:59:59.974694016Z",
+          "end_time": "2026-01-13T14:59:59.989899987Z",
+          "duration_seconds": 0.015205969
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:12:20.895729935Z",
-          "end_time": "2026-01-13T15:12:58.394490098Z",
-          "duration_seconds": 37.498760205
+          "start_time": "2026-01-13T14:59:59.989909426Z",
+          "end_time": "2026-01-13T15:00:11.614312897Z",
+          "duration_seconds": 11.624403525
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:12:58.394501936Z",
-          "end_time": "2026-01-13T15:12:58.399275907Z",
-          "duration_seconds": 0.004773958
+          "start_time": "2026-01-13T15:00:11.614320206Z",
+          "end_time": "2026-01-13T15:00:11.641697958Z",
+          "duration_seconds": 0.027377748
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:12:58.399299766Z",
-          "end_time": "2026-01-13T15:12:58.792570347Z",
-          "duration_seconds": 0.393270553
+          "start_time": "2026-01-13T15:00:11.641724027Z",
+          "end_time": "2026-01-13T15:00:12.332053208Z",
+          "duration_seconds": 0.690329158
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:12:58.792596925Z",
-          "end_time": "2026-01-13T15:12:58.792945282Z",
-          "duration_seconds": 0.000348356
+          "start_time": "2026-01-13T15:00:12.332067471Z",
+          "end_time": "2026-01-13T15:00:12.333762853Z",
+          "duration_seconds": 0.00169539
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 2.384185791015625e-07,
-        "step2_select_topk": 9.226799011230469e-05,
+        "step2_select_topk": 8.58306884765625e-05,
         "step3_format_output": 0.0,
-        "total_duration": 0.00011873245239257812
+        "total_duration": 0.00010991096496582031
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -11228,7 +11228,7 @@
     {
       "case_number": 46,
       "success": false,
-      "duration_seconds": 45.536932,
+      "duration_seconds": 10.952974,
       "error": null,
       "output": {
         "mappings": [],
@@ -11238,36 +11238,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:12:59.60873846Z",
-          "end_time": "2026-01-13T15:12:59.647651805Z",
-          "duration_seconds": 0.038913345
+          "start_time": "2026-01-13T15:00:13.357031865Z",
+          "end_time": "2026-01-13T15:00:13.376101584Z",
+          "duration_seconds": 0.019069713
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:12:59.647662807Z",
-          "end_time": "2026-01-13T15:13:43.223193972Z",
-          "duration_seconds": 43.575531167
+          "start_time": "2026-01-13T15:00:13.376109508Z",
+          "end_time": "2026-01-13T15:00:23.125322911Z",
+          "duration_seconds": 9.749213407
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:13:43.223485396Z",
-          "end_time": "2026-01-13T15:13:43.23071139Z",
-          "duration_seconds": 0.007225996
+          "start_time": "2026-01-13T15:00:23.125326807Z",
+          "end_time": "2026-01-13T15:00:23.127756435Z",
+          "duration_seconds": 0.002429632
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:13:43.23099285Z",
-          "end_time": "2026-01-13T15:13:44.090173201Z",
-          "duration_seconds": 0.859180352
+          "start_time": "2026-01-13T15:00:23.127763766Z",
+          "end_time": "2026-01-13T15:00:23.535434954Z",
+          "duration_seconds": 0.407671183
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:13:44.090185267Z",
-          "end_time": "2026-01-13T15:13:44.095975412Z",
-          "duration_seconds": 0.005790146
+          "start_time": "2026-01-13T15:00:23.535449396Z",
+          "end_time": "2026-01-13T15:00:23.537083126Z",
+          "duration_seconds": 0.001633729
         }
       },
       "python_service_timings": {
         "step1_group_by_r": 2.384185791015625e-07,
-        "step2_select_topk": 0.00031065940856933594,
+        "step2_select_topk": 0.0003116130828857422,
         "step3_format_output": 0.0,
-        "total_duration": 0.00033664703369140625
+        "total_duration": 0.0003352165222167969
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -11276,7 +11276,7 @@
     {
       "case_number": 47,
       "success": false,
-      "duration_seconds": 12.550199,
+      "duration_seconds": 12.918334,
       "error": null,
       "output": {
         "mappings": [],
@@ -11286,36 +11286,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:13:45.170494757Z",
-          "end_time": "2026-01-13T15:13:45.196079379Z",
-          "duration_seconds": 0.02558462
+          "start_time": "2026-01-13T15:00:24.316654784Z",
+          "end_time": "2026-01-13T15:00:24.328366133Z",
+          "duration_seconds": 0.011711349
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:13:45.196092843Z",
-          "end_time": "2026-01-13T15:13:56.548147259Z",
-          "duration_seconds": 11.35205445
+          "start_time": "2026-01-13T15:00:24.328461115Z",
+          "end_time": "2026-01-13T15:00:35.789413214Z",
+          "duration_seconds": 11.460952141
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:13:56.548157757Z",
-          "end_time": "2026-01-13T15:13:56.62333418Z",
-          "duration_seconds": 0.075176482
+          "start_time": "2026-01-13T15:00:35.789425111Z",
+          "end_time": "2026-01-13T15:00:35.867765732Z",
+          "duration_seconds": 0.07834066
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:13:56.623362572Z",
-          "end_time": "2026-01-13T15:13:57.010428027Z",
-          "duration_seconds": 0.387065404
+          "start_time": "2026-01-13T15:00:35.867803506Z",
+          "end_time": "2026-01-13T15:00:36.389536869Z",
+          "duration_seconds": 0.521733325
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:13:57.010438139Z",
-          "end_time": "2026-01-13T15:13:57.01950002Z",
-          "duration_seconds": 0.009061882
+          "start_time": "2026-01-13T15:00:36.38954668Z",
+          "end_time": "2026-01-13T15:00:36.400317374Z",
+          "duration_seconds": 0.010770694
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.76837158203125e-07,
-        "step2_select_topk": 0.002167224884033203,
+        "step1_group_by_r": 7.152557373046875e-07,
+        "step2_select_topk": 0.0021975040435791016,
         "step3_format_output": 0.0,
-        "total_duration": 0.0021898746490478516
+        "total_duration": 0.002227306365966797
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -11324,7 +11324,7 @@
     {
       "case_number": 48,
       "success": false,
-      "duration_seconds": 11.44731,
+      "duration_seconds": 10.680309,
       "error": null,
       "output": {
         "mappings": [],
@@ -11334,36 +11334,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:13:57.730695123Z",
-          "end_time": "2026-01-13T15:13:57.747368236Z",
-          "duration_seconds": 0.016673113
+          "start_time": "2026-01-13T15:00:37.248668938Z",
+          "end_time": "2026-01-13T15:00:37.272011693Z",
+          "duration_seconds": 0.023342752
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:13:57.747378031Z",
-          "end_time": "2026-01-13T15:14:08.026842765Z",
-          "duration_seconds": 10.279464731000001
+          "start_time": "2026-01-13T15:00:37.27202273Z",
+          "end_time": "2026-01-13T15:00:46.828717982Z",
+          "duration_seconds": 9.556695259
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:14:08.02684553Z",
-          "end_time": "2026-01-13T15:14:08.026894271Z",
-          "duration_seconds": 4.8741e-05
+          "start_time": "2026-01-13T15:00:46.828720946Z",
+          "end_time": "2026-01-13T15:00:46.829170861Z",
+          "duration_seconds": 0.000449916
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:14:08.026897368Z",
-          "end_time": "2026-01-13T15:14:08.428830641Z",
-          "duration_seconds": 0.401933272
+          "start_time": "2026-01-13T15:00:46.829179058Z",
+          "end_time": "2026-01-13T15:00:47.206477557Z",
+          "duration_seconds": 0.377298495
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:14:08.428842078Z",
-          "end_time": "2026-01-13T15:14:08.428961732Z",
-          "duration_seconds": 0.000119656
+          "start_time": "2026-01-13T15:00:47.206489529Z",
+          "end_time": "2026-01-13T15:00:47.206921092Z",
+          "duration_seconds": 0.000431563
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.76837158203125e-07,
-        "step2_select_topk": 0.0003402233123779297,
+        "step1_group_by_r": 7.152557373046875e-07,
+        "step2_select_topk": 0.0003426074981689453,
         "step3_format_output": 0.0,
-        "total_duration": 0.0003674030303955078
+        "total_duration": 0.0003657341003417969
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
@@ -11372,7 +11372,7 @@
     {
       "case_number": 49,
       "success": true,
-      "duration_seconds": 14.592261835601807,
+      "duration_seconds": 15.089457649337769,
       "error": null,
       "output": {
         "mappings": [
@@ -11407,45 +11407,45 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:14:09.192460331Z",
-          "end_time": "2026-01-13T15:14:09.20892454Z",
-          "duration_seconds": 0.016464212
+          "start_time": "2026-01-13T15:00:47.946849306Z",
+          "end_time": "2026-01-13T15:00:47.95806631Z",
+          "duration_seconds": 0.011217001
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:14:09.208940156Z",
-          "end_time": "2026-01-13T15:14:20.36748112Z",
-          "duration_seconds": 11.158541013
+          "start_time": "2026-01-13T15:00:47.958079513Z",
+          "end_time": "2026-01-13T15:00:58.943678968Z",
+          "duration_seconds": 10.985599463
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:14:20.367867058Z",
-          "end_time": "2026-01-13T15:14:20.400479093Z",
-          "duration_seconds": 0.032612047
+          "start_time": "2026-01-13T15:00:58.943837129Z",
+          "end_time": "2026-01-13T15:00:58.97376106Z",
+          "duration_seconds": 0.029923969
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:14:20.400508487Z",
-          "end_time": "2026-01-13T15:14:20.958501067Z",
-          "duration_seconds": 0.55799255
+          "start_time": "2026-01-13T15:00:58.973989238Z",
+          "end_time": "2026-01-13T15:00:59.588138165Z",
+          "duration_seconds": 0.61414884
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:14:20.958512936Z",
-          "end_time": "2026-01-13T15:14:20.961334478Z",
-          "duration_seconds": 0.002821543
+          "start_time": "2026-01-13T15:00:59.588150965Z",
+          "end_time": "2026-01-13T15:00:59.588852118Z",
+          "duration_seconds": 0.000701156
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 2.384185791015625e-06,
-        "step2_select_topk": 8.344650268554688e-06,
+        "step1_group_by_r": 4.291534423828125e-06,
+        "step2_select_topk": 1.2159347534179688e-05,
         "step3_format_output": 0.0,
-        "total_duration": 3.9577484130859375e-05
+        "total_duration": 4.1484832763671875e-05
       },
       "ai_timings": {
-        "ai_total_duration_seconds": 1.8170838356018066
+        "ai_total_duration_seconds": 2.3651206493377686
       }
     },
     {
       "case_number": 50,
       "success": false,
-      "duration_seconds": 12.22344,
+      "duration_seconds": 11.303444,
       "error": null,
       "output": {
         "mappings": [],
@@ -11455,36 +11455,36 @@
       },
       "go_service_timings": {
         "duckdb_connection": {
-          "start_time": "2026-01-13T15:14:21.990595434Z",
-          "end_time": "2026-01-13T15:14:22.021157506Z",
-          "duration_seconds": 0.03056208
+          "start_time": "2026-01-13T15:01:00.688126812Z",
+          "end_time": "2026-01-13T15:01:00.716339768Z",
+          "duration_seconds": 0.028212957
         },
         "load_and_create_bitmaps": {
-          "start_time": "2026-01-13T15:14:22.02117134Z",
-          "end_time": "2026-01-13T15:14:33.011755783Z",
-          "duration_seconds": 10.990584489
+          "start_time": "2026-01-13T15:01:00.71635436Z",
+          "end_time": "2026-01-13T15:01:10.74592585Z",
+          "duration_seconds": 10.029571534
         },
         "filter_bitmaps_to_relevant_tables": {
-          "start_time": "2026-01-13T15:14:33.011765776Z",
-          "end_time": "2026-01-13T15:14:33.103520034Z",
-          "duration_seconds": 0.091754294
+          "start_time": "2026-01-13T15:01:10.745937144Z",
+          "end_time": "2026-01-13T15:01:10.846229371Z",
+          "duration_seconds": 0.100292282
         },
         "get_total_table_count": {
-          "start_time": "2026-01-13T15:14:33.103554188Z",
-          "end_time": "2026-01-13T15:14:33.493753634Z",
-          "duration_seconds": 0.390199409
+          "start_time": "2026-01-13T15:01:10.846264011Z",
+          "end_time": "2026-01-13T15:01:11.234918944Z",
+          "duration_seconds": 0.388654902
         },
         "calculate_pmi_scores": {
-          "start_time": "2026-01-13T15:14:33.493765717Z",
-          "end_time": "2026-01-13T15:14:33.496690714Z",
-          "duration_seconds": 0.002924998
+          "start_time": "2026-01-13T15:01:11.234933529Z",
+          "end_time": "2026-01-13T15:01:11.237938931Z",
+          "duration_seconds": 0.003005402
         }
       },
       "python_service_timings": {
-        "step1_group_by_r": 4.76837158203125e-07,
-        "step2_select_topk": 0.0007338523864746094,
+        "step1_group_by_r": 9.5367431640625e-07,
+        "step2_select_topk": 0.0018401145935058594,
         "step3_format_output": 0.0,
-        "total_duration": 0.0008471012115478516
+        "total_duration": 0.001882791519165039
       },
       "ai_timings": {
         "ai_total_duration_seconds": 0.0
