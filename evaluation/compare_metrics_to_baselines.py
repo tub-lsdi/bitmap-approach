@@ -53,6 +53,53 @@ def get_median_metrics(df: pl.DataFrame) -> Dict[str, float]:
         "f1": df["f1"].median()
     }
 
+def plot_absolute_values(results: List[Dict], output_file: str = None):
+    metrics = ['Precision', 'Recall', 'F1']
+    filenames = [r['file'] for r in results]
+    
+    colors = sns.color_palette("colorblind", len(filenames))
+    file_colors = {f: c for f, c in zip(filenames, colors)}
+    
+    fig, ax = plt.subplots(figsize=(12, 6))
+    
+    n_metrics = len(metrics)
+    indices = np.arange(n_metrics)
+    bar_width = 0.5
+    
+    for i, metric in enumerate(metrics):
+        # Get values for this metric
+        metric_values = []
+        for r in results:
+            metric_values.append((r['file'], r[metric.lower()]))
+            
+        # Sort by value descending so larger bars are plotted first (behind smaller ones)
+        # This ensures smaller bars are visible in front
+        metric_values.sort(key=lambda x: x[1], reverse=True)
+        
+        for filename, val in metric_values:
+            # Plot all bars at the same x position (layered)
+            # zorder ensures correct layering if needed, but plotting order handles it too
+            ax.bar(indices[i], val, width=bar_width, label=filename if i == 0 else "", 
+                   color=file_colors[filename])
+
+    ax.set_xticks(indices)
+    ax.set_xticklabels(metrics)
+    ax.set_ylabel("Score")
+    ax.set_title("Absolute Metrics Comparison")
+    ax.set_ylim(0, 1.05)
+    
+    # Create legend (deduplicated)
+    handles = [plt.Rectangle((0,0),1,1, color=file_colors[f]) for f in filenames]
+    ax.legend(handles, filenames, title="Files", bbox_to_anchor=(1.05, 1), loc='upper left')
+    
+    plt.tight_layout()
+    
+    if output_file:
+        plt.savefig(output_file, bbox_inches='tight')
+        print(f"Plot saved to {output_file}")
+    else:
+        plt.show()
+
 def plot_comparison(baseline_name: str, diffs: List[Dict], is_percentage: bool, output_file: str = None):
     metrics = ['Precision', 'Recall', 'F1']
     
@@ -87,18 +134,26 @@ def plot_comparison(baseline_name: str, diffs: List[Dict], is_percentage: bool, 
         neg_diffs.sort(key=lambda x: abs(x[1]))
         
         # Plot positives
-        current_bottom = 0
-        for filename, val in pos_diffs:
-            ax.bar(indices[i], val, bottom=current_bottom, width=bar_width, 
-                   color=file_colors[filename])
-            current_bottom += val
-            
-        # Plot negatives
-        current_bottom = 0
-        for filename, val in neg_diffs:
-            ax.bar(indices[i], val, bottom=current_bottom, width=bar_width, 
-                   color=file_colors[filename])
-            current_bottom += val
+        # In stacked bar charts, we need to accumulate the bottom
+        # However, the user mentioned that the comparison might be wrong because of stacking.
+        # If we stack positive values, they add up visually.
+        # If we want to compare individual differences to baseline, we should probably NOT stack them
+        # but layer them like we did for absolute values, OR group them.
+        # The original code was stacking them: `bottom=current_bottom`.
+        # If multiple files have +0.1 diff, the second one starts at 0.1 and goes to 0.2.
+        # This makes the total height 0.2, but the individual bar is 0.1.
+        # If the user wants to see the difference for EACH file relative to baseline (0),
+        # they should all start from 0.
+        
+        # Let's change this to layered bars (all starting from 0) instead of stacked bars.
+        # We will use the same logic as absolute values: sort by absolute size descending so smaller ones are in front.
+        
+        # Re-sort all diffs by absolute value descending
+        metric_diffs.sort(key=lambda x: abs(x[1]), reverse=True)
+        
+        for filename, val in metric_diffs:
+            ax.bar(indices[i], val, width=bar_width, 
+                   color=file_colors[filename], label=filename if i == 0 else "")
 
     ax.set_xticks(indices)
     ax.set_xticklabels(metrics)
@@ -131,11 +186,43 @@ def main():
     parser.add_argument("--groundtruth_dir", default="benchmark-data", help="Directory containing groundtruth files")
     parser.add_argument("--output", help="Output file for plot (e.g., comparison.png)")
     parser.add_argument("--percentage", action="store_true", help="Use percentage based differences")
+    parser.add_argument("--absolute", action="store_true", help="Plot absolute values instead of differences")
     
     args = parser.parse_args()
     
     if not os.path.exists(args.groundtruth_dir):
         print(f"Error: Groundtruth directory {args.groundtruth_dir} does not exist.")
+        return
+
+    if args.absolute:
+        results = []
+        # Load Baseline
+        print(f"Loading baseline: {args.baseline}")
+        baseline_name, baseline_df = process_file(args.baseline, args.groundtruth_dir)
+        if not baseline_df.is_empty():
+            m = get_median_metrics(baseline_df)
+            m['file'] = baseline_name
+            results.append(m)
+        else:
+            print("Warning: Baseline data is empty.")
+
+        # Load Comparisons
+        for comp_path in args.comparisons:
+            print(f"Loading comparison: {comp_path}")
+            comp_name, comp_df = process_file(comp_path, args.groundtruth_dir)
+            if comp_df.is_empty():
+                print(f"Warning: Comparison data for {comp_path} is empty. Skipping.")
+                continue
+            
+            m = get_median_metrics(comp_df)
+            m['file'] = comp_name
+            results.append(m)
+            
+        if not results:
+            print("No valid data found.")
+            return
+            
+        plot_absolute_values(results, args.output)
         return
 
     # Load Baseline
