@@ -57,22 +57,24 @@ def calculate_case_metrics(groundtruth: Set[Tuple[str, str]], results: List[Dict
 
 def extract_case_timings(case: Dict) -> Dict:
     """
-    Extracts duration_seconds from go_service_timings and python_service_timings.
+    Extracts duration_seconds from go_service_timings, python_service_timings, and ai_timings.
     Returns a dictionary with the same structure containing only the duration values.
     """
     timings = {
         "go_service_timings": {},
-        "python_service_timings": {}
+        "python_service_timings": {},
+        "ai_timings": {}
     }
 
-    for service in ["go_service_timings", "python_service_timings"]:
+    for service in ["go_service_timings", "python_service_timings", "ai_timings"]:
         service_data = case.get(service, {})
-        for step, data in service_data.items():
-            if isinstance(data, dict):
-                timings[service][step] = data.get("duration_seconds")
-            else:
-                # Handle cases where it might already be a float
-                timings[service][step] = data
+        if service_data:
+            for step, data in service_data.items():
+                if isinstance(data, dict):
+                    timings[service][step] = data.get("duration_seconds")
+                else:
+                    # Handle cases where it might already be a float
+                    timings[service][step] = data
 
     return timings
 

@@ -51,7 +51,7 @@ def transform_file(input_path, benchmark_path=None):
     for case in cases:
         mappings = []
         unique_s_vals = set()
-        case_duration = 0.0
+        ai_case_duration = 0.0
         
         for m in case.get('mappings', []):
             s_val = m.get('chosen_s_val')
@@ -61,7 +61,11 @@ def transform_file(input_path, benchmark_path=None):
                 "r_val": m.get('r_val'),
                 "s_val": s_val
             })
-            case_duration += m.get('ai_duration_seconds', 0)
+            ai_case_duration += m.get('ai_duration_seconds', 0)
+
+        case_duration = ai_case_duration
+        go_service_timings = None
+        python_service_timings = None
         
         # Add duration from benchmark file if available
         case_num = case.get('case_number')
@@ -69,6 +73,8 @@ def transform_file(input_path, benchmark_path=None):
             bench_res = benchmark_results[case_num]
             bench_duration = bench_res.get('duration_seconds', 0)
             case_duration += bench_duration
+            go_service_timings = bench_res.get("go_service_timings")
+            python_service_timings = bench_res.get("python_service_timings")
 
         calculated_total_duration += case_duration
 
@@ -82,6 +88,11 @@ def transform_file(input_path, benchmark_path=None):
                 "num_r": case.get('num_r_vals'),
                 "num_s": len(unique_s_vals),
                 "num_mappings": len(mappings)
+            },
+            "go_service_timings": go_service_timings,
+            "python_service_timings": python_service_timings,
+            "ai_timings": {
+                "ai_total_duration_seconds": ai_case_duration
             }
         }
         results_list.append(result_entry)
@@ -112,11 +123,11 @@ def main():
     # List of files to process
     base_dir = '/Users/fr-son/Coding/sema-join-repos/bitmap-approach/eval-result-data/'
     files_to_process = [
-        (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_022835.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_155003.json'),
-        (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_053809.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_160123.json'),
-        (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_051837.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_161458.json'),
-        (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_014411.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154339.json'),
-        (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_025120.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154426.json'),
+        # (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_022835.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_155003.json'),
+        # (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_053809.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_160123.json'),
+        # (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_051837.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_161458.json'),
+        # (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_014411.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154339.json'),
+        # (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_025120.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154426.json'),
         (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_044641.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154521.json'),
     ]
 
