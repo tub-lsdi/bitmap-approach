@@ -76,6 +76,9 @@ Temporary Items
 .history
 .ionide
 
+### IntelliJ IDEA ###
+.idea
+
 # End of https://www.toptal.com/developers/gitignore/api/go,macos,visualstudiocode
 
 bin
@@ -83,8 +86,19 @@ results
 .env
 corpus.db
 corpus/example_data/tables.json
-corpus/setup_db/__pycache__/corpus_utils.cpython-314.pyc
-corpus/setup_db/__pycache__/normalization.cpython-314.pyc
+
+# Ignore Python bytecode and caches
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyc
+
+bin
+results
+.env
+corpus.db
+corpus/example_data/tables.json
 temp_parquet_cells
 temp_parquet_meta
 duckdb_temp

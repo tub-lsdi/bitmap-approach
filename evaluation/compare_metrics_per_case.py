@@ -1,18 +1,22 @@
 import argparse
-import json
 import os
 import sys
-import re
-import polars as pl
+from typing import List
+
 import matplotlib.pyplot as plt
-import seaborn as sns
-from typing import List, Dict, Tuple, Set
 import matplotlib.ticker as ticker
+import polars as pl
+import seaborn as sns
 from matplotlib.gridspec import GridSpec
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from evaluation.utils import load_results, load_groundtruth, calculate_case_metrics, get_short_filename
+from evaluation.utils import (
+    calculate_case_metrics,
+    get_short_filename,
+    load_groundtruth,
+    load_results,
+)
 
 
 def process_file(file_path: str, groundtruth_dir: str) -> pl.DataFrame:
