@@ -121,17 +121,19 @@ def transform_file(input_path, benchmark_path=None):
 
 def main():
     # List of files to process
-    base_dir = '/Users/fr-son/Coding/sema-join-repos/bitmap-approach/eval-result-data/'
+    base_dir = '/Users/fr-son/Coding/sema-join-repos/bitmap-approach/eval-result-data'
     files_to_process = [
-        (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_022835.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_155003.json'),
-        (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_053809.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_160123.json'),
-        (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_051837.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_161458.json'),
-        (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_014411.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154339.json'),
-        (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_025120.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154426.json'),
-        (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_044641.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154521.json'),
+        # (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_022835.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_155003.json'),
+        # (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_053809.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_160123.json'),
+        # (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_051837.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_161458.json'),
+        # (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_014411.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154339.json'),
+        # (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_025120.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154426.json'),
+        # (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_044641.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154521.json'),
 
-        (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260114_132612.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154339.json'),
-        (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260116_095127.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_155003.json'),
+        # (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260114_132612.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154339.json'),
+        # (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260116_095127.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_155003.json'),
+        (f'{base_dir}/vertica_wdc_bench/rs_jp_ai_naive/ai_evaluation_results_20260118_102154.json', f'{base_dir}/vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_085159.json'),
+        (f'{base_dir}/vertica_wdc_bench/rs_jp_ai_context/ai_evaluation_results_20260118_112423.json', f'{base_dir}/vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_085159.json'),
     ]
 
     # If arguments are provided, assume they are pairs of paths
