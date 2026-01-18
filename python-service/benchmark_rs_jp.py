@@ -130,7 +130,7 @@ def run_single_case(
 
         algorithm = RSJPAlgorithm()
         bridge_table, python_timings = algorithm.create_bridge(
-            list_r_normalized, list_s_normalized, pmi_scores, top_k=1
+            list_r_normalized, list_s_normalized, pmi_scores, top_k=5
         )
 
         end_time = datetime.now()
