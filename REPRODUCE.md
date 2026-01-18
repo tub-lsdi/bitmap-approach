@@ -38,12 +38,6 @@ This document provides detailed instructions for reproducing the benchmark resul
   ```
 - **Ollama** - Local LLM runtime (see AI Benchmarking section for installation)
 
-### Required Files
-1. `corpus.db` - Either Wiki Tables or Git Tables database (must be named `corpus.db` and placed in project root)
-2. `benchmark-data/` - Directory containing 50 test cases:
-   - `Case1_input.txt` through `Case50_input.txt` (excluding Case13)
-   - `Case1_groundtruth.txt` through `Case50_groundtruth.txt` (for evaluation)
-
 ---
 
 # Benchmarking (RS JP with Top K=1 and CS JP LP)
@@ -61,18 +55,28 @@ This document provides detailed instructions for reproducing the benchmark resul
 #### Option A: DuckDB (Wiki Tables or Git Tables)
 
 ```bash
-# Ensure you're on the duckdb-only branch
-git checkout duckdb-only
-
-# Prepare corpus database - must be named corpus.db and placed in the project root
-# For Wiki Tables benchmarks:
-cp /path/to/wiki_tables.db corpus.db
-
-# OR for Git Tables benchmarks:
-cp /path/to/git_tables.db corpus.db
+# Clone the repository and checkout duckdb-only branch
+git clone https://github.com/tub-lsdi/bitmap-approach.git
+cd bitmap-approach
+git checkout vertica-only
 ```
 
-**Important:** The database file MUST be named `corpus.db` and placed in the project root folder for the services to locate it.
+Download one of the following corpus databases:
+
+1. **Wiki Corpus**: https://tubcloud.tu-berlin.de/s/XYDeqCGcC25pWKg
+2. **Git Tables Corpus**: https://tubcloud.tu-berlin.de/s/y7rYRZR74ECAjs3
+
+The downloaded files are .zip archives. Extract them first, then rename the extracted database file to `corpus.db` and place it in the project root folder for the services to locate it.
+
+```bash
+# For Wiki Tables benchmarks:
+unzip /path/to/downloaded_wiki_corpus.zip
+mv wiki_corpus.db corpus.db
+
+# OR for Git Tables benchmarks:
+unzip /path/to/downloaded_git_tables_corpus.zip
+mv gittables_corpus.db corpus.db
+```
 
 #### Option B: Vertica WDC Corpus
 
@@ -86,11 +90,6 @@ ssh username@big-dama-2.dima.tu-berlin.de
 git clone https://github.com/tub-lsdi/bitmap-approach.git
 cd bitmap-approach
 git checkout vertica-only
-
-# OR if repository already exists, pull latest changes
-# cd bitmap-approach
-# git pull
-# git checkout vertica-only
 ```
 
 Create a `.env` file in the project root:
