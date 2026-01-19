@@ -8,7 +8,6 @@ from typing import Dict, List, Set, Tuple
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Add the project root directory to sys.path to allow imports from the evaluation package
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from evaluation.utils import get_short_filename, load_groundtruth, load_results
@@ -16,53 +15,65 @@ from evaluation.utils import get_short_filename, load_groundtruth, load_results
 
 def merge_mappings_by_threshold(
     base_mappings: List[Dict], enhancement_mappings: List[Dict], threshold: float
-) -> List[Dict]:
+) -> Tuple[List[Dict], Dict[str, int]]:
     """
-    Merge mappings: for each r_val, if base NPMI < threshold use enhancement mapping,
-    otherwise use base mapping. Enhancement may have different s_val choices.
+    Merge mappings: for each r_val, keep only the first occurrence from base (highest NPMI).
+    If that mapping's NPMI < threshold, use enhancement mapping instead.
+    Returns merged mappings and debug stats.
     """
     merged = []
+    stats = {
+        "base_kept": 0,
+        "base_replaced": 0,
+        "base_no_enhancement": 0,
+        "enhancement_only": 0,
+        "base_duplicates_skipped": 0,
+    }
 
-    # Create lookup for enhancement mappings by r_val only
-    # (enhancement may have different s_val choices for the same r_val)
     enhancement_lookup = {}
     for m in enhancement_mappings:
         if "r_val" in m:
             r_val_key = m["r_val"].lower().strip()
-            enhancement_lookup[r_val_key] = m
+            if r_val_key not in enhancement_lookup:
+                enhancement_lookup[r_val_key] = m
 
-    # Track which r_vals we've processed
     processed_r_vals = set()
 
-    # Process base mappings
     for base_m in base_mappings:
         if "r_val" not in base_m:
             continue
 
         r_val_key = base_m["r_val"].lower().strip()
+
+        # Skip if we've already processed this r_val (for top_k_5 files)
+        if r_val_key in processed_r_vals:
+            stats["base_duplicates_skipped"] += 1
+            continue
+
         processed_r_vals.add(r_val_key)
 
         npmi = base_m.get("npmi", 0.0)
 
         if npmi < threshold:
-            # NPMI is below threshold, use enhancement if available
             if r_val_key in enhancement_lookup:
                 merged.append(enhancement_lookup[r_val_key])
+                stats["base_replaced"] += 1
             else:
                 # No enhancement available, keep base
                 merged.append(base_m)
+                stats["base_no_enhancement"] += 1
         else:
-            # NPMI is high enough, keep base
             merged.append(base_m)
+            stats["base_kept"] += 1
 
-    # Add any enhancement mappings for r_vals not in base
     for enh_m in enhancement_mappings:
         if "r_val" in enh_m:
             r_val_key = enh_m["r_val"].lower().strip()
             if r_val_key not in processed_r_vals:
                 merged.append(enh_m)
+                stats["enhancement_only"] += 1
 
-    return merged
+    return merged, stats
 
 
 def calculate_case_metrics(
@@ -115,7 +126,6 @@ def process_file_pair(
 
     enhancement_data = {res.get("case_number"): res for res in enhancement_results}
 
-    # Thresholds for replacement (0.1 to 1.0)
     replacement_thresholds = [round(t, 1) for t in np.arange(0.1, 1.1, 0.1)]
     threshold_results = {}
 
@@ -124,6 +134,14 @@ def process_file_pair(
         recalls = []
         f1_scores = []
         case_count = 0
+
+        total_stats = {
+            "base_kept": 0,
+            "base_replaced": 0,
+            "base_no_enhancement": 0,
+            "enhancement_only": 0,
+            "base_duplicates_skipped": 0,
+        }
 
         for case in base_results:
             case_num = case["case_number"]
@@ -138,33 +156,32 @@ def process_file_pair(
 
             base_mappings = case.get("output", {}).get("mappings", [])
 
-            # Get enhancement mappings if available
             if case_num in enhancement_data:
                 enhancement_case = enhancement_data[case_num]
                 enhancement_mappings = enhancement_case.get("output", {}).get(
                     "mappings", []
                 )
-                # Merge with current threshold
-                merged_mappings = merge_mappings_by_threshold(
+                merged_mappings, stats = merge_mappings_by_threshold(
                     base_mappings, enhancement_mappings, threshold
                 )
+                for key in total_stats:
+                    total_stats[key] += stats[key]
             else:
                 merged_mappings = base_mappings
 
-            # Calculate metrics using all merged mappings
             metrics = calculate_case_metrics(gt_mappings, merged_mappings)
             precisions.append(metrics["precision"])
             recalls.append(metrics["recall"])
             f1_scores.append(metrics["f1"])
             case_count += 1
 
-        # Calculate median metrics for this threshold
         if precisions:
             threshold_results[threshold] = {
                 "precision": np.median(precisions),
                 "recall": np.median(recalls),
                 "f1": np.median(f1_scores),
                 "case_count": case_count,
+                "debug_stats": total_stats,
             }
 
     return base_filename, threshold_results
@@ -183,10 +200,8 @@ def create_plot(
     f1_scores = [threshold_results[t]["f1"] for t in thresholds]
     case_counts = [threshold_results[t]["case_count"] for t in thresholds]
 
-    # Create figure with two y-axes
     fig, ax1 = plt.subplots(figsize=(12, 7))
 
-    # Plot metrics on primary y-axis
     (line1,) = ax1.plot(
         thresholds,
         precisions,
@@ -214,7 +229,6 @@ def create_plot(
     ax1.grid(True, alpha=0.3)
     ax1.tick_params(axis="y", labelcolor="black")
 
-    # Create secondary y-axis for case count
     ax2 = ax1.twinx()
     (line4,) = ax2.plot(
         thresholds,
@@ -228,7 +242,6 @@ def create_plot(
     ax2.set_ylabel("Number of Cases", fontsize=12, fontweight="bold", color="purple")
     ax2.tick_params(axis="y", labelcolor="purple")
 
-    # Combine legends from both axes
     lines = [line1, line2, line3, line4]
     labels = [l.get_label() for l in lines]
     ax1.legend(lines, labels, loc="center left", fontsize=10)
@@ -236,7 +249,6 @@ def create_plot(
     plt.title(f"Base vs Enhancement Mix - {filename}", fontsize=14, fontweight="bold")
     plt.tight_layout()
 
-    # Save plot
     output_filename = f"npmi_threshold_analysis_{filename}.png"
     output_path = os.path.join(output_dir, output_filename)
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
@@ -271,7 +283,6 @@ def main():
         print(f"Error: Groundtruth directory {args.groundtruth_dir} does not exist.")
         return
 
-    # Create output directory if it doesn't exist
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
         print(f"Created output directory: {args.output_dir}")
@@ -281,7 +292,6 @@ def main():
     print(f"Replacement thresholds: 0.1 to 1.0 in steps of 0.1")
     print()
 
-    # Parse file pairs
     if len(args.benchmark_files) % 2 != 0:
         print(
             "Error: Please provide an even number of files (pairs of base and enhancement files)."
@@ -294,7 +304,6 @@ def main():
         enhancement_file = args.benchmark_files[i + 1]
         file_pairs.append((base_file, enhancement_file))
 
-    # Process each file pair
     for base_file, enhancement_file in file_pairs:
         if not os.path.exists(base_file):
             print(f"Warning: Base file {base_file} not found. Skipping.")
@@ -305,19 +314,37 @@ def main():
             continue
 
         print(f"Processing pair:")
-        print(f"  Base:       {base_file}")
+        print(f"  Base:        {base_file}")
         print(f"  Enhancement: {enhancement_file}")
 
         filename, threshold_results = process_file_pair(
             base_file, enhancement_file, args.groundtruth_dir
         )
 
-        # Verify we have data
         if not threshold_results:
             print(f"  Warning: No valid data found for this pair")
             continue
 
-        print(f"  Creating plot...")
+        print(f"\n  Debug info:")
+        for threshold in [0.1, 1.0]:
+            if threshold in threshold_results:
+                result = threshold_results[threshold]
+                stats = result.get("debug_stats", {})
+                print(f"    Threshold {threshold}:")
+                print(f"      Base kept: {stats.get('base_kept', 0)}")
+                print(f"      Base replaced: {stats.get('base_replaced', 0)}")
+                print(
+                    f"      Base no enhancement: {stats.get('base_no_enhancement', 0)}"
+                )
+                print(f"      Enhancement only: {stats.get('enhancement_only', 0)}")
+                print(
+                    f"      Duplicates skipped: {stats.get('base_duplicates_skipped', 0)}"
+                )
+                print(
+                    f"      Metrics - P: {result['precision']:.4f}, R: {result['recall']:.4f}, F1: {result['f1']:.4f}"
+                )
+
+        print(f"\n  Creating plot...")
         create_plot(filename, threshold_results, args.output_dir)
         print()
 
