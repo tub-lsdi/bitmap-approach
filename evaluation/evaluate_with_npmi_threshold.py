@@ -10,6 +10,7 @@ import numpy as np
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from evaluation.plot_style import apply_theme, build_styles
 from evaluation.utils import get_short_filename, load_groundtruth, load_results
 
 
@@ -200,6 +201,9 @@ def create_plot(
     f1_scores = [threshold_results[t]["f1"] for t in thresholds]
     case_counts = [threshold_results[t]["case_count"] for t in thresholds]
 
+    styles = build_styles([filename], steps_per_label=4)
+    style_steps = styles[filename]["steps"]
+
     fig, ax1 = plt.subplots(figsize=(12, 7))
 
     (line1,) = ax1.plot(
@@ -208,10 +212,15 @@ def create_plot(
         marker="o",
         linewidth=2,
         label="Precision",
-        color="blue",
+        color=style_steps[0]["facecolor"],
     )
     (line2,) = ax1.plot(
-        thresholds, recalls, marker="s", linewidth=2, label="Recall", color="green"
+        thresholds,
+        recalls,
+        marker="s",
+        linewidth=2,
+        label="Recall",
+        color=style_steps[1]["facecolor"],
     )
     (line3,) = ax1.plot(
         thresholds,
@@ -219,12 +228,12 @@ def create_plot(
         marker="^",
         linewidth=2,
         label="F1 Score",
-        color="red",
+        color=style_steps[2]["facecolor"],
     )
 
     ax1.set_xlabel("Replacement Threshold (NPMI)", fontsize=12, fontweight="bold")
     ax1.set_ylabel("Metric Score", fontsize=12, fontweight="bold", color="black")
-    ax1.set_ylim([0, 1.05])
+    ax1.set_ylim(0, 1.05)
     ax1.set_xticks(thresholds)
     ax1.grid(True, alpha=0.3)
     ax1.tick_params(axis="y", labelcolor="black")
@@ -236,14 +245,14 @@ def create_plot(
         marker="d",
         linewidth=2,
         label="Cases Evaluated",
-        color="purple",
+        color=style_steps[3]["facecolor"],
         linestyle="--",
     )
     ax2.set_ylabel("Number of Cases", fontsize=12, fontweight="bold", color="purple")
     ax2.tick_params(axis="y", labelcolor="purple")
 
     lines = [line1, line2, line3, line4]
-    labels = [l.get_label() for l in lines]
+    labels = [str(line.get_label()) for line in lines]
     ax1.legend(lines, labels, loc="center left", fontsize=10)
 
     plt.title(f"Base vs Enhancement Mix - {filename}", fontsize=14, fontweight="bold")
@@ -278,6 +287,7 @@ def main():
     )
 
     args = parser.parse_args()
+    apply_theme()
 
     if not os.path.exists(args.groundtruth_dir):
         print(f"Error: Groundtruth directory {args.groundtruth_dir} does not exist.")
@@ -289,7 +299,7 @@ def main():
 
     print(f"Groundtruth directory: {args.groundtruth_dir}")
     print(f"Output directory: {args.output_dir}")
-    print(f"Replacement thresholds: 0.1 to 1.0 in steps of 0.1")
+    print("Replacement thresholds: 0.1 to 1.0 in steps of 0.1")
     print()
 
     if len(args.benchmark_files) % 2 != 0:
@@ -313,7 +323,7 @@ def main():
             print(f"Warning: Enhancement file {enhancement_file} not found. Skipping.")
             continue
 
-        print(f"Processing pair:")
+        print("Processing pair:")
         print(f"  Base:        {base_file}")
         print(f"  Enhancement: {enhancement_file}")
 
@@ -322,10 +332,10 @@ def main():
         )
 
         if not threshold_results:
-            print(f"  Warning: No valid data found for this pair")
+            print("  Warning: No valid data found for this pair")
             continue
 
-        print(f"\n  Debug info:")
+        print("\n  Debug info:")
         for threshold in [0.1, 1.0]:
             if threshold in threshold_results:
                 result = threshold_results[threshold]
@@ -344,7 +354,7 @@ def main():
                     f"      Metrics - P: {result['precision']:.4f}, R: {result['recall']:.4f}, F1: {result['f1']:.4f}"
                 )
 
-        print(f"\n  Creating plot...")
+        print("\n  Creating plot...")
         create_plot(filename, threshold_results, args.output_dir)
         print()
 

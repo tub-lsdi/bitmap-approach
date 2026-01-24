@@ -2,17 +2,18 @@ import argparse
 import os
 import sys
 from collections import defaultdict
-from typing import Dict, List, Sequence, Tuple
+from typing import Any, Dict, List, Sequence, Tuple
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import polars as pl
-import seaborn as sns
+from matplotlib.axes import Axes
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from evaluation.plot_style import apply_theme, build_styles
 from evaluation.utils import get_short_filename, load_results
 
 
@@ -20,7 +21,7 @@ def process_file(file_path: str) -> pl.DataFrame:
     """Load a benchmark JSON file and return a DataFrame with case durations."""
     cases = load_results(file_path)
     filename = get_short_filename(file_path)
-    records: List[Dict[str, float]] = []
+    records: List[Dict[str, Any]] = []
 
     for case in cases:
         case_number = case.get("case_number")
@@ -59,39 +60,55 @@ def summarize_dataframe(df: pl.DataFrame) -> Dict[str, float]:
     }
 
 
-def build_color_map(file_order: Sequence[str]) -> Dict[str, Tuple[float, float, float]]:
-    palette = sns.color_palette("colorblind", len(file_order))
-    return {file_name: palette[idx] for idx, file_name in enumerate(file_order)}
+def build_style_map(file_order: Sequence[str]) -> Dict[str, Dict[str, Any]]:
+    return build_styles(file_order)
 
 
 def plot_single_file(
     df: pl.DataFrame,
-    colors: Dict[str, Tuple[float, float, float]],
+    styles: Dict[str, Dict[str, Any]],
     title: str,
     output: str | None,
 ):
     pdf = df.sort("case").to_pandas()
     file_name = pdf["file"].iloc[0]
-    color = colors[file_name]
+    style = styles[file_name]
 
     num_cases = len(pdf["case"])
     fig_width = max(10, min(24, num_cases * 0.35))
     fig_height = 6
     fig, ax = plt.subplots(figsize=(fig_width, fig_height))
-    ax.bar(pdf["case"], pdf["duration"], color=color, edgecolor="white", linewidth=0.6)
+    pdf_cases = [float(c) for c in pdf["case"].tolist() if c is not None]
+    pdf_durations = [
+        float(d) if d is not None else 0.0 for d in pdf["duration"].tolist()
+    ]
+    ax.bar(
+        pdf_cases,
+        pdf_durations,
+        color=style["facecolor"],
+        edgecolor=style["edgecolor"],
+        linewidth=0.6,
+        hatch=style["hatch"],
+        alpha=style["alpha"],
+    )
 
     ax.set_title(title or f"Case Duration per Benchmark – {file_name}")
     ax.set_xlabel("Case")
     ax.set_ylabel("Duration (s)")
-    ax.set_xticks(pdf["case"])
-    ax.set_xticklabels(pdf["case"], rotation=45, ha="right")
+    ax.set_xticks(pdf_cases)  # type: ignore[arg-type]
+    ax.set_xticklabels([str(c) for c in pdf_cases], rotation=45, ha="right")
     ax.set_ylim(bottom=0)
     max_duration = float(pdf["duration"].max()) if not pdf.empty else 0.0
     tick_interval = 5 if max_duration < 60 else 60
     ax.yaxis.set_major_locator(ticker.MultipleLocator(tick_interval))
     ax.grid(axis="y", linestyle="--", alpha=0.45)
 
-    legend_handle = Patch(facecolor=color, edgecolor="white", label=file_name)
+    legend_handle = Patch(
+        facecolor=style["facecolor"],
+        edgecolor=style["edgecolor"],
+        hatch=style["hatch"],
+        label=file_name,
+    )
     ax.legend(
         handles=[legend_handle],
         title="File",
@@ -109,11 +126,11 @@ def plot_single_file(
 
 
 def annotate_missing_cases(
-    ax: plt.Axes,
+    ax: Axes,
     missing: Dict[int, List[str]],
-    colors: Dict[str, Tuple[float, float, float]],
+    styles: Dict[str, Dict[str, Any]],
     file_order: Sequence[str],
-    legend_handles: List[Patch | Line2D],
+    legend_handles: List[Any],
     legend_labels: List[str],
 ):
     if not missing:
@@ -129,10 +146,10 @@ def annotate_missing_cases(
         for idx, file_name in enumerate(files):
             offset = base_offset + idx * width
             ax.scatter(
-                case + offset,
-                0,
+                float(case + offset),
+                0.0,
                 marker="x",
-                color=colors[file_name],
+                color=styles[file_name]["facecolor"],
                 s=60,
                 zorder=6,
                 linewidths=1.5,
@@ -143,19 +160,19 @@ def annotate_missing_cases(
             handle = Line2D(
                 [],
                 [],
-                color=colors[file_name],
+                color=styles[file_name]["facecolor"],
                 marker="x",
                 linestyle="None",
                 markersize=8,
                 label=f"{file_name} (missing case)",
             )
             legend_handles.append(handle)
-            legend_labels.append(handle.get_label())
+            legend_labels.append(str(handle.get_label()))
 
 
 def plot_layered_files(
     dfs: List[pl.DataFrame],
-    colors: Dict[str, Tuple[float, float, float]],
+    styles: Dict[str, Dict[str, Any]],
     title: str,
     output: str | None,
 ):
@@ -163,7 +180,7 @@ def plot_layered_files(
     if combined.is_empty():
         return
 
-    cases = sorted(set(combined["case"].to_list()))
+    cases = sorted(int(c) for c in combined["case"].to_list() if c is not None)
     file_order: List[str] = []
     for df in dfs:
         if df.is_empty():
@@ -174,7 +191,9 @@ def plot_layered_files(
 
     data_lookup: Dict[Tuple[int, str], float] = {}
     for row in combined.iter_rows(named=True):
-        data_lookup[(row["case"], row["file"])] = float(row["duration"])
+        data_lookup[(int(row["case"]), str(row["file"]))] = float(
+            row["duration"] if row["duration"] is not None else 0.0
+        )
 
     missing: Dict[int, List[str]] = defaultdict(list)
     max_duration = float(combined["duration"].max()) if combined.height > 0 else 0.0
@@ -189,7 +208,7 @@ def plot_layered_files(
         for file_name in file_order:
             duration = data_lookup.get((case, file_name))
             if duration is None:
-                missing[case].append(file_name)
+                missing[case].append(str(file_name))
                 continue
             entries.append((duration, file_name))
 
@@ -197,13 +216,15 @@ def plot_layered_files(
 
         for order_idx, (duration, file_name) in enumerate(entries):
             layer_zorder = 2 + (len(entries) - order_idx)
+            style = styles[file_name]
             ax.bar(
                 case,
                 duration,
                 width=0.65,
-                color=colors[file_name],
-                alpha=0.9,
-                edgecolor="white",
+                color=style["facecolor"],
+                alpha=style["alpha"],
+                edgecolor=style["edgecolor"],
+                hatch=style["hatch"],
                 linewidth=0.6,
                 zorder=layer_zorder,
             )
@@ -211,21 +232,27 @@ def plot_layered_files(
     ax.set_title(title or "Case Duration per Benchmark")
     ax.set_xlabel("Case")
     ax.set_ylabel("Duration (s)")
-    ax.set_xticks(cases)
-    ax.set_xticklabels(cases, rotation=45, ha="right")
+    case_ticks = [c for c in cases]
+    ax.set_xticks(case_ticks)  # type: ignore[arg-type]
+    ax.set_xticklabels([str(c) for c in case_ticks], rotation=45, ha="right")
     ax.set_ylim(bottom=0)
     tick_interval = 5 if max_duration < 60 else 60
     ax.yaxis.set_major_locator(ticker.MultipleLocator(tick_interval))
     ax.grid(axis="y", linestyle="--", alpha=0.45)
 
     legend_handles = [
-        Patch(facecolor=colors[file_name], edgecolor="white", label=file_name)
+        Patch(
+            facecolor=styles[file_name]["facecolor"],
+            edgecolor=styles[file_name]["edgecolor"],
+            hatch=styles[file_name]["hatch"],
+            label=str(file_name),
+        )
         for file_name in file_order
     ]
-    legend_labels = [handle.get_label() for handle in legend_handles]
+    legend_labels = [str(handle.get_label()) for handle in legend_handles]
 
     annotate_missing_cases(
-        ax, missing, colors, file_order, legend_handles, legend_labels
+        ax, missing, styles, file_order, legend_handles, legend_labels
     )
 
     ax.legend(
@@ -264,7 +291,7 @@ def parse_args() -> argparse.Namespace:
 
 def main():
     args = parse_args()
-    sns.set_theme(style="white")
+    apply_theme()
 
     dataframes: List[pl.DataFrame] = []
     for file_path in args.files:
@@ -294,12 +321,12 @@ def main():
             print("-" * 40)
 
     file_order = [df["file"][0] for df in dataframes]
-    colors = build_color_map(file_order)
+    styles = build_style_map(file_order)
 
     if len(dataframes) == 1:
-        plot_single_file(dataframes[0], colors, args.title, args.output)
+        plot_single_file(dataframes[0], styles, args.title, args.output)
     else:
-        plot_layered_files(dataframes, colors, args.title, args.output)
+        plot_layered_files(dataframes, styles, args.title, args.output)
 
 
 if __name__ == "__main__":

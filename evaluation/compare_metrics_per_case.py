@@ -1,16 +1,18 @@
 import argparse
 import os
 import sys
-from typing import List
+from typing import Any, Dict, List
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import polars as pl
 import seaborn as sns
 from matplotlib.gridspec import GridSpec
+from matplotlib.patches import Patch
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from evaluation.plot_style import apply_theme, build_styles
 from evaluation.utils import (
     calculate_case_metrics,
     get_short_filename,
@@ -52,19 +54,46 @@ def process_file(file_path: str, groundtruth_dir: str) -> pl.DataFrame:
     return pl.DataFrame(eval_data)
 
 
-def plot_single_file(df: pl.DataFrame, output_file: str | None = None):
+def plot_single_file(
+    df: pl.DataFrame, styles: Dict[str, Dict[str, Any]], output_file: str | None = None
+):
     if df.is_empty():
         print("No data to plot.")
         return
 
-    # Plot F1 score per case
-    plt.figure(figsize=(14, 6))
-    sns.barplot(data=df.to_pandas(), x="case", y="f1")
-    plt.title(f"F1 Score per Case - {df['file'][0]}")
-    plt.xlabel("Case Number")
-    plt.ylabel("F1 Score")
-    plt.xticks(rotation=45)
-    plt.ylim(0, 1.05)
+    pdf = df.to_pandas()
+    file_name = pdf["file"].iloc[0]
+    style = styles[file_name]
+
+    fig, ax = plt.subplots(figsize=(14, 6))
+    ax.bar(
+        pdf["case"],
+        pdf["f1"],
+        color=style["facecolor"],
+        edgecolor=style["edgecolor"],
+        hatch=style["hatch"],
+        alpha=style["alpha"],
+    )
+    ax.set_title(f"F1 Score per Case - {file_name}")
+    ax.set_xlabel("Case Number")
+    ax.set_ylabel("F1 Score")
+    ax.set_xticks(pdf["case"])
+    ax.set_xticklabels(pdf["case"], rotation=45)
+    ax.set_ylim(0, 1.05)
+
+    legend_handle = Patch(
+        facecolor=style["facecolor"],
+        edgecolor=style["edgecolor"],
+        hatch=style["hatch"],
+        label=file_name,
+    )
+    ax.legend(
+        handles=[legend_handle],
+        title="File",
+        bbox_to_anchor=(1.01, 1),
+        loc="upper left",
+    )
+
     plt.tight_layout()
 
     if output_file:
@@ -75,7 +104,10 @@ def plot_single_file(df: pl.DataFrame, output_file: str | None = None):
 
 
 def plot_bar_comparison(
-    dfs: List[pl.DataFrame], output_file: str | None = None, show_table: bool = True
+    dfs: List[pl.DataFrame],
+    styles: Dict[str, Dict[str, Any]],
+    output_file: str | None = None,
+    show_table: bool = True,
 ):
     if not dfs:
         print("No data to compare.")
@@ -96,32 +128,8 @@ def plot_bar_comparison(
         ]
     )
 
-    # Predefined colors
-    colors = [
-        "#1f77b4",
-        "#ff7f0e",
-        "#2ca02c",
-        "#d62728",
-        "#9467bd",
-        "#8c564b",
-        "#e377c2",
-        "#7f7f7f",
-        "#bcbd22",
-        "#17becf",
-        "#aec7e8",
-        "#ffbb78",
-        "#98df8a",
-        "#ff9896",
-        "#c5b0d5",
-        "#c49c94",
-        "#f7b6d2",
-        "#c7c7c7",
-        "#dbdb8d",
-        "#9edae5",
-    ]
-
-    unique_files = summary_df["file"].to_list()
-    file_colors = {f: colors[i % len(colors)] for i, f in enumerate(unique_files)}
+    unique_files = [str(f) for f in summary_df["file"].to_list()]
+    file_palette = {f: styles[f]["facecolor"] for f in unique_files}
 
     # Convert to pandas for plotting
     plot_data = combined_df.to_pandas()
@@ -131,14 +139,14 @@ def plot_bar_comparison(
     row_colors = []
 
     for _, row in summary_data.iterrows():
-        filename = row["file"]
+        filename = str(row["file"])
         r = [""]
         r.append(f"{row['Precision']:.3f}")
         r.append(f"{row['Recall']:.3f}")
         r.append(f"{row['F1']:.3f}")
         r.append(f"{row['Duration (s)']:.2f}")
         cell_text.append(r)
-        row_colors.append(file_colors[filename])
+        row_colors.append(styles[filename]["facecolor"])
 
     col_labels = ["File", "Precision", "Recall", "F1", "Duration (s)"]
 
@@ -146,7 +154,7 @@ def plot_bar_comparison(
     fig, ax = plt.subplots(figsize=(fig_width, 8))
 
     sns.barplot(
-        data=plot_data, x="case", y="f1", hue="file", ax=ax, palette=file_colors
+        data=plot_data, x="case", y="f1", hue="file", ax=ax, palette=file_palette
     )
     ax.set_title("F1 Score Comparison per Case")
     ax.set_xlabel("Case Number")
@@ -161,7 +169,31 @@ def plot_bar_comparison(
 
     ax.set_ylim(0, 1.05)
 
-    ax.legend(title="File", bbox_to_anchor=(1.01, 1), loc="upper left")
+    if unique_files:
+        num_files = len(unique_files)
+        for idx, patch in enumerate(ax.patches):
+            file_idx = idx % num_files
+            fname = unique_files[file_idx]
+            patch.set_hatch(styles[fname]["hatch"])
+            patch.set_edgecolor(styles[fname]["edgecolor"])
+            patch.set_alpha(styles[fname]["alpha"])
+
+    legend_handles = [
+        Patch(
+            facecolor=styles[f]["facecolor"],
+            edgecolor=styles[f]["edgecolor"],
+            hatch=styles[f]["hatch"],
+            label=f,
+        )
+        for f in unique_files
+    ]
+    ax.legend(
+        legend_handles,
+        unique_files,
+        title="File",
+        bbox_to_anchor=(1.01, 1),
+        loc="upper left",
+    )
 
     if show_table:
         plt.subplots_adjust(right=0.65)
@@ -191,7 +223,10 @@ def plot_bar_comparison(
 
 
 def plot_heatmap(
-    dfs: List[pl.DataFrame], output_file: str | None= None, show_table: bool = True
+    dfs: List[pl.DataFrame],
+    styles: Dict[str, Dict[str, Any]],
+    output_file: str | None = None,
+    show_table: bool = True,
 ):
     if not dfs:
         print("No data to plot.")
@@ -213,10 +248,12 @@ def plot_heatmap(
     )
 
     summary_data = summary_df.to_pandas()
-    cell_text = []
+    cell_text: List[List[str]] = []
+    row_colors: List[Any] = []
 
     for _, row in summary_data.iterrows():
-        r = [row["file"]]
+        file_label = str(row["file"])
+        r = [file_label]
         r.append(f"{row['Precision']:.3f}")
         r.append(f"{row['Recall']:.3f}")
         r.append(f"{row['F1']:.3f}")
@@ -228,17 +265,13 @@ def plot_heatmap(
             duration = 0.0
         r.append(f"{float(duration):.2f}")
         cell_text.append(r)
+        row_colors.append(styles.get(file_label, {}).get("facecolor"))
 
     col_labels = ["File", "Precision", "Recall", "F1", "Duration (s)"]
 
-    try:
-        pivot_df = combined_df.pivot(
-            values="f1", index="file", on="case", aggregate_function="first"
-        )
-    except TypeError:
-        pivot_df = combined_df.pivot(
-            values="f1", index="file", columns="case", aggregate_function="first"
-        )
+    pivot_df = combined_df.pivot(
+        values="f1", index="file", on="case", aggregate_function="first"
+    )
 
     pandas_df = pivot_df.to_pandas()
     pandas_df.set_index("file", inplace=True)
@@ -251,6 +284,7 @@ def plot_heatmap(
 
     # Figure layout
     fig_height = max(3, len(dfs) * 0.4 + 1.5)
+    ax_table = None
 
     if show_table:
         fig = plt.figure(figsize=(24, fig_height))
@@ -278,7 +312,7 @@ def plot_heatmap(
     ax_heatmap.set_xlabel("Case Number")
     ax_heatmap.set_ylabel("File")
 
-    if show_table:
+    if show_table and ax_table is not None:
         # Table
         col_widths = [0.4, 0.15, 0.15, 0.15, 0.15]
 
@@ -288,6 +322,10 @@ def plot_heatmap(
         table.auto_set_font_size(False)
         table.set_fontsize(10)
         table.scale(1, 1.5)
+
+        for i, color in enumerate(row_colors):
+            if color is not None:
+                table[i + 1, 0].set_facecolor(color)
 
     plt.tight_layout()
 
@@ -331,6 +369,7 @@ def main():
     )
 
     args = parser.parse_args()
+    apply_theme()
 
     groundtruth_dir = args.groundtruth_dir
     results_dir = (
@@ -379,14 +418,16 @@ def main():
                 print("-" * 40)
 
     if args.plot and dfs:
+        file_labels = [df["file"][0] for df in dfs]
+        styles = build_styles(file_labels)
         show_table = not args.no_table
         if args.plot == "heatmap":
-            plot_heatmap(dfs, args.output, show_table)
+            plot_heatmap(dfs, styles, args.output, show_table)
         else:
             if len(dfs) == 1:
-                plot_single_file(dfs[0], args.output)
+                plot_single_file(dfs[0], styles, args.output)
             else:
-                plot_bar_comparison(dfs, args.output, show_table)
+                plot_bar_comparison(dfs, styles, args.output, show_table)
 
 
 if __name__ == "__main__":
