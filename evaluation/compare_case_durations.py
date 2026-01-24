@@ -14,27 +14,45 @@ from matplotlib.patches import Patch
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from evaluation.plot_style import apply_theme, build_styles
-from evaluation.utils import get_short_filename, load_results
+from evaluation.utils import load_results
 
 
-def process_file(file_path: str) -> pl.DataFrame:
-    """Load a benchmark JSON file and return a DataFrame with case durations."""
-    cases = load_results(file_path)
-    filename = get_short_filename(file_path)
+def process_directory(dir_path: str) -> pl.DataFrame:
+    """Aggregate benchmark_* JSON files in a directory and return mean case durations."""
+    if not os.path.isdir(dir_path):
+        return pl.DataFrame()
+
+    benchmark_files = sorted(
+        os.path.join(dir_path, f)
+        for f in os.listdir(dir_path)
+        if f.startswith("benchmark_") and os.path.isfile(os.path.join(dir_path, f))
+    )
+    if not benchmark_files:
+        return pl.DataFrame()
+
+    case_durations: Dict[int, List[float]] = defaultdict(list)
+    for file_path in benchmark_files:
+        cases = load_results(file_path)
+        for case in cases:
+            case_number = case.get("case_number")
+            if case_number is None:
+                continue
+            duration = case.get("duration_seconds")
+            try:
+                duration_value = float(duration) if duration is not None else 0.0
+            except (TypeError, ValueError):
+                duration_value = 0.0
+            case_durations[int(case_number)].append(duration_value)
+
     records: List[Dict[str, Any]] = []
-
-    for case in cases:
-        case_number = case.get("case_number")
-        if case_number is None:
-            continue
-        duration = case.get("duration_seconds")
-        try:
-            duration_value = float(duration) if duration is not None else 0.0
-        except (TypeError, ValueError):
-            duration_value = 0.0
-        records.append(
-            {"case": int(case_number), "duration": duration_value, "file": filename}
-        )
+    normalized = os.path.normpath(dir_path)
+    parent = os.path.basename(os.path.dirname(normalized))
+    leaf = os.path.basename(normalized)
+    label = f"{parent}/{leaf}"
+    for case_num, durations in case_durations.items():
+        if durations:
+            mean_duration = float(sum(durations) / len(durations))
+            records.append({"case": case_num, "duration": mean_duration, "file": label})
 
     return pl.DataFrame(records) if records else pl.DataFrame()
 
@@ -277,12 +295,22 @@ def parse_args() -> argparse.Namespace:
         description="Visualize per-case benchmark durations."
     )
     parser.add_argument(
-        "--files", nargs="+", required=True, help="One or more benchmark JSON files."
+        "--directories",
+        nargs="+",
+        required=True,
+        help="One or more directories containing benchmark_* JSON files.",
     )
     parser.add_argument(
         "--output", help="Optional path to save the plot (e.g., durations.png)."
     )
     parser.add_argument("--title", help="Optional title override for the plot.")
+    parser.add_argument(
+        "--label",
+        action="append",
+        default=[],
+        metavar="DIR=LABEL",
+        help="Override the plotted label for a directory (repeatable, e.g., /runs/expA=Experiment A).",
+    )
     parser.add_argument(
         "--summary", action="store_true", help="Print summary statistics per file."
     )
@@ -291,17 +319,29 @@ def parse_args() -> argparse.Namespace:
 
 def main():
     args = parse_args()
+    label_overrides: Dict[str, str] = {}
+    for entry in args.label:
+        if "=" not in entry:
+            print(f"Warning: invalid label override, expected DIR=LABEL -> {entry}")
+            continue
+        raw_dir, custom_label = entry.split("=", 1)
+        normalized_dir = os.path.normpath(os.path.abspath(raw_dir))
+        label_overrides[normalized_dir] = custom_label
     apply_theme()
 
     dataframes: List[pl.DataFrame] = []
-    for file_path in args.files:
-        if not os.path.exists(file_path):
-            print(f"Warning: file not found -> {file_path}")
+    for dir_path in args.directories:
+        if not os.path.isdir(dir_path):
+            print(f"Warning: directory not found -> {dir_path}")
             continue
-        df = process_file(file_path)
+        df = process_directory(dir_path)
         if df.is_empty():
-            print(f"Warning: no duration data in -> {file_path}")
+            print(f"Warning: no duration data in -> {dir_path}")
             continue
+        normalized_dir = os.path.normpath(os.path.abspath(dir_path))
+        override_label = label_overrides.get(normalized_dir)
+        if override_label:
+            df = df.with_columns(pl.lit(override_label).alias("file"))
         dataframes.append(df)
 
     if not dataframes:

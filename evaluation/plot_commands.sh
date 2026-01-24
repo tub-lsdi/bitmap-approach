@@ -1,6 +1,45 @@
 # time comparisons
-uv run evaluation/compare_case_durations.py --files eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp/benchmark_cs_jp_lp_duckdb_wiki_20260111_010822.json eval-result-data/duckdb_git_tables_bench/cs_jp_lp/benchmark_cs_jp_lp_duckdb_git_20260111_024617.json eval-result-data/vertica_wdc_bench/cs_jp_lp/benchmark_cs_jp_lp_vertica_wdc_20260106_223539.json --output eval_results_visualisation/times_cs_cases.png  --title "Duration per Case: CS JP Comparison across corpra"
+## cases
+uv run evaluation/compare_case_durations.py --directories eval-result-data/duckdb_git_tables_bench/cs_jp_lp eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp eval-result-data/vertica_wdc_bench/cs_jp_lp --label eval-result-data/duckdb_git_tables_bench/cs_jp_lp="Git Tables" --label eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp="Wiki Tables" --label eval-result-data/vertica_wdc_bench/cs_jp_lp="WDC" --output eval_results_visualisation/times-cs-cases.png --title "Duration per Case: CS JP LP"
+uv run evaluation/compare_case_durations.py --directories eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1 eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1 eval-result-data/vertica_wdc_bench/rs_jp_top_k_1 --label eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1="Git Tables" --label eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1="Wiki Tables" --label eval-result-data/vertica_wdc_bench/rs_jp_top_k_1="WDC" --output eval_results_visualisation/times-rs-cases.png --title "Duration per Case: RS JP"
+uv run evaluation/compare_case_durations.py \
+  --directories \
+    eval-result-data/vertica_wdc_bench/rs_jp_top_k_1 \
+    eval-result-data/vertica_wdc_bench/cs_jp_lp \
+    eval-result-data/vertica_wdc_bench/rs_jp_ai_context \
+  --label eval-result-data/vertica_wdc_bench/rs_jp_top_k_1="WDC rs_jp_top_k_1" \
+  --label eval-result-data/vertica_wdc_bench/cs_jp_lp="WDC cs_jp_lp" \
+  --label eval-result-data/vertica_wdc_bench/rs_jp_ai_context="WDC rs_jp_ai_context" \
+  --output eval_results_visualisation/times-wdc-cases.png \
+  --title "Duration per Case: WDC"
+uv run evaluation/compare_case_durations.py \
+--directories \
+    eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1 \
+    eval-result-data/duckdb_git_tables_bench/cs_jp_lp \
+    eval-result-data/duckdb_git_tables_bench/rs_jp_ai_context \
+--label eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1="Git Tables rs_jp_top_k_1" \
+--label eval-result-data/duckdb_git_tables_bench/cs_jp_lp="Git Tables cs_jp_lp" \
+--label eval-result-data/duckdb_git_tables_bench/rs_jp_ai_context="Git Tables rs_jp_ai_context" \
+--output eval_results_visualisation/times-git-cases.png \
+--title "Duration per Case: Git Tables"
+uv run evaluation/compare_case_durations.py \
+  --directories \
+    eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1 \
+    eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp \
+    eval-result-data/duckdb_wiki_tables_bench/rs_jp_ai_context \
+  --label eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1="Wiki Tables rs_jp_top_k_1" \
+  --label eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp="Wiki Tables cs_jp_lp" \
+  --label eval-result-data/duckdb_wiki_tables_bench/rs_jp_ai_context="Wiki Tables rs_jp_ai_context" \
+  --output eval_results_visualisation/times-wiki-cases.png \
+  --title "Duration per Case: Wiki Tables"
 
+
+## steps
+uv run evaluation/plot_timings.py eval-result-data/duckdb_git_tables_bench/cs_jp_lp eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1 eval-result-data/duckdb_git_tables_bench/rs_jp_ai_naive eval-result-data/duckdb_git_tables_bench/rs_jp_ai_context --output eval_results_visualisation/times-git_comparison-median.png --agg median --title "Median Benchmark Timings per Step: GitTables Corpus"
+uv run evaluation/plot_timings.py eval-result-data/vertica_wdc_bench/rs_jp_top_k_1 eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1 eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1 --label eval-result-data/vertica_wdc_bench/rs_jp_top_k_1="WDC" --label eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1="Git Tables" --label eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1="Wiki Tables" --output eval_results_visualisation/times-rs_jp-median --agg median --title "Median Benchmark Timings per Step: RS JP"
+uv run evaluation/plot_timings.py eval-result-data/vertica_wdc_bench/rs_jp_top_k_1 eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1 eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1 --label eval-result-data/vertica_wdc_bench/rs_jp_top_k_1="WDC" --label eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1="Git Tables" --label eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1="Wiki Tables" --output eval_results_visualisation/times-rs_jp-mean.png --agg mean --title "Mean Benchmark Timings per Step: RS JP"
+uv run evaluation/plot_timings.py eval-result-data/vertica_wdc_bench/cs_jp_lp eval-result-data/duckdb_git_tables_bench/cs_jp_lp eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp  --label eval-result-data/duckdb_git_tables_bench/cs_jp_lp="Git Tables" --label eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp="Wiki Tables" --label eval-result-data/vertica_wdc_bench/cs_jp_lp="WDC" --output eval_results_visualisation/times-cs_jp_lp-mean.png --agg mean --title "Mean Benchmark Timings per Step: CS JP LP"
+uv run evaluation/plot_timings.py eval-result-data/vertica_wdc_bench/cs_jp_lp eval-result-data/duckdb_git_tables_bench/cs_jp_lp eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp  --label eval-result-data/duckdb_git_tables_bench/cs_jp_lp="Git Tables" --label eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp="Wiki Tables" --label eval-result-data/vertica_wdc_bench/cs_jp_lp="WDC" --output eval_results_visualisation/times-cs_jp_lp-median.png --agg median --title "Median Benchmark Timings per Step: CS JP LP"
 
 # metrics Comparison
 uv run evaluation/compare_metrics_to_baselines.py --baseline eval-result-data/vertica_wdc_bench/rs_jp_top_k_1/benchmark_rs_jp_vertica_wdc_20260106_233913.json  --comparison eval-result-data/vertica_wdc_bench/rs_jp_ai_context/benchmark_rs_jp_ai_context_vertica_wdc_20260118_112423.json eval-result-data/vertica_wdc_bench/rs_jp_ai_naive/benchmark_rs_jp_ai_naive_wdc_20260118_102154.json --output eval_results_visualisation/metrics-wdc_ai_comparison-percentage.png --percentage
