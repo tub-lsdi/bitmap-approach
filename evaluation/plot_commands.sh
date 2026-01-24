@@ -69,6 +69,12 @@ uv run evaluation/compare_metrics_to_baselines.py --baseline eval-result-data/ve
 
 uv run evaluation/compare_metrics_to_baselines.py --baseline eval-result-data/vertica_wdc_bench/cs_jp_lp/benchmark_cs_jp_lp_vertica_wdc_20260106_223539.json  --comparison eval-result-data/vertica_wdc_bench/rs_jp_top_k_1/benchmark_rs_jp_vertica_wdc_20260106_233913.json  eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1/benchmark_rs_jp_duckdb_wiki_20260111_011005.json eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp/benchmark_cs_jp_lp_duckdb_wiki_20260111_010822.json  eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1/benchmark_rs_jp_duckdb_git_20260111_030706.json eval-result-data/duckdb_git_tables_bench/cs_jp_lp/benchmark_cs_jp_lp_duckdb_git_20260111_024617.json --output eval_results_visualisation/metrics-best_vs_rest_comparison-percentage.png --percentage
 
+uv run evaluation/compare_metrics_to_baselines.py --baseline eval-result-data/vertica_wdc_bench/cs_jp_lp/benchmark_cs_jp_lp_vertica_wdc_20260106_223539.json --comparison eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp/benchmark_cs_jp_lp_duckdb_wiki_20260111_010822.json eval-result-data/duckdb_git_tables_bench/cs_jp_lp/benchmark_cs_jp_lp_duckdb_git_20260111_024617.json --output eval_results_visualisation/metrics-cs_corpora-absolute.png --absolute
+
+uv run evaluation/compare_metrics_to_baselines.py --baseline eval-result-data/vertica_wdc_bench/rs_jp_top_k_1/benchmark_rs_jp_vertica_wdc_20260106_233913.json --comparison eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1/benchmark_rs_jp_duckdb_wiki_20260111_011005.json eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1/benchmark_rs_jp_duckdb_git_20260111_030706.json --output eval_results_visualisation/metrics-rs_corpora-absolute.png --absolute
+
+uv run evaluation/compare_metrics_to_baselines.py --baseline eval-result-data/vertica_wdc_bench/rs_jp_ai_context/benchmark_rs_jp_ai_context_vertica_wdc_20260118_112423.json --comparison eval-result-data/duckdb_wiki_tables_bench/rs_jp_ai_context/benchmark_rs_jp_ai_context_duckdb_wiki_20260114_132612.json eval-result-data/duckdb_git_tables_bench/rs_jp_ai_context/benchmark_rs_jp_ai_context_duckdb_git_20260116_095127.json --output eval_results_visualisation/metrics-rs_ai_context_corpora-absolute.png --absolute
+
 
 # metrics comparison cases
 uv run evaluation/compare_metrics_per_case.py \
@@ -90,7 +96,7 @@ uv run evaluation/compare_metrics_per_case.py \
   --plot heatmap \
   --no-table \
   --output eval_results_visualisation/metrics-corpora-heatmap.png
-  
+
 uv run evaluation/compare_metrics_per_case.py \
 --groundtruth_dir benchmark-data \
 --results_dir . \
