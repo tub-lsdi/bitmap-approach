@@ -8,7 +8,7 @@ import numpy as np
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from evaluation.plot_style import apply_theme, get_corpus_palette
-from evaluation.utils import extract_case_timings, get_short_filename, load_results
+from evaluation.utils import extract_case_timings, load_results
 
 
 def get_alternating_colors(n, corpus):
@@ -31,7 +31,11 @@ def main():
     parser = argparse.ArgumentParser(
         description="Plot benchmark timings as a stacked bar chart."
     )
-    parser.add_argument("files", nargs="+", help="Benchmark JSON files")
+    parser.add_argument(
+        "directories",
+        nargs="+",
+        help="Benchmark directories containing benchmark_* JSON files",
+    )
     parser.add_argument(
         "--output", default="timings_plot.png", help="Output filename for the plot"
     )
@@ -50,7 +54,26 @@ def main():
         default="median",
         help="Aggregation method for timings (default: median)",
     )
+    parser.add_argument(
+        "--title",
+        help="Optional title override for the plot.",
+    )
+    parser.add_argument(
+        "--label",
+        action="append",
+        default=[],
+        metavar="DIR=LABEL",
+        help="Override the plotted label for a directory (repeatable, e.g., /runs/expA=Experiment A).",
+    )
     args = parser.parse_args()
+    label_overrides = {}
+    for entry in args.label:
+        if "=" not in entry:
+            print(f"Warning: invalid label override, expected DIR=LABEL -> {entry}")
+            continue
+        raw_dir, custom_label = entry.split("=", 1)
+        normalized_dir = os.path.normpath(os.path.abspath(raw_dir))
+        label_overrides[normalized_dir] = custom_label
     apply_theme()
 
     file_data = []
@@ -60,14 +83,32 @@ def main():
 
     agg_func = np.median if args.agg == "median" else np.mean
 
-    for filepath in args.files:
-        results = load_results(filepath)
-        if not results:
+    for dirpath in args.directories:
+        if not os.path.isdir(dirpath):
+            print(f"Warning: directory not found -> {dirpath}")
             continue
 
-        # Extract timings for all successful cases
-        case_timings = [extract_case_timings(c) for c in results if c.get("success")]
+        benchmark_files = sorted(
+            os.path.join(dirpath, f)
+            for f in os.listdir(dirpath)
+            if f.startswith("benchmark_") and os.path.isfile(os.path.join(dirpath, f))
+        )
+        if not benchmark_files:
+            print(f"Warning: no benchmark_ files found in -> {dirpath}")
+            continue
+
+        case_timings = []
+        for filepath in benchmark_files:
+            results = load_results(filepath)
+            if not results:
+                continue
+
+            case_timings.extend(
+                [extract_case_timings(c) for c in results if c.get("success")]
+            )
+
         if not case_timings:
+            print(f"Warning: no valid case timings in -> {dirpath}")
             continue
 
         for ct in case_timings:
@@ -126,8 +167,13 @@ def main():
                     ct.get("ai_timings", {}).get(step, 0) or 0
                 )
 
+        normalized_dirpath = os.path.normpath(os.path.abspath(dirpath))
+        dir_label = label_overrides.get(
+            normalized_dirpath, os.path.basename(os.path.normpath(dirpath))
+        )
+
         final_avg = {
-            "label": get_short_filename(filepath),
+            "label": dir_label,
             "go": {
                 step: agg_func(vals) if vals else 0
                 for step, vals in avg_timings["go"].items()
@@ -220,7 +266,10 @@ def main():
     service_title = (
         args.service.capitalize() if args.service != "all" else "Go, Python & AI"
     )
-    ax.set_title(f"{agg_title} Benchmark Timings per Step ({service_title})")
+    plot_title = (
+        args.title or f"{agg_title} Benchmark Timings per Step ({service_title})"
+    )
+    ax.set_title(plot_title)
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=45, ha="right")
 
