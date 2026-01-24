@@ -17,7 +17,7 @@ def transform_file(input_path, benchmark_path=None):
     else:
         timestamp = "unknown"
 
-    output_filename = f"benchmark_rs_jp_ai_{timestamp}.json"
+    output_filename = f"benchmark_{os.path.basename(output_dir)}_{timestamp}.json"
     output_path = os.path.join(output_dir, output_filename)
 
     try:
@@ -153,13 +153,45 @@ def main():
         # (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai/ai_evaluation_results_20260114_044641.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154521.json'),
         # (f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260114_132612.json', f'{base_dir}/duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154339.json'),
         # (f'{base_dir}/duckdb_git_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260116_095127.json', f'{base_dir}/duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_155003.json'),
+        # (
+        #     f"{base_dir}/vertica_wdc_bench/rs_jp_ai_naive/ai_evaluation_results_20260118_102154.json",
+        #     f"{base_dir}/vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_085159.json",
+        # ),
+        # (
+        #     f"{base_dir}/vertica_wdc_bench/rs_jp_ai_context/ai_evaluation_results_20260118_112423.json",
+        #     f"{base_dir}/vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_085159.json",
+        # ),
         (
-            f"{base_dir}/vertica_wdc_bench/rs_jp_ai_naive/ai_evaluation_results_20260118_102154.json",
-            f"{base_dir}/vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_085159.json",
+            f"{base_dir}/duckdb_git_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260116_114506.json",
+            f"{base_dir}duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_160123.json",
         ),
         (
-            f"{base_dir}/vertica_wdc_bench/rs_jp_ai_context/ai_evaluation_results_20260118_112423.json",
-            f"{base_dir}/vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_085159.json",
+            f"{base_dir}/duckdb_git_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260116_120519.json",
+            f"{base_dir}duckdb_git_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_161458.json",
+        ),
+        (
+            f"{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260116_122636.json",
+            f"{base_dir}duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154426.json",
+        ),
+        (
+            f"{base_dir}/duckdb_wiki_tables_bench/rs_jp_ai_context/ai_evaluation_results_20260116_130023.json",
+            f"{base_dir}duckdb_wiki_tables_bench/rs_jp_top_k_5/benchmark_rs_jp_duckdb_20260113_154521.json",
+        ),
+        (
+            f"{base_dir}/vertica_wdc_bench/rs_jp_ai_context/ai_evaluation_results_20260118_150120.json",
+            f"{base_dir}vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_101540.json",
+        ),
+        (
+            f"{base_dir}/vertica_wdc_bench/rs_jp_ai_context/ai_evaluation_results_20260118_234546.json",
+            f"{base_dir}vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_110555.json",
+        ),
+        (
+            f"{base_dir}/vertica_wdc_bench/rs_jp_ai_naive/ai_evaluation_results_20260118_140135.json",
+            f"{base_dir}vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_101540.json",
+        ),
+        (
+            f"{base_dir}/vertica_wdc_bench/rs_jp_ai_naive/ai_evaluation_results_20260118_224445.json",
+            f"{base_dir}vertica_wdc_bench/rs_jp_top_k_5/benchmark_rs_jp_vertica_20260118_110555.json",
         ),
     ]
 
