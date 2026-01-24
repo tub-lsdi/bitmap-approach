@@ -21,9 +21,11 @@ from evaluation.utils import (
 )
 
 
-def process_file(file_path: str, groundtruth_dir: str) -> pl.DataFrame:
+def process_file(
+    file_path: str, groundtruth_dir: str, file_label: str | None = None
+) -> pl.DataFrame:
     results_data = load_results(file_path)
-    filename = get_short_filename(file_path)
+    filename = file_label if file_label is not None else get_short_filename(file_path)
 
     eval_data = []
 
@@ -367,8 +369,28 @@ def main():
         action="store_true",
         help="Do not show the summary table in the plot",
     )
+    parser.add_argument(
+        "--label",
+        action="append",
+        default=[],
+        metavar="FILE=LABEL",
+        help=(
+            "Override the displayed label for a result file (repeatable, e.g., "
+            "results.json=Experiment A)."
+        ),
+    )
 
     args = parser.parse_args()
+
+    label_overrides: Dict[str, str] = {}
+    for entry in args.label:
+        if "=" not in entry:
+            print(f"Warning: invalid label override, expected FILE=LABEL -> {entry}")
+            continue
+        raw_file, custom_label = entry.split("=", 1)
+        normalized_file = os.path.normpath(os.path.abspath(raw_file))
+        label_overrides[normalized_file] = custom_label
+
     apply_theme()
 
     groundtruth_dir = args.groundtruth_dir
@@ -400,11 +422,14 @@ def main():
     dfs = []
     for file_path in files_to_process:
         print(f"Processing {file_path}...")
-        df = process_file(file_path, groundtruth_dir)
+        normalized_path = os.path.normpath(os.path.abspath(file_path))
+        file_label = label_overrides.get(normalized_path)
+        df = process_file(file_path, groundtruth_dir, file_label)
         if not df.is_empty():
             dfs.append(df)
             if args.summary:
-                print(f"Summary for {get_short_filename(file_path)}:")
+                summary_label = file_label or get_short_filename(file_path)
+                print(f"Summary for {summary_label}:")
                 print(
                     df.select(
                         [
