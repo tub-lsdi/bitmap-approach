@@ -7,7 +7,7 @@ import numpy as np
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from evaluation.plot_style import apply_theme, get_corpus_palette
+from evaluation.plot_style import apply_theme, get_corpus_palette, save_figure
 from evaluation.utils import extract_case_timings, load_results
 
 
@@ -284,8 +284,7 @@ def main():
     )
 
     plt.tight_layout()
-    plt.savefig(args.output, bbox_inches="tight")
-    print(f"Plot saved to {args.output}")
+    save_figure(args.output)
 
 
 if __name__ == "__main__":

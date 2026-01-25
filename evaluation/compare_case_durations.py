@@ -13,7 +13,7 @@ from matplotlib.patches import Patch
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from evaluation.plot_style import apply_theme, build_styles
+from evaluation.plot_style import apply_theme, build_styles, save_figure
 from evaluation.utils import load_results
 
 
@@ -136,8 +136,7 @@ def plot_single_file(
 
     plt.tight_layout()
     if output:
-        plt.savefig(output, bbox_inches="tight")
-        print(f"Plot saved to {output}")
+        save_figure(output)
     else:
         plt.show()
     plt.close(fig)
@@ -283,8 +282,7 @@ def plot_layered_files(
 
     plt.tight_layout()
     if output:
-        plt.savefig(output, bbox_inches="tight")
-        print(f"Plot saved to {output}")
+        save_figure(output)
     else:
         plt.show()
     plt.close(fig)

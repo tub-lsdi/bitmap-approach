@@ -10,7 +10,7 @@ import numpy as np
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from evaluation.plot_style import apply_theme, build_styles
+from evaluation.plot_style import apply_theme, build_styles, save_figure
 from evaluation.utils import get_short_filename, load_groundtruth, load_results
 
 
@@ -258,10 +258,9 @@ def create_plot(
     plt.title(f"Base vs Enhancement Mix - {filename}", fontsize=14, fontweight="bold")
     plt.tight_layout()
 
-    output_filename = f"npmi_threshold_analysis_{filename}.png"
+    output_filename = f"npmi_threshold_analysis_{filename}"
     output_path = os.path.join(output_dir, output_filename)
-    plt.savefig(output_path, dpi=300, bbox_inches="tight")
-    print(f"  Plot saved to {output_path}")
+    save_figure(output_path)
     plt.close()
 
 

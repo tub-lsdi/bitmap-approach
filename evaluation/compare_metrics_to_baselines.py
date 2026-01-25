@@ -11,7 +11,7 @@ from matplotlib.patches import Patch
 # Add the project root directory to sys.path to allow imports from the evaluation package
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from evaluation.plot_style import apply_theme, build_styles
+from evaluation.plot_style import apply_theme, build_styles, save_figure
 from evaluation.utils import (
     calculate_case_metrics,
     get_short_filename,
@@ -129,8 +129,7 @@ def plot_absolute_values(
     plt.tight_layout()
 
     if output_file:
-        plt.savefig(output_file, bbox_inches="tight")
-        print(f"Plot saved to {output_file}")
+        save_figure(output_file)
     else:
         plt.show()
 
@@ -211,8 +210,7 @@ def plot_comparison(
     plt.tight_layout()
 
     if output_file:
-        plt.savefig(output_file, bbox_inches="tight")
-        print(f"Plot saved to {output_file}")
+        save_figure(output_file)
     else:
         plt.show()
 

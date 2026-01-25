@@ -16,6 +16,7 @@ __all__ = [
     "get_hatch",
     "build_styles",
     "apply_theme",
+    "save_figure",
 ]
 
 
@@ -194,3 +195,46 @@ def apply_theme():
     Set a consistent seaborn theme for plots that consume this utility.
     """
     sns.set_theme(style="whitegrid", font_scale=1.0)
+
+
+def save_figure(
+    output_path: str,
+    dpi: int = 300,
+    bbox_inches: str = "tight",
+) -> None:
+    """
+    Save the current figure in both PNG and SVG formats with transparent backgrounds.
+
+    Args:
+        output_path: Base output path (e.g., "plot.png"). The SVG will be saved
+                     with the same name but .svg extension.
+        dpi: Resolution for the PNG output (default: 300).
+        bbox_inches: Bounding box setting (default: "tight").
+    """
+    import matplotlib.pyplot as plt
+
+    # Determine base path without extension
+    base, ext = os.path.splitext(output_path)
+    if not ext:
+        ext = ".png"
+
+    png_path = base + ".png"
+    svg_path = base + ".svg"
+
+    # Save PNG with transparent background
+    plt.savefig(
+        png_path,
+        dpi=dpi,
+        bbox_inches=bbox_inches,
+        transparent=True,
+    )
+    print(f"Plot saved to {png_path}")
+
+    # Save SVG with transparent background
+    plt.savefig(
+        svg_path,
+        format="svg",
+        bbox_inches=bbox_inches,
+        transparent=True,
+    )
+    print(f"Plot saved to {svg_path}")
