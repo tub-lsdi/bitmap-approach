@@ -28,9 +28,9 @@ class ParsedStyle:
 
 
 _CORPUS_TO_CMAP = {
-    "wdc": "Blues",
-    "wiki": "Greens",
-    "git": "Oranges",
+    "wdc": "Blues",  # Dresden Web Table Corpus
+    "wiki": "Greens",  # WikiTables
+    "git": "Oranges",  # GitTables
 }
 
 _ALGO_TO_HATCH = {
@@ -80,7 +80,7 @@ def parse_style_tokens(source: str) -> ParsedStyle:
 
     for token in _lower_sources(source):
         if corpus is None:
-            if "wdc" in token:
+            if "wdc" in token or "dresden" in token or "dwtc" in token:
                 corpus = "wdc"
             elif "wiki" in token:
                 corpus = "wiki"
@@ -88,15 +88,15 @@ def parse_style_tokens(source: str) -> ParsedStyle:
                 corpus = "git"
 
         if algorithm is None:
-            if "cs_jp" in token:
+            if "cs_jp" in token or "cs jp" in token:
                 algorithm = "cs_jp"
-            elif "rs_jp" in token:
+            elif "rs_jp" in token or "rs jp" in token:
                 algorithm = "rs_jp"
 
         if algorithm == "rs_jp" and ai_variant is None:
-            if "context" in token:
+            if "context" in token or "ai context" in token:
                 ai_variant = "ai_context"
-            elif "naiv" in token or "naive" in token:
+            elif "naiv" in token or "naive" in token or "ai naive" in token:
                 ai_variant = "ai_naiv"
 
     return ParsedStyle(corpus=corpus, algorithm=algorithm, ai_variant=ai_variant)

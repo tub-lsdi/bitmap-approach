@@ -121,7 +121,7 @@ def plot_absolute_values(
     ax.legend(
         legend_handles,
         filenames,
-        title="Files",
+        title="Legend",
         bbox_to_anchor=(1.05, 1),
         loc="upper left",
     )
@@ -202,7 +202,7 @@ def plot_comparison(
     ax.legend(
         legend_handles,
         unique_files,
-        title="Comparison Files",
+        title="Legend",
         bbox_to_anchor=(1.05, 1),
         loc="upper left",
     )

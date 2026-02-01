@@ -91,7 +91,7 @@ def plot_single_file(
     )
     ax.legend(
         handles=[legend_handle],
-        title="File",
+        title="Legend",
         bbox_to_anchor=(1.01, 1),
         loc="upper left",
     )
@@ -191,7 +191,7 @@ def plot_bar_comparison(
     ax.legend(
         legend_handles,
         unique_files,
-        title="File",
+        title="Legend",
         bbox_to_anchor=(1.01, 1),
         loc="upper left",
     )

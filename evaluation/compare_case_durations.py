@@ -129,7 +129,7 @@ def plot_single_file(
     )
     ax.legend(
         handles=[legend_handle],
-        title="File",
+        title="Legend",
         bbox_to_anchor=(1.01, 1),
         loc="upper left",
     )
@@ -275,7 +275,7 @@ def plot_layered_files(
     ax.legend(
         legend_handles,
         legend_labels,
-        title="File",
+        title="Legend",
         bbox_to_anchor=(1.01, 1),
         loc="upper left",
     )

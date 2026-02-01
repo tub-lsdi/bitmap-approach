@@ -82,11 +82,45 @@ def extract_case_timings(case: Dict) -> Dict:
 def get_short_filename(filepath: str) -> str:
     """
     Shortens a benchmark filename by removing the 'benchmark_' prefix,
-    the extension, and the trailing timestamp.
+    the extension, and the trailing timestamp. Returns a clean display name
+    with corpus first, then algorithm.
     """
     filename = os.path.basename(filepath)
     if filename.startswith("benchmark_"):
         filename = filename[len("benchmark_"):]
     filename = os.path.splitext(filename)[0]
     filename = re.sub(r'_\d{8}_\d{6}$', '', filename)
+
+    # Extract corpus name
+    corpus = None
+    if '_wdc' in filename or 'wdc_' in filename:
+        corpus = 'DWTC'
+    elif '_wiki' in filename or 'wiki_' in filename:
+        corpus = 'Wiki Tables'
+    elif '_git' in filename or 'git_' in filename:
+        corpus = 'Git Tables'
+
+    # Extract algorithm name and format it nicely
+    algorithm = None
+    if 'cs_jp_lp' in filename:
+        algorithm = 'CS JP LP'
+    elif 'rs_jp_ai_context' in filename:
+        algorithm = 'RS JP AI Context'
+    elif 'rs_jp_ai_naive' in filename:
+        algorithm = 'RS JP AI Naive'
+    elif 'rs_jp_top_k' in filename or 'rs_jp' in filename:
+        algorithm = 'RS JP'
+
+    # Build display name: Corpus - Algorithm
+    if corpus and algorithm:
+        return f"{corpus} - {algorithm}"
+    elif corpus:
+        return corpus
+    elif algorithm:
+        return algorithm
+
+    # Fallback: clean up the filename
+    filename = re.sub(r'_?(vertica|duckdb)_?', '_', filename)
+    filename = re.sub(r'_+', '_', filename).strip('_')
+    filename = filename.replace('_', ' ')
     return filename
