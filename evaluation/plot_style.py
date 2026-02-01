@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import re
 from dataclasses import dataclass
 from typing import Any, Dict, List, Sequence
 
@@ -12,6 +13,7 @@ import seaborn as sns
 __all__ = [
     "ParsedStyle",
     "parse_style_tokens",
+    "format_label",
     "get_corpus_palette",
     "get_hatch",
     "build_styles",
@@ -25,6 +27,8 @@ class ParsedStyle:
     corpus: str | None
     algorithm: str | None
     ai_variant: str | None
+    top_k: int | None
+    lp: bool
 
 
 _CORPUS_TO_CMAP = {
@@ -65,7 +69,7 @@ def _lower_sources(source: str) -> List[str]:
 
 def parse_style_tokens(source: str) -> ParsedStyle:
     """
-    Parse corpus / algorithm / ai_variant tokens from a path or filename.
+    Parse corpus / algorithm / ai_variant / top_k / lp tokens from a path or filename.
 
     Detection (case-insensitive substring):
     - corpus: wdc | wiki | git
@@ -73,33 +77,89 @@ def parse_style_tokens(source: str) -> ParsedStyle:
     - ai_variant (only when rs_jp is present):
         * context -> ai_context
         * naiv or naive -> ai_naiv
+    - top_k: e.g., top_k_1, top_k_5
+    - lp: presence of "lp" token
     """
     corpus = None
     algorithm = None
     ai_variant = None
+    top_k = None
+    lp = False
 
-    for token in _lower_sources(source):
-        if corpus is None:
-            if "wdc" in token or "dresden" in token or "dwtc" in token:
-                corpus = "wdc"
-            elif "wiki" in token:
-                corpus = "wiki"
-            elif "git" in token:
-                corpus = "git"
+    combined_source = " ".join(_lower_sources(source))
 
-        if algorithm is None:
-            if "cs_jp" in token or "cs jp" in token:
-                algorithm = "cs_jp"
-            elif "rs_jp" in token or "rs jp" in token:
-                algorithm = "rs_jp"
+    if corpus is None:
+        if (
+            "wdc" in combined_source
+            or "dresden" in combined_source
+            or "dwtc" in combined_source
+        ):
+            corpus = "wdc"
+        elif "wiki" in combined_source:
+            corpus = "wiki"
+        elif "git" in combined_source:
+            corpus = "git"
 
-        if algorithm == "rs_jp" and ai_variant is None:
-            if "context" in token or "ai context" in token:
-                ai_variant = "ai_context"
-            elif "naiv" in token or "naive" in token or "ai naive" in token:
-                ai_variant = "ai_naiv"
+    if algorithm is None:
+        if "cs_jp" in combined_source or "cs jp" in combined_source:
+            algorithm = "cs_jp"
+        elif "rs_jp" in combined_source or "rs jp" in combined_source:
+            algorithm = "rs_jp"
 
-    return ParsedStyle(corpus=corpus, algorithm=algorithm, ai_variant=ai_variant)
+    if algorithm == "rs_jp" and ai_variant is None:
+        if "context" in combined_source or "ai context" in combined_source:
+            ai_variant = "ai_context"
+        elif (
+            "naiv" in combined_source
+            or "naive" in combined_source
+            or "ai naive" in combined_source
+        ):
+            ai_variant = "ai_naiv"
+
+    # Parse top_k value
+    top_k_match = re.search(r"top_k_(\d+)", combined_source)
+    if top_k_match:
+        top_k = int(top_k_match.group(1))
+
+    # Check for lp variant
+    if "lp" in combined_source:
+        lp = True
+
+    return ParsedStyle(
+        corpus=corpus, algorithm=algorithm, ai_variant=ai_variant, top_k=top_k, lp=lp
+    )
+
+
+def format_label(style: ParsedStyle) -> str:
+    """
+    Convert a ParsedStyle back into a human-readable label.
+
+    Examples:
+        rs_jp_top_k_1 -> "RJ JP Top K = 1"
+        cs_jp_lp -> "CS JP LP"
+        rs_jp_ai_context -> "RJ JP AI Context"
+    """
+    parts = []
+
+    # Algorithm
+    if style.algorithm == "rs_jp":
+        parts.append("RJ JP")
+    elif style.algorithm == "cs_jp":
+        parts.append("CS JP")
+
+    # Top K variant (takes priority)
+    if style.top_k is not None:
+        parts.append(f"TopK = {style.top_k}")
+    # LP variant
+    elif style.lp:
+        parts.append("LP")
+    # AI variant (only for rs_jp)
+    elif style.ai_variant == "ai_context":
+        parts.append("AI Context")
+    elif style.ai_variant == "ai_naiv":
+        parts.append("AI Naive")
+
+    return " ".join(parts) if parts else ""
 
 
 def get_corpus_palette(

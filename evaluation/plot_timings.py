@@ -1,5 +1,6 @@
 import argparse
 import os
+import re
 import sys
 
 import matplotlib.pyplot as plt
@@ -9,6 +10,25 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from evaluation.plot_style import apply_theme, get_corpus_palette, save_figure
 from evaluation.utils import extract_case_timings, load_results
+
+
+def format_step_name(step: str) -> str:
+    """
+    Format step names for display:
+    - Replace underscores with spaces
+    - Convert step3_* to "Step 3: *"
+    - Convert step2_* to "Step 2: *"
+    - etc.
+    """
+    # Handle step*_ prefix (e.g., step3_find_tables -> Step 3: find tables)
+    step_match = re.match(r"step(\d+)_(.+)", step)
+    if step_match:
+        step_num = step_match.group(1)
+        step_name = step_match.group(2).replace("_", " ")
+        return f"step {step_num}: {step_name}"
+
+    # Default: just replace underscores with spaces
+    return step.replace("_", " ")
 
 
 def get_alternating_colors(n, corpus):
@@ -224,7 +244,7 @@ def main():
                 values,
                 width,
                 bottom=bottoms,
-                label=f"Go: {step}",
+                label=f"Go: {format_step_name(step)}",
                 color=go_color_map[step],
                 edgecolor="white",
                 linewidth=0.5,
@@ -239,7 +259,7 @@ def main():
                 values,
                 width,
                 bottom=bottoms,
-                label=f"Py: {step}",
+                label=f"Py: {format_step_name(step)}",
                 color=python_color_map[step],
                 edgecolor="white",
                 linewidth=0.5,
@@ -254,7 +274,7 @@ def main():
                 values,
                 width,
                 bottom=bottoms,
-                label=f"AI: {step}",
+                label=f"AI: {format_step_name(step)}",
                 color=ai_color_map[step],
                 edgecolor="white",
                 linewidth=0.5,

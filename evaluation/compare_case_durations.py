@@ -13,7 +13,13 @@ from matplotlib.patches import Patch
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from evaluation.plot_style import apply_theme, build_styles, save_figure
+from evaluation.plot_style import (
+    apply_theme,
+    build_styles,
+    format_label,
+    parse_style_tokens,
+    save_figure,
+)
 from evaluation.utils import load_results
 
 
@@ -78,6 +84,22 @@ def summarize_dataframe(df: pl.DataFrame) -> Dict[str, float]:
     }
 
 
+def format_file_label(label: str) -> str:
+    """Format a file label, converting algorithm codes to human-readable names."""
+    style = parse_style_tokens(label)
+    formatted = format_label(style)
+
+    # Try to preserve the corpus/dataset prefix if it exists
+    # Common prefixes: DWTC, Git Tables, Wiki Tables, etc.
+    prefixes = ["DWTC", "Git Tables", "Wiki Tables"]
+    for prefix in prefixes:
+        if label.startswith(prefix):
+            return f"{prefix} {formatted}"
+
+    # If no recognized prefix, just return the formatted part
+    return formatted
+
+
 def build_style_map(file_order: Sequence[str]) -> Dict[str, Dict[str, Any]]:
     return build_styles(file_order)
 
@@ -125,7 +147,7 @@ def plot_single_file(
         facecolor=style["facecolor"],
         edgecolor=style["edgecolor"],
         hatch=style["hatch"],
-        label=file_name,
+        label=format_file_label(file_name),
     )
     ax.legend(
         handles=[legend_handle],
@@ -181,7 +203,7 @@ def annotate_missing_cases(
                 marker="x",
                 linestyle="None",
                 markersize=8,
-                label=f"{file_name} (missing case)",
+                label=f"{format_file_label(file_name)} (missing case)",
             )
             legend_handles.append(handle)
             legend_labels.append(str(handle.get_label()))
@@ -262,7 +284,7 @@ def plot_layered_files(
             facecolor=styles[file_name]["facecolor"],
             edgecolor=styles[file_name]["edgecolor"],
             hatch=styles[file_name]["hatch"],
-            label=str(file_name),
+            label=format_file_label(file_name),
         )
         for file_name in file_order
     ]
