@@ -44,7 +44,7 @@ This document provides detailed instructions for reproducing the benchmark resul
 
 **Note on Benchmark Execution:**
 - **Wiki Tables and Git Tables**: Benchmarks were run on a local machine (see Hardware Specifications above)
-- **WDC Tables (Vertica)**: Benchmarks were run on the big-dama-2 server due to resource requirements
+- **DWTC Tables (Vertica)**: Benchmarks were run on the big-dama-2 server due to resource requirements
   - Some cases (e.g., Case 10) are too resource-heavy for local execution
   - Most cases can run locally, but larger cases may require server resources
 
@@ -58,7 +58,7 @@ This document provides detailed instructions for reproducing the benchmark resul
 # Clone the repository and checkout duckdb-only branch
 git clone https://github.com/tub-lsdi/bitmap-approach.git
 cd bitmap-approach
-git checkout vertica-only
+git checkout duckdb-only
 ```
 
 Download one of the following corpus databases:
@@ -78,7 +78,7 @@ unzip /path/to/downloaded_git_tables_corpus.zip
 mv gittables_corpus.db corpus.db
 ```
 
-#### Option B: Vertica WDC Corpus
+#### Option B: Vertica DWTC Corpus
 
 **Prerequisites:** Access to big-dama-2.dima.tu-berlin.de server
 
