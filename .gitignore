@@ -81,10 +81,10 @@ Temporary Items
 bin
 results
 .env
+.idea
 corpus.db
 corpus/example_data/tables.json
-corpus/setup_db/__pycache__/corpus_utils.cpython-314.pyc
-corpus/setup_db/__pycache__/normalization.cpython-314.pyc
+__pycache__/
 temp_parquet_cells
 temp_parquet_meta
 duckdb_temp
