@@ -27,7 +27,7 @@ This implementation has been tested with three major table corpora for building 
 - Real-world data from open-source projects
 - Technical and scientific data domains
 
-**3. WDC (Web Data Commons)**
+**3. DWTC (Dresden Web Table Corpus)**
 - Large-scale web table corpus
 - Millions of tables from Common Crawl
 - Broad coverage of web data patterns
@@ -90,4 +90,4 @@ month = {June}
 - **Benchmark Test Cases:** [Original Sema-Join benchmark test cases](https://github.com/Yeye-He/Semantic-Join)
 - **WikiTables:** [1.6M Wikipedia Tables in JSON format (TabEL dataset)](http://websail-fe.cs.northwestern.edu/TabEL/)
 - **GitTables:** [GitTables: A Large-Scale Corpus of Relational Tables](https://arxiv.org/abs/2106.07258)
-- **WDC Web Tables:** [Web Data Commons - Web Tables Corpus](http://webdatacommons.org/webtables/)
+- **DWTC:** [Dresden Web Table Corpus (Web Data Commons - Web Tables Corpus)](http://webdatacommons.org/webtables/)
