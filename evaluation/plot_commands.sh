@@ -50,6 +50,29 @@ uv run evaluation/plot_timings.py eval-result-data/vertica_wdc_bench/cs_jp_lp ev
 
 uv run evaluation/plot_timings.py eval-result-data/vertica_wdc_bench/cs_jp_lp eval-result-data/duckdb_git_tables_bench/cs_jp_lp eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp  --label eval-result-data/duckdb_git_tables_bench/cs_jp_lp="Git Tables" --label eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp="Wiki Tables" --label eval-result-data/vertica_wdc_bench/cs_jp_lp="DWTC" --output eval_results_visualisation/times-cs_jp_lp-median.png --agg median --title "Median Benchmark Timings per Step: CS JP LP"
 
+uv run evaluation/plot_timings.py eval-result-data/duckdb_git_tables_bench/cs_jp_lp eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp eval-result-data/vertica_wdc_bench/cs_jp_lp eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1 eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1 eval-result-data/vertica_wdc_bench/rs_jp_top_k_1 \
+--service python \
+--label eval-result-data/duckdb_git_tables_bench/cs_jp_lp="Git Tables CS JP LP" \
+--label eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp="Wiki Tables CS JP LP" \
+--label eval-result-data/vertica_wdc_bench/cs_jp_lp="DWTC CS JP LP" \
+--label eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1="Git Tables RS JP" \
+--label eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1="Wiki Tables RS JP" \
+--label eval-result-data/vertica_wdc_bench/rs_jp_top_k_1="DWTC RS JP" \
+--output eval_results_visualisation/timings-csjplp-rsjp-python-all-corpora-median.png \
+--title "Join Prediction Algorithms Timings: All Corpora" \
+--agg median
+
+uv run evaluation/plot_timings.py eval-result-data/duckdb_git_tables_bench/cs_jp_lp eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp eval-result-data/vertica_wdc_bench/cs_jp_lp eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1 eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1 eval-result-data/vertica_wdc_bench/rs_jp_top_k_1 \
+--service python \
+--label eval-result-data/duckdb_git_tables_bench/cs_jp_lp="Git Tables CS JP LP" \
+--label eval-result-data/duckdb_wiki_tables_bench/cs_jp_lp="Wiki Tables CS JP LP" \
+--label eval-result-data/vertica_wdc_bench/cs_jp_lp="DWTC CS JP LP" \
+--label eval-result-data/duckdb_git_tables_bench/rs_jp_top_k_1="Git Tables RS JP" \
+--label eval-result-data/duckdb_wiki_tables_bench/rs_jp_top_k_1="Wiki Tables RS JP" \
+--label eval-result-data/vertica_wdc_bench/rs_jp_top_k_1="DWTC RS JP" \
+--output eval_results_visualisation/timings-csjplp-rsjp-python-all-corpora-mean.png \
+--title "Join Prediction Algorithms Timings: All Corpora" \
+--agg mean
 # metrics comparison
 uv run evaluation/compare_metrics_to_baselines.py --baseline eval-result-data/vertica_wdc_bench/rs_jp_top_k_1/benchmark_rs_jp_vertica_wdc_20260106_233913.json  --comparison eval-result-data/vertica_wdc_bench/rs_jp_ai_context/benchmark_rs_jp_ai_context_vertica_wdc_20260118_112423.json eval-result-data/vertica_wdc_bench/rs_jp_ai_naive/benchmark_rs_jp_ai_naive_vertica_wdc_20260118_102154.json --output eval_results_visualisation/metrics-dresden_ai_comparison-percentage.png --percentage
 
