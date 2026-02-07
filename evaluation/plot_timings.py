@@ -69,6 +69,11 @@ def main():
         "--exclude", nargs="*", default=[], help="Step names to exclude from the plot"
     )
     parser.add_argument(
+        "--exclude-first-go-steps",
+        action="store_true",
+        help="Exclude first three go service steps: db_connection, load_and_create_bitmaps, filter_bitmaps_to_relevant_tables",
+    )
+    parser.add_argument(
         "--agg",
         choices=["mean", "median"],
         default="median",
@@ -165,6 +170,15 @@ def main():
                 for step in ct.get("ai_timings", {}):
                     if step not in all_ai_steps and step not in args.exclude:
                         all_ai_steps.append(step)
+
+        # Exclude specific go service steps if specified
+        if args.exclude_first_go_steps:
+            steps_to_exclude = [
+                "db_connection",
+                "load_and_create_bitmaps",
+            ]
+            all_go_steps = [s for s in all_go_steps if s not in steps_to_exclude]
+            print(f"Excluding go service steps: {steps_to_exclude}")
 
         for step in all_go_steps:
             avg_timings["go"][step] = []
